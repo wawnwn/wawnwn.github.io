@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>定位 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="定位1.1 为什么需要定位 某个元素可以自由地在一个盒子内移动位置，并且压住其他盒子  当我们滚动窗口的时候，盒子是固定在屏幕某个位置的   浮动可以让多个块级盒子一行没有缝隙排列显示，经常用于横向排列盒子 定位则是可以让盒子自由的在某个盒子内移动位置或者固定屏幕某个位置，并且可以压住其他盒子">
+  <meta name="description" content="定位1.1 为什么需要定位 某个元素可以自由地在一个盒子内移动位置，并且压住其他盒子  当我们滚动窗口的时候，盒子是固定在屏幕某个位置的   浮动可以让多个块级盒子一行没有缝隙排列显示，经常用于横向排列盒子 定位则是可以让盒子自由的在某个盒子内移动位置或者固定屏幕某个位置，并且可以压住其他盒子  1.2 定位组成定位：将盒子定在某一个位置，所以定位也是在拜访盒子，按照定位的方式移动盒子 定位 &amp;#">
 <meta property="og:type" content="article">
 <meta property="og:title" content="定位">
 <meta property="og:url" content="http://example.com/2022/10/05/%E5%AE%9A%E4%BD%8D/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="定位1.1 为什么需要定位 某个元素可以自由地在一个盒子内移动位置，并且压住其他盒子  当我们滚动窗口的时候，盒子是固定在屏幕某个位置的   浮动可以让多个块级盒子一行没有缝隙排列显示，经常用于横向排列盒子 定位则是可以让盒子自由的在某个盒子内移动位置或者固定屏幕某个位置，并且可以压住其他盒子">
+<meta property="og:description" content="定位1.1 为什么需要定位 某个元素可以自由地在一个盒子内移动位置，并且压住其他盒子  当我们滚动窗口的时候，盒子是固定在屏幕某个位置的   浮动可以让多个块级盒子一行没有缝隙排列显示，经常用于横向排列盒子 定位则是可以让盒子自由的在某个盒子内移动位置或者固定屏幕某个位置，并且可以压住其他盒子  1.2 定位组成定位：将盒子定在某一个位置，所以定位也是在拜访盒子，按照定位的方式移动盒子 定位 &amp;#">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-10-05T09:53:49.000Z">
-<meta property="article:modified_time" content="2022-10-05T10:07:11.344Z">
+<meta property="article:modified_time" content="2022-10-06T06:24:04.125Z">
 <meta property="article:author" content="wawnwn">
 <meta name="twitter:card" content="summary">
   
@@ -210,11 +210,11 @@
 <li>浮动可以让多个块级盒子一行没有缝隙排列显示，经常用于横向排列盒子</li>
 <li>定位则是可以让盒子自由的在某个盒子内移动位置或者固定屏幕某个位置，并且可以压住其他盒子</li>
 </ul>
-<span id="more"></span>
-
 <h3 id="1-2-定位组成"><a href="#1-2-定位组成" class="headerlink" title="1.2 定位组成"></a>1.2 定位组成</h3><p>定位：将盒子定在某一个位置，所以定位也是在拜访盒子，按照定位的方式移动盒子</p>
 <p>定位 &#x3D; 定位模式 + 边偏移</p>
 <p>定位模式用于指定一个元素在文档中的定位方式。边偏移则决定了该元素的最终位置</p>
+<span id="more"></span>
+
 <h4 id="1-定位模式"><a href="#1-定位模式" class="headerlink" title="1. 定位模式"></a>1. 定位模式</h4><p>定位模式决定元素的定位方式，它通过CSS的position属性来设置，其值可以分为四个：</p>
 <table>
 <thead>
@@ -319,13 +319,11 @@
 <p>固定定位也是脱标的，其实固定定位也可以看做是一种特殊的绝对定位</p>
 <h4 id="固定定位小技巧：固定在版心右侧位置"><a href="#固定定位小技巧：固定在版心右侧位置" class="headerlink" title="固定定位小技巧：固定在版心右侧位置"></a>固定定位小技巧：固定在版心右侧位置</h4><p>小算法：</p>
 <ol>
-<li><p>让固定定位的盒子 left: 50% 走到浏览器可视区（也可以看作版心）的一半位置</p>
-</li>
-<li><p>让固定定位的盒子 margin-left: 版心宽度的一般距离。多走版心宽度的一半位置</p>
-<p>就可以让固定定位的盒子贴着版心右侧对齐了</p>
-</li>
+<li>让固定定位的盒子 left: 50% 走到浏览器可视区（也可以看作版心）的一半位置</li>
+<li>让固定定位的盒子 margin-left: 版心宽度的一般距离。多走版心宽度的一半位置</li>
 </ol>
-<h3 id="1-7-粘性定位-sticky-了解"><a href="#1-7-粘性定位-sticky-了解" class="headerlink" title="1.7 粘性定位 sticky(了解)"></a>1.7 粘性定位 sticky(了解)</h3><p>粘性定位可以被认为是相对定位和固定定位的混合。Sticky 粘性的</p>
+<p>就可以让固定定位的盒子贴着版心右侧对齐了</p>
+<h3 id="1-78-粘性定位-sticky-了解"><a href="#1-78-粘性定位-sticky-了解" class="headerlink" title="1.78 粘性定位 sticky(了解)"></a>1.78 粘性定位 sticky(了解)</h3><p>粘性定位可以被认为是相对定位和固定定位的混合。Sticky 粘性的</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">选择器 &#123;</span><br><span class="line">    <span class="attribute">position</span>: sticky;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>粘性定位的特点：</p>
@@ -423,7 +421,7 @@
 <p>一个完整的网页，是标准流、浮动、定位一起完成布局的，每个都有自己的专门用法</p>
 <ol>
 <li><p>标准流</p>
-<p>可以让盒子上下排列或者左右排列，<strong>垂直的块级盒子显示就用标准流布局</strong></p>
+<p>可以让盒子上下排列或者左右排列，垂直的块级盒子显示就用标准流布局</p>
 </li>
 <li><p>浮动</p>
 <p>可以让多个块级元素一行显示或者左右对齐盒子，<strong>多个块级盒子水平显示就用浮动布局</strong></p>
@@ -446,7 +444,76 @@
 <li><p>display: block; 除了转换块级元素之外，同时还有显示元素的意思</p>
 </li>
 </ul>
+<p><strong>display 隐藏元素后，不再占有原来的位置</strong></p>
+<p>后面应用及其广泛，搭配JS可以做很多的网页特效</p>
+<h4 id="2-visibility-可见性"><a href="#2-visibility-可见性" class="headerlink" title="2. visibility 可见性"></a>2. visibility 可见性</h4><p>visibility 属性用于指定一个元素应可见还是隐藏</p>
+<ul>
+<li>visibility: visible; 元素可视</li>
+<li>visibility: hidden; 元素隐藏</li>
+</ul>
+<p><strong>visibility 隐藏元素后，继续占有原来的位置</strong></p>
+<p>如果隐藏元素想要原来位置，就用visibility: hidden;</p>
+<p>如果隐藏元素不想要原来位置，就用display: none;(用处更多 重点)</p>
+<h4 id="4-overflow-溢出"><a href="#4-overflow-溢出" class="headerlink" title="4. overflow 溢出"></a>4. overflow 溢出</h4><p>overflow 属性指定了如果内容溢出一个元素的框（超过其指定高度及宽度）时，会发生什么</p>
+<table>
+<thead>
+<tr>
+<th>属性值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>visible</td>
+<td>不剪切内容也不添加滚动条</td>
+</tr>
+<tr>
+<td>hidden</td>
+<td>不显示超过对象尺寸的内容，超出的部分隐藏掉</td>
+</tr>
+<tr>
+<td>scroll</td>
+<td>不管超出内容否，总是显示滚动条</td>
+</tr>
+<tr>
+<td>auto</td>
+<td>超出自动显示滚动条，不超出不显示滚动条</td>
+</tr>
+</tbody></table>
+<p>一般情况下，我们都不想让溢出的内容显示出阿里，因为溢出的部分会影响布局</p>
+<p>但是如果有定位的盒子，请慎用 overflow:hidden; 因为它会隐藏多余的部分</p>
+<h4 id="5-元素的显示与隐藏总结"><a href="#5-元素的显示与隐藏总结" class="headerlink" title="5. 元素的显示与隐藏总结"></a>5. 元素的显示与隐藏总结</h4><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>区别</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>display</td>
+<td>隐藏对象，不保留位置</td>
+<td>配合后面js做特效，比如下拉菜单，原先没有，鼠标经过，显示下拉菜单， 应用极为广泛</td>
+</tr>
+<tr>
+<td>visibility</td>
+<td>隐藏对象，保留位置</td>
+<td>使用较少</td>
+</tr>
+<tr>
+<td>overflow</td>
+<td>只是隐藏超出大小的部分</td>
+<td>1. 可以清除浮动 2. 保证盒子里面的内容不会超出该盒子范围</td>
+</tr>
+</tbody></table>
+<h3 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h3><p>土豆网鼠标经过显示遮罩</p>
+<ol>
+<li>练习元素的显示与隐藏</li>
+<li>练习元素的定位</li>
+</ol>
+<p>核心原理：原先半透明的黑色遮罩看不见，鼠标经过大盒子，就显示出来</p>
+<p>遮罩的盒子不占有位置，就需要用绝对定位和 display 配合使用</p>
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1357582780&auto=0&height=66"></iframe>
+
 
       
 
@@ -542,6 +609,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2022/10/06/CSS%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          CSS高级技巧
+        
+      </div>
+    </a>
+  
   
     <a href="/2022/10/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Hello World</div>
@@ -571,7 +647,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.</span> <span class="toc-text">定位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 为什么需要定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AE%9A%E4%BD%8D%E7%BB%84%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 定位组成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%9A%E4%BD%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 定位模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BE%B9%E5%81%8F%E7%A7%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 边偏移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E9%9D%99%E6%80%81%E5%AE%9A%E4%BD%8D-static-%E4%BA%86%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 静态定位 static (了解)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D-relative%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 相对定位 relative（重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D-absolute-%E9%87%8D%E8%A6%81"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 绝对定位 absolute(重要)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%AD%90%E7%BB%9D%E7%88%B6%E7%9B%B8-%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 子绝父相 的由来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D-fixed-%E9%87%8D%E8%A6%81"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 固定定位 fixed(重要)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%9A%E5%9B%BA%E5%AE%9A%E5%9C%A8%E7%89%88%E5%BF%83%E5%8F%B3%E4%BE%A7%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.7.1.</span> <span class="toc-text">固定定位小技巧：固定在版心右侧位置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E7%B2%98%E6%80%A7%E5%AE%9A%E4%BD%8D-sticky-%E4%BA%86%E8%A7%A3"><span class="toc-number">1.8.</span> <span class="toc-text">1.7 粘性定位 sticky(了解)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.</span> <span class="toc-text">1.9 定位的总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E5%AE%9A%E4%BD%8D%E7%9A%84%E5%8F%A0%E6%94%BE%E6%AC%A1%E5%BA%8F-z-index"><span class="toc-number">1.10.</span> <span class="toc-text">1.10 定位的叠放次序 z-index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%8B%93%E5%B1%95"><span class="toc-number">1.11.</span> <span class="toc-text">1.10 定位的拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E7%9B%92%E5%AD%90%E5%B1%85%E4%B8%AD"><span class="toc-number">1.11.1.</span> <span class="toc-text">1.绝对定位的盒子居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9A%E4%BD%8D%E7%89%B9%E6%AE%8A%E7%89%B9%E6%80%A7"><span class="toc-number">1.11.2.</span> <span class="toc-text">2.定位特殊特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%84%B1%E6%A0%87%E7%9A%84%E7%9B%92%E5%AD%90%E4%B8%8D%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%A1%8C%E9%99%B7"><span class="toc-number">1.11.3.</span> <span class="toc-text">3.脱标的盒子不会触发外边距塌陷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%92%8C%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D%E4%BC%9A%E5%AE%8C%E5%85%A8%E5%8E%8B%E4%BD%8F%E7%9B%92%E5%AD%90"><span class="toc-number">1.11.4.</span> <span class="toc-text">4.绝对定位和固定定位会完全压住盒子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%B7%98%E5%AE%9D%E7%84%A6%E7%82%B9%E5%9B%BE%E5%B8%83%E5%B1%80%E5%88%B6%E4%BD%9C"><span class="toc-number">1.12.</span> <span class="toc-text">案例：淘宝焦点图布局制作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93"><span class="toc-number">1.13.</span> <span class="toc-text">网页布局总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E6%98%BE%E7%A4%BA%E4%B8%8E%E9%9A%90%E8%97%8F"><span class="toc-number">1.14.</span> <span class="toc-text">元素的显示与隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-display-%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F"><span class="toc-number">1.14.1.</span> <span class="toc-text">1.display 显示隐藏</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.</span> <span class="toc-text">定位</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%AE%9A%E4%BD%8D"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 为什么需要定位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AE%9A%E4%BD%8D%E7%BB%84%E6%88%90"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 定位组成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%9A%E4%BD%8D%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">1. 定位模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%BE%B9%E5%81%8F%E7%A7%BB"><span class="toc-number">1.2.2.</span> <span class="toc-text">2. 边偏移</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E9%9D%99%E6%80%81%E5%AE%9A%E4%BD%8D-static-%E4%BA%86%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 静态定位 static (了解)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D-relative%EF%BC%88%E9%87%8D%E8%A6%81%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 相对定位 relative（重要）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D-absolute-%E9%87%8D%E8%A6%81"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 绝对定位 absolute(重要)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-6-%E5%AD%90%E7%BB%9D%E7%88%B6%E7%9B%B8-%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 子绝父相 的由来</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-7-%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D-fixed-%E9%87%8D%E8%A6%81"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 固定定位 fixed(重要)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D%E5%B0%8F%E6%8A%80%E5%B7%A7%EF%BC%9A%E5%9B%BA%E5%AE%9A%E5%9C%A8%E7%89%88%E5%BF%83%E5%8F%B3%E4%BE%A7%E4%BD%8D%E7%BD%AE"><span class="toc-number">1.7.1.</span> <span class="toc-text">固定定位小技巧：固定在版心右侧位置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-78-%E7%B2%98%E6%80%A7%E5%AE%9A%E4%BD%8D-sticky-%E4%BA%86%E8%A7%A3"><span class="toc-number">1.8.</span> <span class="toc-text">1.78 粘性定位 sticky(了解)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-9-%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-number">1.9.</span> <span class="toc-text">1.9 定位的总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E5%AE%9A%E4%BD%8D%E7%9A%84%E5%8F%A0%E6%94%BE%E6%AC%A1%E5%BA%8F-z-index"><span class="toc-number">1.10.</span> <span class="toc-text">1.10 定位的叠放次序 z-index</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-10-%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%8B%93%E5%B1%95"><span class="toc-number">1.11.</span> <span class="toc-text">1.10 定位的拓展</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E7%9A%84%E7%9B%92%E5%AD%90%E5%B1%85%E4%B8%AD"><span class="toc-number">1.11.1.</span> <span class="toc-text">1.绝对定位的盒子居中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AE%9A%E4%BD%8D%E7%89%B9%E6%AE%8A%E7%89%B9%E6%80%A7"><span class="toc-number">1.11.2.</span> <span class="toc-text">2.定位特殊特性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%84%B1%E6%A0%87%E7%9A%84%E7%9B%92%E5%AD%90%E4%B8%8D%E4%BC%9A%E8%A7%A6%E5%8F%91%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%A1%8C%E9%99%B7"><span class="toc-number">1.11.3.</span> <span class="toc-text">3.脱标的盒子不会触发外边距塌陷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D%E5%92%8C%E5%9B%BA%E5%AE%9A%E5%AE%9A%E4%BD%8D%E4%BC%9A%E5%AE%8C%E5%85%A8%E5%8E%8B%E4%BD%8F%E7%9B%92%E5%AD%90"><span class="toc-number">1.11.4.</span> <span class="toc-text">4.绝对定位和固定定位会完全压住盒子</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%88%E4%BE%8B%EF%BC%9A%E6%B7%98%E5%AE%9D%E7%84%A6%E7%82%B9%E5%9B%BE%E5%B8%83%E5%B1%80%E5%88%B6%E4%BD%9C"><span class="toc-number">1.12.</span> <span class="toc-text">案例：淘宝焦点图布局制作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E9%A1%B5%E5%B8%83%E5%B1%80%E6%80%BB%E7%BB%93"><span class="toc-number">1.13.</span> <span class="toc-text">网页布局总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E7%9A%84%E6%98%BE%E7%A4%BA%E4%B8%8E%E9%9A%90%E8%97%8F"><span class="toc-number">1.14.</span> <span class="toc-text">元素的显示与隐藏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-display-%E6%98%BE%E7%A4%BA%E9%9A%90%E8%97%8F"><span class="toc-number">1.14.1.</span> <span class="toc-text">1.display 显示隐藏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-visibility-%E5%8F%AF%E8%A7%81%E6%80%A7"><span class="toc-number">1.14.2.</span> <span class="toc-text">2. visibility 可见性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-overflow-%E6%BA%A2%E5%87%BA"><span class="toc-number">1.14.3.</span> <span class="toc-text">4. overflow 溢出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%85%83%E7%B4%A0%E7%9A%84%E6%98%BE%E7%A4%BA%E4%B8%8E%E9%9A%90%E8%97%8F%E6%80%BB%E7%BB%93"><span class="toc-number">1.14.4.</span> <span class="toc-text">5. 元素的显示与隐藏总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88%E6%A1%88%E4%BE%8B"><span class="toc-number">1.15.</span> <span class="toc-text">综合案例</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
