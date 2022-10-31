@@ -270,34 +270,34 @@
 
 
   
-    <article id="post-算法基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/25/%E6%A8%A1%E6%9D%BF/">模板</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/25/%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
+  	<time datetime="2022-10-25T03:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-25</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 确定分界点</span></span><br><span class="line">    <span class="type">int</span> x = q[l + r &gt;&gt; <span class="number">1</span>], i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 调整区间</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归处理左右两侧</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="1-快速排序"><a href="#1-快速排序" class="headerlink" title="1. 快速排序"></a>1. 快速排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-
-
-<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> q[N], tmp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 确定分界点</span></span><br><span class="line">    <span class="type">int</span> mid = l+r &gt;&gt; <span class="number">1</span>; 	<span class="comment">// 位运算，向右移动一位，等于除以二，即取中点</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 递归排序</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid), <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 归并，合二为一</span></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i =l, j = mid +<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])  tmp[k ++] = q[i ++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k ++] = q[j ++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k ++] = q[i ++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k ++] = q[j ++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l,j = <span class="number">0</span>; i &lt;= r; i ++, j ++)    q[i] = tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">merge_sort</span>(q,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="二分排序"><a href="#二分排序" class="headerlink" title="二分排序"></a>二分排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 区间[l, r]被划分为[l, mid]和[mid + 1, r]使用，即 mid 属于左边界</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">check</span>(mid)) r = mid;		<span class="comment">// check()判断mid是否满足性质</span></span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 区间[l, r]被划分为[l, mid - 1]和[mid, r]使用，即 mid 属于右边界</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">check</span>(mid)) l = mid;		<span class="comment">// check()判断mid是否满足性质</span></span><br><span class="line">        <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>整数二分</p>
-<p>二分的本质并不是单调性</p>
-<p>如果有单调性肯定可以二分，但是没有单调性的话有可能也可以二分</p>
-<p>二分的本质是边界，找到性质把整个区间一分为二，找到边界</p>
-<ol>
-<li>找中间值，判断中间值是否满足这个性质</li>
-<li>满足性质，则更新区间；不满足性质，则为另一个区间</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浮点数二分，不用考虑边界问题，直接二分就行了</span></span><br><span class="line"><span class="comment">//790. 数的三次方根</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iomanip&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">double</span> x;</span><br><span class="line">    cin &gt;&gt; x;</span><br><span class="line">    </span><br><span class="line">    <span class="type">double</span> l = <span class="number">-100000</span>, r = <span class="number">100000</span>;</span><br><span class="line">    <span class="keyword">while</span> (r - l &gt; <span class="number">1e-8</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (mid * mid * mid &gt;= x) r = mid;</span><br><span class="line">        <span class="keyword">else</span> l = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%.6f\n&quot;</span>, l);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<h2 id="2-归并排序"><a href="#2-归并排序" class="headerlink" title="2. 归并排序"></a>2. 归并排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span> (q[i] &lt;= q[j]) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">        <span class="keyword">else</span> tmp[k ++ ] = q[j ++ ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= r) tmp[k ++ ] = q[j ++ ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = l, j = <span class="number">0</span>; i &lt;= r; i ++, j ++ ) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/10/25/%E6%A8%A1%E6%9D%BF/#more">more >></a>
+        
       
 
       
@@ -309,7 +309,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/25/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/25/%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
         </p>
       
 
@@ -339,26 +339,52 @@
 
 
   
-    <article id="post-模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/10/25/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">算法基础</a>
+    </h1>
+  
+
+        
+        <a href="/2022/10/25/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2022-10-25T03:31:52.895Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-10-25</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-快速排序"><a href="#1-快速排序" class="headerlink" title="1. 快速排序"></a>1. 快速排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
+<li>快速排序</li>
+<li>归并排序</li>
+<li>二分排序</li>
+<li>高精度加法</li>
+<li>高精度减法</li>
+<li>高精度乘法</li>
+<li>高精度除法</li>
+</ol>
+<h2 id="1-快速排序"><a href="#1-快速排序" class="headerlink" title="1. 快速排序"></a>1. 快速排序</h2><ol>
+<li>找到分界点 x， q[l], q[r], q[l + r &gt;&gt; 1]；</li>
+<li>左边所有的数 Left &lt;&#x3D; x, 右边所有的数 Right &gt;&#x3D; x;</li>
+<li>递归排序 Left，递归排序 Right</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 785. 快速排序</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 确定分界点</span></span><br><span class="line">    <span class="type">int</span> x = q[l + r &gt;&gt; <span class="number">1</span>], i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 调整区间</span></span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 递归处理左右两侧</span></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="2-归并排序"><a href="#2-归并排序" class="headerlink" title="2. 归并排序"></a>2. 归并排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid);</span><br><span class="line">    <span class="built_in">merge_sort</span>(q, mid + <span class="number">1</span>, r);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i = l, j = mid + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span> (q[i] &lt;= q[j]) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">        <span class="keyword">else</span> tmp[k ++ ] = q[j ++ ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (i &lt;= mid) tmp[k ++ ] = q[i ++ ];</span><br><span class="line">    <span class="keyword">while</span> (j &lt;= r) tmp[k ++ ] = q[j ++ ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (i = l, j = <span class="number">0</span>; i &lt;= r; i ++, j ++ ) q[i] = tmp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="1-1-快速排序例题"><a href="#1-1-快速排序例题" class="headerlink" title="1.1 快速排序例题"></a>1.1 快速排序例题</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 786. 第k个数</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">100010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> q[N];</span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> x = q[l + r &gt;&gt; <span class="number">1</span>], i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++; <span class="keyword">while</span>(q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j --; <span class="keyword">while</span>(q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j) <span class="built_in">swap</span>(q[i],q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j);</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="type">int</span> k;</span><br><span class="line">    cin&gt;&gt;k;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i&lt;n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">quick_sort</span>(q, <span class="number">0</span>, n<span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    cout&lt;&lt;q[k<span class="number">-1</span>];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="3-整数二分模板"><a href="#3-整数二分模板" class="headerlink" title="3. 整数二分模板"></a>3. 整数二分模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 检查x是否满足某种性质</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) r = mid;    <span class="comment">// check()判断mid是否满足性质</span></span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) l = mid;</span><br><span class="line">        <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="4-浮点数二分模板"><a href="#4-浮点数二分模板" class="headerlink" title="4. 浮点数二分模板"></a>4. 浮点数二分模板</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">bool</span> <span class="title">check</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 检查x是否满足某种性质</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">bsearch_3</span><span class="params">(<span class="type">double</span> l, <span class="type">double</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">double</span> eps = <span class="number">1e-6</span>;   <span class="comment">// eps 表示精度，取决于题目对精度的要求</span></span><br><span class="line">    <span class="keyword">while</span> (r - l &gt; eps)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">double</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) r = mid;</span><br><span class="line">        <span class="keyword">else</span> l = mid;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<h2 id="2-归并排序"><a href="#2-归并排序" class="headerlink" title="2. 归并排序"></a>2. 归并排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 787. 归并排序 </span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> N = <span class="number">1000010</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n;</span><br><span class="line"><span class="type">int</span> q[N], tmp[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">merge_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l&gt;=r) <span class="keyword">return</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 确定分界点</span></span><br><span class="line">    <span class="type">int</span> mid = l+r &gt;&gt; <span class="number">1</span>; 	<span class="comment">// 位运算，向右移动一位，等于除以二，即取中点</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 递归排序</span></span><br><span class="line">    <span class="built_in">merge_sort</span>(q, l, mid), <span class="built_in">merge_sort</span>(q, mid+<span class="number">1</span>, r);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 归并，合二为一</span></span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, i =l, j = mid +<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid &amp;&amp; j &lt;= r)</span><br><span class="line">        <span class="keyword">if</span>(q[i] &lt;= q[j])  tmp[k ++] = q[i ++];</span><br><span class="line">        <span class="keyword">else</span> tmp[k ++] = q[j ++];</span><br><span class="line">    <span class="keyword">while</span>(i &lt;= mid) tmp[k ++] = q[i ++];</span><br><span class="line">    <span class="keyword">while</span>(j &lt;= r) tmp[k ++] = q[j ++];</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(i = l,j = <span class="number">0</span>; i &lt;= r; i ++, j ++)    q[i] = tmp[j];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;q[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">merge_sort</span>(q,<span class="number">0</span>,n<span class="number">-1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, q[i]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2022/10/25/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/#more">more >></a>
+        
       
 
       
@@ -370,7 +396,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2022/10/25/%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/10/25/%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80/">展开全文 >></a>
         </p>
       
 
@@ -427,216 +453,9 @@
 <li>品优购注册页制作</li>
 <li>域名注册与网站上传</li>
 </ul>
-<h2 id="1-品优购项目规划"><a href="#1-品优购项目规划" class="headerlink" title="1. 品优购项目规划"></a>1. 品优购项目规划</h2><h3 id="1-1-网站制作流程"><a href="#1-1-网站制作流程" class="headerlink" title="1.1 网站制作流程"></a>1.1 网站制作流程</h3><ol>
-<li>客户沟通 制定方案</li>
-<li>签订合同</li>
-<li>预付定金</li>
-<li>初稿审核    网页美工会制作原型图和PSD效果图</li>
-<li>前台页面设计 后台功能开发</li>
-<li>测试验收</li>
-<li>上线培训</li>
-<li>后期维护</li>
-</ol>
-<h3 id="1-2品优购项目整体介绍"><a href="#1-2品优购项目整体介绍" class="headerlink" title="1.2品优购项目整体介绍"></a>1.2品优购项目整体介绍</h3><ul>
-<li>项目名称：品优购</li>
-<li>项目描述：品优购是一个电商网站，我们要完成PC端首页、列表页、注册页面的制作</li>
-</ul>
-<h3 id="1-3品优购项目学习目的"><a href="#1-3品优购项目学习目的" class="headerlink" title="1.3品优购项目学习目的"></a>1.3品优购项目学习目的</h3><ol>
-<li>电商类网站比较综合，里面需要大量的布局技术，包括布局方式、常见效果以及周边技术</li>
-<li>品优购项目能复习、总结、提高之前所学布局技术</li>
-<li>写完品优购项目，能对实际开发中制作PC端页面流程有一个整体的感知</li>
-<li>为后期学习移动端项目做铺垫</li>
-</ol>
-<h3 id="1-4开发工具以及技术栈"><a href="#1-4开发工具以及技术栈" class="headerlink" title="1.4开发工具以及技术栈"></a>1.4开发工具以及技术栈</h3><h4 id="1-开发工具"><a href="#1-开发工具" class="headerlink" title="1.开发工具"></a>1.开发工具</h4><p>VScode、Photoshop(fw)、主流浏览器（以Chrome浏览器为主）</p>
-<h4 id="2-技术栈"><a href="#2-技术栈" class="headerlink" title="2.技术栈"></a>2.技术栈</h4><ul>
-<li>利用HTML5 + CSS3 手动布局，可以大量使用 H5 新增标签和样式</li>
-<li>采取结构与样式相分离，模块化开发</li>
-<li>良好的代码规范有利于团队更好的开发协作，提高代码质量（品优购代码规范.md）</li>
-</ul>
-<h3 id="1-5-品优购项目搭建工作"><a href="#1-5-品优购项目搭建工作" class="headerlink" title="1.5 品优购项目搭建工作"></a>1.5 品优购项目搭建工作</h3><ol>
-<li>需要创建文件夹</li>
-<li>需要创建文件</li>
-<li>模块化开发</li>
-</ol>
-<p>所谓模块化：将一个项目按照功能划分，一个功能一个模块，互不影响</p>
-<p>模块化开发具有重复使用、更换方便等优点</p>
-<ul>
-<li>代码也如此，有些样式和结构在很多页面都会出现，比如页面头部和底部，大部分页面都有。此时，可以把这些结构和样式单独作为一个模块，然后重复使用</li>
-<li>这里最典型的应用就是 common.css 公共样式。写好一个样式，其余的页面用到这些相同的样式</li>
-<li>common.css 公共样式里面包含版心宽度、清除浮动、页面文字颜色等公共样式</li>
-</ul>
-<h3 id="1-6-网站-favicon-图标"><a href="#1-6-网站-favicon-图标" class="headerlink" title="1.6 网站 favicon 图标"></a>1.6 网站 favicon 图标</h3><p><strong>favicon.ico</strong> 一般用于作为缩略的网站标志，它显示在浏览器的地址栏或者标签上</p>
-<p>目前主要的浏览器都支持 <strong>favicon.ico</strong> 图标</p>
-<h4 id="一、制作-favicon-图标"><a href="#一、制作-favicon-图标" class="headerlink" title="一、制作 favicon 图标"></a>一、制作 favicon 图标</h4><ol>
-<li>把品优购图标切成 png 图片(一定要是透明的)</li>
-<li>把 png 图片转换为 ico 图标，这需要借助于第三方转换网站，例如比特虫：<a target="_blank" rel="noopener" href="http://www.bitbug.net/">http://www.bitbug.net/</a></li>
-</ol>
-<h4 id="二、favicon-图标放到网站根目录下"><a href="#二、favicon-图标放到网站根目录下" class="headerlink" title="二、favicon 图标放到网站根目录下"></a>二、favicon 图标放到网站根目录下</h4><h4 id="三、HTML-页面引入-favicon-图标"><a href="#三、HTML-页面引入-favicon-图标" class="headerlink" title="三、HTML 页面引入 favicon 图标"></a>三、HTML 页面引入 favicon 图标</h4><ol>
-<li>在 html 页面里面的 <head></head> 元素之间引入代码</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;shortcut <span class="attribute">icon</span>&quot; href=&quot;favicon<span class="selector-class">.ico</span>&quot; type=&quot;images<span class="selector-class">.x-icon</span>&quot;/&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-7-网站-TCK-三大标签-SEO-优化"><a href="#1-7-网站-TCK-三大标签-SEO-优化" class="headerlink" title="1.7 网站 TCK 三大标签 SEO 优化"></a>1.7 网站 TCK 三大标签 SEO 优化</h3><p>SEO（Search Engine Optimization）汉译为搜索引擎优化，是一种利用搜索引擎的规则提高网站在有关搜索引擎内自然排名的方式</p>
-<p>SEO 的目的是对网站进行深度的优化，从而帮助网站获取免费的流量，进而在搜索引擎上提升网站的额排名，提高网站的知名度</p>
-<p>页面必须有三个标签用来符合 SEO 优化</p>
-<p>title、description、keyword</p>
-<h4 id="1-title-网站标题"><a href="#1-title-网站标题" class="headerlink" title="1.title 网站标题"></a>1.title 网站标题</h4><p>title 具有不可替代性，是我们内页的第一个重要标签，是搜索引擎了解网页的入口和对网页主题归属的最佳判断点</p>
-<p>建议：网站名（产品名）- 网站的介绍（尽量不要超过30个汉字）</p>
-<h4 id="2-description-网站说明"><a href="#2-description-网站说明" class="headerlink" title="2.description 网站说明"></a>2.description 网站说明</h4><p>简要说明我们网站主要是做什么的</p>
-<p>我们提倡，description 作为网站的总体业务和主题概括，多采用 “我们是…”、“我们提供…”、 “xxx网作为…”、”电话：010…“ 之类语句</p>
-<h4 id="3-keywords-关键字"><a href="#3-keywords-关键字" class="headerlink" title="3.keywords 关键字"></a>3.keywords 关键字</h4><p><strong>keywords 是页面关键词，是搜索引擎的关注点之一</strong></p>
-<p>keywords 最好限制为 6-8 个关键词，关键词之间用英文逗号隔开，采用 关键词1,关键词2 的形式</p>
-<p>对于我们前端人员来说，我们只需要准备好这三个标签，具体里面的内容，有专门的SEO人员准备</p>
-<h2 id="2-品优购首页制作"><a href="#2-品优购首页制作" class="headerlink" title="2.品优购首页制作"></a>2.品优购首页制作</h2><p>网站的首页一般都是使用 index 命名，比如 index.html 或者 indext.php</p>
-<p>我们开始制作首页的头部和底部的时候，根据模块化开发，样式要写到 common,css 里面</p>
-<h3 id="2-1-常用模块类名命名"><a href="#2-1-常用模块类名命名" class="headerlink" title="2.1 常用模块类名命名"></a>2.1 常用模块类名命名</h3><p>以下是我们约定的命名模块，同学们可以直接使用以下类名即可</p>
-<table>
-<thead>
-<tr>
-<th>名称</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>快捷导航栏</td>
-<td>shortcut</td>
-</tr>
-<tr>
-<td>头部</td>
-<td>header</td>
-</tr>
-<tr>
-<td>标志</td>
-<td>logo</td>
-</tr>
-<tr>
-<td>购物车</td>
-<td>shopcar</td>
-</tr>
-<tr>
-<td>搜索</td>
-<td>search</td>
-</tr>
-<tr>
-<td>热点词</td>
-<td>hotwords</td>
-</tr>
-<tr>
-<td>导航</td>
-<td>nav</td>
-</tr>
-<tr>
-<td>导航左侧</td>
-<td>dropdown 包含 ,dd .dt</td>
-</tr>
-<tr>
-<td>导航右侧</td>
-<td>navitems</td>
-</tr>
-<tr>
-<td>页面底部</td>
-<td>footer</td>
-</tr>
-<tr>
-<td>页面底部服务模块</td>
-<td>mod_service</td>
-</tr>
-<tr>
-<td>页面底部帮助模块</td>
-<td>mod_help</td>
-</tr>
-<tr>
-<td>页面底部版权模块</td>
-<td>mod_copyright</td>
-</tr>
-</tbody></table>
-<h3 id="2-2-快捷导航-shortcut-制作"><a href="#2-2-快捷导航-shortcut-制作" class="headerlink" title="2.2 快捷导航 shortcut 制作"></a>2.2 快捷导航 shortcut 制作</h3><ul>
-<li>通栏的盒子命名为 shortcut，是快捷导航的意思。注意这里的行高，可以继承给里面的子盒子</li>
-<li>里面包含版心的盒子</li>
-<li>版心盒子里面包含1号左侧盒子左浮动</li>
-<li>版心盒子里面包含2号右侧盒子右浮动</li>
-</ul>
-<h3 id="2-3-header-制作"><a href="#2-3-header-制作" class="headerlink" title="2.3 header 制作"></a>2.3 header 制作</h3><ol>
-<li>header 盒子必须要有高度</li>
-<li>1 号盒子是 logo 标志定位</li>
-<li>2 号盒子是 search 搜索模块定位</li>
-<li>3 号盒子是 hotwords 热词模块定位</li>
-<li>4 号盒子是 shopcar 购物车模块</li>
-</ol>
-<ul>
-<li>count 统计部分用绝对定位做</li>
-<li>count 统计部份不要给宽度，因为可能买的件树比较多，让件数撑开就好了，给一个高度</li>
-<li>一定注意左下角不是圆角，其余三个是圆角 (顺时针)</li>
-</ul>
-<p><strong>LOGO SEO 优化</strong></p>
-<ol>
-<li>logo 里面首先放一个 h1 标签，目的是为了提权，告诉搜索引擎，这个地方很重要</li>
-<li>h1 里面再放一个连接，可以返回首页的，把 logo 的背景图片给连接即可</li>
-<li>为了搜索引擎收录我们，我们连接里面要放文字（网站名称），但是文字不要显示出来</li>
-</ol>
-<ul>
-<li>方法一： text-indent 移动到盒子外面（text-indent: -9999px），然后 overflow: hidden; 淘宝的做法</li>
-<li>方法二：直接给 font-size: 0; 就看不到文字了，京东的做法</li>
-</ul>
-<ol start="4">
-<li>最后给链接一个 title 属性，这样鼠标放在 logo 上面就可以看到提示文字了</li>
-</ol>
-<h3 id="2-4-nav-导航制作"><a href="#2-4-nav-导航制作" class="headerlink" title="2.4 nav 导航制作"></a>2.4 nav 导航制作</h3><ul>
-<li>nav 盒子通栏有高度，而且有个下边框</li>
-<li>1 号盒子左侧浮动，dropdown</li>
-<li>2 号盒子左侧浮动，navitems 导航栏组</li>
-<li>1 号盒子有讲究，根据相关性 里面包含 .dt 和 .dd 两个盒子</li>
-</ul>
-<h3 id="2-6-main-主体模块制作"><a href="#2-6-main-主体模块制作" class="headerlink" title="2.6 main 主体模块制作"></a>2.6 main 主体模块制作</h3><p>以前书写的就是模块化中的公共部分</p>
-<p>main 主题模块是 index 里面专有的，注意需要新的样式文件 index.css</p>
-<ul>
-<li>main 盒子宽度为 980 像素，位置距离左边 220px(margin-left)，给高度就不用清除浮动</li>
-<li>main 里面包含左侧盒子，左浮动，focus 焦点图模块</li>
-<li>main 里面包含右侧盒子，右浮动，newsflash 新闻快报模块</li>
-</ul>
-<p><strong>newsflash 新闻快报模块制作</strong></p>
-<ul>
-<li>1 号盒子为 news 新闻模块 高度为 165px</li>
-<li>2 号盒子为 lifeservice 生活服务模块 高度为 209px</li>
-<li>3 号盒子为 bargain 特价商品</li>
-</ul>
-<p><strong>news 新闻模块</strong></p>
-<ul>
-<li>注意：这里我们分为上下两个模块，但是两个模块都用 div</li>
-<li>1 号盒子 news-hd 新闻头部模块，给一个高度和下边框</li>
-<li>2 号盒子 news-bd 新闻主题部分，里面包含 ul 和 li 还有链接</li>
-</ul>
-<h3 id="2-7-推荐模块制作"><a href="#2-7-推荐模块制作" class="headerlink" title="2.7 推荐模块制作"></a>2.7 推荐模块制作</h3><ul>
-<li>大盒子 recom 推荐模块 recommend</li>
-<li>里面包含 2 个盒子，浮动即可</li>
-<li>1 号盒子 recom-hd</li>
-<li>2 号盒子 recom-bd，注意里面的小竖线</li>
-</ul>
-<h3 id="2-8-楼层区-floor-制作"><a href="#2-8-楼层区-floor-制作" class="headerlink" title="2.8 楼层区 floor 制作"></a>2.8 楼层区 floor 制作</h3><p>注意这个 floor 不要给高度，内容有多少，算多少</p>
-<p>第一楼是家用电器模块：里面包含两个盒子</p>
-<ul>
-<li>1 号盒子 box_hd，给一个高度，有个下边框，里面分为左右 2 个盒子</li>
-<li>2 号盒子 box_bd，不要给高度</li>
-</ul>
-<ol>
-<li><strong>box_hd 模块</strong></li>
-</ol>
-<ul>
-<li>有高度可以不用清除浮动</li>
-<li>左边 h3，盒子左浮动</li>
-<li>右边 tab-list，右浮动，因为用到 tab 切换效果，所以里面要用到 ul 和 li 来做</li>
-</ul>
-<ol start="2">
-<li>Tab 栏原理-布局需求</li>
-</ol>
-<h2 id="3-品优购首页制作"><a href="#3-品优购首页制作" class="headerlink" title="3. 品优购首页制作"></a>3. 品优购首页制作</h2><h3 id="3-5-footer-底部制作"><a href="#3-5-footer-底部制作" class="headerlink" title="3.5  footer 底部制作"></a>3.5  footer 底部制作</h3><ul>
-<li>footer 页面底部盒子通栏给一个高度和灰色的背景</li>
-<li>footer 里面有一个大的版心</li>
-<li>版心里面包含 1 号盒子，mod_service 是服务模块，mod 是模块的意思</li>
-<li>版心里面包含 2 号盒子，mod_help 是帮助模块</li>
-<li>版心里面包含 3 号盒子，mod_copyright是版权模块</li>
-</ul>
-
+        
+          <a class="article-more-a" href="/2022/10/09/%E5%93%81%E4%BC%98%E8%B4%AD%E9%A1%B9%E7%9B%AE/#more">more >></a>
+        
       
 
       
