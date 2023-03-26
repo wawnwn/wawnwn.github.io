@@ -628,21 +628,21 @@ input::-ms-reveal {
 
 input::-moz-placeholder,
 textarea::-moz-placeholder {
-    color: #999
+    color: #131313
 }
 
 input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
-    color: #999
+    color: #131313
 }
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-    color: #999
+    color: #131313
 }
 
 .placeholder {
-    color: #999
+    color: #131313
 }
 
 table {
