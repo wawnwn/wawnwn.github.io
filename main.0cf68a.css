@@ -1000,16 +1000,16 @@ html {
 }
 
 .left-col #header a {
-    color: #696969
+    color: #0f0f0f
 }
 
 .left-col #header a:hover {
-    color: #b0a0aa
+    color: #398ec2
 }
 
 .left-col #header .header-subtitle {
     text-align: center;
-    color: #999;
+    color: #0a0a0a;
     font-size: 14px;
     line-height: 25px;
     overflow: hidden;
