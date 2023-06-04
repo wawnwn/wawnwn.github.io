@@ -269,16 +269,16 @@
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="selector-tag">header</span>&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="selector-tag">nav</span>&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="attribute">content</span>&quot;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="selector-tag">footer</span>&quot;&lt;/<span class="selector-tag">div</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <ul>
-<li><strong><header></strong>   —  头部标签</li>
-<li><strong><nav></strong>        —  导航标签</li>
-<li><strong><article></strong> —   内容标签</li>
-<li><strong><section></strong> —   块级标签</li>
-<li><strong><aside></strong>     —   侧边栏标签</li>
-<li><strong><footer></strong>   —   尾部标签</li>
+<li><strong><header></header></strong>   —  头部标签</li>
+<li><strong><nav></nav></strong>        —  导航标签</li>
+<li><strong><article></article></strong> —   内容标签</li>
+<li><strong><section></section></strong> —   块级标签</li>
+<li><strong><aside></aside></strong>     —   侧边栏标签</li>
+<li><strong><footer></footer></strong>   —   尾部标签</li>
 </ul>
 <span id="more"></span>
 
-<p><font color='red'><strong>注意：</strong></font></p>
+<p><font color="red"><strong>注意：</strong></font></p>
 <ul>
 <li>这种语义化标准主要是针对<strong>搜索引擎</strong>的</li>
 <li>这些新标签页面可以使用<strong>多次</strong></li>
@@ -288,12 +288,12 @@
 </ul>
 <h2 id="HTML5-新增的多媒体标签"><a href="#HTML5-新增的多媒体标签" class="headerlink" title="HTML5 新增的多媒体标签"></a>HTML5 新增的多媒体标签</h2><p>多媒体标签有两个，分别是音频 <strong>audio</strong>和视频<strong>video</strong>。</p>
 <p>可以在不使用插件的情况下，也可以原生的支持视频格式文件的播放，当然，支持的格式是有限的</p>
-<h3 id="1-视频"><a href="#1-视频" class="headerlink" title="1. 视频"></a>1. 视频<video></h3><p>当前<code>&lt;video&gt;</code>元素支持三种格式：尽量使用MP4格式</p>
+<h3 id="1-视频"><a href="#1-视频" class="headerlink" title="1. 视频"></a>1. 视频<video></video></h3><p>当前<code>&lt;video&gt;</code>元素支持三种格式：尽量使用MP4格式</p>
 <p>MP4、WebM、Ogg</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">video</span> <span class="attribute">src</span>=&quot;文件地址&quot; controla=&quot;controla&quot;&gt;&lt;/<span class="selector-tag">video</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">video</span> controls=&quot;controls&quot; autoplay muted loop poster=&quot;./media/pig<span class="selector-class">.jpg</span>&quot;&gt;</span><br><span class="line">	&lt;source <span class="attribute">src</span>=&quot;./media/<span class="selector-tag">video</span><span class="selector-class">.mp4</span>&quot; type=&quot;<span class="selector-tag">video</span>/mp4&quot;&gt;</span><br><span class="line">	&lt;source <span class="attribute">src</span>=&quot;./media/<span class="selector-tag">video</span><span class="selector-class">.ogg</span>&quot; type=&quot;<span class="selector-tag">video</span>/ogg&quot;&gt;</span><br><span class="line">&lt;/<span class="selector-tag">video</span>&gt;</span><br></pre></td></tr></table></figure>
 
 <p><img src="https://cdn.nlark.com/yuque/0/2022/png/29507147/1663575549628-f2d7f815-ad5c-496b-900b-723807810651.png?x-oss-process=image/resize,w_1080,limit_0" alt="img"></p>
-<h3 id="2-音频"><a href="#2-音频" class="headerlink" title="2.音频"></a>2.音频<audio></h3><p>当前<code>&lt;audio&gt;</code>元素支持三种音频格式：</p>
+<h3 id="2-音频"><a href="#2-音频" class="headerlink" title="2.音频"></a>2.音频<audio></audio></h3><p>当前<code>&lt;audio&gt;</code>元素支持三种音频格式：</p>
 <p><img src="https://cdn.nlark.com/yuque/0/2022/png/29507147/1663575549638-05606f40-9f69-4da7-a81b-4518d48847b1.png?x-oss-process=image/resize,w_1080,limit_0" alt="img"></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">audio</span> <span class="attribute">src</span>=&quot;文件地址&quot; controls=&quot;controls&quot;&gt;&lt;/<span class="selector-tag">audio</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">audio</span> controls&gt;</span><br><span class="line">    &lt;!-- 注意：在 chrome 浏览器中已经禁用了 autoplay 属性 --&gt;</span><br><span class="line">    &lt;!-- &lt;<span class="selector-tag">audio</span> <span class="attribute">src</span>=&quot;./media/snow<span class="selector-class">.mp3</span>&quot; controls autoplay&gt;&lt;/<span class="selector-tag">audio</span>&gt; --&gt;</span><br><span class="line">    &lt;!-- 因为不同浏览器支持不同的格式，所以我们采取的方案是这个音频准备多个文件 --&gt;                             </span><br><span class="line">  &lt;source <span class="attribute">src</span>=&quot;myAudio<span class="selector-class">.mp3</span>&quot; type=&quot;<span class="selector-tag">audio</span>/mpeg&quot;&gt;</span><br><span class="line">  &lt;source <span class="attribute">src</span>=&quot;myAudio<span class="selector-class">.ogg</span>&quot; type=&quot;<span class="selector-tag">audio</span>/ogg&quot;&gt;</span><br><span class="line">  &lt;<span class="selector-tag">p</span>&gt;Your browser doesn&#x27;t support HTML5 <span class="selector-tag">audio</span>. Here is</span><br><span class="line">     <span class="selector-tag">a</span> &lt;<span class="selector-tag">a</span> href=&quot;myAudio<span class="selector-class">.mp4</span>&quot;&gt;link <span class="selector-tag">to</span> the <span class="selector-tag">audio</span>&lt;/<span class="selector-tag">a</span>&gt; instead.&lt;/<span class="selector-tag">p</span>&gt;</span><br><span class="line">&lt;/<span class="selector-tag">audio</span>&gt;</span><br></pre></td></tr></table></figure>
 
