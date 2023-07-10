@@ -10,17 +10,21 @@
   <link rel="dns-prefetch" href="http://wawnwn.github.io">
   <title>Web-APIs | wawn&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用的键盘事件 keyup 按键弹起的时候触发  keypress 按键按下的时候触发  不能识别功能键 比如 ctrl shift 左右箭头啊 keydown 按键按下的时候触发  能识别功能键 比如 ctrl shift 左右箭头啊 三个事件的执行顺序  keydown – keypress – keyup  1document.addEventListener(&amp;#x27;keyup&amp;#x2">
+  <meta name="description" content="目录一、DOM 简介 二、获取元素 三、事件基础 四、操作元素 五、节点操作">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Web-APIs">
 <meta property="og:url" content="http://wawnwn.github.io/2023/06/09/Web-APIs/index.html">
 <meta property="og:site_name" content="wawn&#39;s blog">
-<meta property="og:description" content="常用的键盘事件 keyup 按键弹起的时候触发  keypress 按键按下的时候触发  不能识别功能键 比如 ctrl shift 左右箭头啊 keydown 按键按下的时候触发  能识别功能键 比如 ctrl shift 左右箭头啊 三个事件的执行顺序  keydown – keypress – keyup  1document.addEventListener(&amp;#x27;keyup&amp;#x2">
+<meta property="og:description" content="目录一、DOM 简介 二、获取元素 三、事件基础 四、操作元素 五、节点操作">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2023/06/09/Web-APIs/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/06/09/Web-APIs/2.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/06/09/Web-APIs/3.png">
 <meta property="article:published_time" content="2023-06-09T13:02:43.000Z">
-<meta property="article:modified_time" content="2023-06-09T14:35:56.073Z">
+<meta property="article:modified_time" content="2023-07-06T09:33:28.919Z">
 <meta property="article:author" content="wawnwn">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2023/06/09/Web-APIs/1.png">
   
     <link rel="alternative" href="/atom.xml" title="wawn&#39;s blog" type="application/atom+xml">
   
@@ -231,7 +235,7 @@
             <i class="fa fa-keyboard-o"></i>
             <span class="post-meta-item-text"> 字数统计: </span>
             <span class="post-count">
-                232字
+                3.4k字
             </span>
         </span>
     </span>
@@ -242,7 +246,7 @@
             <i class="fa fa-hourglass-half"></i>
             <span class="post-meta-item-text"> 阅读时长: </span>
             <span class="post-count">
-                1分
+                12分
             </span>
         </span>
     </span>
@@ -253,13 +257,352 @@
       
         <div class="article-entry" itemprop="articleBody">
           
-                    <h3 id="常用的键盘事件"><a href="#常用的键盘事件" class="headerlink" title="常用的键盘事件"></a>常用的键盘事件</h3><ol>
+                    <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><p>一、DOM 简介</p>
+<p>二、获取元素</p>
+<p>三、事件基础</p>
+<p>四、操作元素</p>
+<p>五、节点操作</p>
+<span id="more"></span>
+
+<h3 id="一-DOM-简介"><a href="#一-DOM-简介" class="headerlink" title="一. DOM 简介"></a><strong>一. DOM 简介</strong></h3><p><strong>1.1 什么是 DOM</strong></p>
+<p>文档对象模型（Document Object Model，简称 DOM），是 W3C 组织推荐的处理可扩展标记语言（HTML或者XML）的标准编程接口。</p>
+<p>W3C 已经定义了一系列的 DOM 接口，通过这些 DOM 接口可以改变网页的内容、结构和样式。</p>
+<p><strong>1.2 DOM 树</strong></p>
+<img src="/2023/06/09/Web-APIs/1.png" class>
+
+<ul>
+<li><p>文档：一个页面就是一个文档，DOM 中使用 document 表示</p>
+</li>
+<li><p>元素：页面中的所有标签都是元素，DOM 中使用 element 表示</p>
+</li>
+<li><p>节点：网页中的所有内容都是节点（标签、属性、文本、注释等），DOM 中使用 node 表示</p>
+</li>
+</ul>
+<p><strong>DOM 把以上内容都看做是对象</strong></p>
+<h3 id="二-获取元素"><a href="#二-获取元素" class="headerlink" title="二. 获取元素"></a><strong>二. 获取元素</strong></h3><p><strong>2.1 如何获取页面元素</strong></p>
+<p>DOM在我们实际开发中主要用来操作元素。</p>
+<p>获取页面中的元素可以使用以下几种方式:</p>
+<ul>
+<li><p>根据 ID 获取</p>
+</li>
+<li><p>根据标签名获取</p>
+</li>
+<li><p>通过 HTML5 新增的方法获取</p>
+</li>
+<li><p>特殊元素获取</p>
+</li>
+</ul>
+<p><strong>2.2 根据 ID 获取</strong></p>
+<p>使用 getElementById() 方法可以获取带有 ID 的元素对象。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&#x27;id&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p>使用 console.dir() 可以打印我们获取的元素对象，更好的查看对象里面的属性和方法。</p>
+<p><strong>2.3 根据标签名获取</strong></p>
+<p>使用 getElementsByTagName() 方法可以返回带有指定标签名的对象的集合。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.<span class="built_in">getElementsByTagName</span>(<span class="string">&#x27;标签名&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li><p>因为得到的是一个对象的集合，所以我们想要操作里面的元素就需要遍历。</p>
+</li>
+<li><p>得到元素对象是动态的</p>
+</li>
+</ol>
+<p><strong>2.4 通过 HTML5 新增的方法获取</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> document.**<span class="built_in">getElementsByClassName</span>(‘****类名****’)**；<span class="comment">// 根据类名返回元素对象集合</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> document.**<span class="built_in">querySelector</span>(<span class="string">&#x27;****选择器****&#x27;</span>)**; <span class="comment">// 根据指定选择器返回第一个元素对象</span></span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> document.**<span class="built_in">querySelectorAll</span>(<span class="string">&#x27;****选择器****&#x27;</span>)**; <span class="comment">// 根据指定选择器返回</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong></p>
+<p>querySelector 和 querySelectorAll里面的选择器需要加符号,比如:document.querySelector(‘#nav’);</p>
+<p><strong>2.5 获取特殊元素（body，html）</strong></p>
+<p><strong>获取body元素</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doucumnet.body <span class="comment">// 返回body元素对象</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>获取html元素</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement <span class="comment">// 返回html元素对象</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三-事件基础"><a href="#三-事件基础" class="headerlink" title="三. 事件基础"></a><strong>三. 事件基础</strong></h3><p><strong>3.1 事件概述</strong></p>
+<p>JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScript 侦测到的行为。</p>
+<p>简单理解： 触发— 响应机制。</p>
+<p>网页中的每个元素都可以产生某些可以触发 JavaScript 的事件，例如，我们可以在用户点击某按钮时产生一个事件，然后去执行某些操作。</p>
+<p><strong>3.2 事件三要素</strong></p>
+<ol>
+<li><p>事件源 （谁）</p>
+</li>
+<li><p>事件类型 （什么事件）</p>
+</li>
+<li><p>事件处理程序 （做啥）</p>
+</li>
+</ol>
+<p><strong>3.3 执行事件的步骤</strong></p>
+<ol>
+<li><p>获取事件源</p>
+</li>
+<li><p>注册事件（绑定事件）</p>
+</li>
+<li><p>添加事件处理程序（采取函数赋值形式）</p>
+</li>
+</ol>
+<p><strong>3.3 常见的鼠标事件</strong></p>
+<img src="/2023/06/09/Web-APIs/2.png" class>
+
+<p><strong>3.4 分析事件三要素</strong></p>
+<p>下拉菜单三要素</p>
+<p>关闭广告三要素</p>
+<h3 id="四-操作元素"><a href="#四-操作元素" class="headerlink" title="四. 操作元素"></a><strong>四. 操作元素</strong></h3><p>JavaScript 的 DOM 操作可以改变网页内容、结构和样式，我们可以利用 DOM 操作元素来改变元素里面的内容 、属性等。注意以下都是属性</p>
+<p><strong>4.1 改变元素内容</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.innerText</span><br></pre></td></tr></table></figure>
+
+<p>从起始位置到终止位置的内容, 但它去除 html 标签， 同时空格和换行也会去掉</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.innerHTML</span><br></pre></td></tr></table></figure>
+
+<p>起始位置到终止位置的全部内容，包括 html 标签，同时保留空格和换行</p>
+<p><strong>4.2 常用元素的属性操作</strong></p>
+<ol>
+<li><p>innerText、innerHTML 改变元素内容</p>
+</li>
+<li><p>src、href</p>
+</li>
+<li><p>id、alt、title</p>
+</li>
+</ol>
+<p><strong>4.3 表单元素的属性操作</strong></p>
+<p>利用 DOM 可以操作如下表单元素的属性：</p>
+<p> type、value、checked、selected、disabled</p>
+<p><strong>4.4 样式属性操作</strong></p>
+<p>我们可以通过 JS 修改元素的大小、颜色、位置等样式。</p>
+<ol>
+<li>element.style 行内样式操作</li>
+<li>element.className 类名样式操作</li>
+</ol>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>JS 里面的样式采取驼峰命名法 比如 fontSize、 backgroundColor</li>
+<li>JS 修改 style 样式操作，产生的是行内样式，CSS 权重比较高</li>
+<li>如果样式修改较多，可以采取操作类名方式更改元素样式。</li>
+<li>class因为是个保留字，因此使用className来操作元素类名属性</li>
+<li>className 会直接更改元素的类名，会覆盖原先的类名。</li>
+</ol>
+<img src="/2023/06/09/Web-APIs/3.png" class>
+
+<p><strong>4.5 排他思想</strong></p>
+<p>如果有同一组元素，我们想要某一个元素实现某种样式， 需要用到循环的排他思想算法：</p>
+<ol>
+<li><p>所有元素全部清除样式（干掉其他人）</p>
+</li>
+<li><p>给当前元素设置样式 （留下我自己）</p>
+</li>
+<li><p>注意顺序不能颠倒，首先干掉其他人，再设置自己</p>
+</li>
+</ol>
+<p><strong>4.6 自定义属性的操作</strong></p>
+<p><strong>1. 获取属性值</strong></p>
+<ul>
+<li><p>element.属性 获取属性值。</p>
+</li>
+<li><p>element.getAttribute(‘属性’);</p>
+</li>
+</ul>
+<p><strong>区别：</strong></p>
+<ul>
+<li><p>element.属性 获取内置属性值（元素本身自带的属性）</p>
+</li>
+<li><p>element.getAttribute(‘属性’); 主要获得自定义的属性 （标准） 我们程序员自定义的属性</p>
+</li>
+</ul>
+<p><strong>2. 设置属性值</strong></p>
+<ul>
+<li><p>element.属性 &#x3D; ‘值’ 设置内置属性值。</p>
+</li>
+<li><p>element.setAttribute(‘属性’, ‘值’)</p>
+</li>
+</ul>
+<p><strong>区别：</strong></p>
+<ul>
+<li><p>element.属性 设置内置属性值</p>
+</li>
+<li><p>element.setAttribute(‘属性’); 主要设置自定义的属性 （标准）</p>
+</li>
+</ul>
+<p><strong>3. 移除属性</strong></p>
+<ul>
+<li>element.removeAttribute(‘属性’);</li>
+</ul>
+<p><strong>4.7 H5自定义属性</strong></p>
+<p><strong>自定义属性目的：是为了保存并使用数据。有些数据可以保存到页面中而不用保存到数据库中。</strong></p>
+<p>自定义属性获取是通过getAttribute(‘属性’) 获取。</p>
+<p>但是有些自定义属性很容易引起歧义，不容易判断是元素的内置属性还是自定义属性。</p>
+<p>H5给我们新增了自定义属性：</p>
+<p><strong>1. 设置H5自定义属性</strong></p>
+<p>H5规定自定义属性data-开头做为属性名并且赋值。</p>
+<p>比如 <div data-index="1"></div></p>
+<p>或者使用 JS 设置 </p>
+<p>element.setAttribute(‘data-index’, 2)</p>
+<p><strong>2. 获取H5自定义属性</strong></p>
+<ol>
+<li><p>兼容性获取 element.getAttribute(‘data-index’);</p>
+</li>
+<li><p>H5新增 element.dataset.index 或者 element.dataset[‘index’] ie 11才开始支持</p>
+</li>
+</ol>
+<h3 id="五-节点操作"><a href="#五-节点操作" class="headerlink" title="五. 节点操作"></a><strong>五. 节点操作</strong></h3><p><strong>5.1 为什么学节点操作</strong></p>
+<p>获取元素通常使用两种方式：</p>
+<p><strong>1. 利用 DOM 提供的方法获取元素</strong> </p>
+<ul>
+<li><p>document.getElementById() </p>
+</li>
+<li><p>document.getElementsByTagName()</p>
+</li>
+<li><p>document.querySelector 等</p>
+</li>
+<li><p>逻辑性不强、繁琐</p>
+</li>
+</ul>
+<p><strong>2. 利用节点层级关系获取元素</strong></p>
+<ul>
+<li><p>利用父子兄节点关系获取元素</p>
+</li>
+<li><p>逻辑性强， 但是兼容性稍差</p>
+</li>
+</ul>
+<p>这两种方式都可以获取元素节点，我们后面都会使用，但是节点操作更简单</p>
+<p><strong>5.2 节点概述</strong></p>
+<p>网页中的所有内容都是节点（标签、属性、文本、注释等），在DOM 中，节点使用 node 来表示。</p>
+<p>HTML DOM 树中的所有节点均可通过 JavaScript 进行访问，所有 HTML 元素（节点）均可被修改，也可以创建或删除</p>
+<p>一般地，节点至少拥有nodeType（节点类型）、nodeName（节点名称）和nodeValue（节点值）这三个</p>
+<p>基本属性。</p>
+<ul>
+<li><p>元素节点 nodeType 为 1</p>
+</li>
+<li><p>属性节点 nodeType 为 2</p>
+</li>
+<li><p>文本节点 nodeType 为 3 （文本节点包含文字、空格、换行等）</p>
+</li>
+</ul>
+<p>我们在实际开发中，节点操作主要操作的是<strong>元素节点</strong></p>
+<p><strong>5.3 节点层级</strong></p>
+<p>利用 DOM 树可以把节点划分为不同的层级关系，常见的是<strong>父子兄层级关系</strong>。</p>
+<p><strong>1. 父级节点</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node.parentNode </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>parentNode 属性可返回某节点的父节点，注意是最近的一个父节点</p>
+</li>
+<li><p>如果指定的节点没有父节点则返回 null</p>
+</li>
+</ul>
+<p><strong>2. 子节点</strong></p>
+<ol>
+<li>parentNode.<strong>childNodes（标准）</strong></li>
+</ol>
+<p>parentNode.childNodes 返回包含指定节点的子节点的集合，该集合为即时更新的集合。</p>
+<p><strong>注意：</strong>返回值里面包含了所有的子节点，包括元素节点，文本节点等。</p>
+<p>如果只想要获得里面的元素节点，则需要专门处理。 所以我们一般不提倡使用childNodes</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var ul = document. <span class="built_in">querySelector</span>(‘ul’);</span><br><span class="line"><span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; ul.childNodes.length;i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (ul.childNodes[i].nodeType == <span class="number">1</span>) &#123;</span><br><span class="line">    	<span class="comment">// ul.childNodes[i] 是元素节点</span></span><br><span class="line">     	console.<span class="built_in">log</span>(ul.childNodes[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>parentNode.<strong>children（非标准）</strong></li>
+</ol>
+<p>parentNode.children 是一个只读属性，返回所有的子元素节点。它只返回子元素节点，其余节点不返回 （<strong>这个是我们重点掌握的</strong>）。</p>
+<p>虽然children 是一个非标准，但是得到了各个浏览器的支持，因此我们可以放心使用</p>
+<ol start="3">
+<li>parentNode.<strong>firstChild</strong></li>
+</ol>
+<p>firstChild 返回第一个子节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="4">
+<li>parentNode.<strong>lastChild</strong></li>
+</ol>
+<p>lastChild 返回最后一个子节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="5">
+<li>parentNode.<strong>firstElementChild</strong></li>
+</ol>
+<p>firstElementChild 返回第一个子元素节点，找不到则返回null。</p>
+<ol start="6">
+<li>parentNode.<strong>lastElementChild</strong></li>
+</ol>
+<p>lastElementChild 返回最后一个子元素节点，找不到则返回null。 </p>
+<p>注意：这两个方法有兼容性问题，IE9 以上才支持。</p>
+<p>实际开发中，firstChild 和 lastChild 包含其他节点，操作不方便，而 firstElementChild 和</p>
+<p>lastElementChild 又有兼容性问题，那么我们如何获取第一个子元素节点或最后一个子元素节点呢？</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li><p>如果想要第一个子元素节点，可以使用 parentNode.chilren[0] </p>
+</li>
+<li><p>如果想要最后一个子元素节点，可以使用 parentNode.chilren[parentNode.chilren.length - 1]</p>
+</li>
+</ol>
+<p><strong>3. 兄弟节点</strong></p>
+<ol>
+<li>node.<strong>nextSibling</strong></li>
+</ol>
+<p>nextSibling 返回当前元素的下一个兄弟元素节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="2">
+<li>node.<strong>previousSibling</strong></li>
+</ol>
+<p>previousSibling 返回当前元素上一个兄弟元素节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="3">
+<li>node.nextElementSibling</li>
+</ol>
+<p>nextElementSibling 返回当前元素下一个兄弟元素节点，找不到则返回null。</p>
+<ol start="4">
+<li>node.previousElementSibling</li>
+</ol>
+<p>previousElementSibling 返回当前元素上一个兄弟节点，找不到则返回null。</p>
+<p>注意：这两个方法有兼容性问题， IE9 以上才支持</p>
+<p><strong>5.4 创建节点</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.<span class="built_in">createElement</span>(<span class="string">&#x27;tagName&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>document.createElement() 方法创建由 tagName 指定的 HTML 元素。因为这些元素原先不存在，是根据我们的需求动态生成的，所以我们也称为动态创建元素节点。</p>
+<ol>
+<li>node.appendChild(child)</li>
+</ol>
+<p>node.appendChild() 方法将一个节点添加到指定父节点的子节点列表末尾。类似于 CSS 里面的after 伪元素。</p>
+<ol start="2">
+<li>node.insertBefore(child, 指定元素)</li>
+</ol>
+<p>node.insertBefore() 方法将一个节点添加到父节点的指定子节点前面。类似于 CSS 里面的 before 伪元素。</p>
+<p><strong>5.5 删除节点</strong></p>
+<p>node.removeChild(child) </p>
+<p>node.removeChild() 方法从 DOM 中删除一个子节点，返回删除的节点</p>
+<p><strong>5.6 复制节点</strong></p>
+<p>node.cloneNode() </p>
+<p>node.cloneNode() 方法返回调用该方法的节点的一个副本。</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li>如果括号参数为空或者为 false ，则是浅拷贝，即只克隆复制节点本身，不克隆里面的子节点。</li>
+<li>如果括号参数为 true ，则是深度拷贝，会复制节点本身以及里面所有的子节点。</li>
+</ol>
+<p><strong>5.7 替换节点</strong></p>
+<p>parentNode.replaceChild(newChild, oldChild); </p>
+<p>用指定的节点替换当前节点的一个子节点，并返回被替换掉的节点。</p>
+<p><strong>5.8 创建元素总结</strong></p>
+<ul>
+<li><p>document.write()</p>
+</li>
+<li><p>innerHTML</p>
+</li>
+<li><p>document.createElement()</p>
+</li>
+</ul>
+<p><strong>区别</strong></p>
+<ol>
+<li>document.write 是直接将内容写入页面的内容流，会导致页面全部重绘\</li>
+<li>innerHTML 是将内容写入某个 DOM 节点，不会导致页面全部重绘</li>
+<li>innerHTML 复制节点的时候，不会复制原先节点的事件，会存在内存泄露问题</li>
+<li>如果页面创建元素很多，建议使用 innerHTML 因其效率更高（不要拼接字符串，采取数组形式拼接）</li>
+<li>如果页面创建元素较少，建议使用 createElement()</li>
+</ol>
+<p><strong>总结</strong>：不同浏览器下，innerHTML 效率要比 creatElement 高</p>
+<h3 id="常用的键盘事件"><a href="#常用的键盘事件" class="headerlink" title="常用的键盘事件"></a>常用的键盘事件</h3><ol>
 <li>keyup 按键弹起的时候触发 </li>
 <li>keypress 按键按下的时候触发  不能识别功能键 比如 ctrl shift 左右箭头啊</li>
 <li>keydown 按键按下的时候触发  能识别功能键 比如 ctrl shift 左右箭头啊</li>
 <li>三个事件的执行顺序  keydown – keypress – keyup</li>
 </ol>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.addEventListener(&#x27;keyup&#x27;, function())</span><br></pre></td></tr></table></figure>
+
+<!--more-->
 
 <br>
 
@@ -275,6 +618,37 @@
 
 <p>load 等页面内容全部加载完毕，包含页面dom元素 图片 flash  css 等等</p>
 <p>DOMContentLoaded 是DOM 加载完毕，不包含图片 falsh css 等就可以执行 加载速度比 load更快一些</p>
+<br>
+
+<h3 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h3><p>语法规范：  window.setTimeout(调用函数, 延时时间);</p>
+<ol>
+<li><p>这个window在调用的时候可以省略</p>
+</li>
+<li><p>这个延时时间单位是毫秒 但是可以省略，如果省略默认的是0</p>
+</li>
+<li><p>这个调用函数可以直接写函数 还可以写 函数名 还有一个写法 ‘函数名()’</p>
+</li>
+<li><p>页面中可能有很多的定时器，我们经常给定时器加标识符 （名字)</p>
+</li>
+</ol>
+<p>clearTimeout 删除定时器</p>
+<h3 id="setInterval话"><a href="#setInterval话" class="headerlink" title="setInterval话"></a>setInterval话</h3><p>语法规范：  window.setInterval(调用函数, 延时时间);</p>
+<ol>
+<li>setTimeout  延时时间到了，就去调用这个回调函数，只调用一次 就结束了这个定时器</li>
+<li>setInterval  每隔这个延时时间，就去调用这个回调函数，会调用很多次，重复调用这个函数</li>
+</ol>
+<p>  clearInterval 清除setInterval定时器</p>
+<br>
+
+<h3 id="this-指向问题"><a href="#this-指向问题" class="headerlink" title="this 指向问题"></a>this 指向问题</h3><p>一般情况下this的最终指向的是那个调用它的对象</p>
+<ol>
+<li><p>全局作用域或者普通函数中this指向全局对象window（ 注意定时器里面的this指向window）</p>
+</li>
+<li><p>方法调用中谁调用this指向谁</p>
+</li>
+<li><p>构造函数中this指向构造函数的实例</p>
+</li>
+</ol>
 
                       
 
@@ -412,7 +786,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">常用的键盘事件</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80-DOM-%E7%AE%80%E4%BB%8B"><span class="toc-number">2.</span> <span class="toc-text">一. DOM 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C-%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="toc-number">3.</span> <span class="toc-text">二. 获取元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89-%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80"><span class="toc-number">4.</span> <span class="toc-text">三. 事件基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B-%E6%93%8D%E4%BD%9C%E5%85%83%E7%B4%A0"><span class="toc-number">5.</span> <span class="toc-text">四. 操作元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C"><span class="toc-number">6.</span> <span class="toc-text">五. 节点操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">常用的键盘事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setTimeout"><span class="toc-number">8.</span> <span class="toc-text">setTimeout</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setInterval%E8%AF%9D"><span class="toc-number">9.</span> <span class="toc-text">setInterval话</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#this-%E6%8C%87%E5%90%91%E9%97%AE%E9%A2%98"><span class="toc-number">10.</span> <span class="toc-text">this 指向问题</span></a></li></ol>
                     </div>
                 </span>
             </div>
