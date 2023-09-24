@@ -22,6 +22,768 @@
       </tags>
   </entry>
   <entry>
+    <title>git使用</title>
+    <url>/2023/09/24/git%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="1-目标"><a href="#1-目标" class="headerlink" title="1. 目标"></a>1. 目标</h3><ul>
+<li>了解Git基本概念</li>
+<li>能够概述git工作流程</li>
+<li>能够使用Git常用命令</li>
+<li>熟悉Git代码托管服务</li>
+</ul>
+<span id="more"></span>
+
+<br>
+
+<h3 id="2-概述"><a href="#2-概述" class="headerlink" title="2. 概述"></a>2. 概述</h3><p>Git是分布式的,Git不需要有中心服务器，我们每台电脑拥有的东西都是一样的。我们使用Git并且有个中心服务器，仅仅是为了方便交换大家的修改，但是这个服务器的地位和我们每个人的PC是一样的。我们可以把它当做一个开发者的pc就可以就是为了大家代码容易交流不关机用的。没有它大家一样可以工作，只不过“交换”修改不方便而已。</p>
+<p>git是一个开源的分布式版本控制系统，可以有效、高速地处理从很小到非常大的项目版本管理。Git是Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。同生活中的许多伟大事物一样，Git 诞生于一个极富纷争大举创新的年代。Linux 内核开源项目有着为数众多的参与者。 绝大多数的 Linux 内核维护工作都花在了提交补丁和保存归档的繁琐事务上（1991－2002年间）。 到 2002 年，整个项目组开始启用一个专有的分布式版本控制系统 BitKeeper 来管理和维护代码。</p>
+<p>到了 2005 年，开发 BitKeeper 的商业公司同 Linux 内核开源社区的合作关系结束，他们收回了</p>
+<p>Linux 内核社区免费使用 BitKeeper 的权力。 这就迫使 Linux 开源社区（特别是 Linux 的缔造者Linus Torvalds）基于使用 BitKeeper 时的经验教训，开发出自己的版本系统。 他们对新的系统制订了若干目标：</p>
+<p>速度<br>简单的设计<br>对非线性开发模式的强力支持（允许成千上万个并行开发的分支）<br>完全分布式<br>有能力高效管理类似 Linux 内核一样的超大规模项目（速度和数据量）</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/1.png" class>
+
+<p><strong>Git工作流程图</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/2.png" class>
+
+<p>命令如下：</p>
+<ol>
+<li>clone（克隆）: 从远程仓库中克隆代码到本地仓库</li>
+<li>checkout （检出）:从本地仓库中检出一个仓库分支然后进行修订</li>
+<li>add（添加）: 在提交前先将代码提交到暂存区</li>
+<li>commit（提交）: 提交到本地仓库。本地仓库中保存修改的各个历史版本</li>
+<li>fetch (抓取) ： 从远程库，抓取到本地仓库，不进行任何的合并动作，一般操作比较少。</li>
+<li>pull (拉取) ： 从远程库拉到本地库，自动进行合并(merge)，然后放到到工作区，相当于fetch+merge</li>
+<li>push（推送） : 修改完成后，需要和团队成员共享代码时，将代码推送到远程仓库</li>
+</ol>
+<br>
+
+<h3 id="3-Git安装与常用命令"><a href="#3-Git安装与常用命令" class="headerlink" title="3. Git安装与常用命令"></a>3. Git安装与常用命令</h3><p>本教程里的git命令例子都是在Git Bash中演示的，会用到一些基本的linux命令，在此为大家提前列举：</p>
+<ul>
+<li>ls&#x2F;ll 查看当前目录</li>
+<li>cat 查看文件内容</li>
+<li>touch 创建文件</li>
+<li>vi vi编辑器（使用vi编辑器是为了方便展示效果，学员可以记事本、editPlus、notPad++等其它编辑器）</li>
+</ul>
+<h4 id="3-1、Git环境配置"><a href="#3-1、Git环境配置" class="headerlink" title="3.1、Git环境配置"></a>3.1、Git环境配置</h4><p>Git GUI：Git提供的图形界面工具</p>
+<p>Git Bash：Git提供的命令行工具</p>
+<p>当安装Git后首先要做的事情是设置用户名称和email地址。这是非常重要的，因为每次Git提交都会使用</p>
+<p>该用户信息</p>
+<p><strong>3.1.2 基本配置</strong></p>
+<ol>
+<li>打开Git Bash</li>
+<li>设置用户信息</li>
+</ol>
+<p><code>git config --global user.name “itcast”</code></p>
+<p><code>git config --global user.email “hello@itcast.cn”</code></p>
+<p>查看配置信息</p>
+<p><code>git config --global user.name</code></p>
+<p><code>git config --global user.email</code></p>
+<p><strong>3.1.3 为常用指令配置别名（可选）</strong></p>
+<p>有些常用的指令参数非常多，每次都要输入好多参数，我们可以使用别名。</p>
+<ol>
+<li>打开用户目录，创建 .bashrc 文件</li>
+</ol>
+<p>部分windows系统不允许用户创建点号开头的文件，可以打开gitBash,执行 touch ~&#x2F;.bashrc</p>
+<ol start="2">
+<li>在 .bashrc 文件中输入如下内容：</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#用于输出git提交日志</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> git-log=<span class="string">&#x27;git log --pretty=oneline --all --graph --abbrev-commit&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用于输出当前目录所有文件及基本信息</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">alias</span> ll=<span class="string">&#x27;ls -al&#x27;</span></span><br></pre></td></tr></table></figure></div>
+
+<ol start="3">
+<li>打开gitBash，执行 source ~&#x2F;.bashrc</li>
+</ol>
+<p><strong>3.1.4</strong> <strong>解决GitBash乱码问题</strong></p>
+<ol>
+<li>打开GitBash执行下面命令</li>
+</ol>
+<p><code>git config --global core.quotepath false</code></p>
+<ol start="2">
+<li>${git_home}&#x2F;etc&#x2F;bash.bashrc 文件最后加入下面两行</li>
+</ol>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> LC_ALL=<span class="string">&quot;zh_CN.UTF-8&quot;</span></span><br><span class="line"><span class="built_in">export</span> LC_ALL=<span class="string">&quot;zh_CN.UTF-8&quot;</span></span><br></pre></td></tr></table></figure></div>
+
+<h4 id="3-2、获取本地仓库"><a href="#3-2、获取本地仓库" class="headerlink" title="3.2、获取本地仓库"></a><strong>3.2、获取本地仓库</strong></h4><p>要使用Git对我们的代码进行版本控制，首先需要获得本地仓库</p>
+<p>1）在电脑的任意位置创建一个空目录（例如test）作为我们的本地Git仓库<br>2）进入这个目录中，点击右键打开Git bash窗口<br>3）执行命令git init<br>4）如果创建成功后可在文件夹下看到隐藏的.git目录。</p>
+<h4 id="3-3、基础操作指令"><a href="#3-3、基础操作指令" class="headerlink" title="3.3、基础操作指令"></a><strong>3.3、基础操作指令</strong></h4><p>Git工作目录下对于文件的<strong>修改</strong>(增加、删除、更新)会存在几个状态，这些<strong>修改</strong>的状态会随着我们执行Git的命令而发生变化。</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/3.png" class>
+
+<p>本章节主要讲解如何使用命令来控制这些状态之间的转换：</p>
+<ol>
+<li>git add (工作区 –&gt; 暂存区)</li>
+<li>git commit (暂存区 –&gt; 本地仓库)</li>
+</ol>
+<p><strong>3.3.1</strong>、查看修改的状态（status）**</p>
+<ul>
+<li>作用：查看的修改的状态（暂存区）</li>
+<li>命令形式：git status</li>
+</ul>
+<p><strong>3.3.2、添加工作区到暂存区(add)</strong></p>
+<ul>
+<li>作用：添加工作区一个或多个文件的修改到暂存区</li>
+<li>命令形式：git add 单个文件名|通配符<br>  将所有修改加入暂存区：git add .</li>
+</ul>
+<p><strong>3.3.3、提交暂存区到本地仓库(commit)</strong></p>
+<ul>
+<li>作用：提交暂存区内容到本地仓库的当前分支</li>
+<li>命令形式：git commit -m ‘注释内容’</li>
+</ul>
+<p><strong>3.3.4、查看提交日志(log)</strong></p>
+<p><strong>在3.1.3中配置的别名 git-log就包含了这些参数，所以后续可以直接使用指令 git-log</strong></p>
+<ul>
+<li>作用:查看提交记录</li>
+<li>命令形式：git log [option]</li>
+</ul>
+<p>options</p>
+<ul>
+<li>–all 显示所有分支</li>
+<li>–pretty&#x3D;oneline 将提交信息显示为一行</li>
+<li>–abbrev-commit 使得输出的commitId更简短</li>
+<li>–graph 以图的形式显示</li>
+</ul>
+<p><strong>3.3.5、版本回退</strong></p>
+<ul>
+<li>作用：版本切换</li>
+<li>命令形式：git reset –hard commitID<br>  commitID 可以使用 git-log 或 git log 指令查看</li>
+<li>如何查看已经删除的记录？<br>  git reflog<br>  这个指令可以看到已经删除的提交记录</li>
+</ul>
+<p><strong>3.3.6、添加文件至忽略列表</strong></p>
+<p>一般我们总会有些文件无需纳入Git 的管理，也不希望它们总出现在未跟踪文件列表。 通常都是些自动生成的文件，比如日志文件，或者编译过程中创建的临时文件等。 在这种情况下，我们可以在工作目录中创建一个名为 .gitignore 的文件（文件名称固定），列出要忽略的文件模式。下面是一个示例：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="code"><pre><span class="line"># no .a files</span><br><span class="line">*.a</span><br><span class="line"># but do track lib.a, even though you&#x27;re ignoring .a files above</span><br><span class="line">!lib.a</span><br><span class="line"># only ignore the TODO file in the current directory, not subdir/TODO</span><br><span class="line">/TODO</span><br><span class="line"># ignore all files in the build/ directory</span><br><span class="line">build/</span><br><span class="line"># ignore doc/notes.txt, but not doc/server/arch.txt</span><br><span class="line">doc/*.txt</span><br><span class="line"># ignore all .pdf files in the doc/ directory</span><br><span class="line">doc/**/*.pdf</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/4.png" class>
+
+<h4 id="3-4、分支"><a href="#3-4、分支" class="headerlink" title="3.4、分支"></a><strong>3.4、分支</strong></h4><p>几乎所有的版本控制系统都以某种形式支持分支。 使用分支意味着你可以把你的工作从开发主线上分离开来进行重大的Bug修改、开发新的功能，以免影响开发主线。</p>
+<p><strong>3.4.1、查看本地分支</strong></p>
+<ul>
+<li>命令：git branch</li>
+</ul>
+<p><strong>3.4.2、创建本地分支</strong></p>
+<ul>
+<li>命令：git branch 分支名</li>
+</ul>
+<p><strong>3.4.3、切换分支(checkout)</strong></p>
+<ul>
+<li>命令：git checkout 分支名</li>
+</ul>
+<p>我们还可以直接切换到一个不存在的分支（创建并切换）</p>
+<ul>
+<li>命令：git checkout -b 分支名</li>
+</ul>
+<p><strong>3.4.4、合并分支(merge)</strong></p>
+<ul>
+<li>一个分支上的提交可以合并到另一个分支</li>
+<li>命令：git merge 分支名称</li>
+</ul>
+<p><strong>3.4.5、删除分支</strong></p>
+<p><strong>不能删除当前分支，只能删除其他分支</strong></p>
+<div class="highlight-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="code"><pre><span class="line">git branch -d b1 删除分支时，需要做各种检查</span><br><span class="line"></span><br><span class="line">git branch -D b1 不做任何检查，强制删除</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>3.4.6、解决冲突</strong></p>
+<p>当两个分支上对文件的修改可能会存在冲突，例如同时修改了同一个文件的同一行，这时就需要手动解</p>
+<p>决冲突，解决冲突步骤如下：</p>
+<ol>
+<li>处理文件中冲突的地方</li>
+<li>将解决完冲突的文件加入暂存区(add)</li>
+<li>提交到仓库(commit)</li>
+</ol>
+<p>冲突部分的内容处理如下所示：</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/5.png" class>
+
+<p><strong>3.4.9、开发中分支使用原则与流程</strong></p>
+<p>几乎所有的版本控制系统都以某种形式支持分支。 使用分支意味着你可以把你的工作从开发主线上分离开来进行重大的Bug修改、开发新的功能，以免影响开发主线。</p>
+<p>在开发中，一般有如下分支使用原则与流程：</p>
+<ul>
+<li>master （生产） 分支</li>
+</ul>
+<p>线上分支，主分支，中小规模项目作为线上运行的应用对应的分支；</p>
+<ul>
+<li>develop（开发）分支</li>
+</ul>
+<p>是从master创建的分支，一般作为开发部门的主要开发分支，如果没有其他并行开发不同期上线要求，都可以在此版本进行开发，阶段开发完成后，需要是合并到master分支,准备上线。</p>
+<ul>
+<li>feature&#x2F;xxxx分支</li>
+</ul>
+<p>从develop创建的分支，一般是同期并行开发，但不同期上线时创建的分支，分支上的研发任务完成后合并到develop分支。</p>
+<ul>
+<li>hotfix&#x2F;xxxx分支，</li>
+</ul>
+<p>从master派生的分支，一般作为线上bug修复使用，修复完成后需要合并到master、test、develop分支。</p>
+<ul>
+<li>还有一些其他分支，在此不再详述，例如test分支（用于代码测试）、pre分支（预上线分支）等等。</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/6.png" class>
+
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/7.png" class>
+
+<br>
+
+<h3 id="4-Git远程仓库"><a href="#4-Git远程仓库" class="headerlink" title="4. Git远程仓库"></a>4. Git远程仓库</h3><h4 id="4-1、-常用的托管服务-远程仓库"><a href="#4-1、-常用的托管服务-远程仓库" class="headerlink" title="4.1、 常用的托管服务[远程仓库]"></a><strong>4.1、 常用的托管服务[远程仓库]</strong></h4><p>前面我们已经知道了Git中存在两种类型的仓库，即本地仓库和远程仓库。那么我们如何搭建Git远程仓库呢？我们可以借助互联网上提供的一些代码托管服务来实现，其中比较常用的有GitHub、码云、GitLab等。</p>
+<ul>
+<li><p>gitHub（ 地址：<a class="link" href="https://github.com/">https://github.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ）是一个面向开源及私有软件项目的托管平台，因为只支持Git 作为唯一的版本库格式进行托管，故名gitHub</p>
+</li>
+<li><p>码云（地址： <a class="link" href="https://gitee.com/">https://gitee.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ）是国内的一个代码托管平台，由于服务器在国内，所以相比于GitHub，码云速度会更快</p>
+</li>
+<li><p>GitLab （地址： <a class="link" href="https://about.gitlab.com/">https://about.gitlab.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ）是一个用于仓库管理系统的开源项目，使用Git作为代码管理工具，并在此基础上搭建起来的web服务,一般用于在企业、学校等内部网络搭建git私服。</p>
+</li>
+</ul>
+<h4 id="4-2、-注册码云"><a href="#4-2、-注册码云" class="headerlink" title="4.2、 注册码云"></a><strong>4.2、 注册码云</strong></h4><p>要想使用码云的相关服务，需要注册账号（地址： <a class="link" href="https://gitee.com/signup">https://gitee.com/signup <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ）</p>
+<h4 id="4-3、-创建远程仓库"><a href="#4-3、-创建远程仓库" class="headerlink" title="4.3、 创建远程仓库"></a><strong>4.3、 创建远程仓库</strong></h4><img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/8.png" class>
+
+<p>仓库创建完成后可以看到仓库地址，如下图所示:</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/9.png" class>
+
+<h4 id="4-4、配置SSH公钥"><a href="#4-4、配置SSH公钥" class="headerlink" title="4.4、配置SSH公钥"></a><strong>4.4、配置SSH公钥</strong></h4><ul>
+<li>生成SSH公钥<br>  ssh-keygen -t rsa<br>  不断回车<br>  如果公钥已经存在，则自动覆盖</li>
+<li>Gitee设置账户共公钥<br>  获取公钥<br>  cat ~&#x2F;.ssh&#x2F;id_rsa.pub</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/10.png" class>
+
+<ul>
+<li>验证是否配置成功<br>  ssh -T <a class="link" href="mailto:&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#x65;&#101;&#x2e;&#x63;&#111;&#109;">&#103;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#x65;&#101;&#x2e;&#x63;&#111;&#109; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ul>
+<h4 id="4-5、操作远程仓库"><a href="#4-5、操作远程仓库" class="headerlink" title="4.5、操作远程仓库"></a><strong>4.5、操作远程仓库</strong></h4><p><strong>4.5.1、添加远程仓库</strong></p>
+<p><strong>此操作是先初始化本地库，然后与已创建的远程库进行对接</strong>。</p>
+<ul>
+<li>命令： git remote add &lt;远端名称&gt; &lt;仓库路径&gt;<br>  远端名称，默认是origin，取决于远端服务器设置<br>  仓库路径，从远端服务器获取此URL<br>  例如: git remote add origin <a class="link" href="mailto:&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#101;&#101;&#x2e;&#x63;&#111;&#x6d;">&#x67;&#x69;&#116;&#x40;&#x67;&#105;&#x74;&#101;&#101;&#x2e;&#x63;&#111;&#x6d; <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>:czbk_zhang_meng&#x2F;git_test.git</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/11.png" class>
+
+<p><strong>4.5.2、查看远程仓库</strong></p>
+<ul>
+<li>命令：git remote</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/12.png" class>
+
+<p><strong>4.5.3、推送到远程仓库</strong></p>
+<ul>
+<li>命令：git push [-f] [–set-upstream] [远端名称 [本地分支名][:远端分支名] ]<br>  如果远程分支名和本地分支名称相同，则可以只写本地分支<br>  git push origin master<br>  -f 表示强制覆盖<br>  –set-upstream 推送到远端的同时并且建立起和远端分支的关联关系。<br>  git push –set-upstream origin master<br>  如果<strong>当前分支已经和远端分支关联</strong>，则可以省略分支名和远端名。<br>  git push 将master分支推送到已关联的远端分支。</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/14.png" class>
+
+<p>查询远程仓库</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/13.png" class>
+
+<p><strong>4.5.4、 本地分支与远程分支的关联关系</strong></p>
+<p>查看关联关系我们可以使用 git branch -vv 命令</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/15.png" class>
+
+<p><strong>4.5.5、从远程仓库克隆</strong></p>
+<p>如果已经有一个远端仓库，我们可以直接clone到本地。</p>
+<ul>
+<li>命令: git clone &lt;仓库路径&gt; [本地目录]<br>  本地目录可以省略，会自动生成一个目录</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/16.png" class>
+
+<p><strong>4.5.6、从远程仓库中抓取和拉取</strong></p>
+<p>远程分支和本地的分支一样，我们可以进行merge操作，只是需要先把远端仓库里的更新都下载到本地，再进行操作。</p>
+<ul>
+<li>抓取 命令：git fetch [remote name] [branch name]<br>  <strong>抓取指令就是将仓库里的更新都抓取到本地，不会进行合并</strong><br>  如果不指定远端名称和分支名，则抓取所有分支。</li>
+<li>拉取 命令：git pull [remote name] [branch name]<br>  <strong>拉取指令就是将远端仓库的修改拉到本地并自动进行合并，等同于****fetch+merge</strong><br>  如果不指定远端名称和分支名，则抓取所有并更新当前分支。</li>
+</ul>
+<ol>
+<li>在test01这个本地仓库进行一次提交并推送到远程仓库</li>
+</ol>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/17.png" class>
+
+<ol start="2">
+<li>在另一个仓库将远程提交的代码拉取到本地仓库</li>
+</ol>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/18.png" class>
+
+<p><strong>4.5.7、解决合并冲突</strong></p>
+<p>在一段时间，A、B用户修改了同一个文件，且修改了同一行位置的代码，此时会发生合并冲突。A用户在本地修改代码后优先推送到远程仓库，此时B用户在本地修订代码，提交到本地仓库后，也需要</p>
+<p>推送到远程仓库，此时B用户晚于A用户，<strong>故需要先拉取远程仓库的提交，经过合并后才能推送到远端分支</strong>,如下图所示。</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/19.png" class>
+
+<p>在B用户拉取代码时，因为A、B用户同一段时间修改了同一个文件的相同位置代码，故会发生合并冲突。</p>
+<p><strong>远程分支也是分支，所以合并时冲突的解决方式也和解决本地分支冲突相同相同</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/24/git%E4%BD%BF%E7%94%A8/20.png" class>]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jQuery事件/其他方法</title>
+    <url>/2023/09/19/jQuery%E4%BA%8B%E4%BB%B6-%E5%85%B6%E4%BB%96%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<ul>
+<li><p>jQuery 事件注册</p>
+</li>
+<li><p>jQuery 事件处理</p>
+</li>
+<li><p>jQuery 事件对象</p>
+</li>
+<li><p>jQuery 拷贝对象</p>
+</li>
+<li><p>多库共存</p>
+</li>
+<li><p>jQuery 插件</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="1-jQuery-事件注册"><a href="#1-jQuery-事件注册" class="headerlink" title="1. jQuery 事件注册"></a><strong>1. jQuery 事件注册</strong></h3><p><strong>单个事件注册</strong></p>
+<p><strong>语法：</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.事件(function()&#123;&#125;)</span><br><span class="line"></span><br><span class="line">$(“div”).click(function()&#123; 事件处理程序 &#125;)</span><br></pre></td></tr></table></figure></div>
+
+<p>其他事件和原生基本一致。</p>
+<p>比如mouseover、mouseout、blur、focus、change、keydown、keyup、resize、scroll 等</p>
+<br>
+
+<h3 id="2-jQuery-事件处理"><a href="#2-jQuery-事件处理" class="headerlink" title="2. jQuery 事件处理"></a><strong>2. jQuery 事件处理</strong></h3><p><strong>2.1 事件处理 on() 绑定事件</strong></p>
+<p>on() 方法在匹配元素上绑定一个或多个事件的事件处理函数</p>
+<p><strong>语法：</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.on(events,[selector],fn)</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>events:一个或多个用空格分隔的事件类型，如”click”或”keydown” </li>
+<li>selector: 元素的子元素选择器 。</li>
+<li>fn:回调函数 即绑定在元素身上的侦听函数。</li>
+</ol>
+<p><strong>on() 方法优势1：</strong></p>
+<p>可以绑定多个事件，多个处理事件处理程序。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(“div”).on(&#123;</span><br><span class="line">    mouseover: function()&#123;&#125;, </span><br><span class="line">    mouseout: function()&#123;&#125;,</span><br><span class="line">    click: function()&#123;&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>如果事件处理程序相同</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(“div”).on(“mouseover mouseout”, function() &#123;</span><br><span class="line">	$(this).toggleClass(“current”);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>on() 方法优势2：</strong></p>
+<p>可以事件委派操作 。事件委派的定义就是，把原来加给子元素身上的事件绑定在父元素身上，就是把事件委派给父元素。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(&#x27;ul&#x27;).on(&#x27;click&#x27;, &#x27;li&#x27;, function() &#123;</span><br><span class="line">	alert(&#x27;hello world!&#x27;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p>在此之前有bind(), live() delegate()等方法来处理事件绑定或者事件委派，最新版本的请用on替代他们。</p>
+<p><strong>on() 方法优势3：</strong></p>
+<p>动态创建的元素，click() 没有办法绑定事件， on() 可以给动态生成的元素绑定事件</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(“div&quot;).on(&quot;click&quot;,”p”, function()&#123;</span><br><span class="line">	alert(&quot;俺可以给动态生成的元素绑定事件&quot;)</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$(&quot;div&quot;).append($(&quot;<span class="tag">&lt;<span class="name">p</span>&gt;</span>我是动态创建的p<span class="tag">&lt;/<span class="name">p</span>&gt;</span>&quot;));</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2.2 事件处理 off() 解绑事件</strong></p>
+<p>off() 方法可以移除通过 on() 方法添加的事件处理程序。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(&quot;p&quot;).off() // 解绑p元素所有事件处理程序</span><br><span class="line"></span><br><span class="line">$(&quot;p&quot;).off( &quot;click&quot;) // 解绑p元素上面的点击事件 后面的 foo 是侦听函数名</span><br><span class="line"></span><br><span class="line">$(&quot;ul&quot;).off(&quot;click&quot;, &quot;li&quot;); // 解绑事件委托</span><br></pre></td></tr></table></figure></div>
+
+<p>如果有的事件只想触发一次， 可以使用 one() 来绑定事件。</p>
+<p><strong>2.3 自动触发事件 trigger()</strong> </p>
+<p>有些事件希望自动触发, 比如轮播图自动播放功能跟点击右侧按钮一致。可以利用定时器自动触发右侧按钮点击事件，不必鼠标点击触发。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.click() // 第一种简写形式</span><br><span class="line"></span><br><span class="line">element.trigger(&quot;type&quot;) // 第二种自动触发模式</span><br><span class="line"></span><br><span class="line">$(&quot;p&quot;).on(&quot;click&quot;, function () &#123;</span><br><span class="line">	alert(&quot;hi~&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">$(&quot;p&quot;).trigger(&quot;click&quot;); // 此时自动触发点击事件，不需要鼠标点击</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.triggerHandler(type) // 第三种自动触发模式</span><br></pre></td></tr></table></figure></div>
+
+<p>triggerHandler模式不会触发元素的默认行为，这是和前面两种的区别。</p>
+<br>
+
+<h3 id="3-jQuery-事件对象"><a href="#3-jQuery-事件对象" class="headerlink" title="3. jQuery 事件对象"></a><strong>3. jQuery 事件对象</strong></h3><p>事件被触发，就会有事件对象的产生。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.on(events,[selector],function(event) &#123;&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<p>阻止默认行为：event.preventDefault() 或者 return false </p>
+<p>阻止冒泡： event.stopPropagation()</p>
+<br>
+
+<h3 id="1-jQuery-对象拷贝"><a href="#1-jQuery-对象拷贝" class="headerlink" title="1. jQuery 对象拷贝"></a><strong>1. jQuery 对象拷贝</strong></h3><p>如果想要把某个对象拷贝（合并） 给另外一个对象使用，此时可以使用 $.extend() 方法</p>
+<p><strong>语法：</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$.extend([deep], target, object1, [objectN])</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>deep: 如果设为true 为深拷贝， 默认为false 浅拷贝</li>
+<li>target: 要拷贝的目标对象</li>
+<li>object1:待拷贝到第一个对象的对象。</li>
+<li>objectN:待拷贝到第N个对象的对象。</li>
+<li>浅拷贝是把被拷贝的对象复杂数据类型中的地址拷贝给目标对象，修改目标对象会影响被拷贝对象。</li>
+<li>深拷贝，前面加true， 完全克隆(拷贝的对象,而不是地址)，修改目标对象不会影响被拷贝对象</li>
+</ol>
+<br>
+
+<h3 id="2-jQuery-多库共存"><a href="#2-jQuery-多库共存" class="headerlink" title="2. jQuery 多库共存"></a><strong>2. jQuery 多库共存</strong></h3><p><strong>问题概述：</strong></p>
+<p>jQuery使用$作为标示符，随着jQuery的流行,其他 js 库也会用这$作为标识符， 这样一起使用会引起冲突。</p>
+<p><strong>客观需求：</strong></p>
+<p>需要一个解决方案，让jQuery 和其他的js库不存在冲突，可以同时存在，这就叫做多库共存。</p>
+<p><strong>jQuery 解决方案：</strong></p>
+<ol>
+<li>把里面的 $ 符号 统一改为 jQuery。 比如 jQuery(‘’div’’)</li>
+<li>jQuery 变量规定新的名称：$.noConflict() var xx &#x3D; $.noConflict();</li>
+</ol>
+<br>
+
+<h3 id="3-jQuery-插件"><a href="#3-jQuery-插件" class="headerlink" title="3. jQuery 插件"></a><strong>3. jQuery 插件</strong></h3><p>jQuery 功能比较有限，想要更复杂的特效效果，可以借助于 jQuery 插件完成。</p>
+<p>注意: 这些插件也是依赖于jQuery来完成的，所以必须要先引入jQuery文件，因此也称为 jQuery 插件。</p>
+<p><strong>jQuery 插件常用的网站：</strong></p>
+<ol>
+<li>jQuery 插件库 <a class="link" href="http://www.jq22.com/">http://www.jq22.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </li>
+<li>jQuery 之家 <a class="link" href="http://www.htmleaf.com/">http://www.htmleaf.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
+</ol>
+<p><strong>jQuery 插件使用步骤：</strong></p>
+<ol>
+<li>引入相关文件。（jQuery 文件 和 插件文件）</li>
+<li>复制相关html、css、js (调用插件)。</li>
+</ol>
+<p><strong>jQuery 插件演示：</strong></p>
+<ul>
+<li>瀑布流</li>
+<li>图片懒加载（图片使用延迟加载在可提高网页下载速度。它也能帮助减轻服务器负载）</li>
+</ul>
+<p>当我们页面滑动到可视区域，再显示图片。</p>
+<p>我们使用jquery 插件库 EasyLazyload。 注意，此时的js引入文件和js调用必须写到 DOM元素（图片）最后面</p>
+<ul>
+<li>全屏滚动（fullpage.js）</li>
+</ul>
+<p>gitHub： <a class="link" href="https://github.com/alvarotrigo/fullPage.js">https://github.com/alvarotrigo/fullPage.js <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>中文翻译网站： <a class="link" href="http://www.dowebok.com/demo/2014/77/">http://www.dowebok.com/demo/2014/77/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><strong>bootstrap JS 插件：</strong>（现在好像不需要引入jQuery)</p>
+<p>bootstrap 框架也是依赖于 jQuery 开发的，因此里面的 js插件使用 ，也必须引入jQuery 文件。</p>
+<h3 id="案例：toDoList"><a href="#案例：toDoList" class="headerlink" title="案例：toDoList"></a><strong>案例：toDoList</strong></h3><p>① 文本框里面输入内容，按下回车，就可以生成待办事项。</p>
+<p>② 点击待办事项复选框，就可以把当前数据添加到已完成事项里面。</p>
+<p>③ 点击已完成事项复选框，就可以把当前数据添加到待办事项里面。</p>
+<p>④ 但是本页面内容刷新页面不会丢失。</p>
+<p><strong>案例：toDoList 分析</strong></p>
+<p>① 刷新页面不会丢失数据，因此需要用到本地存储 localStorage</p>
+<p><strong>② 核心思路： 不管按下回车，还是点击复选框，都是把本地存储的数据加载到页面中，这样保证刷新关闭页面不会丢失数据</strong></p>
+<p>③ 存储的数据格式：var todolist &#x3D; [{ title : ‘xxx’, done: false}]</p>
+<p>④ 注意点1： 本地存储 localStorage 里面只能存储字符串格式 ，因此需要把对象转换为字符串 JSON.stringify(data)。</p>
+<p>⑤ 注意点2： 获取本地存储数据，需要把里面的字符串转换为对象格式JSON.parse() 我们才能使用里面的数据。</p>
+<p><strong>案例：toDoList 按下回车把新数据添加到本地存储里面</strong></p>
+<p>① 切记： 页面中的数据，都要从本地存储里面获取，这样刷新页面不会丢失数据，所以先要把数据保存到本地存储里面。</p>
+<p>② 利用事件对象.keyCode判断用户按下回车键（13）。</p>
+<p>③ 声明一个数组，保存数据。</p>
+<p>④ 先要读取本地存储原来的数据（声明函数 getData()），放到这个数组里面。</p>
+<p>⑤ 之后把最新从表单获取过来的数据，追加到数组里面。</p>
+<p>⑥ 最后把数组存储给本地存储 (声明函数 savaDate())</p>
+<p><strong>案例：toDoList 本地存储数据渲染加载到页面</strong></p>
+<p>① 因为后面也会经常渲染加载操作，所以声明一个函数 load，方便后面调用</p>
+<p>② 先要读取本地存储数据。（数据不要忘记转换为对象格式）</p>
+<p>③ 之后遍历这个数据（$.each()），有几条数据，就生成几个小li 添加到 ol 里面。</p>
+<p>④ 每次渲染之前，先把原先里面 ol 的内容清空，然后渲染加载最新的数据。</p>
+<p><strong>案例：toDoList 删除操作</strong></p>
+<p>① 点击里面的a链接，不是删除的li，而是删除本地存储对应的数据。</p>
+<p>② 核心原理：先获取本地存储数据，删除对应的数据，保存给本地存储，重新渲染列表li</p>
+<p>③ 我们可以给链接自定义属性记录当前的索引号</p>
+<p>④ 根据这个索引号删除相关的数据—-数组的splice(i, 1)方法</p>
+<p>⑤ 存储修改后的数据，然后存储给本地存储</p>
+<p>⑥ 重新渲染加载数据列表</p>
+<p>⑦ 因为a是动态创建的，我们使用on方法绑定事件</p>
+<p><strong>案例：toDoList 正在进行和已完成选项操作</strong></p>
+<p>① 当我们点击了小的复选框，修改本地存储数据，再重新渲染数据列表。</p>
+<p>② 点击之后，获取本地存储数据。</p>
+<p>③ 修改对应数据属性 done 为当前复选框的checked状态。</p>
+<p>④ 之后保存数据到本地存储</p>
+<p>⑤ 重新渲染加载数据列表</p>
+<p>⑥ load 加载函数里面，新增一个条件,如果当前数据的done为true 就是已经完成的，就把列表渲染加载到 ul 里面</p>
+<p>⑦ 如果当前数据的done 为false， 则是待办事项，就把列表渲染加载到 ol 里面</p>
+<p><strong>案例：toDoList 统计正在进行个数和已经完成个数</strong></p>
+<p>① 在我们load 函数里面操作</p>
+<p>② 声明2个变量 ：todoCount 待办个数 doneCount 已完成个数</p>
+<p>③ 当进行遍历本地存储数据的时候， 如果 数据done为 false， 则 todoCount++, 否则 doneCount++</p>
+<p>④ 最后修改相应的元素 text() </p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>jQuery</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>jQuery常用API</title>
+    <url>/2023/09/19/jQuery%E5%B8%B8%E7%94%A8API/</url>
+    <content><![CDATA[<ul>
+<li>jQuery 选择器</li>
+<li>jQuery 样式操作</li>
+<li>jQuery 效果</li>
+<li>jQuery 属性操作</li>
+<li>jQuery 文本属性值</li>
+<li>jQuery 元素操作</li>
+<li>jQuery 尺寸、位置操作</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="1-jQuery-选择器"><a href="#1-jQuery-选择器" class="headerlink" title="1. jQuery 选择器"></a><strong>1. jQuery 选择器</strong></h3><p><strong>1.1 jQuery 基础选择器</strong></p>
+<p>原生 JS 获取元素方式很多，很杂，而且兼容性情况不一致，因此 jQuery 给我们做了封装，使获取元素统一标准。</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="code"><pre><span class="line">$(“选择器”) <span class="comment">// 里面选择器直接写 CSS 选择器即可，但是要加引号</span></span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2023/09/19/jQuery%E5%B8%B8%E7%94%A8API/1.png" class>
+
+<p><strong>1.2 jQuery 层级选择器</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/19/jQuery%E5%B8%B8%E7%94%A8API/2.png" class>
+
+<p>jQuery 设置样式</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(&#x27;div&#x27;).css(&#x27;属性&#x27;, &#x27;值&#x27;)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>1.3 隐式迭代（重要）</strong></p>
+<p>遍历内部 DOM 元素（伪数组形式存储）的过程就叫做<strong>隐式迭代。</strong></p>
+<p>简单理解：给匹配到的所有元素进行循环遍历，执行相应的方法，而不用我们再进行循环，简化我们的操作，方便我们调用。</p>
+<p><strong>1.4 jQuery 筛选选择器</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/19/jQuery%E5%B8%B8%E7%94%A8API/3.png" class>
+
+<p><strong>1.5 jQuery 筛选方法（重点）</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/19/jQuery%E5%B8%B8%E7%94%A8API/4.png" class>
+
+<p><strong>1.6 jQuery 里面的排他思想</strong></p>
+<p>想要多选一的效果，排他思想：当前元素设置样式，其余的兄弟元素清除式。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(this).css(“color”,”red”);</span><br><span class="line">$(this).siblings(). css(“color”,””);</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>1.7 链式编程</strong></p>
+<p>链式编程是为了节省代码量，看起来更优雅。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(this).css(&#x27;color&#x27;, &#x27;red&#x27;).sibling().css(&#x27;color&#x27;, &#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
+<br>
+
+<h3 id="2-jQuery-样式操作"><a href="#2-jQuery-样式操作" class="headerlink" title="2. jQuery 样式操作"></a><strong>2. jQuery 样式操作</strong></h3><p><strong>2.1 操作 css 方法</strong></p>
+<p>jQuery 可以使用 css 方法来修改简单元素样式； 也可以操作类，修改多个样式。</p>
+<ul>
+<li>参数只写属性名，则是返回属性值</li>
+</ul>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(this).css(&#x27;&#x27;color&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>参数是属性名，属性值，逗号分隔，是设置一组样式，属性必须加引号，值如果是数字可以不用跟单位和引号</li>
+</ul>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(this).css(&#x27;&#x27;color&#x27;&#x27;, &#x27;&#x27;red&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>参数可以是对象形式，方便设置多组样式。属性名和属性值用冒号隔开， 属性可以不用加引号，</li>
+</ul>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(this).css(&#123; &quot;color&quot;:&quot;white&quot;,&quot;font-size&quot;:&quot;20px&quot;&#125;);</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2.2 设置类样式方法</strong></p>
+<p>作用等同于以前的 classList，可以操作类样式， 注意操作类里面的参数不要加点。</p>
+<ul>
+<li>添加类</li>
+</ul>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(“div”).addClass(&#x27;&#x27;current&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>移除类</li>
+</ul>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="code"><pre><span class="line">$(“div”).<span class="built_in">removeClass</span>(<span class="string">&#x27;&#x27;current&#x27;</span><span class="string">&#x27;);</span></span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>切换类</li>
+</ul>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(“div”).toggleClass(&#x27;&#x27;current&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>案例：tab 栏切换分析</strong></p>
+<p>① 点击上部的li，当前li 添加current类，其余兄弟移除类。</p>
+<p>② 点击的同时，得到当前li 的索引号</p>
+<p>③ 让下部里面相应索引号的item显示，其余的item隐藏</p>
+<p><strong>2.3 类操作与className区别</strong></p>
+<p>原生 JS 中 className 会覆盖元素原先里面的类名。</p>
+<p>jQuery 里面类操作只是对指定类进行操作，不影响原先的类名</p>
+<br>
+
+<h3 id="3-jQuery-效果"><a href="#3-jQuery-效果" class="headerlink" title="3. jQuery 效果"></a><strong>3. jQuery 效果</strong></h3><p>jQuery 给我们封装了很多动画效果，最为常见的如下：</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/19/jQuery%E5%B8%B8%E7%94%A8API/5.png" class>
+
+<p><strong>3.1 显示隐藏效果</strong></p>
+<p><strong>1. 显示语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">show([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2. 显示参数</strong></p>
+<p>（1）参数都可以省略， 无动画直接显示。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>3. 隐藏语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">hide([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>4. 隐藏参数</strong></p>
+<p>（1）参数都可以省略， 无动画直接显示。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>5. 切换语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">toggle([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>6. 切换参数</strong></p>
+<p>（1）参数都可以省略， 无动画直接显示。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p>建议：平时一般不带参数，直接显示隐藏即可</p>
+<p><strong>3.2 滑动效果</strong></p>
+<p><strong>1. 下滑效果语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">slideDown([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2. 下滑效果参数</strong></p>
+<p>（1）参数都可以省略。</p>
+<p>（2）speed:三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing:(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>3. 上滑效果语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">slideUp([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>4. 上滑效果参数</strong></p>
+<p>（1）参数都可以省略。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>5. 滑动切换效果语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">slideToggle([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>6. 滑动切换效果参数</strong></p>
+<p>（1）参数都可以省略。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>3.3 事件切换</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">hover([over,]out)</span><br></pre></td></tr></table></figure></div>
+
+<p>（1）over:鼠标移到元素上要触发的函数（相当于mouseenter）</p>
+<p>（2）out:鼠标移出元素要触发的函数（相当于mouseleave）</p>
+<p>（3）如果只写一个函数，则鼠标经过和离开都会触发它</p>
+<p><strong>3.4 动画队列及其停止排队方法</strong></p>
+<p><strong>1. 动画或效果队列</strong></p>
+<p>动画或者效果一旦触发就会执行，如果多次触发，就造成多个动画或者效果排队执行。</p>
+<p><strong>2. 停止排队</strong> stop()</p>
+<p>(1）stop() 方法用于停止动画或效果。</p>
+<p>(2) 注意： stop() 写到动画或者效果的前面， 相当于停止结束上一次的动画。</p>
+<p><strong>3.5 淡入淡出效果</strong></p>
+<p><strong>1. 淡入效果语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">fadeIn([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2. 淡入效果参数</strong></p>
+<p>（1）参数都可以省略。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次</p>
+<p><strong>3. 淡出效果语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">fadeOut([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>4. 淡出效果参数</strong></p>
+<p>（1）参数都可以省略。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>5. 淡入淡出切换效果语法规范</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">fadeToggle([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>6. 淡入淡出切换效果参数</strong></p>
+<p>（1）参数都可以省略。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>7. 渐进方式调整到指定的不透明度</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">fadeTo([[speed],opacity,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>8. 效果参数</strong></p>
+<p>（1）opacity 透明度必须写，取值 0~1 之间。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。必须写</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
+<p><strong>3.6 自定义动画 animate</strong></p>
+<p><strong>1. 语法</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">animate(params,[speed],[easing],[fn])</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2. 参数</strong></p>
+<p>（1）params: 想要更改的样式属性，以对象形式传递，必须写。 属性名可以不用带引号， 如果是复合属性则需要采</p>
+<p>取驼峰命名法 borderLeft。其余参数都可以省略。</p>
+<p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
+<p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
+<p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次</p>
+<br>
+
+<h3 id="4-jQuery-属性操作"><a href="#4-jQuery-属性操作" class="headerlink" title="4. jQuery 属性操作"></a><strong>4. jQuery 属性操作</strong></h3><p><strong>4.1 设置或获取元素固有属性值 prop()</strong></p>
+<p>所谓元素固有属性就是元素本身自带的属性，比如 <a> 元素里面的 href ，比如 <input> 元素里面的 type。</a></p>
+<p><strong>1. 获取属性语法</strong></p>
+<p>prop(‘’属性’’)</p>
+<p><strong>2. 设置属性语法</strong></p>
+<p>prop(‘’属性’’, ‘’属性值’’)</p>
+<p><strong>4.2 设置或获取元素自定义属性值 attr()</strong></p>
+<p>用户自己给元素添加的属性，我们称为自定义属性。 比如给 div 添加 index &#x3D;“1”。</p>
+<p><strong>1. 获取属性语法</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">attr(&#x27;&#x27;属性&#x27;&#x27;) // 类似原生 getAttribute()</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2. 设置属性语法</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">attr(&#x27;&#x27;属性&#x27;&#x27;, &#x27;&#x27;属性值&#x27;&#x27;) // 类似原生 setAttribute()</span><br></pre></td></tr></table></figure></div>
+
+<p>改方法也可以获取 H5 自定义属性</p>
+<p><strong>4.3 数据缓存 data()</strong></p>
+<p>data() 方法可以在指定的元素上存取数据，并不会修改 DOM 元素结构。一旦页面刷新，之前存放的数据都将被移</p>
+<p><strong>1. 附加数据语法</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">data(&#x27;&#x27;name&#x27;&#x27;,&#x27;&#x27;value&#x27;&#x27;) // 向被选元素附加数据</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2. 获取数据语法</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">date(&#x27;&#x27;name&#x27;&#x27;) // 向被选元素获取数据</span><br></pre></td></tr></table></figure></div>
+
+<p>同时，还可以读取 HTML5 自定义属性 data-index ，得到的是数字型</p>
+<br>
+
+<h3 id="5-jQuery-内容文本值"><a href="#5-jQuery-内容文本值" class="headerlink" title="5. jQuery 内容文本值"></a><strong>5. jQuery 内容文本值</strong></h3><p>主要针对元素的内容还有表单的值操作</p>
+<p><strong>1. 普通元素内容 html()（ 相当于原生inner HTML)</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">html() // 获取元素的内容</span><br><span class="line"></span><br><span class="line">html(&#x27;&#x27;内容&#x27;&#x27;) // 设置元素的内容</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>2. 普通元素文本内容 text() (相当与原生 innerText</strong><strong>)</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">text() // 获取元素的文本内容</span><br><span class="line"></span><br><span class="line">text(&#x27;&#x27;文本内容&#x27;&#x27;) // 设置元素的文本内容</span><br></pre></td></tr></table></figure></div>
+
+<p>主要针对元素的内容还有表单的值操作</p>
+<p><strong>3. 表单的值 val()（ 相当于原生value)</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">val() // 获取表单的值</span><br><span class="line"></span><br><span class="line">val(&#x27;&#x27;内容&#x27;&#x27;) // 设置表单的值</span><br></pre></td></tr></table></figure></div>
+
+<br>
+
+<h3 id="6-jQuery-元素操作"><a href="#6-jQuery-元素操作" class="headerlink" title="6. jQuery 元素操作"></a><strong>6. jQuery 元素操作</strong></h3><p>主要是遍历、创建、添加、删除元素操作。</p>
+<p><strong>6.1 遍历元素</strong></p>
+<p>jQuery 隐式迭代是对同一类元素做了同样的操作。 如果想要给同一类元素做不同操作，就需要用到遍历。</p>
+<p><strong>语法1：</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(&quot;div&quot;).each(function (index, domEle) &#123; xxx; &#125;）</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>each() 方法遍历匹配的每一个元素。主要用DOM处理。 each 每一个</li>
+<li>里面的回调函数有2个参数： index 是每个元素的索引号; demEle 是每个DOM元素对象，不是jquery对象</li>
+<li>所以要想使用jquery方法，需要给这个dom元素转换为jquery对象 $(domEle</li>
+</ol>
+<p><strong>语法2：</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$.each(object，function (index, element) &#123; xxx; &#125;）</span><br></pre></td></tr></table></figure></div>
+
+<ol>
+<li>$.each()方法可用于遍历任何对象。主要用于数据处理，比如数组，对象</li>
+<li>里面的函数有2个参数： index 是每个元素的索引号; element 遍历内容</li>
+</ol>
+<p><strong>6.2 创建元素</strong></p>
+<p><strong>语法：</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">$(&#x27;&#x27;<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>&#x27;&#x27;); </span><br></pre></td></tr></table></figure></div>
+
+<p>动态的创建了一个 <li> </li></p>
+<p><strong>6.3 添加元素</strong></p>
+<p><strong>1. 内部添加</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.append(&#x27;&#x27;内容&#x27;&#x27;) </span><br></pre></td></tr></table></figure></div>
+
+<p>把内容放入匹配元素内部最后面，类似原生 appendChild。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.prepend(&#x27;&#x27;内容&#x27;&#x27;) </span><br></pre></td></tr></table></figure></div>
+
+<p>把内容放入匹配元素内部最前面。</p>
+<p><strong>2. 外部添加</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.after(&#x27;&#x27;内容&#x27;&#x27;) // 把内容放入目标元素后面</span><br><span class="line"></span><br><span class="line">element.before(&#x27;&#x27;内容&#x27;&#x27;) // 把内容放入目标元素前面</span><br></pre></td></tr></table></figure></div>
+
+<p>① 内部添加元素，生成之后，它们是父子关系。</p>
+<p>② 外部添加元素，生成之后，他们是兄弟关系</p>
+<p><strong>6.4 删除元素</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="code"><pre><span class="line">element.remove() // 删除匹配的元素（本身）</span><br><span class="line"></span><br><span class="line">element.empty() // 删除匹配的元素集合中所有的子节点</span><br><span class="line"></span><br><span class="line">element.html(&#x27;&#x27;&#x27;&#x27;) // 清空匹配的元素内容</span><br></pre></td></tr></table></figure></div>
+
+<p>① remove 删除元素本身。</p>
+<p>② empt() 和 html(‘’’’) 作用等价，都可以删除元素里面的内容，只不过 html 还可以设置内容。</p>
+<br>
+
+<h3 id="7-jQuery-尺寸、位置操作"><a href="#7-jQuery-尺寸、位置操作" class="headerlink" title="7. jQuery 尺寸、位置操作"></a><strong>7. jQuery 尺寸、位置操作</strong></h3><p><strong>7.1 jQuery 尺寸</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/09/19/jQuery%E5%B8%B8%E7%94%A8API/6.png" class>
+
+<ul>
+<li>以上参数为空，则是获取相应值，返回的是数字型。</li>
+<li>如果参数为数字，则是修改相应值。</li>
+<li>参数可以不必写单位。</li>
+</ul>
+<p><strong>7.2 jQuery 位置</strong></p>
+<p>位置主要有三个： offset()、position()、scrollTop()&#x2F;scrollLeft()</p>
+<p><strong>1. offset() 设置或获取元素偏移</strong></p>
+<p>① offset() 方法设置或返回被选元素相对于<strong>文档</strong>的偏移坐标，跟父级没有关系。</p>
+<p>② 该方法有2个属性 left、top 。offset().top 用于获取距离文档顶部的距离，offset().left 用于获取距离文档左侧的距离。</p>
+<p>③ 可以设置元素的偏移：offset({ top: 10, left: 30 });</p>
+<p><strong>2. position() 获取元素偏移</strong></p>
+<p>① position() 方法用于返回被选元素相对于<strong>带有定位的父级</strong>偏移坐标，如果父级都没有定位，则以文档为准。</p>
+<p>② 该方法有2个属性 left、top。position().top 用于获取距离定位父级顶部的距离，position().left 用于获取距离定位父级左侧的距离。</p>
+<p>③ 该方法只能获取。</p>
+<p><strong>3. scrollTop()&#x2F;scrollLeft() 设置或获取元素被卷去的头部和左侧</strong></p>
+<p>① scrollTop() 方法设置或返回被选元素被卷去的头部。</p>
+<p>② 不跟参数是获取，参数为不带单位的数字则是设置被卷去的头部</p>
+]]></content>
+      <categories>
+        <category>前端</category>
+        <category>jQuery</category>
+      </categories>
+  </entry>
+  <entry>
     <title>PC端和移动端网页特效、本地存储</title>
     <url>/2023/07/31/PC%E7%AB%AF%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%BD%91%E9%A1%B5%E7%89%B9%E6%95%88%E3%80%81%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8/</url>
     <content><![CDATA[<p>一、PC端网页特效</p>
