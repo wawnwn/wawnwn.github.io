@@ -36,7 +36,6 @@
 <meta property="og:image" content="http://wawnwn.github.io/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/image-20220524104951449.png">
 <meta property="og:image" content="http://wawnwn.github.io/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/image-20220320001337145.png">
 <meta property="og:image" content="http://wawnwn.github.io/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/image-20220320001627445.png">
-<meta property="og:image" content="http://wawnwn.github.io/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/image-20211228153827819.png">
 <meta property="og:image" content="http://wawnwn.github.io/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/image-20221120153322455.png">
 <meta property="og:image" content="http://wawnwn.github.io/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/image-20221120153442447.png">
 <meta property="og:image" content="http://wawnwn.github.io/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/20220320_233145.jpg">
@@ -738,7 +737,7 @@
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.atguigu.test08.array;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ObjectArrayTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//声明并创建一个长度为3的矩形对象数组</span></span><br><span class="line">        Rectangle[] array = <span class="keyword">new</span> <span class="title class_">Rectangle</span>[<span class="number">3</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//创建3个矩形对象，并为对象的实例变量赋值，</span></span><br><span class="line">        <span class="comment">//3个矩形对象的长分别是10,20,30</span></span><br><span class="line">        <span class="comment">//3个矩形对象的宽分别是5,15,25</span></span><br><span class="line">        <span class="comment">//调用矩形对象的getInfo()返回对象信息后输出</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; array.length; i++) &#123;</span><br><span class="line">            <span class="comment">//创建矩形对象</span></span><br><span class="line">            array[i] = <span class="keyword">new</span> <span class="title class_">Rectangle</span>();</span><br><span class="line">            <span class="comment">//为矩形对象的成员变量赋值</span></span><br><span class="line">            array[i].length = (i+<span class="number">1</span>) * <span class="number">10</span>;</span><br><span class="line">            array[i].width = (<span class="number">2</span>*i+<span class="number">1</span>) * <span class="number">5</span>;</span><br><span class="line">            <span class="comment">//获取并输出对象对象的信息</span></span><br><span class="line">            System.out.println(array[i].getInfo());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
 <p>内存解析：</p>
-<img lazyload src="/images/loading.svg" data-src="/2023/10/24/Java/Java%E5%9F%BA%E6%9C%AC4/image-20211228153827819.png" class>
+
 
 <h2 id="7-再谈方法"><a href="#7-再谈方法" class="headerlink" title="7. 再谈方法"></a><strong>7.</strong> <strong>再谈方法</strong></h2><h3 id="7-1-方法的重载（overload）"><a href="#7-1-方法的重载（overload）" class="headerlink" title="7.1 方法的重载（overload）"></a><strong>7.1</strong> <strong>方法的重载（overload）</strong></h3><p><strong>7.1.1</strong> <strong>概念及特点</strong></p>
 <ul>
@@ -1166,6 +1165,21 @@
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/10/28/Java/Java%E5%9F%BA%E6%9C%AC5/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Java基本5</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">

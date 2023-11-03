@@ -26,7 +26,7 @@
 <meta property="og:description" content="1. 初识Vue： 想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象； root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法； root容器里的代码被称为【Vue模板】； Vue实例和容器是一一对应的； 真实开发中只有一个Vue实例，并且会配合着组件一起使用； 中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性； 一旦data中的数据发生改变，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-30T07:48:00.000Z">
-<meta property="article:modified_time" content="2023-10-05T07:51:34.041Z">
+<meta property="article:modified_time" content="2023-11-03T08:10:13.199Z">
 <meta property="article:author" content="wawnwn">
 <meta name="twitter:card" content="summary">
     
@@ -309,8 +309,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2023-10-05 15:51:34</span>
-            <span class="mobile">2023-10-05 15:51:34</span>
+            <span class="desktop">2023-11-03 16:10:13</span>
+            <span class="mobile">2023-11-03 16:10:13</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -347,12 +347,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>3.5k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.4k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>13 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>16 分钟</span>
         </span>
     
     
@@ -665,6 +665,79 @@ new Vue(&#123;
 <p>三、备注：</p>
 <p>1.指令定义时不加v-，但使用时要加v-；</p>
 <p>2.指令名如果是多个单词，要使用kebab-case命名方式，不要用camelCase命名。</p>
+<h3 id="17-生命周期"><a href="#17-生命周期" class="headerlink" title="17.生命周期"></a>17.生命周期</h3><p>生命周期：</p>
+<ol>
+<li>又名：生命周期回调函数、生命周期函数、生命周期钩子。</li>
+<li>是什么：Vue在关键时刻帮我们调用的一些特殊名称的函数。</li>
+<li>生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的。</li>
+<li>生命周期函数中的this指向是 <code>vm</code> 或 组件实例对象。</li>
+</ol>
+<p> 常用的生命周期钩子：</p>
+<ol>
+<li>mounted: 发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】。</li>
+<li>beforeDestroy: 清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】。</li>
+</ol>
+<p> 关于销毁Vue实例</p>
+<ol>
+<li>销毁后借助Vue开发者工具看不到任何信息。</li>
+<li>销毁后自定义事件会失效，但原生DOM事件依然有效。</li>
+<li>一般不会在beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程了。</li>
+</ol>
+<p>Vue完成模板的解析并把初始的真实DOM元素放入页面后（挂载完毕）调用mounted</p>
+<h3 id="18-非单文件组件"><a href="#18-非单文件组件" class="headerlink" title="18.非单文件组件"></a>18.非单文件组件</h3><p>Vue中使用组件的三大步骤：</p>
+<p>一、定义组件(创建组件)</p>
+<p>二、注册组件</p>
+<p>三、使用组件(写组件标签)</p>
+<p>一、如何定义一个组件？</p>
+<p>使用Vue.extend(options)创建，其中options和new Vue(options)时传入的那个options几乎一样，但也有点区别；</p>
+<p>区别如下：</p>
+<ol>
+<li>el不要写，为什么？ ——— 最终所有的组件都要经过一个vm的管理，由vm中的el决定服务哪个容器。</li>
+<li>data必须写成函数，为什么？ ———— 避免组件被复用时，数据存在引用关系。</li>
+</ol>
+<p>备注：使用template可以配置组件结构。</p>
+<p>二、如何注册组件？</p>
+<ol>
+<li>局部注册：靠new Vue的时候传入components选项</li>
+<li>全局注册：靠Vue.component(‘组件名’,组件)</li>
+</ol>
+<p>三、编写组件标签：</p>
+<p><school></school></p>
+<p>几个注意点：</p>
+<p><strong>1.关于组件名:</strong></p>
+<p>一个单词组成：</p>
+<p>第一种写法(首字母小写)：school</p>
+<p>第二种写法(首字母大写)：School</p>
+<p>多个单词组成：</p>
+<p>第一种写法(kebab-case命名)：my-school</p>
+<p>第二种写法(CamelCase命名)：MySchool (需要Vue脚手架支持)</p>
+<p>备注：</p>
+<p>(1).组件名尽可能回避HTML中已有的元素名称，例如：h2、H2都不行。</p>
+<p>(2).可以使用name配置项指定组件在开发者工具中呈现的名字。</p>
+<p><strong>2.关于组件标签:</strong></p>
+<p>第一种写法：<school></school></p>
+<p>第二种写法：<school></school></p>
+<p>备注：不用使用脚手架时，<school>会导致后续组件不能渲染。</school></p>
+<p><strong>3.一个简写方式：</strong></p>
+<p>const school &#x3D; Vue.extend(options) 可简写为：const school &#x3D; options</p>
+<p>关于VueComponent：</p>
+<ol>
+<li><p>school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。</p>
+</li>
+<li><p>我们只需要写<school>或<school></school>，Vue解析时会帮我们创建school组件的实例对象，<br>即Vue帮我们执行的：new VueComponent(options)。</school></p>
+</li>
+<li><p>特别注意：每次调用Vue.extend，返回的都是一个全新的VueComponent！！！！</p>
+</li>
+<li><p>关于this指向：</p>
+<p> (1).组件配置中：<br> data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【VueComponent实例对象】。</p>
+<p> (2).new Vue(options)配置中：<br> data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【Vue实例对象】。</p>
+</li>
+<li><p>VueComponent的实例对象，以后简称vc（也可称之为：组件实例对象）。<br> Vue的实例对象，以后简称vm。</p>
+</li>
+</ol>
+<p>1.一个重要的内置关系：VueComponent.prototype.<strong>proto</strong> &#x3D;&#x3D;&#x3D; Vue.prototype</p>
+<p>2.为什么要有这个关系：让组件实例对象（vc）可以访问到 Vue原型上的属性、方法。</p>
+<p>​    </p>
 
         </div>
 
@@ -679,7 +752,7 @@ new Vue(&#123;
         
             <li>
                 <strong>更新于
-                    :</strong> 2023-10-05 15:51:34
+                    :</strong> 2023-11-03 16:10:13
             </li>
         
         <li>
@@ -795,7 +868,7 @@ new Vue(&#123;
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">vue_basic</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9D%E8%AF%86Vue%EF%BC%9A"><span class="nav-text">1. 初识Vue：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Vue%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E6%9C%892%E5%A4%A7%E7%B1%BB%EF%BC%9A"><span class="nav-text">2. Vue模板语法有2大类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Vue%E4%B8%AD%E6%9C%892%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-text">3. Vue中有2种数据绑定的方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-data%E4%B8%8Eel%E7%9A%842%E7%A7%8D%E5%86%99%E6%B3%95"><span class="nav-text">4. data与el的2种写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-MVVM%E6%A8%A1%E5%9E%8B"><span class="nav-text">5. MVVM模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86"><span class="nav-text">6. 数据代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-text">7. 事件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="nav-text">8. 计算属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7"><span class="nav-text">9. 监视属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E7%BB%91%E5%AE%9A%E6%A0%B7%E5%BC%8F%EF%BC%9A"><span class="nav-text">10. 绑定样式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%EF%BC%9A"><span class="nav-text">11. 条件渲染：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-text">12. 列表渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E6%94%B6%E9%9B%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="nav-text">13. 收集表单数据：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%9A"><span class="nav-text">14. 过滤器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E5%86%85%E7%BD%AE%E6%8C%87%E4%BB%A4"><span class="nav-text">15. 内置指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-text">16. 自定义属性</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9D%E8%AF%86Vue%EF%BC%9A"><span class="nav-text">1. 初识Vue：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Vue%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E6%9C%892%E5%A4%A7%E7%B1%BB%EF%BC%9A"><span class="nav-text">2. Vue模板语法有2大类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Vue%E4%B8%AD%E6%9C%892%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-text">3. Vue中有2种数据绑定的方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-data%E4%B8%8Eel%E7%9A%842%E7%A7%8D%E5%86%99%E6%B3%95"><span class="nav-text">4. data与el的2种写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-MVVM%E6%A8%A1%E5%9E%8B"><span class="nav-text">5. MVVM模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86"><span class="nav-text">6. 数据代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-text">7. 事件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="nav-text">8. 计算属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7"><span class="nav-text">9. 监视属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E7%BB%91%E5%AE%9A%E6%A0%B7%E5%BC%8F%EF%BC%9A"><span class="nav-text">10. 绑定样式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%EF%BC%9A"><span class="nav-text">11. 条件渲染：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-text">12. 列表渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E6%94%B6%E9%9B%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="nav-text">13. 收集表单数据：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%9A"><span class="nav-text">14. 过滤器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E5%86%85%E7%BD%AE%E6%8C%87%E4%BB%A4"><span class="nav-text">15. 内置指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-text">16. 自定义属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">17.生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-%E9%9D%9E%E5%8D%95%E6%96%87%E4%BB%B6%E7%BB%84%E4%BB%B6"><span class="nav-text">18.非单文件组件</span></a></li></ol>
 
     </div>
 </div>
