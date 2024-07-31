@@ -18,12 +18,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="目标 能够使用精灵图 能够使用字体图报表 能够写出 CSS 三角 能够写出常见的 CSS 用户界面样式 能够说出常见的布局技巧  目录 精灵图 字体图标 CSS 三角 CSS 用户界面样式 vertical-align 属性应用 溢出的文字省略号显示 常见布局技巧">
+        <meta name="description" content="目标  能够使用精灵图 能够使用字体图报表 能够写出 CSS 三角 能够写出常见的 CSS 用户界面样式 能够说出常见的布局技巧  目录  精灵图 字体图标 CSS 三角 CSS 用户界面样式 vertical-align 属性应用 溢出的文字省略号显示 常见布局技巧">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS高级技巧">
 <meta property="og:url" content="http://wawnwn.github.io/2022/10/06/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/CSS%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="wawn&#39;s blog">
-<meta property="og:description" content="目标 能够使用精灵图 能够使用字体图报表 能够写出 CSS 三角 能够写出常见的 CSS 用户界面样式 能够说出常见的布局技巧  目录 精灵图 字体图标 CSS 三角 CSS 用户界面样式 vertical-align 属性应用 溢出的文字省略号显示 常见布局技巧">
+<meta property="og:description" content="目标  能够使用精灵图 能够使用字体图报表 能够写出 CSS 三角 能够写出常见的 CSS 用户界面样式 能够说出常见的布局技巧  目录  精灵图 字体图标 CSS 三角 CSS 用户界面样式 vertical-align 属性应用 溢出的文字省略号显示 常见布局技巧">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-10-06T06:19:59.000Z">
 <meta property="article:modified_time" content="2023-09-16T06:05:13.465Z">
@@ -576,14 +576,16 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+            <h3 id="目标">目标</h3>
+<ul>
 <li>能够使用精灵图</li>
 <li>能够使用字体图报表</li>
 <li>能够写出 CSS 三角</li>
 <li>能够写出常见的 CSS 用户界面样式</li>
 <li>能够说出常见的布局技巧</li>
 </ul>
-<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<h2 id="目录">目录</h2>
+<ul>
 <li>精灵图</li>
 <li>字体图标</li>
 <li>CSS 三角</li>
@@ -593,11 +595,13 @@
 <li>常见布局技巧</li>
 </ul>
 <span id="more"></span>
-
-<h3 id="1-精灵图"><a href="#1-精灵图" class="headerlink" title="1. 精灵图"></a>1. 精灵图</h3><h4 id="1-1-为什么需要精灵图"><a href="#1-1-为什么需要精灵图" class="headerlink" title="1.1 为什么需要精灵图"></a>1.1 为什么需要精灵图</h4><p>一个网页中往往会应用很多小的背景图像作为修饰，当网页中的图像过多时，图预期就会频繁地接收和发送请求图片，造成服务器请求压力过大，这将大大降低页面的加载速度</p>
-<p>精灵技术的目的：<strong>为了有效地减少服务器接收和发送请求的次数，提高页面的加载速度，</strong>出现了 CSS 精灵技术（也称CSS Sprites、CSS 雪碧）</p>
+<h3 id="1-精灵图">1. 精灵图</h3>
+<h4 id="1-1-为什么需要精灵图">1.1 为什么需要精灵图</h4>
+<p>一个网页中往往会应用很多小的背景图像作为修饰，当网页中的图像过多时，图预期就会频繁地接收和发送请求图片，造成服务器请求压力过大，这将大大降低页面的加载速度</p>
+<p>精灵技术的目的：**为了有效地减少服务器接收和发送请求的次数，提高页面的加载速度，**出现了 CSS 精灵技术（也称CSS Sprites、CSS 雪碧）</p>
 <p><strong>核心原理：将网页中的一些小背景图像整合到一张大图中，这样服务器只需要一次请求就可以了</strong></p>
-<h4 id="1-2-精灵图（sprites-的使用"><a href="#1-2-精灵图（sprites-的使用" class="headerlink" title="1.2 精灵图（sprites)的使用"></a>1.2 精灵图（sprites)的使用</h4><p>使用精灵图核心：</p>
+<h4 id="1-2-精灵图（sprites-的使用">1.2 精灵图（sprites)的使用</h4>
+<p>使用精灵图核心：</p>
 <ol>
 <li>精灵技术主要针对背景图片使用。就是把多个小背景图片整合到一张大图片中</li>
 <li>这个大图片也称为 sprites 精灵图 或者 雪碧图</li>
@@ -606,7 +610,9 @@
 <li>因为一般情况下都是往上往左移动，所以数值是负值</li>
 <li>使用精灵图的时候需要精确测量，每个小背景图片的大小和位置</li>
 </ol>
-<h3 id="2-字体图标"><a href="#2-字体图标" class="headerlink" title="2.字体图标"></a>2.字体图标</h3><h4 id="2-1-字体图标的产生"><a href="#2-1-字体图标的产生" class="headerlink" title="2.1 字体图标的产生"></a>2.1 字体图标的产生</h4><p>字体图标的使用场景：主要用于显示网页中通用、常用的一些小图标</p>
+<h3 id="2-字体图标">2.字体图标</h3>
+<h4 id="2-1-字体图标的产生">2.1 字体图标的产生</h4>
+<p>字体图标的使用场景：主要用于显示网页中通用、常用的一些小图标</p>
 <p>精灵图是有诸多有优点的，但是缺点很明显</p>
 <ol>
 <li>图片文件还是比较大的</li>
@@ -615,7 +621,8 @@
 </ol>
 <p>此时，有一种技术的出现很好的解决了以上问题，就是<strong>字体图标iconfont</strong></p>
 <p>字体图标可以为前端工程师提供一种方便高效的图标使用方式，展示的是图标，本质属于字体</p>
-<h4 id="2-2-字体图标的优点"><a href="#2-2-字体图标的优点" class="headerlink" title="2.2 字体图标的优点"></a>2.2 字体图标的优点</h4><ul>
+<h4 id="2-2-字体图标的优点">2.2 字体图标的优点</h4>
+<ul>
 <li>轻量级：一个图标字体要比一系列的图像要小。一旦字体加载了，图标就会马上渲染出来，减少了服务器请求</li>
 <li>灵活性：本质其实是文字，可以很随意的改变颜色，产生阴影、透明效果、旋转等</li>
 <li>兼容性：几乎支持所有的浏览器，请放心使用</li>
@@ -632,52 +639,62 @@
 <li>字体图标的引入（引入到我们html页面中）</li>
 <li>字体图标的追加（以后添加新的小图标）</li>
 </ol>
-<h4 id="2-3-字体图标的下载"><a href="#2-3-字体图标的下载" class="headerlink" title="2.3 字体图标的下载"></a>2.3 字体图标的下载</h4><p>推荐下载网站：</p>
+<h4 id="2-3-字体图标的下载">2.3 字体图标的下载</h4>
+<p>推荐下载网站：</p>
 <ul>
-<li><p><a class="link" target="_blank" rel="noopener" href="http://icomoon.io/">icoMoon <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 	推荐指数：五颗星</p>
+<li>
+<p><a class="link" target="_blank" rel="noopener" href="http://icomoon.io">icoMoon <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> 	推荐指数：五颗星</p>
 <p>icoMoon 成立于2011年，推出了第一个自定义图标字体生成器，它允许用户选择所需要的图标，是他们成一字型。该字库内容种类繁多，非常全面，唯一的遗憾是国外服务器，打开网速较慢</p>
 </li>
-<li><p><a class="link" target="_blank" rel="noopener" href="http://www.iconfont.cn/">阿里 iconfont 字体 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>      推荐指数：五颗星</p>
+<li>
+<p><a class="link" target="_blank" rel="noopener" href="http://www.iconfont.cn/">阿里 iconfont 字体 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>      推荐指数：五颗星</p>
 <p>这个是阿里妈妈M2UX的一个 iconfont 字体图标字库，包含了淘宝图标库和阿里妈妈图标库。可以使用AI制作图标上传生成。重点是，免费！</p>
 </li>
 </ul>
-<h4 id="2-4-字体图标的引入"><a href="#2-4-字体图标的引入" class="headerlink" title="2.4 字体图标的引入"></a>2.4 字体图标的引入</h4><p>下载完毕之后，注意原先的文件不要删，后面要用</p>
+<h4 id="2-4-字体图标的引入">2.4 字体图标的引入</h4>
+<p>下载完毕之后，注意原先的文件不要删，后面要用</p>
 <p><strong>字体文件格式：</strong></p>
 <p>不同浏览器所支持的字体格式是不一样的，字体图标之所以兼容，就是因为包含了主流浏览器支持的字体文件</p>
 <ol>
-<li><p>TureType(.ttf)格式，.ttf 字体是Windows和Mac的最常见的字体，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome4+、Safari3+、Opera10+、iOSMobile、Safari4.2+ ；</p>
+<li>
+<p>TureType(.ttf)格式，.ttf 字体是Windows和Mac的最常见的字体，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome4+、Safari3+、Opera10+、iOSMobile、Safari4.2+ ；</p>
 </li>
-<li><p>Web Open Font Fromat(.woff)格式woff字体，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome6+、Safari3.6+、Opera11.1+；</p>
+<li>
+<p>Web Open Font Fromat(.woff)格式woff字体，支持这种字体的浏览器有IE9+、Firefox3.5+、Chrome6+、Safari3.6+、Opera11.1+；</p>
 </li>
-<li><p>Embedded Open Type(.eot)格式，.eot字体是IE专用字体，支持这种字体的浏览器有IE4+;</p>
+<li>
+<p>Embedded Open Type(.eot)格式，.eot字体是IE专用字体，支持这种字体的浏览器有IE4+;</p>
 </li>
-<li><p>SVG(.svg)格式，.svg字体是基于SVG字体渲染的一种格式，支持这种字体的浏览器Chorme4+、Safari3.1+、Opera10.0+、iOS Mobile Safari3.2+；</p>
+<li>
+<p>SVG(.svg)格式，.svg字体是基于SVG字体渲染的一种格式，支持这种字体的浏览器Chorme4+、Safari3.1+、Opera10.0+、iOS Mobile Safari3.2+；</p>
 </li>
-<li><p>把下载包里面的 fonts 文件夹放入页面根目录下</p>
+<li>
+<p>把下载包里面的 fonts 文件夹放入页面根目录下</p>
 </li>
-<li><p>在CSS样式中全局声明字体：简单理解把这些字体文件通过css引入到我们页面中。一定注意字体文件路径的问题</p>
+<li>
+<p>在CSS样式中全局声明字体：简单理解把这些字体文件通过css引入到我们页面中。一定注意字体文件路径的问题</p>
 </li>
 </ol>
 <div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&#x27;icomoon&#x27;</span>;</span><br><span class="line">  <span class="attribute">src</span>:  <span class="built_in">url</span>(<span class="string">&#x27;fonts/icomoon.eot?p4ssmb&#x27;</span>);</span><br><span class="line">  <span class="attribute">src</span>:  <span class="built_in">url</span>(<span class="string">&#x27;fonts/icomoon.eot?p4ssmb#iefix&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;embedded-opentype&#x27;</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">&#x27;fonts/icomoon.ttf?p4ssmb&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;truetype&#x27;</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">&#x27;fonts/icomoon.woff?p4ssmb&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;woff&#x27;</span>),</span><br><span class="line">    <span class="built_in">url</span>(<span class="string">&#x27;fonts/icomoon.svg?p4ssmb#icomoon&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;svg&#x27;</span>);</span><br><span class="line">  <span class="attribute">font-weight</span>: normal;</span><br><span class="line">  <span class="attribute">font-style</span>: normal;</span><br><span class="line">  <span class="attribute">font-display</span>: block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
 <ol start="3">
 <li>html 标签内添加小图标</li>
 </ol>
-<h4 id="2-5-字体图标的追加"><a href="#2-5-字体图标的追加" class="headerlink" title="2.5 字体图标的追加"></a>2.5 字体图标的追加</h4><p>如果工作中，原来的字体图标不够用了，我们需要添加新的字体图标到原来的字体文件中</p>
+<h4 id="2-5-字体图标的追加">2.5 字体图标的追加</h4>
+<p>如果工作中，原来的字体图标不够用了，我们需要添加新的字体图标到原来的字体文件中</p>
 <p>把压缩包里面的selection.json重新上传，然后选中自己想要的新的图标，重新下载压缩包，并替换原来的文件即可、</p>
-<h3 id="3-CSS三角"><a href="#3-CSS三角" class="headerlink" title="3.  CSS三角"></a>3.  CSS三角</h3><p>网页中常见的一些三角形，使用CSS直接画出来就可以，不必做成图片或者字体图标</p>
+<h3 id="3-CSS三角">3.  CSS三角</h3>
+<p>网页中常见的一些三角形，使用CSS直接画出来就可以，不必做成图片或者字体图标</p>
 <div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">50px</span> solid transplant;</span><br><span class="line">    <span class="attribute">border-top-color</span>: pink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="4-CSS用户界面样式"><a href="#4-CSS用户界面样式" class="headerlink" title="4. CSS用户界面样式"></a>4. CSS用户界面样式</h3><h4 id="1-什么是界面样式"><a href="#1-什么是界面样式" class="headerlink" title="1. 什么是界面样式"></a>1. 什么是界面样式</h4><p>所谓的界面样式，就是更改一些用户操作样式，以便提高更好的用户体验</p>
+<h3 id="4-CSS用户界面样式">4. CSS用户界面样式</h3>
+<h4 id="1-什么是界面样式">1. 什么是界面样式</h4>
+<p>所谓的界面样式，就是更改一些用户操作样式，以便提高更好的用户体验</p>
 <ul>
 <li>更改用户的鼠标样式</li>
 <li>表单轮廓</li>
 <li>防止表单域拖拽</li>
 </ul>
-<h4 id="2-鼠标样式-cursor"><a href="#2-鼠标样式-cursor" class="headerlink" title="2.鼠标样式 cursor"></a>2.鼠标样式 cursor</h4><div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
+<h4 id="2-鼠标样式-cursor">2.鼠标样式 cursor</h4>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 <p>设置或检索在对象上移动的鼠标指针采用何种系统预定义的光标形状</p>
 <table>
 <thead>
@@ -686,7 +703,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>default</td>
 <td>小白 默认</td>
 </tr>
@@ -706,17 +724,17 @@
 <td>not-allowed</td>
 <td>禁止</td>
 </tr>
-</tbody></table>
-<h4 id="3-轮廓线-outline"><a href="#3-轮廓线-outline" class="headerlink" title="3 .轮廓线 outline"></a>3 .轮廓线 outline</h4><p>给表单添加<code>outline: 0;</code>或者<code>outline: none;</code>样式后，就可以去掉默认的蓝色边框</p>
-<h4 id="4-防止拖拽文本域-resize"><a href="#4-防止拖拽文本域-resize" class="headerlink" title="4. 防止拖拽文本域 resize"></a>4. 防止拖拽文本域 resize</h4><p>实际开发中，我们文本域右下角是不可以拖拽的</p>
+</tbody>
+</table>
+<h4 id="3-轮廓线-outline">3 .轮廓线 outline</h4>
+<p>给表单添加<code>outline: 0;</code>或者<code>outline: none;</code>样式后，就可以去掉默认的蓝色边框</p>
+<h4 id="4-防止拖拽文本域-resize">4. 防止拖拽文本域 resize</h4>
+<p>实际开发中，我们文本域右下角是不可以拖拽的</p>
 <div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">textarea</span> &#123;</span><br><span class="line">    <span class="attribute">resize</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="5-vertical-align-属性应用"><a href="#5-vertical-align-属性应用" class="headerlink" title="5. vertical-align 属性应用"></a>5. vertical-align 属性应用</h3><p>CSS的 vertical-align 属性使用场景：经常用于设置图片或者表单（行内块元素）和文字垂直对齐</p>
+<h3 id="5-vertical-align-属性应用">5. vertical-align 属性应用</h3>
+<p>CSS的 vertical-align 属性使用场景：经常用于设置图片或者表单（行内块元素）和文字垂直对齐</p>
 <p>官方解释：用于设置一个元素的垂直对齐方式，但是它只针对于行内元素或者行内块元素有效</p>
 <div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vertical-align</span>: baseline | top | middle | bottom</span><br></pre></td></tr></table></figure></div>
-
 <table>
 <thead>
 <tr>
@@ -724,7 +742,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>baseline</td>
 <td>默认。元素放在父元素的基线上</td>
 </tr>
@@ -740,7 +759,8 @@
 <td>bottom</td>
 <td>把元素的顶端与行中最低的元素的顶端对齐</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <ol>
 <li><strong>图片、表单和文字对齐</strong></li>
 </ol>
@@ -756,29 +776,33 @@
 <li>给图片添加 vertical-align: middle | top | bottom 等。（提倡使用的）</li>
 <li>把图片转换为块级元素 display: block;</li>
 </ol>
-<h3 id="6-溢出文字省略号表示"><a href="#6-溢出文字省略号表示" class="headerlink" title="6. 溢出文字省略号表示"></a>6. 溢出文字省略号表示</h3><h4 id="1-单行文本溢出显示省略号—必须满足三个条件"><a href="#1-单行文本溢出显示省略号—必须满足三个条件" class="headerlink" title="1. 单行文本溢出显示省略号—必须满足三个条件"></a>1. 单行文本溢出显示省略号—必须满足三个条件</h4><div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1. 先强制一行内显示文本 */</span></span><br><span class="line"><span class="attribute">white-space</span>: nowrap; (默认 <span class="attribute">normal</span> 自动换行)</span><br><span class="line"><span class="comment">/* 2. 超出的部分隐藏 */</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="comment">/* 3. 文字用省略号替代超出的部分 */</span></span><br><span class="line">text0-<span class="attribute">overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="2-多行文本溢出显示省略号"><a href="#2-多行文本溢出显示省略号" class="headerlink" title="2. 多行文本溢出显示省略号"></a>2. 多行文本溢出显示省略号</h4><p>多行文本溢出显示省略号，有较大兼容性问题，适合于webKit浏览器或移动端（移动端大部分是webkit内核）</p>
+<h3 id="6-溢出文字省略号表示">6. 溢出文字省略号表示</h3>
+<h4 id="1-单行文本溢出显示省略号—必须满足三个条件">1. 单行文本溢出显示省略号—必须满足三个条件</h4>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1. 先强制一行内显示文本 */</span></span><br><span class="line"><span class="attribute">white-space</span>: nowrap; (默认 <span class="attribute">normal</span> 自动换行)</span><br><span class="line"><span class="comment">/* 2. 超出的部分隐藏 */</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="comment">/* 3. 文字用省略号替代超出的部分 */</span></span><br><span class="line">text0-<span class="attribute">overflow</span>: ellipsis;</span><br></pre></td></tr></table></figure></div>
+<h4 id="2-多行文本溢出显示省略号">2. 多行文本溢出显示省略号</h4>
+<p>多行文本溢出显示省略号，有较大兼容性问题，适合于webKit浏览器或移动端（移动端大部分是webkit内核）</p>
 <div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"><span class="comment">/* 弹性伸缩盒子模型显示 */</span></span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line"><span class="comment">/* 限制在一个块元素显示的文本的行数 */</span></span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>;</span><br><span class="line"><span class="comment">/* 设置或检索伸缩盒对象的子元素的排列方式 */</span></span><br><span class="line">-webkit-box-orient: vertical;</span><br></pre></td></tr></table></figure></div>
-
 <p>更推荐让后台人员来做这个效果，因为后台人员可以设置显示多少个字，操作更简单</p>
-<h3 id="7-常见布局技巧"><a href="#7-常见布局技巧" class="headerlink" title="7. 常见布局技巧"></a>7. 常见布局技巧</h3><p><strong>巧妙利用一个技术更快更好的布局</strong></p>
+<h3 id="7-常见布局技巧">7. 常见布局技巧</h3>
+<p><strong>巧妙利用一个技术更快更好的布局</strong></p>
 <ol>
 <li>margin 负值的运用</li>
 <li>文字围绕浮动元素</li>
 <li>行内块的巧妙运用</li>
 <li>CSS三角强化</li>
 </ol>
-<h4 id="1-margin-负值的运用"><a href="#1-margin-负值的运用" class="headerlink" title="1. margin 负值的运用"></a>1. margin 负值的运用</h4><ol>
+<h4 id="1-margin-负值的运用">1. margin 负值的运用</h4>
+<ol>
 <li>让每一个盒子margin-left:-1px；向左平移正好压住相邻盒子边框</li>
 <li>鼠标经过某个盒子的时候，提高当前盒子的层级即可（如果没有定位，则加相对定位（保留位置），如果有定位，则加z-index）</li>
 </ol>
-<h4 id="2-文字围绕浮动元素"><a href="#2-文字围绕浮动元素" class="headerlink" title="2. 文字围绕浮动元素"></a>2. 文字围绕浮动元素</h4><p>巧妙利用浮动元素不会压住文字的特性</p>
-<h4 id="3-行内块的巧妙运用"><a href="#3-行内块的巧妙运用" class="headerlink" title="3. 行内块的巧妙运用"></a>3. 行内块的巧妙运用</h4><h4 id="4-CSS三角强化"><a href="#4-CSS三角强化" class="headerlink" title="4. CSS三角强化"></a>4. CSS三角强化</h4><div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">border-color</span>: transparent red transparent transparent;</span><br><span class="line"><span class="attribute">border-style</span>: solid;</span><br><span class="line"><span class="attribute">border-width</span>: <span class="number">22px</span> <span class="number">8px</span> <span class="number">0</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="8-CSS初始化"><a href="#8-CSS初始化" class="headerlink" title="8. CSS初始化"></a>8. CSS初始化</h3><p>不同浏览器对有些标签的默认值是不同的，为了消除不同浏览器对HTML文本呈现的差异，照顾浏览器的兼容，我们需要对CSS初始化</p>
+<h4 id="2-文字围绕浮动元素">2. 文字围绕浮动元素</h4>
+<p>巧妙利用浮动元素不会压住文字的特性</p>
+<h4 id="3-行内块的巧妙运用">3. 行内块的巧妙运用</h4>
+<h4 id="4-CSS三角强化">4. CSS三角强化</h4>
+<div class="highlight-container" data-rel="Css"><figure class="iseeu highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">border-color</span>: transparent red transparent transparent;</span><br><span class="line"><span class="attribute">border-style</span>: solid;</span><br><span class="line"><span class="attribute">border-width</span>: <span class="number">22px</span> <span class="number">8px</span> <span class="number">0</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure></div>
+<h3 id="8-CSS初始化">8. CSS初始化</h3>
+<p>不同浏览器对有些标签的默认值是不同的，为了消除不同浏览器对HTML文本呈现的差异，照顾浏览器的兼容，我们需要对CSS初始化</p>
 <p>简单理解：CSS初始化是指重设浏览器的样式（也称为CSS reset）</p>
 <p>每个网页都必须首先进行CSS初始化</p>
 <p>Unicode 编码字体：</p>
@@ -953,7 +977,7 @@
                     </span>
                     
                         <span>
-                            共 331.5k 字
+                            共 331.2k 字
                         </span>
                     
                 </p>
