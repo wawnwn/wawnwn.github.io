@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="wawn">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://wawnwn.github.io/2023/07/18/前端/html-css-js基础/事件高级/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="注册事件（绑定事件） 删除事件（解绑事件） DOM事件流 事件对象 阻止事件冒泡 事件委托（代理、委派） 常用的鼠标事件 常用的键盘事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件高级">
+<meta property="og:url" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/index.html">
+<meta property="og:site_name" content="wawn&#39;s blog">
+<meta property="og:description" content="注册事件（绑定事件） 删除事件（解绑事件） DOM事件流 事件对象 阻止事件冒泡 事件委托（代理、委派） 常用的鼠标事件 常用的键盘事件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/2.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/3.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/4.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/5.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/6.png">
+<meta property="article:published_time" content="2023-07-18T10:36:50.000Z">
+<meta property="article:modified_time" content="2023-09-16T06:03:35.567Z">
+<meta property="article:author" content="wawnwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/1.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/null" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/null">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/null">
+    <!--- Page Info-->
+    
+    <title>
+        
+            事件高级 -
+        
+        wawn&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        wawn&#39;s blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                wawn&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    PHOTO
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                PHOTO
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">事件高级</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/head.webp">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">wawn</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-07-18 18:36:50</span>
+        <span class="mobile">2023-07-18 18:36:50</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-09-16 14:03:35</span>
+            <span class="mobile">2023-09-16 14:03:35</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/Web-APIs/">Web-APIs</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>7 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <ol>
+<li>注册事件（绑定事件）</li>
+<li>删除事件（解绑事件）</li>
+<li>DOM事件流</li>
+<li>事件对象</li>
+<li>阻止事件冒泡</li>
+<li>事件委托（代理、委派）</li>
+<li>常用的鼠标事件</li>
+<li>常用的键盘事件</li>
+</ol>
+<span id="more"></span>
+
+<h3 id="一、注册事件（绑定事件）"><a href="#一、注册事件（绑定事件）" class="headerlink" title="一、注册事件（绑定事件）"></a>一、注册事件（绑定事件）</h3><p><strong>1.1 注册事件概述</strong></p>
+<p>给元素添加事件，称为注册事件或者绑定事件。</p>
+<p>注册事件有两种方式：传统方式和方法监听注册方式</p>
+<p><strong>传统注册方式</strong></p>
+<ul>
+<li>利用 on 开头的事件 onclick </li>
+<li>&lt;button onclick&#x3D;“alert(‘hi~’)”&gt;</li>
+<li>btn.onclick &#x3D; function() {} </li>
+<li>特点： 注册事件的<strong>唯一性</strong></li>
+<li>同一个元素同一个事件只能设置一个处理函数，最后注册的处理函数将会覆盖前面注册的处理函数</li>
+</ul>
+<p><strong>方法监听注册方式</strong></p>
+<ul>
+<li>w3c 标准 推荐方式</li>
+<li>addEventListener() 它是一个方法</li>
+<li>IE9 之前的 IE 不支持此方法，可使用 attachEvent() 代替</li>
+<li>特点：同一个元素同一个事件可以注册多个监听器</li>
+<li>按注册顺序依次执行</li>
+</ul>
+<p><strong>1.2 addEventListener 事件监听方式</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eventTarget.addEventListener(type, listener[, useCapture])</span><br></pre></td></tr></table></figure></div>
+
+<p>eventTarget.addEventListener()方法将指定的监听器注册到 eventTarget（目标对象）上，当该对象触发指定的事件时，就会执行事件处理函数。</p>
+<p>该方法接收三个参数：</p>
+<ul>
+<li>type：事件类型字符串，比如 click 、mouseover ，注意这里不要带 on</li>
+<li>listener：事件处理函数，事件发生时，会调用该监听函数</li>
+<li>useCapture：可选参数，是一个布尔值，默认是 false。学完 DOM 事件流后，我们再进一步学习</li>
+</ul>
+<p><strong>1.3 attachEvent 事件监听方式</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eventTarget.attachEvent(eventNameWithOn, callback)</span><br></pre></td></tr></table></figure></div>
+
+<p>eventTarget.attachEvent()方法将指定的监听器注册到 eventTarget（目标对象） 上，当该对象触发指定的事件时，指定的回调函数就会被执行。</p>
+<p>该方法接收两个参数：</p>
+<ul>
+<li>eventNameWithOn：事件类型字符串，比如 onclick 、onmouseover ，这里要带 on</li>
+<li>callback： 事件处理函数，当目标触发事件时回调函数被调用</li>
+</ul>
+<p><strong>注意：</strong>IE8 及早期版本支持</p>
+<h3 id="二、删除事件（解绑事件）"><a href="#二、删除事件（解绑事件）" class="headerlink" title="二、删除事件（解绑事件）"></a>二、删除事件（解绑事件）</h3><p><strong>1. 传统注册方式</strong></p>
+<p>eventTarget.onclick &#x3D; null;</p>
+<p><strong>2. 方法监听注册方式</strong></p>
+<p>① eventTarget.removeEventListener(type, listener[, useCapture]);</p>
+<p>② eventTarget.detachEvent(eventNameWithOn, callback);</p>
+<h3 id="三、DOM事件流"><a href="#三、DOM事件流" class="headerlink" title="三、DOM事件流"></a>三、DOM事件流</h3><p>事件流描述的是从页面中接收事件的顺序。</p>
+<p>事件发生时会在元素节点之间按照特定的顺序传播，这个传播过程即 DOM 事件流。</p>
+<p>比如我们给一个div 注册了点击事件：</p>
+<p>DOM 事件流分为3个阶段：</p>
+<ol>
+<li>捕获阶段</li>
+<li>当前目标阶段</li>
+<li>冒泡阶段</li>
+</ol>
+<ul>
+<li>事件冒泡： IE 最早提出，事件开始时由最具体的元素接收，然后逐级向上传播到到 DOM 最顶层节点的过程。</li>
+<li>事件捕获： 网景最早提出，由 DOM 最顶层节点开始，然后逐级向下传播到到最具体的元素接收的过程。</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/1.png" class>
+
+<p><strong>注意</strong></p>
+<ol>
+<li>JS 代码中只能执行捕获或者冒泡其中的一个阶段。</li>
+<li>onclick 和 attachEvent 只能得到冒泡阶段。</li>
+<li>addEventListener(type, listener[, useCapture])第三个参数如果是 true，表示在事件捕获阶段调用事件处理程序；如果是 false（不写默认就是false），表示在事件冒泡阶段调用事件处理程序。</li>
+<li>实际开发中我们很少使用事件捕获，我们更关注事件冒泡。</li>
+<li>有些事件是没有冒泡的，比如 onblur、onfocus、onmouseenter、onmouseleave</li>
+<li>事件冒泡有时候会带来麻烦，有时候又会帮助很巧妙的做某些事件，我们后面讲解。</li>
+</ol>
+<h3 id="四、事件对象"><a href="#四、事件对象" class="headerlink" title="四、事件对象"></a>四、事件对象</h3><p><strong>4.1 什么是事件对象</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">eventTarget.onclick = function(event) &#123;&#125; </span><br><span class="line">eventTarget.addEventListener(&#x27;click&#x27;, function(event) &#123;&#125;）</span><br><span class="line">// 这个 event 就是事件对象，我们还喜欢的写成 e 或者 evt</span><br></pre></td></tr></table></figure></div>
+
+<p>官方解释：event 对象代表事件的状态，比如键盘按键的状态、鼠标的位置、鼠标按钮的状态。</p>
+<p>简单理解：事件发生后，跟事件相关的一系列信息数据的集合都放到这个对象里面，这个对象就是事件对象event，它有很多属性和方法。</p>
+<p>比如：</p>
+<ol>
+<li>谁绑定了这个事件。</li>
+<li>鼠标触发事件的话，会得到鼠标的相关信息，如鼠标位置。</li>
+<li>键盘触发事件的话，会得到键盘的相关信息，如按了哪个键。</li>
+</ol>
+<p><strong>4.2 事件对象的使用语法</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">eventTarget.onclick = function(event) &#123;</span><br><span class="line"> // 这个 event 就是事件对象，我们还喜欢的写成 e 或者 evt </span><br><span class="line"> &#125; </span><br><span class="line"> eventTarget.addEventListener(&#x27;click&#x27;, function(event) &#123;</span><br><span class="line"> // 这个 event 就是事件对象，我们还喜欢的写成 e 或者 evt </span><br><span class="line"> &#125;）</span><br></pre></td></tr></table></figure></div>
+
+<p>这个 event 是个形参，系统帮我们设定为事件对象，不需要传递实参过去。</p>
+<p>当我们注册事件时， </p>
+<p>event 对象就会被系统自动创建，并依次传递给事件监听器（事件处理函数）。</p>
+<p><strong>4.3 事件对象的兼容性方案</strong></p>
+<p>事件对象本身的获取存在兼容问题：</p>
+<ol>
+<li>标准浏览器中是浏览器给方法传递的参数，只需要定义形参 e 就可以获取到。</li>
+<li>在 IE6~8 中，浏览器不会给方法传递参数，如果需要的话，需要到 window.event 中获取查找。</li>
+</ol>
+<p><strong>解决:</strong> </p>
+<p>e &#x3D; e || window.event;</p>
+<p><strong>4.4 事件对象的常见属性和方法</strong></p>
+<p>e.target 和 this 的区别：</p>
+<p> this 是事件绑定的元素， 这个函数的调用者（绑定这个事件的元素）</p>
+<p>e.target 是事件触发的元素。</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/2.png" class>
+
+
+
+<h3 id="五、阻止事件冒泡"><a href="#五、阻止事件冒泡" class="headerlink" title="五、阻止事件冒泡"></a>五、阻止事件冒泡</h3><p><strong>阻止事件冒泡的两种方式</strong></p>
+<p>事件冒泡：开始时由最具体的元素接收，然后逐级向上传播到到 DOM 最顶层节点。</p>
+<p><strong>阻止事件冒泡</strong></p>
+<ul>
+<li>标准写法：利用事件对象里面的 stopPropagation()方法</li>
+</ul>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.stopPropagation() </span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>非标准写法：IE 6-8 利用事件对象 cancelBubble 属性</li>
+</ul>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">e.cancelBubble = true;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="六、事件委托（代理、委派）"><a href="#六、事件委托（代理、委派）" class="headerlink" title="六、事件委托（代理、委派）"></a>六、事件委托（代理、委派）</h3><p><strong>事件委托</strong></p>
+<p>事件委托也称为事件代理， 在 jQuery 里面称为事件委派。</p>
+<p><strong>事件委托的原理</strong></p>
+<p>不是每个子节点单独设置事件监听器，而是事件监听器设置在其父节点上，然后利用冒泡原理影响设置每个子节点。</p>
+<p>以上案例：给 ul 注册点击事件，然后利用事件对象的 target 来找到当前点击的 li，因为点击 li，事件会冒泡到 ul 上，ul 有注册事件，就会触发事件监听器。</p>
+<p><strong>事件委托的作用</strong></p>
+<p>我们只操作了一次 DOM ，提高了程序的性能。</p>
+<h3 id="七、常用的鼠标事件"><a href="#七、常用的鼠标事件" class="headerlink" title="七、常用的鼠标事件"></a>七、常用的鼠标事件</h3><p><strong>7.1 常用的鼠标事件</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/3.png" class>
+
+<p>1.禁止鼠标右键菜单</p>
+<p>contextmenu主要控制应该何时显示上下文菜单，主要用于程序员取消默认的上下文菜单</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.<span class="built_in">addEventListener</span>(<span class="string">&#x27;contextmenu&#x27;</span>, <span class="built_in">function</span>(e) &#123;</span><br><span class="line">	e.<span class="built_in">preventDefault</span>();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+<p>2.禁止鼠标选中（selectstart 开始选中）</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">document.addEventListener(&#x27;selectstart&#x27;, function(e) &#123;</span><br><span class="line"> 	e.preventDefault();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><strong>7.2 鼠标事件对象</strong></p>
+<p>event对象代表事件的状态，跟事件相关的一系列信息的集合。现阶段我们主要是用鼠标事件对象MouseEvent 和键盘事件对象 KeyboardEvent。</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/4.png" class>
+
+
+
+<h3 id="八、常用的键盘事件"><a href="#八、常用的键盘事件" class="headerlink" title="八、常用的键盘事件"></a>八、常用的键盘事件</h3><p><strong>8.1 常用键盘事件</strong></p>
+<p>事件除了使用鼠标触发，还可以使用键盘触发， 注意给文档 document 添加键盘事件</p>
+<img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/5.png" class>
+
+<p><strong>注意：</strong> onkeypress 和前面2个的区别是，它不识别功能键，比如左右箭头，shift 等。</p>
+<p><strong>8.2 ASCII 表</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/6.png" class>
+
+
+
+<p><strong>8.3 键盘事件对象</strong></p>
+<p>keyCode : 返回该键的ASCII值</p>
+<p><strong>注意：</strong>onkeydown 和 onkeyup 不区分字母大小写，onkeypress 区分字母大小写。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 事件高级</li>
+        <li><strong>作者:</strong> wawn</li>
+        <li><strong>创建于
+                :</strong> 2023-07-18 18:36:50</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2023-09-16 14:03:35
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://wawnwn.github.io/2023/07/18/前端/HTML-CSS-JS基础/事件高级/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/BOM/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">BOM</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">DOM</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">事件高级</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E6%B3%A8%E5%86%8C%E4%BA%8B%E4%BB%B6%EF%BC%88%E7%BB%91%E5%AE%9A%E4%BA%8B%E4%BB%B6%EF%BC%89"><span class="nav-text">一、注册事件（绑定事件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%88%A0%E9%99%A4%E4%BA%8B%E4%BB%B6%EF%BC%88%E8%A7%A3%E7%BB%91%E4%BA%8B%E4%BB%B6%EF%BC%89"><span class="nav-text">二、删除事件（解绑事件）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81DOM%E4%BA%8B%E4%BB%B6%E6%B5%81"><span class="nav-text">三、DOM事件流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E4%BA%8B%E4%BB%B6%E5%AF%B9%E8%B1%A1"><span class="nav-text">四、事件对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E9%98%BB%E6%AD%A2%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1"><span class="nav-text">五、阻止事件冒泡</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E4%BA%8B%E4%BB%B6%E5%A7%94%E6%89%98%EF%BC%88%E4%BB%A3%E7%90%86%E3%80%81%E5%A7%94%E6%B4%BE%EF%BC%89"><span class="nav-text">六、事件委托（代理、委派）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84%E9%BC%A0%E6%A0%87%E4%BA%8B%E4%BB%B6"><span class="nav-text">七、常用的鼠标事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%B8%B8%E7%94%A8%E7%9A%84%E9%94%AE%E7%9B%98%E4%BA%8B%E4%BB%B6"><span class="nav-text">八、常用的键盘事件</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">wawn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 54 篇文章
+                    </span>
+                    
+                        <span>
+                            共 331.5k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

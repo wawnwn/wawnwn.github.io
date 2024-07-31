@@ -1,0 +1,1745 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="wawn">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://wawnwn.github.io/2024/04/09/后端/03-mysql/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="数据库开发-MySQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="03-MySQL">
+<meta property="og:url" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/index.html">
+<meta property="og:site_name" content="wawn&#39;s blog">
+<meta property="og:description" content="数据库开发-MySQL">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/2.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/3.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/4.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/5.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/6.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/7.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/8.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/9.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/10.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/11.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/12.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/13.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/14.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/15.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/16.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/17.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/18.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/19.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/20.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/21.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/22.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/23.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/24.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/25.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/26.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/27.png">
+<meta property="article:published_time" content="2024-04-09T13:00:20.000Z">
+<meta property="article:modified_time" content="2024-04-23T09:55:31.451Z">
+<meta property="article:author" content="wawnwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/1.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/null" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/null">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/null">
+    <!--- Page Info-->
+    
+    <title>
+        
+            03-MySQL -
+        
+        wawn&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        wawn&#39;s blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                wawn&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    PHOTO
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                PHOTO
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">03-MySQL</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/head.webp">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">wawn</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-04-09 21:20</span>
+        <span class="mobile">2024-04-09 21:20</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-04-23 17:55:31</span>
+            <span class="mobile">2024-04-23 17:55:31</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/spring/">spring</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>5.6k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>21 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="数据库开发-MySQL"><a href="#数据库开发-MySQL" class="headerlink" title="数据库开发-MySQL"></a>数据库开发-MySQL</h1><span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在web开发中，为了应用程序职责单一，方便维护，我们一般将web应用程序分为三层，即：Controller、Service、Dao。</p>
+<p>请求流程：浏览器发起请求，先请求Controller；Controller接收到请求之后，调用Service进行业务逻辑处理理；Service再调用Dao，Dao再解析user.xml中所存储的数据。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/1.png" class>
+
+<p>xml文件中可以存储数据，但是在企业项目开发中不会使用xml文件存储数据，因为不便管理维护，操作难度大。在真实的企业开发中，都会采用数据库来存储和管理数据，此时，web开发调用流程图如下所示：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/2.png" class>
+
+<ul>
+<li>数据库：DataBase，简称DB，是存储和管理数据的仓库</li>
+</ul>
+<p>数据库管理系统（DataBase Management System，简称DBMS）</p>
+<ul>
+<li>DBMS是操作和管理数据库的大型软件。将来我们只需要操作这个软件，就可以通过这个软件来操纵和管理数据库了。</li>
+<li>需要给DBMS软件发送一条指令，告诉这个软件我们要执行的是什么样的操作，要对哪个数据进行操作。而这个指令就是SQL语句</li>
+</ul>
+<p>SQL（Structured Query Language，简称SQL）：结构化查询语言，它是操作关系型数据库的编程语言，定义了一套操作关系型数据库的统一标准。</p>
+<p>目前主流的数据库，截取了排名前十的数据库：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/3.png" class>
+
+<ul>
+<li><p>Oracle：大型的收费数据库，Oracle公司产品，价格昂贵。（通常是不差钱的公司会选择使用这个数据库）</p>
+</li>
+<li><p>MySQL：开源免费的中小型数据库，后来Sun公司收购了MySQL，而Oracle又收购了Sun公司。目前Oracle推出两个版本的MySQL：社区版（开源免费）、商业版（收费）。</p>
+</li>
+<li><p>SQL Server：Microsoft 公司推出的收费的中型数据库，C#、.net等语言常用。</p>
+</li>
+<li><p>PostgreSQL：开源免费的中小型数据库。</p>
+</li>
+<li><p>DB2：IBM公司的大型收费数据库产品。</p>
+</li>
+<li><p>SQLLite：嵌入式的微型数据库。Android内置的数据库采用的就是该数据库。</p>
+</li>
+<li><p>MariaDB：开源免费的中小型数据库。是MySQL数据库的另外一个分支、另外一个衍生产品，与MySQL数据库有很好的兼容性。</p>
+</li>
+</ul>
+<p>课程内容安排：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/4.png" class>
+
+<p>以上课程内容拆解为3部分的知识点：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/5.png" class>
+
+
+
+<h2 id="1-MySQL概述"><a href="#1-MySQL概述" class="headerlink" title="1 MySQL概述"></a>1 MySQL概述</h2><p>官网：<a class="link" target="_blank" rel="noopener" href="https://dev.mysql.com/">https://dev.mysql.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><h4 id="1-1-1-版本"><a href="#1-1-1-版本" class="headerlink" title="1.1.1 版本"></a>1.1.1 版本</h4><p>MySQL官方提供了两个版本：</p>
+<ul>
+<li><p>商业版本（MySQL Enterprise Edition）</p>
+<ul>
+<li>该版本是收费的，我们可以使用30天。 官方会提供对应的技术支持。</li>
+</ul>
+</li>
+<li><p>社区版本（MySQL Community Server）</p>
+<ul>
+<li>该版本是免费的，但是MySQL不会提供任何的技术支持。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-1-2-安装"><a href="#1-1-2-安装" class="headerlink" title="1.1.2 安装"></a>1.1.2 安装</h4><p>启动MySQL服务</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net start mysql  // 启动mysql服务</span><br><span class="line">    </span><br><span class="line">net stop mysql  // 停止mysql服务</span><br></pre></td></tr></table></figure></div>
+
+<p>修改默认账户密码</p>
+<p>在黑框里敲入<code>mysqladmin -u root password 1234</code>，这里的<code>1234</code>就是指默认管理员(即root账户)的密码，可以自行修改成你喜欢的。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root password 1234</span><br></pre></td></tr></table></figure></div>
+
+<p>登录MySQL</p>
+<p>右键开始菜单，选择<code>命令提示符</code>，打开黑框。<br>在黑框中输入，<code>mysql -uroot -p1234</code>，回车，出现下图且左下角为<code>mysql&gt;</code>，则登录成功。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p1234</span><br></pre></td></tr></table></figure></div>
+
+<p>退出mysql</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="1-1-3-连接"><a href="#1-1-3-连接" class="headerlink" title="1.1.3 连接"></a>1.1.3 连接</h4><p>MySQL服务器启动完毕后，然后再使用如下指令，来连接MySQL服务器：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u用户名 -p密码 [-h数据库服务器的IP地址 -P端口号]</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>-h 参数不加，默认连接的是本地 127.0.0.1 的MySQL服务器</p>
+<p>-P 参数不加，默认连接的端口号是 3306</p>
+</blockquote>
+<p><strong>上述指令，可以有两种形式：</strong></p>
+<ul>
+<li>密码直接在-p参数之后直接指定 （这种方式不安全，密码直接以明文形式出现在命令行）</li>
+<li>密码在-p回车之后，在命令行中输入密码，然后回车</li>
+</ul>
+<h3 id="1-2-数据模型"><a href="#1-2-数据模型" class="headerlink" title="1.2 数据模型"></a>1.2 数据模型</h3><p><strong>关系型数据库（RDBMS）</strong></p>
+<p>概念：建立在关系模型基础上，由多张相互连接的 <strong>二维表</strong> 组成的数据库。</p>
+<p>所谓二维表，指的是由行和列组成的标，如下图：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/6.png" class>
+
+<p>二维表的优点：</p>
+<ul>
+<li>使用表存储数据，格式统一，便于维护</li>
+<li>使用SQL语言操作，标准统一，使用方便，可用于复杂查询</li>
+</ul>
+<blockquote>
+<p>我们之前提到的MySQL、Oracle、DB2、SQLServer这些都是属于关系型数据库，里面都是基于二维表存储数据的。</p>
+<p>结论：基于二维表存储数据的数据库就成为关系型数据库，不是基于二维表存储数据的数据库，就是非关系型数据库（比如大家后面要学习的Redis，就属于非关系型数据库）。</p>
+</blockquote>
+<p><strong>数据模型</strong></p>
+<p>MySQL是关系型数据库，是基于二维表进行数据存储的，具体的结构图下:</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/7.png" class>
+
+<ul>
+<li>通过MySQL客户端连接数据库管理系统DBMS，然后通过DBMS操作数据库</li>
+<li>使用MySQL客户端，向数据库管理系统发送一条SQL语句，由数据库管理系统根据SQL语句指令去操作数据库中的表结构及数据</li>
+<li>一个数据库服务器中可以创建多个数据库，一个数据库中也可以包含多张表，而一张表中又可以包含多行记录</li>
+</ul>
+<blockquote>
+<p>在MySQL数据库服务器当中存储数据,需要:</p>
+<ol>
+<li>创建数据库(可以创建多个数据库,之间是相互独立的)</li>
+<li>在数据库下再去创建数据表(一个数据库下可以创建多张表)</li>
+<li>将数据存放在数据表中(一张表可以存储多行数据)</li>
+</ol>
+</blockquote>
+<h3 id="1-3-SQL简介"><a href="#1-3-SQL简介" class="headerlink" title="1.3 SQL简介"></a>1.3 SQL简介</h3><p>SQL:结构化查询语言.一门操作关系型数据库的编程语言,定义操作所有关系型数据库的统一标准</p>
+<h4 id="1-3-1-SQL通用语法"><a href="#1-3-1-SQL通用语法" class="headerlink" title="1.3.1 SQL通用语法"></a>1.3.1 SQL通用语法</h4><p>1 SQL语句可以单行或多行书写,以分号结尾</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/8.png" class>
+
+<p>2 SQL语句可以使用空格&#x2F;缩进来增强语句的可读性</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/9.png" class>
+
+<p>3 MySQL数据库的SQL语句不区分大小写</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/10.png" class>
+
+<p>4 注释</p>
+<ul>
+<li>单行注释: – 注释内容 或 # 注释内容(MySQL特有)</li>
+<li>多行注释: &#x2F;* 注释内容 *&#x2F;</li>
+</ul>
+<h3 id="1-3-2-分类"><a href="#1-3-2-分类" class="headerlink" title="1.3.2 分类"></a>1.3.2 分类</h3><p>SQL语句根据其功能被分为四大类: DDL DML DQL DCL</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DDL</td>
+<td>Data Definition Language</td>
+<td>数据定义语言,用来定义数据库对象(数据库,表,字段)</td>
+</tr>
+<tr>
+<td>DML</td>
+<td>Data Manipulation Language</td>
+<td>数据操作语言,用来对数据库表中的数据进行增删改</td>
+</tr>
+<tr>
+<td>DQL</td>
+<td>Data Query Language</td>
+<td>数据查询语言,用来查询数据库中表的记录</td>
+</tr>
+<tr>
+<td>DCL</td>
+<td>Data Control Language</td>
+<td>数据控制语言,用来创建数据库用户 控制数据库的访问权限</td>
+</tr>
+</tbody></table>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/11.png" class>
+
+
+
+<h2 id="2-数据库设计-DDL"><a href="#2-数据库设计-DDL" class="headerlink" title="2 数据库设计-DDL"></a>2 数据库设计-DDL</h2><h3 id="2-1-项目开发流程"><a href="#2-1-项目开发流程" class="headerlink" title="2.1 项目开发流程"></a>2.1 项目开发流程</h3><img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/12.png" class>
+
+<p>需求文档：</p>
+<ul>
+<li>在我们开发一个项目或者项目当中的某个模块之前，会先会拿到产品经理给我们提供的页面原型及需求文档。</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/13.png" class>
+
+<p>设计：</p>
+<ul>
+<li>拿到产品原型和需求文档之后，我们首先要做的不是编码，而是要先进行项目的设计，其中就包括概要设计、详细设计、接口设计、数据库设计等等。</li>
+<li>数据库设计根据产品原型以及需求文档，要分析各个模块涉及到的表结构以及表结构之间的关系，以及表结构的详细信息。最终我们需要将数据库以及数据库当中的表结构设计创建出来。</li>
+</ul>
+<p>开发&#x2F;测试：</p>
+<ul>
+<li>参照页面原型和需求进行编码，实现业务功能。在这个过程当中，我们就需要来操作设计出来的数据库表结构，来完成业务的增删改查操作等。</li>
+</ul>
+<p>部署上线：</p>
+<ul>
+<li>在项目的功能开发测试完成之后，项目就可以上线运行了，后期如果项目遇到性能瓶颈，还需要对项目进行优化。优化很重要的一个部分就是数据库的优化，包括数据库当中索引的建立、SQL 的优化、分库分表等操作。</li>
+</ul>
+<p>在上述的流程当中，针对数据库来说，主要包括三个阶段：</p>
+<ol>
+<li>数据库设计阶段<ul>
+<li>参照页面原型以及需求文档设计数据库表结构</li>
+</ul>
+</li>
+<li>数据库操作阶段<ul>
+<li>根据业务功能的实现，编写SQL语句对数据表中的数据进行增删改查操作</li>
+</ul>
+</li>
+<li>数据库优化阶段<ul>
+<li>通过数据库的优化来提高数据库的访问性能。优化手段：索引、SQL优化、分库分表等</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-2-数据库操作"><a href="#2-2-数据库操作" class="headerlink" title="2.2 数据库操作"></a>2.2 数据库操作</h3><p>我们在进行数据库设计，需要使用到刚才所介绍SQL分类中的DDL语句。</p>
+<p>DDL英文全称是Data Definition Language(数据定义语言)，用来定义数据库对象(数据库、表)。</p>
+<p>DDL中数据库的常见操作：查询、创建、使用、删除。</p>
+<h4 id="2-2-1-查询数据库"><a href="#2-2-1-查询数据库" class="headerlink" title="2.2.1 查询数据库"></a>2.2.1 查询数据库</h4><p><strong>查询所有数据库</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>查询当前数据库</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database();</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>我们要操作某一个数据库，必须要切换到对应的数据库中。</p>
+<p>通过指令：select database()，就可以查询到当前所处的数据库</p>
+</blockquote>
+<h4 id="2-2-2-创建数据库"><a href="#2-2-2-创建数据库" class="headerlink" title="2.2.2 创建数据库"></a>2.2.2 创建数据库</h4><p><strong>语法</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database [ if not exists ] 数据库名;</span><br></pre></td></tr></table></figure></div>
+
+<p>&#x3D;&#x3D;注意：在同一个数据库服务器中，不能创建两个名称相同的数据库，否则将会报错。&#x3D;&#x3D;</p>
+<ul>
+<li>可以使用if not exists来避免这个问题</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 数据库不存在,则创建该数据库；如果存在则不创建</span><br><span class="line">create database if not extists itcast; </span><br></pre></td></tr></table></figure></div>
+
+<h4 id="2-2-3-使用数据库"><a href="#2-2-3-使用数据库" class="headerlink" title="2.2.3 使用数据库"></a>2.2.3 使用数据库</h4><p><strong>语法</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>我们要操作某一个数据库下的表时，就需要通过该指令，切换到对应的数据库下，否则不能操作。</p>
+</blockquote>
+<h4 id="2-2-4-删除数据库"><a href="#2-2-4-删除数据库" class="headerlink" title="2.2.4 删除数据库"></a>2.2.4 删除数据库</h4><p><strong>语法</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database [ if exists ] 数据库名;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>如果删除一个不存在的数据库，将会报错。</p>
+<p>可以加上参数 if exists ，如果数据库存在，再执行删除，否则不执行删除。</p>
+</blockquote>
+<blockquote>
+<p>说明：上述语法中的database，也可以替换成 schema</p>
+<ul>
+<li>如：create schema db01;</li>
+<li>如：show schemas;</li>
+</ul>
+</blockquote>
+<h3 id="2-3-图形化工具"><a href="#2-3-图形化工具" class="headerlink" title="2.3 图形化工具"></a>2.3 图形化工具</h3><h4 id="2-3-1-介绍"><a href="#2-3-1-介绍" class="headerlink" title="2.3.1 介绍"></a>2.3.1 介绍</h4><p>在命令行当中来敲这些SQL语句很不方便，主要的原因有以下 3 点：</p>
+<ol>
+<li>没有任何代码提示。（全靠记忆，容易敲错字母造成执行报错）</li>
+<li>操作繁琐，影响开发效率。（所有的功能操作都是通过SQL语句来完成的）</li>
+<li>编写过的SQL代码无法保存。</li>
+</ol>
+<p>在项目开发当中，通常为了提高开发效率，都会借助于现成的图形化管理工具来操作数据库。</p>
+<p>目前MySQL主流的图形化界面工具有以下几种：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/14.png" class>
+
+<p>DataGrip是JetBrains旗下的一款数据库管理工具，是管理和开发MySQL、Oracle、PostgreSQL的理想解决方案。</p>
+<p>官网： <a class="link" target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/datagrip/">https://www.jetbrains.com/zh-cn/datagrip/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h4 id="2-3-2-安装"><a href="#2-3-2-安装" class="headerlink" title="2.3.2 安装"></a>2.3.2 安装</h4><blockquote>
+<p>说明：DataGrip这款工具可以不用安装，因为Jetbrains公司已经将DataGrip这款工具的功能已经集成到了 IDEA当中，所以我们就可以使用IDEA来作为一款图形化界面工具来操作Mysql数据库。</p>
+</blockquote>
+<h4 id="2-3-3-使用"><a href="#2-3-3-使用" class="headerlink" title="2.3.3 使用"></a>2.3.3 使用</h4><h3 id="2-4-表操作"><a href="#2-4-表操作" class="headerlink" title="2.4 表操作"></a>2.4 表操作</h3><p>关于表结构的操作包含四个部分：创建表、查询表、修改表、删除表</p>
+<h4 id="2-4-1-创建"><a href="#2-4-1-创建" class="headerlink" title="2.4.1 创建"></a>2.4.1 创建</h4><h5 id="2-4-1-1-语法"><a href="#2-4-1-1-语法" class="headerlink" title="2.4.1.1 语法"></a>2.4.1.1 语法</h5><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	字段1 字段1类型 [约束] [comment 字段1注释],</span><br><span class="line">    字段2 字段2类型 [约束] [comment 字段2注释],</span><br><span class="line">    ......</span><br><span class="line">    字段n 字段n类型 [约束] [comment 字段n注释]</span><br><span class="line">) [comment 表注释];</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>注意：[]中的内容为可选参数；最后一个字段后面没有逗号</p>
+</blockquote>
+<p>案例：创建tb_user表</p>
+<ul>
+<li>对应的结构如下：</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/15.png" class>
+
+<ul>
+<li>建表语句</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table tb_user (</span><br><span class="line">	id int comment &#x27;ID,唯一标识&#x27;, # id是一行数据的唯一标识（不能重复）</span><br><span class="line">    username varchar(20) comment &#x27;用户名&#x27;,</span><br><span class="line">    name varchar(10) comment &#x27;姓名&#x27;,</span><br><span class="line">    age int comment &#x27;年龄&#x27;,</span><br><span class="line">    gender char(1) comment &#x27;性别&#x27;</span><br><span class="line">) comment &#x27;用户表&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<p>双击打开tb_user表结构，大家会发现里面没有数据：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/16.png" class>
+
+<ul>
+<li>其实我们现在创建表结构的时候，id这个字段我们只加了一个备注信息说明它是一个唯一标识，但是在数据库层面，并没有去限制字段存储的数据。所以id这个字段没有起到唯一标识的作用。</li>
+</ul>
+<blockquote>
+<p>想要限制字段所存储的数据，就需要用到数据库中的约束。</p>
+</blockquote>
+<h5 id="2-4-1-2-约束"><a href="#2-4-1-2-约束" class="headerlink" title="2.4.1.2 约束"></a>2.4.1.2 约束</h5><p>概念：所谓约束就是作用子表中字段上的规则，用于限制存储在表中的数据。</p>
+<p>作用：就是来保证数据库当中数据的正确性、有效性和完整性。</p>
+<p>在MySQL数据库当中，提供了一下5种约束：</p>
+<table>
+<thead>
+<tr>
+<th>约束</th>
+<th>描述</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非空约束</td>
+<td>限制该字段值不能为null</td>
+<td>not null</td>
+</tr>
+<tr>
+<td>唯一约束</td>
+<td>保证字段的所有数据都是唯一、不重复的</td>
+<td>unique</td>
+</tr>
+<tr>
+<td>主键约束</td>
+<td>主键是一行数据的唯一标识，要求非空且唯一</td>
+<td>primary key</td>
+</tr>
+<tr>
+<td>默认约束</td>
+<td>保存数据时，如果未指定该字段值，则采用默认值</td>
+<td>default</td>
+</tr>
+<tr>
+<td>外键约束</td>
+<td>让两张表的数据建立连接，保证数据的一致性和完整性</td>
+<td>foreign key</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>注意：约束是作用于表中字段上的，可以创建表&#x2F;修改表的时候添加约束</p>
+</blockquote>
+<p>案例：创建tb_user表</p>
+<ul>
+<li>对应结构如下</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/17.png" class>
+
+<blockquote>
+<p>在上述的表结构中:</p>
+<ul>
+<li><p>id 是一行数据的唯一标识</p>
+</li>
+<li><p>username 用户名字段是非空且唯一的</p>
+</li>
+<li><p>name 姓名字段是不允许存储空值的</p>
+</li>
+<li><p>gender 性别字段是有默认值，默认为男</p>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>建表语句：</li>
+</ul>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table tb_user (</span><br><span class="line">	id int primary key comment &#x27;ID,唯一标识&#x27;,</span><br><span class="line">    username varchar(20) not null unique comment &#x27;用户名&#x27;,</span><br><span class="line">    name varchar(10) not null comment &#x27;姓名&#x27;,</span><br><span class="line">    age int comment &#x27;年龄&#x27;,</span><br><span class="line">    gender char(1) default &#x27;男&#x27; comment &#x27;性别&#x27;</span><br><span class="line">) comment &#x27;用户表&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/18.png" class>
+
+<p>id字段下存储的值，如果由我们自己来维护会比较麻烦（必须保证值得唯一性）。MySQL数据库提供了一个关键字：auto_increment（自动增长）</p>
+<blockquote>
+<p>主键自增：auto_increment</p>
+<ul>
+<li>每次插入新的行记录时，数据库自动生成id字段（主键）下的值</li>
+<li>具有auto_increment的数据列是一个正数序列开始增长的（从1开始自增）</li>
+</ul>
+</blockquote>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table tb_user (</span><br><span class="line">    id int primary key auto_increment comment &#x27;ID,唯一标识&#x27;, #主键自动增长</span><br><span class="line">    username varchar(20) not null unique comment &#x27;用户名&#x27;,</span><br><span class="line">    name varchar(10) not null comment &#x27;姓名&#x27;,</span><br><span class="line">    age int comment &#x27;年龄&#x27;,</span><br><span class="line">    gender char(1) default &#x27;男&#x27; comment &#x27;性别&#x27;</span><br><span class="line">) comment &#x27;用户表&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="2-4-1-3-数据类型"><a href="#2-4-1-3-数据类型" class="headerlink" title="2.4.1.3 数据类型"></a>2.4.1.3 数据类型</h5><p>MySQL中的数据类型有很多：主要分为三类：数值类型、字符串类型、日期时间类型</p>
+<p><strong>数值类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>有符号(SIGNED)范围</th>
+<th>无符号(UNSIGNED)范围</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TINYINT</td>
+<td>1byte</td>
+<td>(-128，127)</td>
+<td>(0，255)</td>
+<td>小整数值</td>
+</tr>
+<tr>
+<td>SMALLINT</td>
+<td>2bytes</td>
+<td>(-32768，32767)</td>
+<td>(0，65535)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>MEDIUMINT</td>
+<td>3bytes</td>
+<td>(-8388608，8388607)</td>
+<td>(0，16777215)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>INT&#x2F;INTEGER</td>
+<td>4bytes</td>
+<td>(-2147483648，2147483647)</td>
+<td>(0，4294967295)</td>
+<td>大整数值</td>
+</tr>
+<tr>
+<td>BIGINT</td>
+<td>8bytes</td>
+<td>(-2^63，2^63-1)</td>
+<td>(0，2^64-1)</td>
+<td>极大整数值</td>
+</tr>
+<tr>
+<td>FLOAT</td>
+<td>4bytes</td>
+<td>(-3.402823466 E+38，3.402823466351 E+38)</td>
+<td>0 和 (1.175494351  E-38，3.402823466 E+38)</td>
+<td>单精度浮点数值</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td>8bytes</td>
+<td>(-1.7976931348623157 E+308，1.7976931348623157 E+308)</td>
+<td>0 和  (2.2250738585072014 E-308，1.7976931348623157 E+308)</td>
+<td>双精度浮点数值</td>
+</tr>
+<tr>
+<td>DECIMAL</td>
+<td></td>
+<td>依赖于M(精度)和D(标度)的值</td>
+<td>依赖于M(精度)和D(标度)的值</td>
+<td>小数值(精确定点数)</td>
+</tr>
+</tbody></table>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">	年龄字段 --- 不会出现负数，而且人的年龄不会太大</span><br><span class="line">	age tinyint unsighed</span><br><span class="line">	</span><br><span class="line">	分数 --- 总分100分，最多出现一位小数</span><br><span class="line">	score double(4,1)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>字符串类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CHAR</td>
+<td>0-255 bytes</td>
+<td>定长字符串(需要指定长度)</td>
+</tr>
+<tr>
+<td>VARCHAR</td>
+<td>0-65535 bytes</td>
+<td>变长字符串(需要指定长度)</td>
+</tr>
+<tr>
+<td>TINYBLOB</td>
+<td>0-255 bytes</td>
+<td>不超过255个字符的二进制数据</td>
+</tr>
+<tr>
+<td>TINYTEXT</td>
+<td>0-255 bytes</td>
+<td>短文本字符串</td>
+</tr>
+<tr>
+<td>BLOB</td>
+<td>0-65 535 bytes</td>
+<td>二进制形式的长文本数据</td>
+</tr>
+<tr>
+<td>TEXT</td>
+<td>0-65 535 bytes</td>
+<td>长文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMBLOB</td>
+<td>0-16 777 215 bytes</td>
+<td>二进制形式的中等长度文本数据</td>
+</tr>
+<tr>
+<td>MEDIUMTEXT</td>
+<td>0-16 777 215 bytes</td>
+<td>中等长度文本数据</td>
+</tr>
+<tr>
+<td>LONGBLOB</td>
+<td>0-4 294 967 295 bytes</td>
+<td>二进制形式的极大文本数据</td>
+</tr>
+<tr>
+<td>LONGTEXT</td>
+<td>0-4 294 967 295 bytes</td>
+<td>极大文本数据</td>
+</tr>
+</tbody></table>
+<p>char 与 varchar 都可以描述字符串，char是定长字符串，指定长度多长，就占用多少个字符，和字符值的长度无关。而varchar是变长字符串，指定的长度为最大占用长度。相对来说，char的性能会更高些。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">	用户名 username ---长度不定, 最长不会超过50</span><br><span class="line">	username varchar(50)</span><br><span class="line">	</span><br><span class="line">	手机号 phone ---固定长度为11</span><br><span class="line">	phone char(11)</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>日期时间类型</strong></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小</th>
+<th>范围</th>
+<th>格式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>DATE</td>
+<td>3</td>
+<td>1000-01-01 至  9999-12-31</td>
+<td>YYYY-MM-DD</td>
+<td>日期值</td>
+</tr>
+<tr>
+<td>TIME</td>
+<td>3</td>
+<td>-838:59:59 至  838:59:59</td>
+<td>HH:MM:SS</td>
+<td>时间值或持续时间</td>
+</tr>
+<tr>
+<td>YEAR</td>
+<td>1</td>
+<td>1901 至 2155</td>
+<td>YYYY</td>
+<td>年份值</td>
+</tr>
+<tr>
+<td>DATETIME</td>
+<td>8</td>
+<td>1000-01-01 00:00:00 至 9999-12-31 23:59:59</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>混合日期和时间值</td>
+</tr>
+<tr>
+<td>TIMESTAMP</td>
+<td>4</td>
+<td>1970-01-01 00:00:01 至 2038-01-19 03:14:07</td>
+<td>YYYY-MM-DD HH:MM:SS</td>
+<td>混合日期和时间值，时间戳</td>
+</tr>
+</tbody></table>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">示例: </span><br><span class="line">	生日字段  birthday ---生日只需要年月日  </span><br><span class="line">	birthday date</span><br><span class="line">	</span><br><span class="line">	创建时间 createtime --- 需要精确到时分秒</span><br><span class="line">	createtime  datetime</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="2-4-1-4-案例"><a href="#2-4-1-4-案例" class="headerlink" title="2.4.1.4 案例"></a>2.4.1.4 案例</h5><p>需求：根据产品原型&#x2F;需求创建表（设计合理的数据类型、长度、约束）</p>
+<p>产品原型及需求如下：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/19.png" class>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/20.png" class>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/21.png" class>
+
+<p><strong>步骤：</strong></p>
+<ol>
+<li>阅读产品原型及需求文档，看看里面涉及到哪些字段</li>
+<li>查看需求文档说明，确认各个字段的类型以及字段存储数据的长度限制</li>
+<li>在页面原型中描述的基础字段的基础上，再增加额外的基础字段</li>
+</ol>
+<p>使用SQL创建表：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table emp (</span><br><span class="line">	id int unsigned primary key auto_incremen comment &#x27;ID&#x27;,</span><br><span class="line">    username varchar(20) not null unique comment &#x27;用户名&#x27;,</span><br><span class="line">    password varchar(32) default &#x27;123456&#x27; comment &#x27;密码&#x27;,</span><br><span class="line">    name varchar(10) not null comment &#x27;姓名&#x27;,</span><br><span class="line">    gender tinyint unsigned not null comment &#x27;性别，说明：1 男，2 女&#x27;,</span><br><span class="line">    image varchar(300) comment &#x27;图像&#x27;,</span><br><span class="line">    job tinyint unsigned comment &#x27;职位，说明：1 班主任，2 讲师，3 学工主管，4 教研主管&#x27;,</span><br><span class="line">    entrydate date comment &#x27;入职时间&#x27;,</span><br><span class="line">    create_time datetime not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    update_time datetime not null comment &#x27;修改时间&#x27;</span><br><span class="line">) comment &#x27;员工表&#x27;;</span><br></pre></td></tr></table></figure></div>
+
+<p>除了使用SQL语句创建表以外，还可以借助于图形化界面来创建表结构，这种创建方式会更加直观、更加方便</p>
+<p>操作步骤如下：</p>
+<ol>
+<li>在指定操作的数据库上，右键New &#x3D;&#x3D;&gt; Table</li>
+<li>编辑表结构的相关信息</li>
+</ol>
+<h5 id="设计表流程"><a href="#设计表流程" class="headerlink" title="设计表流程"></a>设计表流程</h5><p>设计一张表，基本的流程如下：</p>
+<ol>
+<li>阅读页面原型及需求文档</li>
+<li>基于页面原则和需求文档，确定原型字段（类型、长度限制、约束）</li>
+<li>再增加表设计所需要的业务基础字段（id主键、插入时间、修改时间）</li>
+</ol>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/22.png" class>
+
+<blockquote>
+<p>说明：</p>
+<ul>
+<li>create_time：记录的是当前这条数据插入的时间</li>
+<li>update_time：记录的是这条数据最后更新的时间</li>
+</ul>
+</blockquote>
+<h4 id="2-4-2-查询"><a href="#2-4-2-查询" class="headerlink" title="2.4.2 查询"></a>2.4.2 查询</h4><blockquote>
+<p>关于表结构的查询操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。 </p>
+</blockquote>
+<p><strong>查询当前数据库所有表</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/23.png" class>
+
+<p><strong>查看指定表结构</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc 表名 ;#可以查看指定表的字段、字段的类型、是否可以为NULL、是否存在默认值等信息</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/24.png" class>
+
+<p><strong>查看指定表的建表语句</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table 表名;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/25.png" class>
+
+
+
+<h4 id="2-4-3-修改"><a href="#2-4-3-修改" class="headerlink" title="2.4.3 修改"></a>2.4.3 修改</h4><blockquote>
+<p>关于表结构的查询操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。 </p>
+</blockquote>
+<p><strong>添加字段</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 add 字段名 类型(长度) [comment 注释] [约束];</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/26.png" class>
+
+<p><strong>修改数据类型</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 modify 字段名 新数据类型(长度);</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 change 旧字段名 新字段名 类型(长度) [comment 注释] [约束];</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/27.png" class>
+
+<p><strong>删除字段</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 drop 字段名;</span><br></pre></td></tr></table></figure></div>
+
+<p><strong>修改表名</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename table 表名 to 新表名;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="2-4-4-删除"><a href="#2-4-4-删除" class="headerlink" title="2.4.4 删除"></a>2.4.4 删除</h4><blockquote>
+<p>关于表结构的删除操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。 </p>
+</blockquote>
+<p><strong>删除表</strong></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table [if exists] 表名;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>if exists ：只有表名存在时才会删除该表，表名不存在，则不执行删除操作(如果不加该参数项，删除一张不存在的表，执行将会报错)。</p>
+</blockquote>
+<h2 id="3-数据库操作-DML"><a href="#3-数据库操作-DML" class="headerlink" title="3 数据库操作-DML"></a>3 数据库操作-DML</h2><p>DML英文全称是Data Manipulation Language(数据操作语言)，用来对数据库中表的数据记录进行增、删、改操作。</p>
+<ul>
+<li>添加数据（INSERT）</li>
+<li>修改数据（UPDATE）</li>
+<li>删除数据（DELETE）</li>
+</ul>
+<h3 id="3-1-增加-insert"><a href="#3-1-增加-insert" class="headerlink" title="3.1 增加(insert)"></a>3.1 增加(insert)</h3><p>insert语法</p>
+<ul>
+<li><p>向指定字段添加数据</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (字段名1, 字段名2) values (值1, 值2);</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>全部字段添加数据</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 values (值1, 值2, ...);</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>批量添加数据（指定字段）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (字段名1, 字段名2) values (值1, 值2), (值1, 值2);</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>批量添加数据（全部字段）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 values (值1, 值2, ...), (值1, 值2, ...);</span><br></pre></td></tr></table></figure></div></li>
+</ul>
+<p>Insert操作的注意事项：</p>
+<ol>
+<li><p>插入数据时，指定的字段顺序需要与值的顺序是一一对应的。</p>
+</li>
+<li><p>字符串和日期型数据应该包含在引号中。</p>
+</li>
+<li><p>插入的数据大小，应该在字段的规定范围内。</p>
+</li>
+</ol>
+<h3 id="3-2-修改（update"><a href="#3-2-修改（update" class="headerlink" title="3.2 修改（update)"></a>3.2 修改（update)</h3><p>update语法：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 字段名1 = 值1, 字段名2 = 值2, ... [where 条件];</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>注意事项:</p>
+<ol>
+<li><p>修改语句的条件可以有，也可以没有，如果没有条件，则会修改整张表的所有数据。</p>
+</li>
+<li><p>在修改数据时，一般需要同时修改公共字段update_time，将其修改为当前操作时间。</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="3-3-删除（delete"><a href="#3-3-删除（delete" class="headerlink" title="3.3 删除（delete)"></a>3.3 删除（delete)</h3><p>delete语法：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 [where 条件];</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>注意事项:</p>
+<p>​	• DELETE 语句的条件可以有，也可以没有，如果没有条件，则会删除整张表的所有数据。</p>
+<p>​	• DELETE 语句不能删除某一个字段的值(可以使用UPDATE，将该字段值置为NULL即可)。</p>
+<p>​	• 当进行删除全部数据操作时，会提示询问是否确认删除所有数据，直接点击Execute即可。 </p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 03-MySQL</li>
+        <li><strong>作者:</strong> wawn</li>
+        <li><strong>创建于
+                :</strong> 2024-04-09 21:00:20</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-04-23 17:55:31
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://wawnwn.github.io/2024/04/09/后端/03-MySQL/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/04/10/%E5%90%8E%E7%AB%AF/04-MySQL/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">04-MySQL</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">SpringBootWeb请求响应</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">03-MySQL</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%8F%91-MySQL"><span class="nav-text">数据库开发-MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MySQL%E6%A6%82%E8%BF%B0"><span class="nav-text">1 MySQL概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85"><span class="nav-text">1.1 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-text">1.2 数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-SQL%E7%AE%80%E4%BB%8B"><span class="nav-text">1.3 SQL简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E5%88%86%E7%B1%BB"><span class="nav-text">1.3.2 分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1-DDL"><span class="nav-text">2 数据库设计-DDL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-text">2.1 项目开发流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">2.2 数据库操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="nav-text">2.3 图形化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-text">2.4 表操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C-DML"><span class="nav-text">3 数据库操作-DML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%A2%9E%E5%8A%A0-insert"><span class="nav-text">3.1 增加(insert)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BF%AE%E6%94%B9%EF%BC%88update"><span class="nav-text">3.2 修改（update)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%88%A0%E9%99%A4%EF%BC%88delete"><span class="nav-text">3.3 删除（delete)</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">wawn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 54 篇文章
+                    </span>
+                    
+                        <span>
+                            共 331.5k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="wawn">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://wawnwn.github.io/2023/11/16/java/java复习/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="1234Boolean b[] &#x3D; new Boolean[10];System.out.println(b[0]);boolean b[] &#x3D; new boolean[5];System.out.println(b[0]);">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java复习">
+<meta property="og:url" content="http://wawnwn.github.io/2023/11/16/Java/Java%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="wawn&#39;s blog">
+<meta property="og:description" content="1234Boolean b[] &#x3D; new Boolean[10];System.out.println(b[0]);boolean b[] &#x3D; new boolean[5];System.out.println(b[0]);">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2023/11/16/Java/Java%E5%A4%8D%E4%B9%A0/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/11/16/Java/Java%E5%A4%8D%E4%B9%A0/2.png">
+<meta property="article:published_time" content="2023-11-16T15:38:10.000Z">
+<meta property="article:modified_time" content="2023-12-01T15:00:28.696Z">
+<meta property="article:author" content="wawnwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2023/11/16/Java/Java%E5%A4%8D%E4%B9%A0/1.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/null" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/null">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/null">
+    <!--- Page Info-->
+    
+    <title>
+        
+            Java复习 -
+        
+        wawn&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        wawn&#39;s blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                wawn&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    PHOTO
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                PHOTO
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">Java复习</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/head.webp">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">wawn</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-11-16 23:38:10</span>
+        <span class="mobile">2023-11-16 23:38:10</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-12-01 23:28</span>
+            <span class="mobile">2023-12-01 23:28</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Java/">Java</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>8.8k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>38 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Boolean b[] = <span class="keyword">new</span> <span class="title class_">Boolean</span>[<span class="number">10</span>];</span><br><span class="line">System.out.println(b[<span class="number">0</span>]);</span><br><span class="line"><span class="type">boolean</span> b[] = <span class="keyword">new</span> <span class="title class_">boolean</span>[<span class="number">5</span>];</span><br><span class="line">System.out.println(b[<span class="number">0</span>]);</span><br></pre></td></tr></table></figure></div>
+
+<span id="more"></span>
+
+<h3 id="1-实例化顺序"><a href="#1-实例化顺序" class="headerlink" title="1. 实例化顺序"></a>1. 实例化顺序</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: HelloB</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/16 23:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HelloA</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HelloA</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HelloA&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;I&#x27;m A class&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;static A&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HelloB</span> <span class="keyword">extends</span> <span class="title class_">HelloA</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">HelloB</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;HelloB&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;I&#x27;m B class&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;static B&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">HelloB</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> A</span><br><span class="line"><span class="keyword">static</span> B</span><br><span class="line">I<span class="string">&#x27;m A class</span></span><br><span class="line"><span class="string">HelloA</span></span><br><span class="line"><span class="string">I&#x27;</span>m B <span class="keyword">class</span></span><br><span class="line"><span class="title class_">HelloB</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="2-隐藏变量"><a href="#2-隐藏变量" class="headerlink" title="2. 隐藏变量"></a>2. 隐藏变量</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: subc</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/16 23:46</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">superc</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;The i is : &quot;</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">subc</span> <span class="keyword">extends</span> <span class="title class_">superc</span> &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">6</span>, j;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">subc</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">subc</span>();</span><br><span class="line">        System.out.println(s.i);</span><br><span class="line">        s.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">6</span></span><br><span class="line">The i is : <span class="number">5</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="3-动态链编"><a href="#3-动态链编" class="headerlink" title="3. 动态链编"></a>3. 动态链编</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: test</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/16 23:49</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">sup</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in superclass&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">sub</span> <span class="keyword">extends</span> <span class="title class_">sup</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">show</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in subclass&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">sup</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">sub</span>();</span><br><span class="line">        s.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in subclass</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Dervied</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/16 23:53</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Dervied</span> <span class="keyword">extends</span> <span class="title class_">Base</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;dervied&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Dervied</span><span class="params">()</span> &#123;</span><br><span class="line">        tellName();</span><br><span class="line">        printName();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tellName</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dervied tell name: &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printName</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dervied print name: &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Dervied</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> <span class="string">&quot;base&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Base</span><span class="params">()</span>&#123;</span><br><span class="line">        tellName();</span><br><span class="line">        printName();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tellName</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Base tell name: &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printName</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Base print name: &quot;</span> + name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Dervied tell name: <span class="literal">null</span></span><br><span class="line">Dervied print name: <span class="literal">null</span></span><br><span class="line">Dervied tell name: dervied</span><br><span class="line">Dervied print name: dervied</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="4-空引用"><a href="#4-空引用" class="headerlink" title="4. 空引用"></a>4. 空引用</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        <span class="keyword">if</span>((str.length() &gt; <span class="number">10</span>) &amp;&amp; str!= <span class="literal">null</span>)</span><br><span class="line">            System.out.println(<span class="string">&quot;A&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">&quot;main&quot;</span> java.lang.NullPointerException: Cannot invoke <span class="string">&quot;String.length()&quot;</span> because <span class="string">&quot;str&quot;</span> is <span class="literal">null</span></span><br><span class="line">	at ReviewClass.test1.main(test1.java:<span class="number">14</span>)</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="5-方法重载和方法的覆盖"><a href="#5-方法重载和方法的覆盖" class="headerlink" title="5. 方法重载和方法的覆盖"></a>5. 方法重载和方法的覆盖</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: mainTest</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 0:03</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(GrandSon obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Father.show-GrandSon&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Father obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Father.show-Father&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span> &#123;</span><br><span class="line">    <span class="comment">// 方法重载</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Son obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Son.show-Son&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 方法重写</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Father obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Son.show-Father&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GrandSon</span> <span class="keyword">extends</span> <span class="title class_">Son</span>&#123;</span><br><span class="line">    <span class="comment">// 方法重载</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(GrandSon obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in GrandSon.show-GrandSon&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 方法重写</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Son obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in GrandSon.show-Son&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">mainTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span> &#123;</span><br><span class="line">        <span class="type">Father</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Father</span>();</span><br><span class="line">        <span class="type">Father</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">        <span class="type">Son</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">        <span class="type">GrandSon</span> <span class="variable">gs1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GrandSon</span>();</span><br><span class="line">        f1.Show(s1);</span><br><span class="line">        f2.Show(s1);</span><br><span class="line">        f2.Show(gs1);</span><br><span class="line">        s1.Show(gs1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">in Father.show-Father</span><br><span class="line">in Son.show-Father</span><br><span class="line">in Father.show-GrandSon</span><br><span class="line">in Father.show-GrandSon</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: mainTest1</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 10:10</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Father1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Father1 obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Father.show-Father&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son1</span> <span class="keyword">extends</span> <span class="title class_">Father1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Son1 obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Son.show-Son&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Father1 obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Son.show-Father&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(GrandSon1 obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in Son.show-GrandSon&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GrandSon1</span> <span class="keyword">extends</span> <span class="title class_">Son1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(GrandSon1 obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in GrandSon.show-GrandSon&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Show</span><span class="params">(Son obj)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;in GrandSon.show-Son&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">mainTest1</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Father1</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son1</span>();</span><br><span class="line">        <span class="type">GrandSon1</span> <span class="variable">gs1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">GrandSon1</span>();</span><br><span class="line"></span><br><span class="line">        f2.Show(gs1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">in Son.show-Father</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p>对象数组就是一个数组中的所有元素都是对象，声明对象数组与普通基本类型数组一样</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Person[] p = <span class="keyword">new</span> <span class="title class_">Person</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure></div>
+
+<p>因对象数组中每个元素都是对象，所以每个元素都需单独实例化（还需用new实例化每个元素)</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;张三&quot;</span>);</span><br><span class="line">......</span><br><span class="line">p[<span class="number">2</span>] = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;lisi&quot;</span>);</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="6-内部类"><a href="#6-内部类" class="headerlink" title="6. 内部类"></a>6. 内部类</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: InnerOuter</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 10:29</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">InnerOuter</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Outer.<span class="type">InnerTool</span> <span class="variable">ob</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Outer</span>.InnerTool();</span><br><span class="line">        ob.print();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Outer</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">String</span> <span class="variable">f</span> <span class="operator">=</span> <span class="string">&quot;I am Outer&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">I</span> <span class="operator">=</span> <span class="string">&quot;static&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">InnerTool</span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="type">String</span> <span class="variable">f</span> <span class="operator">=</span> <span class="string">&quot;I am Inner&quot;</span>;</span><br><span class="line">        <span class="keyword">private</span> <span class="type">String</span> <span class="variable">f2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Outer</span>().f;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">print</span><span class="params">()</span> &#123;</span><br><span class="line">            System.out.println(f);</span><br><span class="line">            System.out.println(<span class="built_in">this</span>.f);</span><br><span class="line">            System.out.println(<span class="keyword">new</span> <span class="title class_">Outer</span>().f);</span><br><span class="line">            System.out.println(I);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">I am Inner</span><br><span class="line">I am Inner</span><br><span class="line">I am Outer</span><br><span class="line"><span class="keyword">static</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="7-Swing"><a href="#7-Swing" class="headerlink" title="7. Swing"></a>7. Swing</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionEvent;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Test2</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 10:35</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">f</span> <span class="keyword">extends</span> <span class="title class_">JFrame</span> &#123;</span><br><span class="line">    JButton b1;</span><br><span class="line">    JTextField jf;</span><br><span class="line">    JLabel jl;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">f</span><span class="params">()</span> &#123;</span><br><span class="line">        b1 = <span class="keyword">new</span> <span class="title class_">JButton</span>(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">        jl = <span class="keyword">new</span> <span class="title class_">JLabel</span>(<span class="string">&quot;Computed&quot;</span>);</span><br><span class="line">        jf = <span class="keyword">new</span> <span class="title class_">JTextField</span>(<span class="string">&quot;    &quot;</span>);</span><br><span class="line">        <span class="type">Container</span> <span class="variable">c</span> <span class="operator">=</span> <span class="built_in">this</span>.getContentPane();</span><br><span class="line">        c.setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>());</span><br><span class="line">        c.add(jl);</span><br><span class="line">        c.add(b1);</span><br><span class="line">        c.add(jf);</span><br><span class="line">        <span class="built_in">this</span>.setSize(<span class="number">320</span>,<span class="number">200</span>);</span><br><span class="line">        b1.addActionListener(<span class="keyword">new</span> <span class="title class_">ActionListener</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">actionPerformed</span><span class="params">(ActionEvent e)</span> &#123;</span><br><span class="line">                jf.setText(<span class="string">&quot;14&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String args[])</span>&#123;</span><br><span class="line">        <span class="type">f</span> <span class="variable">f1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">f</span>();</span><br><span class="line">        f1.show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">g.drawRect(<span class="number">20</span>,<span class="number">40</span>,<span class="number">120</span>,<span class="number">20</span>);</span><br><span class="line">g.drawString(<span class="string">&quot;绘制图形&quot;</span>, <span class="number">25</span>,<span class="number">55</span>);</span><br><span class="line">g.drawRect(<span class="number">20</span>,<span class="number">70</span>,<span class="number">120</span>,<span class="number">60</span>);</span><br><span class="line">g.drawArc(<span class="number">20</span>,<span class="number">70</span>,<span class="number">120</span>,<span class="number">60</span>,<span class="number">90</span>,<span class="number">180</span>);</span><br><span class="line">g.drawArc(<span class="number">50</span>,<span class="number">70</span>,<span class="number">60</span>,<span class="number">60</span>,<span class="number">90</span>,<span class="number">180</span>);</span><br><span class="line">g.fillOval(<span class="number">80</span>,<span class="number">70</span>,<span class="number">60</span>,<span class="number">60</span>);</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="8-核心类"><a href="#8-核心类" class="headerlink" title="8. 核心类"></a>8. 核心类</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="string">&quot;china&quot;</span>;</span><br><span class="line"><span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="string">&quot;china&quot;</span>;</span><br><span class="line">s1 == s2 ? <span class="literal">true</span> : <span class="literal">false</span>;  ---&gt; True</span><br><span class="line">s1.equals(s2) ? <span class="literal">true</span> : <span class="literal">false</span>;  ---&gt; True</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="9-语法"><a href="#9-语法" class="headerlink" title="9. 语法"></a>9. 语法</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> ReviewClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: ParamEx2</span></span><br><span class="line"><span class="comment"> * Package: ReviewClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 10:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ParamEx2</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">change</span><span class="params">(String str, <span class="type">char</span> ch[])</span> &#123;</span><br><span class="line">        str = <span class="string">&quot;Changed&quot;</span>;</span><br><span class="line">        ch[<span class="number">0</span>] = <span class="string">&#x27;C&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>  &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(<span class="string">&quot;world&quot;</span>);</span><br><span class="line">        <span class="type">char</span> ch[] = &#123;<span class="string">&#x27;H&#x27;</span>, <span class="string">&#x27;e&#x27;</span>,<span class="string">&#x27;l&#x27;</span>,<span class="string">&#x27;l&#x27;</span>,<span class="string">&#x27;o&#x27;</span>&#125;;</span><br><span class="line">        change(s, ch);</span><br><span class="line">        System.out.println(<span class="string">&quot;s= &quot;</span> + s);</span><br><span class="line">        System.out.println(<span class="string">&quot;ch= &quot;</span> + <span class="keyword">new</span> <span class="title class_">String</span>(ch));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s= world</span><br><span class="line">ch= Cello</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="10-Java输入输出处理"><a href="#10-Java输入输出处理" class="headerlink" title="10. Java输入输出处理"></a>10. Java输入输出处理</h3><h4 id="流的概念"><a href="#流的概念" class="headerlink" title="流的概念"></a><strong>流的概念</strong></h4><p>流是针对外部I&#x2F;O读写的一种模式。 对各种外部设备和网络进行数据的输入&#x2F;输出操作称为I&#x2F;O处理，Java用流封装对数据的读写操作，提供了对数据序列 读&#x2F;写的统一接口，封装了程序和操作系统的I&#x2F;O细节。</p>
+<h4 id="（简答）流的分类"><a href="#（简答）流的分类" class="headerlink" title="（简答）流的分类"></a>（简答）<strong>流的分类</strong></h4><ol>
+<li>根据数据流的流动方向分类：<br> 输入流：从数据源读数据到程序的数据流。<br> 输出流：将数据从程序写到数据宿的数据流。 </li>
+<li>根据数据的处理单位分类：<br> 节点流：从（向）某个特定的数据源读（写）数据的流。<br> 处理流（过滤流）：将某个已存在的流作为自己的数据源或数据宿进行封装和处理。 </li>
+<li>根据数据的处理单位分类：<br> 字节流：数据未经加工，以字节为传输单位。<br> 字符流：经过一定编码后的数据，以字符为单位读写数据。</li>
+</ol>
+<h4 id="字节流"><a href="#字节流" class="headerlink" title="字节流"></a><strong>字节流</strong></h4><p>对于字节流，掌握<code>FileInputStream/FileOutputStream、DataInputStream/DataOutputStream、 BufferedInputStream/BufferedOutputStream</code>.</p>
+<ol>
+<li><p><code>FileInputStream</code>：从某个文件中读数据。 </p>
+<p><code>int read()</code>：从输入流中读取一个字节，返回字节值。 </p>
+<p><code>int read(byte[] b)</code>：从输入流中读取，写入b。返回实际读取字节数。 </p>
+<p><code>int read(byte[] b, int off, int len)</code>：从输入流中读取<code>len</code>个数据，写入b，从索引off开始。返回实际读取字节数。</p>
+</li>
+<li><p><code>FileOutputStream：</code>向某个文件中写数据。 </p>
+<p><code>void write(int b)：</code>将指定的整型数据b的低字节写入输出流。 </p>
+<p><code>void write(byte[] b)：</code>把字节数组b中的数据写入输出流。 </p>
+<p><code>void write(byte[] b, int off, int len)：</code>把字节数组b中从off开始的<code>len</code>个字节写入输出流。</p>
+</li>
+<li><p>过滤流<code>FilterInputStream</code>和<code>FilterOutputStream</code> </p>
+<p>字节流<code>FileInputStream</code>类和<code>FileOutputStream</code>类只提供纯字节或字节数组的输入&#x2F;输出。如果要进行特殊数据的 输入&#x2F;输出，如基本数据类型的输入&#x2F;输出，则要通过过滤流<code>FilterInputStream</code>类和<code>FilterOutputStream</code>类中的各 种子类，如下面要着重介绍的<code>DataInputStream/DataOutputStream</code>和 <code>BufferedInputStream/BufferedOutputStream</code>。</p>
+</li>
+</ol>
+<p>（1）<code>DataInputStream</code>与<code>DataOutputStream</code>一般成对出现，先使用<code>DataOutputStream</code>写入数据，然后使用 <code>DataInputStream</code>读取数据。</p>
+<p>（2）缓冲字节流<code>BufferedInputStream</code>、<code>BufferedOutputStream</code>在基础字节流的基础上建立一个缓冲区，提高字节流处理的效率。</p>
+<h4 id="字符流"><a href="#字符流" class="headerlink" title="字符流"></a><strong>字符流</strong></h4><p>对于字符流，掌握<code>InputStreamReader/OutputStreamWriter</code>、<code>FileReader/FileWriter</code>、<code>BufferedReader/BufferedWriter</code>.</p>
+<ol>
+<li><p><code>InputStreamReader</code>和<code>OutputStreamReader </code>将以字节方式表示的流转换为特定平台上的字符表示的流。</p>
+</li>
+<li><p><code>FileReader</code>和<code>FileWriter</code></p>
+</li>
+<li><p><code>BufferedReader</code>和<code>BufferedWriter </code>在基础字符流的基础上建立一个缓冲区，来提高字符流处理的效率，见1。</p>
+</li>
+</ol>
+<h4 id="（简答）对象的序列化（串行化）"><a href="#（简答）对象的序列化（串行化）" class="headerlink" title="（简答）对象的序列化（串行化）"></a><strong>（简答）对象的序列化（串行化）</strong></h4><p>创建的对象一般情况下，随着生成该对象的程序的终止而结束。但是有时候我们需要将对象的状态保存下来，在需要 时将对象恢复。这种对象能记录自己状态以便将来再恢复的能力称为对象的持续性（Persistence）。 对象通过写出描述自己状态的数值来记录自己，这个过程叫对象的序列化（Serialization）。</p>
+<h3 id="11-多线程"><a href="#11-多线程" class="headerlink" title="11 多线程"></a>11 多线程</h3><h4 id="线程和进程有什么区别？它们之间的关系是什么？"><a href="#线程和进程有什么区别？它们之间的关系是什么？" class="headerlink" title="线程和进程有什么区别？它们之间的关系是什么？"></a><strong>线程和进程有什么区别？它们之间的关系是什么？</strong></h4><p>程序处于执行状态就被称为进程。<br>在进程中，进程可以创建并管理多个并发的执行序列，每个执行序列被称为一个独立的线程。<br> 一个进程中的所有线程共享相同的地址空间和这个进程所拥有的操作系统资源。</p>
+<h4 id="（编程）两种线程的构造方法"><a href="#（编程）两种线程的构造方法" class="headerlink" title="（编程）两种线程的构造方法"></a><strong>（编程）两种线程的构造方法</strong></h4><ol>
+<li><p>继承Thread类，重写 run() 方法，在Thread生成对象时调用Thread的 start() 方法。</p>
+</li>
+<li><p>实现Runnable接口，重写 run() 方法，用Thread类的构造函数传递Runnable对象，再调用该对象的 start() 方法。</p>
+</li>
+</ol>
+<p>由于Java是单一继承，所以当某个类已继承了别的类，则其无法再继承Thread类，这时需要通过实现Runnable接口 来构造线程。</p>
+<h4 id="线程的同步机制的目的"><a href="#线程的同步机制的目的" class="headerlink" title="线程的同步机制的目的"></a><strong>线程的同步机制的目的</strong></h4><p>同步机制用来保证进程之间执行顺序正确，确保当两个或多个线程要同时访问共享数据时，一次只能有一个线程访问 共享数据，保持共享资源的一致性，使线程之间实现协作。</p>
+<h4 id="（简答）线程互斥"><a href="#（简答）线程互斥" class="headerlink" title="（简答）线程互斥"></a><strong>（简答）线程互斥</strong></h4><p>在同一时刻只有一个线程可以操作共享资源。 我们用synchronized来描述互斥对象中的互斥方法。在Java中，每个对象都有一个监视器，当一个线程进入监视器的 代码块时，就获得了该对象的锁，其他需要执行该锁代码块的线程就只能等待。当一个线程执行完毕后，释放该对象 的锁，其他等待该对象的线程就可以进入代码块并重复上述过程。</p>
+<h4 id="（简答）线程协作"><a href="#（简答）线程协作" class="headerlink" title="（简答）线程协作"></a><strong>（简答）线程协作</strong></h4><p>通过synchronized只实现了较低层次的互斥同步，解决了共享数据一致性的问题，下面还需要进一步解决线程同步中 如何使任务之间可以协调工作的线程协作问题。 </p>
+<p>Java线程之间协作最简单的方式，是通过继承自Object类的 <code>wait() </code>、 <code>notify()</code> 、 <code>notifyAll()</code> 方法来实现线程挂 起和唤醒。 <code>wait()</code> 方法是使线程等待，直到其他线程调用 <code>notify() </code>或 <code>notifyAll() </code>方法唤醒它； <code>notify()</code> 方法 会随机唤醒等待中的一个线程并使它竞争锁；<code>notifyAll()</code>方法会唤醒所有等待中的线程。</p>
+<h3 id="12-Collections"><a href="#12-Collections" class="headerlink" title="12 Collections"></a>12 Collections</h3><p>对于三种不同的集合，要掌握他们的定义、添加元素和遍历，重点掌握<code>ArrayList</code>。</p>
+<h4 id="Set"><a href="#Set" class="headerlink" title="Set"></a><strong>Set</strong></h4><p>集合里不能放重复对象，不能放基本数据类型，只能放引用数据类型（对象）。</p>
+<p>Set有两个具体实现类：无序的<code>HashSet</code>、有序的<code>TreeSet</code>。 </p>
+<p><code>TreeSet</code>支持两种排序方式：自然排序和客户化排序，可以将这两种方法对比理解。 </p>
+<ul>
+<li>使用自然排序时，只能向<code>TreeSet</code>集合中加入同一类型的对象，并且这些对象必须实现<code>Comparable</code>接口（中的 <code>compareTo() </code>方法）。</li>
+</ul>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.CollectionsTestClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeSet;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: TreeSetClass</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.CollectionsTestClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 19:51</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> x, y;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;&quot;</span> + x + <span class="string">&quot;,&quot;</span> + y + <span class="string">&quot; &gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(Object obj)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(obj <span class="keyword">instanceof</span> Point) &#123;</span><br><span class="line">            <span class="type">Point</span> <span class="variable">p</span> <span class="operator">=</span> (Point) obj;</span><br><span class="line">            <span class="keyword">return</span> (x * <span class="number">1000</span> + y) - (p.x * <span class="number">1000</span> + p.y);</span><br><span class="line">        &#125; <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeSetClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Set&lt;Point&gt; s = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;();</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">2</span>));</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历方式1：迭代器</span></span><br><span class="line">        Iterator&lt;Point&gt; it = s.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next().toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历方式2：使用增强for循环</span></span><br><span class="line">        <span class="keyword">for</span>(Point sett : s) &#123;</span><br><span class="line">            System.out.println(sett.toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li>客户化排序需要自定义一个比较类，其中 <code>compare() </code>方法用于比较大小</li>
+</ul>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.CollectionsTestClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Comparator;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeSet;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: ComparatorTestClass</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.CollectionsTestClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 20:16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PointCompare</span> <span class="keyword">implements</span> <span class="title class_">Comparator</span>&lt;Point&gt; &#123;</span><br><span class="line">    <span class="comment">// 实现Comparator接口</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compare</span><span class="params">(Point o1, Point o2)</span> &#123;</span><br><span class="line">        <span class="comment">// 重写compare方法</span></span><br><span class="line">        <span class="keyword">return</span> (o1.getX() * <span class="number">1000</span> + o1.getY()) - (o2.getX() * <span class="number">1000</span> + o2.getY());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> x, y;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Point</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">getX</span><span class="params">()</span> &#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">getY</span><span class="params">()</span> &#123;<span class="keyword">return</span> y;&#125;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;&quot;</span> + x + <span class="string">&quot;,&quot;</span> + y + <span class="string">&quot;&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ComparatorTestClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Set&lt;Point&gt; s = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(<span class="keyword">new</span> <span class="title class_">PointCompare</span>());</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">2</span>, <span class="number">2</span>));</span><br><span class="line">        s.add(<span class="keyword">new</span> <span class="title class_">Point</span>(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line"></span><br><span class="line">        Iterator&lt;Point&gt; it = s.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next().toString());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Point sett : s) &#123;</span><br><span class="line">            System.out.println(sett.toString());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="List"><a href="#List" class="headerlink" title="List"></a><strong>List</strong></h4><p>List里可以放重复的对象。</p>
+<p>List有两个具体实现类： </p>
+<ol>
+<li><code>ArrayList</code>：底层用数组实现，查询效率高 </li>
+<li><code>LinkedList</code>：底层用双链表实现，插入与删除效率高</li>
+</ol>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.CollectionsTestClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: ArrayListTestClass</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.CollectionsTestClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 20:24</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListTestClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;Integer&gt;();</span><br><span class="line">        list.add(<span class="number">1</span>);</span><br><span class="line">        list.add(<span class="number">4</span>);</span><br><span class="line">        list.add(<span class="number">3</span>);</span><br><span class="line">        list.add(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历方式1：利用for循环通过下标访问，只有ArrayList可用下标访问</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; list.size(); i ++) &#123;</span><br><span class="line">            System.out.println(list.get(i) + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        Collections.sort(list);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历方法2：迭代器</span></span><br><span class="line">        Iterator&lt;Integer&gt; it = list.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">            System.out.println(it.next() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历方法3：使用lambda表达式</span></span><br><span class="line">        list.forEach(integer -&gt; System.out.println(integer + <span class="string">&quot; &quot;</span>));</span><br><span class="line">        System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 遍历方法4: 使用增强for循环</span></span><br><span class="line">        <span class="keyword">for</span>(Integer integer : list) &#123;</span><br><span class="line">            System.out.println(integer + <span class="string">&quot; &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<p><code>ArrayList</code>还有一个重点是<code>binarySearch()</code>方法，二分的前提是序列有序。下面用一个Point类来举例其用法。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.CollectionsTestClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: ArrayListbinarySearchTestClass</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.CollectionsTestClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 20:32</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Count</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> x, y;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Count</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.x = x;</span><br><span class="line">        <span class="built_in">this</span>.y = y;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">getX</span><span class="params">()</span> &#123;<span class="keyword">return</span> x;&#125;</span><br><span class="line">    <span class="type">int</span> <span class="title function_">getY</span><span class="params">()</span> &#123;<span class="keyword">return</span> y;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayListbinarySearchTestClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        List&lt;Count&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Count</span>(<span class="number">2</span>, <span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Count</span>(<span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Count</span>(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">        list.add(<span class="keyword">new</span> <span class="title class_">Count</span>(<span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Count c : list) &#123;</span><br><span class="line">            System.out.println(c.getX() + <span class="string">&quot; &quot;</span> + c.getY());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        Collections.sort(list,((o1,o2) -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span>(o1.getX() != o2.getX())</span><br><span class="line">                <span class="keyword">return</span> o1.getX() - o2.getX();</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> o1.getY() - o2.getY();</span><br><span class="line">        &#125;));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Count c : list) &#123;</span><br><span class="line">            System.out.println(c.getX() + <span class="string">&quot; &quot;</span> + c.getY());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(Collections.binarySearch(list, <span class="keyword">new</span> <span class="title class_">Count</span>(<span class="number">2</span>,<span class="number">1</span>), ((o1, o2) -&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span>(o1.getX() != o2.getX()) <span class="keyword">return</span> o1.getX() -o2.getX();</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> o1.getY() - o2.getY();</span><br><span class="line">        &#125;)));</span><br><span class="line">        <span class="comment">// binarySearch有三个参数和一个返回值，分别是要二分的序列、要找的元素、比较方法，返回值是int类型，表示要找的元素的位置</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a><strong>Map</strong></h4><p>Map也有两种具体实现类，<code>HashMap</code>和<code>TreeMap</code>，对应于Set两种具体实现类的名字，<code>HashMap</code>应该是无序的， <code>TreeMap</code>应该是有序的。但在<code>Java8</code>之后，<code>HashMap</code>改用红黑树实现，会按照元素插入时的顺序来维护元素的顺序， 也能够保证有序性，但和<code>TreeMap</code>是两种不同的实现结构。所以在考试中不必特意区分<code>HashMap</code>和<code>TreeMap</code>，这两种都是有序的。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.CollectionsTestClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.TreeMap;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: MapTestClass</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.CollectionsTestClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 20:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MapTestClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Map&lt;String, String&gt; map = <span class="keyword">new</span> <span class="title class_">TreeMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&quot;4&quot;</span>, <span class="string">&quot;Monday&quot;</span>);</span><br><span class="line">        map.put(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;Monday&quot;</span>);</span><br><span class="line">        map.put(<span class="string">&quot;one&quot;</span>, <span class="string">&quot;Monday&quot;</span>);</span><br><span class="line">        map.put(<span class="string">&quot;2&quot;</span>, <span class="string">&quot;Tuesday&quot;</span>);</span><br><span class="line">        map.put(<span class="string">&quot;3&quot;</span>, <span class="string">&quot;Wednesday&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(Map.Entry&lt;String, String&gt; m : map.entrySet()) &#123;</span><br><span class="line">            System.out.println(m.getKey() + <span class="string">&quot; &quot;</span> + m.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<blockquote>
+<p>“泛型这块考察的内容不是很多，基本上你看完Set这一章节就ok了。” </p>
+<p>“泛型主要看看它的原理，考察的重点是集合，不是泛型。”</p>
+</blockquote>
+<h4 id="泛型的实质"><a href="#泛型的实质" class="headerlink" title="泛型的实质"></a><strong>泛型的实质</strong></h4><p>允许在定义接口、类时声明类型形参，类型形参在整个接口、类体内可当成类型使用，几乎所有可使用普通类型的地方都可以使用这种类型形参。 </p>
+<p>Java的泛型就类似C++的模板template。</p>
+<h4 id="使用泛型的目的"><a href="#使用泛型的目的" class="headerlink" title="使用泛型的目的"></a><strong>使用泛型的目的</strong></h4><ol>
+<li>类型安全性：通过使用泛型，Java编译器可以在编译时进行类型检查，减少运行时出现的类型转换错误。 </li>
+<li>代码重用：使用泛型可以实现通用算法，将数据结构与操作分开，达到更好的代码重用。 </li>
+<li>代码可读性：使用泛型增加了代码的命名规范以及代码的易读性，在代码中使用泛型参数名称能够更加清晰地表 达代码的意图。</li>
+<li>减少强制类型转换：使用泛型的方式可以减少使用强制类型转换的情况，降低代码的复杂度同时提高代码的可读 性。 </li>
+<li>提供更好的性能：对于类似 <code>ArrayList</code> 等集合类，使用泛型可以帮助编译器优化代码生成的字节码，从而提高代码的性能。</li>
+</ol>
+<h4 id="如何用泛型声明一个类"><a href="#如何用泛型声明一个类" class="headerlink" title="如何用泛型声明一个类"></a><strong>如何用泛型声明一个类</strong></h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.CollectionsTestClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: TemplateTestClass</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.CollectionsTestClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 20:45</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TemplateTestClass</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> T info;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">TemplateTestClass</span><span class="params">(T info)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.info = info;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        TemplateTestClass&lt;String&gt; a1 = <span class="keyword">new</span> <span class="title class_">TemplateTestClass</span>&lt;&gt;(<span class="string">&quot;苹果&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="13-图形用户界面"><a href="#13-图形用户界面" class="headerlink" title="13 图形用户界面"></a>13 图形用户界面</h3><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.SwingTestClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.swing.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.*;</span><br><span class="line"><span class="keyword">import</span> java.awt.event.ActionListener;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: Main</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.SwingTestClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 20:48</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">/* 新建JFrame的步骤</span></span><br><span class="line"><span class="comment">        1.定义JFrame: JFrame jf = new JFrame(&quot;title&quot;);</span></span><br><span class="line"><span class="comment">        2.设置布局（都用流式布局）： jf.setLayout(new FlowLayout());</span></span><br><span class="line"><span class="comment">        3.设置窗口大小： jf.setSize(x, y);</span></span><br><span class="line"><span class="comment">        4.窗口居中显示（可选）： jf.setLocationRelativeTo(null);</span></span><br><span class="line"><span class="comment">        5.设置点击右上角关闭即可结束程序（可选）： jf.setDefaultCloseOperation(3);</span></span><br><span class="line"><span class="comment">        6.设置窗口大小不可更改（可选）： jf.setResizable(false);</span></span><br><span class="line"><span class="comment">        7.设置窗口可见，必须放在程序最后： jf.setVisible(true);</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line">        <span class="type">JFrame</span> <span class="variable">jf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JFrame</span>(<span class="string">&quot;GuestBook&quot;</span>);</span><br><span class="line">        jf.setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>());</span><br><span class="line">        jf.setSize(<span class="number">300</span>,<span class="number">280</span>);</span><br><span class="line">        jf.setLocationRelativeTo(<span class="literal">null</span>);</span><br><span class="line">        jf.setDefaultCloseOperation(<span class="number">3</span>);</span><br><span class="line">        jf.setResizable(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 定义一个全局字体</span></span><br><span class="line">        <span class="type">Font</span> <span class="variable">font</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Font</span>(<span class="string">&quot;song&quot;</span>, Font.PLAIN, <span class="number">14</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/*为一行新建JPanel的步骤：</span></span><br><span class="line"><span class="comment">        1.定义JPanel： JPanel jp = new JPanel();</span></span><br><span class="line"><span class="comment">        2.设置大小： jp.setPreferredSize(new Dimension(x, y)); 必须用setPreferredSize()</span></span><br><span class="line"><span class="comment">        3.设置流式布局： jp.setLayout(new FlowLayout(FlowLayout.CENTER)); 可居中可靠左等</span></span><br><span class="line"><span class="comment">        4.新建该行中的所有元素：var1,var2,var3等</span></span><br><span class="line"><span class="comment">        5.将该行的所有元素(var1,var2,var3...)加入JPanel： jp.add(var1); jp.add(var2); ...</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// ********************第一行Panel********************</span></span><br><span class="line">        <span class="type">JPanel</span> <span class="variable">namePanel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JPanel</span>();</span><br><span class="line">        namePanel.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">300</span>, <span class="number">30</span>));</span><br><span class="line">        namePanel.setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>(FlowLayout.CENTER));</span><br><span class="line"></span><br><span class="line">        <span class="type">JLabel</span> <span class="variable">nameLabel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JLabel</span>(<span class="string">&quot;您的姓名：&quot;</span>);</span><br><span class="line">        nameLabel.setFont(font);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 单行文本框用JTextField</span></span><br><span class="line">        <span class="type">JTextField</span> <span class="variable">nameInput</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JTextField</span>();</span><br><span class="line">        <span class="comment">//nameInput受namePanel的布局管理器管理，需要使用setPreferredSize()设置尺寸，setSize()无效，下同理</span></span><br><span class="line">        nameInput.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">100</span>, <span class="number">20</span>));</span><br><span class="line"></span><br><span class="line">        namePanel.add(nameLabel);</span><br><span class="line">        namePanel.add(nameInput);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ********************第二行Panel********************</span></span><br><span class="line">        <span class="type">JPanel</span> <span class="variable">advicePanel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JPanel</span>();</span><br><span class="line">        advicePanel.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">280</span>,<span class="number">25</span>));</span><br><span class="line">        advicePanel.setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>(FlowLayout.LEFT));</span><br><span class="line">        <span class="type">JLabel</span> <span class="variable">adviceLabel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JLabel</span>(<span class="string">&quot;您的建议：&quot;</span>);</span><br><span class="line">        adviceLabel.setFont(font);</span><br><span class="line">        advicePanel.add(adviceLabel);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ********************第三行Panel********************</span></span><br><span class="line">        <span class="type">JPanel</span> <span class="variable">adviceTextPanel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JPanel</span>();</span><br><span class="line">        adviceTextPanel.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">280</span>,<span class="number">110</span>));</span><br><span class="line">        adviceTextPanel.setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>(FlowLayout.CENTER));</span><br><span class="line">        <span class="type">JTextArea</span> <span class="variable">adviceText</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JTextArea</span>(<span class="string">&quot;请输入：&quot;</span>, <span class="number">5</span>,<span class="number">15</span>);</span><br><span class="line">        adviceText.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">260</span>,<span class="number">130</span>));</span><br><span class="line">        adviceText.setFont(font);</span><br><span class="line">        adviceTextPanel.add(adviceText);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// ********************第四行Panel********************</span></span><br><span class="line">        <span class="type">JPanel</span> <span class="variable">buttonPanel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JPanel</span>();</span><br><span class="line">        buttonPanel.setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>(FlowLayout.CENTER,<span class="number">30</span>, <span class="number">5</span>));</span><br><span class="line">        <span class="type">JButton</span> <span class="variable">submitButton</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JButton</span>(<span class="string">&quot;提交&quot;</span>);</span><br><span class="line">        submitButton.setFont(font);</span><br><span class="line">        submitButton.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">70</span>, <span class="number">30</span>));</span><br><span class="line">        <span class="type">JButton</span> <span class="variable">resetButton</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JButton</span>(<span class="string">&quot;复位&quot;</span>);</span><br><span class="line">        resetButton.setFont(font);</span><br><span class="line">        resetButton.setPreferredSize(<span class="keyword">new</span> <span class="title class_">Dimension</span>(<span class="number">70</span>, <span class="number">30</span>));</span><br><span class="line">        buttonPanel.add(submitButton);</span><br><span class="line">        buttonPanel.add(resetButton);</span><br><span class="line"></span><br><span class="line">        <span class="comment">/* 添加按钮监听事件的步骤：</span></span><br><span class="line"><span class="comment">        1.通过ActionListener接口定义事件event</span></span><br><span class="line"><span class="comment">        2.将事件event加入接收操作的按钮的事件监听队列</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// ********************提交按钮********************</span></span><br><span class="line">        <span class="type">ActionListener</span> <span class="variable">submitListener</span> <span class="operator">=</span> e -&gt; &#123;</span><br><span class="line">            <span class="type">JDialog</span> <span class="variable">notice</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JDialog</span>(<span class="keyword">new</span> <span class="title class_">JFrame</span>(), <span class="string">&quot;notice&quot;</span>);</span><br><span class="line">            notice.setVisible(<span class="literal">true</span>);</span><br><span class="line">            <span class="type">JLabel</span> <span class="variable">noticeLabel</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">JLabel</span>(<span class="string">&quot;已提交&quot;</span>);</span><br><span class="line">            noticeLabel.setFont(font);</span><br><span class="line">            notice.setLayout(<span class="keyword">new</span> <span class="title class_">FlowLayout</span>(FlowLayout.CENTER));</span><br><span class="line">            notice.add(noticeLabel);</span><br><span class="line">            notice.setSize(<span class="number">100</span>, <span class="number">100</span>);</span><br><span class="line">            notice.setLocationRelativeTo(<span class="literal">null</span>);</span><br><span class="line">            notice.setDefaultCloseOperation(<span class="number">1</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        submitButton.addActionListener(submitListener);</span><br><span class="line">        <span class="comment">// ********************重置按钮********************</span></span><br><span class="line">        <span class="type">ActionListener</span> <span class="variable">resetListener</span> <span class="operator">=</span> e -&gt; &#123;</span><br><span class="line">            adviceText.setText(<span class="string">&quot;请输入：&quot;</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        resetButton.addActionListener(resetListener);</span><br><span class="line">        <span class="comment">// ********************将每个Panel都添加到Frame********************</span></span><br><span class="line">        jf.add(namePanel);</span><br><span class="line">        jf.add(advicePanel);</span><br><span class="line">        jf.add(adviceTextPanel);</span><br><span class="line">        jf.add(buttonPanel);</span><br><span class="line">        <span class="comment">// ********************最后设置Frame样式********************</span></span><br><span class="line">        jf.setVisible(<span class="literal">true</span>); <span class="comment">// 设置可见 ******必须写在最后******</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<img lazyload src="/images/loading.svg" data-src="/2023/11/16/Java/Java%E5%A4%8D%E4%B9%A0/1.png" class>
+
+
+
+<h4 id="基本控件"><a href="#基本控件" class="headerlink" title="基本控件"></a><strong>基本控件</strong></h4><blockquote>
+<p>“基本控件了解<code>JButton</code>、<code>JLabel</code>、<code>JTextField</code>、<code>JTextArea</code>、<code>JCheckbox</code>、<code>JRadioButton</code>.”</p>
+</blockquote>
+<h4 id="容器"><a href="#容器" class="headerlink" title="容器"></a><strong>容器</strong></h4><blockquote>
+<p>“容器了解<code>JFrame</code>、<code>JDialog</code>、<code>JPanel</code>.”</p>
+</blockquote>
+<h4 id="布局管理器"><a href="#布局管理器" class="headerlink" title="布局管理器"></a><strong>布局管理器</strong></h4><h4 id="事件处理"><a href="#事件处理" class="headerlink" title="事件处理"></a><strong>事件处理</strong></h4><blockquote>
+<p>“<code>JPanel</code>呢，我们这种简单布局应该还用不到这种。” </p>
+<p>“绘图这一部分呢，大家简单看一下就行了。主要是去考察一下字体、Graphics类，了解一下draw方法和paint 方法，把课件上的例子看一下就行了。” </p>
+<p>“能把作业单独完成就完全没有问题了。”</p>
+</blockquote>
+<h3 id="14-异常处理"><a href="#14-异常处理" class="headerlink" title="14  异常处理"></a>14  异常处理</h3><blockquote>
+<p>“了解异常处理的结构、异常处理机制。” </p>
+<p>“主要是简答和程序分析。”</p>
+</blockquote>
+<h4 id="（简答）什么是运行时异常？什么是受检查异常？"><a href="#（简答）什么是运行时异常？什么是受检查异常？" class="headerlink" title="（简答）什么是运行时异常？什么是受检查异常？"></a><strong>（简答）什么是运行时异常？什么是受检查异常？</strong></h4><p>Java运行时系统对字节码进行解释，并能在程序执行时检测到许多类型的异常，成为运行时异常（Runtime Exception），例如空指针、数组越界、除数为零。从语法角度上，Java不要求捕获这类异常。 Error是指Java运行时系统的内部错误，属于致命性运行时错误。除了Error类和Runtime Exception类的所有其他异常 成为受检查异常（Checked Exception），程序必须对可能发生的这类异常进行处理，否则编译不通过。</p>
+<h4 id="（简答）Java的异常处理机制有哪些？"><a href="#（简答）Java的异常处理机制有哪些？" class="headerlink" title="（简答）Java的异常处理机制有哪些？"></a><strong>（简答）Java的异常处理机制有哪些？</strong></h4><ol>
+<li><p>捕获处理异常 </p>
+<p>方法中出现的异常对象将被交给Java运行时系统，运行时系统在方法的调用栈中找到相应异常的捕获处理代码， 并把异常对象交给其处理，如果找不到可以捕获异常的代码，程序将终止执行。使用try-catch-finally结构。 </p>
+</li>
+<li><p>声明异常 </p>
+<p>不捕获异常，声明异常只是声明方法有可能抛出的异常，从而让该方法上层调研方法捕获异常。使用throws及 throw。</p>
+</li>
+</ol>
+<h4 id="（简答）声明异常的目的是什么？怎样声明一个异常？"><a href="#（简答）声明异常的目的是什么？怎样声明一个异常？" class="headerlink" title="（简答）声明异常的目的是什么？怎样声明一个异常？"></a><strong>（简答）声明异常的目的是什么？怎样声明一个异常？</strong></h4><p>声明异常是将问题标识出来，报告给调用者。如果方法内通过throw抛出了编译时异常，而没有捕获处理，那么必须 通过throws进行声明，让调用者去处理。 </p>
+<p>声明异常的方法：修饰符 返回值类型 方法名(参数) throws 异常类名1,异常类名2…{ }</p>
+<h4 id="（简答）Java中的异常是如何进行分类的，怎样抛出一个异常？"><a href="#（简答）Java中的异常是如何进行分类的，怎样抛出一个异常？" class="headerlink" title="（简答）Java中的异常是如何进行分类的，怎样抛出一个异常？"></a><strong>（简答）Java中的异常是如何进行分类的，怎样抛出一个异常？</strong></h4><p>异常的分类可根据在编译时期还是运行时期去检查异常： </p>
+<ol>
+<li>运行时异常（Runtime Exception）：在运行时期检查异常，Java运行时系统对字节码进行解释，在程序执行时 检测到许多类型的异常，这类异常可通过适当编程避免，不要求捕获这类异常。</li>
+<li>编译时异常（受检查异常）（Checked Exception）：在编译时期就会检查异常，程序必须对可能发生的异常进 行处理，否则编译不通过。</li>
+</ol>
+<p>Java有两种方法抛出异常： </p>
+<ol>
+<li>Java运行时环境自动抛出异常。 </li>
+<li>在一定条件下，用户使用throw语句显式抛出异常。</li>
+</ol>
+<h4 id="（程序分析）try-catch-finally结构"><a href="#（程序分析）try-catch-finally结构" class="headerlink" title="（程序分析）try catch finally结构"></a><strong>（程序分析）try catch finally结构</strong></h4><div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.ThrowClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.InputMismatchException;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: tryTestClass</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.ThrowClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 22:21</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">tryTestClass</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// try 不能单独存在，必须结合catch或finally来使用</span></span><br><span class="line">        <span class="comment">// try 块中没有异常，会执行finally（如果有）</span></span><br><span class="line">        <span class="comment">// try块中有异常,会执行对应的catch块(如果有),try中异常发生点之后的代码将不会执行</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">num1</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            <span class="type">int</span> <span class="variable">num2</span> <span class="operator">=</span> sc.nextInt();</span><br><span class="line">            System.out.println(num1 + <span class="string">&#x27;\t&#x27;</span> + num2);</span><br><span class="line">            System.out.println(num1 / num2);</span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            System.out.println(str.charAt(<span class="number">0</span>));</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InputMismatchException | NullPointerException e) &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        每一个catch块用于捕获并处理一个特定的异常，或者这个异常类型的子类。Java7中可以将多个异常声明在一个catch中。</span></span><br><span class="line"><span class="comment">        catch后面的括号定义了异常类型和异常参数。如果异常与之匹配且是最先匹配到的，则虚拟机将使用这个catch块来处理异常。</span></span><br><span class="line"><span class="comment">        在catch块中可以使用这个块的异常参数来获取异常的相关信息。异常参数是这个catch块中的局部变量，其它块不能访问。</span></span><br><span class="line"><span class="comment">        如果当前try块中发生的异常在后续的所有catch中都没捕获到，则先去执行finally，然后到这个函数的外部caller中去匹配异常处理器。</span></span><br><span class="line"><span class="comment">        如果try中没有发生异常，则所有的catch块将被忽略。</span></span><br><span class="line"><span class="comment">        * */</span></span><br><span class="line">            System.out.println(<span class="string">&quot;catch块 - try里面发生了异常 - 空指针和输入不匹配异常都走这个catch&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ArithmeticException e) &#123;</span><br><span class="line">            e.getMessage();</span><br><span class="line">            System.out.println(<span class="string">&quot;算数异常:除数不能为0&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;程序发生未知异常&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        finally块通常是可选的。</span></span><br><span class="line"><span class="comment">        无论异常是否发生，异常是否匹配被处理，finally都会执行。</span></span><br><span class="line"><span class="comment">        一个try至少要有一个catch块，否则，至少要有1个finally块。但是finally不是用来处理异常的，finally不会捕获异常。</span></span><br><span class="line"><span class="comment">        finally主要做一些清理工作，如流的关闭，数据库连接的关闭等。</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">            System.out.println(<span class="string">&quot;finally块&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">&quot;异常捕获之后的代码&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">12</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="keyword">catch</span>块 - <span class="keyword">try</span>里面发生了异常 - 空指针和输入不匹配异常都走这个<span class="keyword">catch</span></span><br><span class="line"><span class="keyword">finally</span>块</span><br><span class="line">异常捕获之后的代码</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h4 id="throws"><a href="#throws" class="headerlink" title="throws"></a><strong>throws</strong></h4><p>throws仅仅是将函数中可能出现的异常向调用者声明，自己不具体处理。 </p>
+<p>如果一个方法内部的代码会抛出受检查异常（Checked Exception），而方法自己又没有完全处理掉或并不能确定如 何处理这种异常，则javac保证你必须在方法的签名上使用throws关键字声明这些可能抛出的异常，表明该方法将不 对这些异常进行处理，而由该方法的调用者负责处理，否则编译不通过。 </p>
+<p>声明异常的方法：修饰符 返回值类型 方法名(参数) throws 异常类名1,异常类名2…{ }</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.ThrowClass;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: ThrowsTest</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.ThrowClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 22:27</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThrowsTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">ThrowsTest</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThrowsTest</span>();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            t.readFile();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">readFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">FileInputStream</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;./src/test.txt&quot;</span>);</span><br><span class="line">        <span class="type">int</span> b;</span><br><span class="line">        b = in.read();</span><br><span class="line">        <span class="keyword">while</span>(b != -<span class="number">1</span>) &#123;</span><br><span class="line">            System.out.println((<span class="type">char</span>) b);</span><br><span class="line">            b = in.read();</span><br><span class="line">        &#125;</span><br><span class="line">        in.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="throw"><a href="#throw" class="headerlink" title="throw"></a><strong>throw</strong></h4><p>Java异常类对象除在程序执行过程中出现异常时由系统自动生成并抛出，也可根据需要使用throw人工创建并抛出。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass.ThrowClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: StudentTest</span></span><br><span class="line"><span class="comment"> * Package: DemoClass.ThrowClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 22:31</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StudentTest</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">            s.regist(-<span class="number">1001</span>);</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            System.out.println(e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Student</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">regist</span><span class="params">(<span class="type">int</span> id)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="keyword">if</span> (id &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">this</span>.id = id;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Exception</span>(<span class="string">&quot;您输入的数据非法！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">toString</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Student [id=&quot;</span> + id + <span class="string">&quot;]&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">您输入的数据非法！</span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="15-内部类"><a href="#15-内部类" class="headerlink" title="15 内部类"></a>15 内部类</h3><blockquote>
+<p>“内部类没有单独的考察，它是结合我们Java的GUI来一起进行考察的。” </p>
+<p>“匿名内部类重点看一下，在多线程的题目、在用户界面编程的题目会碰到。”</p>
+</blockquote>
+<h4 id="内部类是什么"><a href="#内部类是什么" class="headerlink" title="内部类是什么"></a><strong>内部类是什么</strong></h4><p>当A类为B类服务时，为了不让外界直接访问到A类，可把这个A类定义在B类的内部，变为内部类。</p>
+<h4 id="内部类的分类"><a href="#内部类的分类" class="headerlink" title="内部类的分类"></a><strong>内部类的分类</strong></h4><p>实例内部类（成员内部类）：如同类的普通成员一样。实例内部类即没有被static修饰的内部类。在创建实例内部类 时，必须已经存在外部类的实例。 </p>
+<p>静态内部类：如同类的静态成员一样。如果不需要内部类对象与其外围类对象之间有联系,那么可以将内部类声明为 static。 </p>
+<p>局部内部类：局部内部类和局部变量一样，是定义在方法内的类，也不能使用private\public\protected以及static修 饰。 </p>
+<p>匿名内部类：在某些情况下，我们只需要内部类的一个对象，而不需要该类的名字。匿名内部类本身没有构造方法 （也不能有），但会调用父类的构造方法。通过匿名内部类实现接口，可以达到隐藏接口的实现的目的。</p>
+<h3 id="16-面向对象"><a href="#16-面向对象" class="headerlink" title="16 面向对象"></a>16 面向对象</h3><h4 id="（简答）Java语言的特点"><a href="#（简答）Java语言的特点" class="headerlink" title="（简答）Java语言的特点"></a><strong>（简答）Java语言的特点</strong></h4><p>简单性、面向对象、平台无关性、安全性、多线程、动态性。</p>
+<h4 id="（简答）Java语言执行过程"><a href="#（简答）Java语言执行过程" class="headerlink" title="（简答）Java语言执行过程"></a><strong>（简答）Java语言执行过程</strong></h4><p>Java程序运行时必须经过编译和运行两个步骤，首先编译后缀为<code>.java</code>的源文件，生成后缀名为.class的字节码文件， Java虚拟机将字节码文件解释执行，并将结果显示出来。</p>
+<h4 id="（简答）面向对象的三大特征"><a href="#（简答）面向对象的三大特征" class="headerlink" title="（简答）面向对象的三大特征"></a><strong>（简答）面向对象的三大特征</strong></h4><ol>
+<li><p>封装性的目的在于隔离对象的编写者与使用者，使用者无法知晓对象的具体细节，而是通过编写者对对象提供的 外部接口来访问对象，降低了软件系统的藕合程度。 </p>
+</li>
+<li><p>继承性表达了类之间特殊与一般的关系，一般类称为父类，特殊类称为子类，提高了代码的复用性。 </p>
+</li>
+<li><p>多态性是指类的某个行为具有不同的表现形式，即单一的接口或方法具有不同的动作，Java中的多态包含两种情 况：重载与重写（覆盖）。 </p>
+<p>重载：多态性在单个类中表现为方法重载；一个类可以有多个名字相同、形参列表不同的方法，在使用时由传递 给他们的实参来决定使用哪个方法。 </p>
+<p>重写（覆盖）：多态性在多个类中表现为继承结构中的方法重写（覆盖）；父类和其子类中具有相同的方法头， 但用不同的代码实现。</p>
+</li>
+</ol>
+<h4 id="（简答）构造方法的特点"><a href="#（简答）构造方法的特点" class="headerlink" title="（简答）构造方法的特点"></a><strong>（简答）构造方法的特点</strong></h4><ol>
+<li>构造方法的方法名与类名相同。</li>
+<li>构造方法没有返回类型，也不能有void。 </li>
+<li>构造方法用new操作符调用，主要作用是初始化对象。 </li>
+<li>每个类都至少有一个构造方法，如果没有显式地定义构造方法，Java会自动提供一个缺省的构造方法。</li>
+</ol>
+<h4 id="（简答）抽象类的特点"><a href="#（简答）抽象类的特点" class="headerlink" title="（简答）抽象类的特点"></a><strong>（简答）抽象类的特点</strong></h4><ol>
+<li>不能创建实例，即不能new一个抽象类。</li>
+<li>可不含抽象方法，但只要有一个方法是抽象方法，这个类就要定义成抽象类。 </li>
+<li>若子类没有实现父类的所有抽象方法，那子类也必须为抽象类。</li>
+<li>构造方法不能都定义为私有，否则不能有子类。 5. 不能用final修饰，抽象方法必须在子类中才可实现。</li>
+</ol>
+<h4 id="（简答）接口的作用"><a href="#（简答）接口的作用" class="headerlink" title="（简答）接口的作用"></a><strong>（简答）接口的作用</strong></h4><p>接口提供了一个统一的操作方法名，同样的方法在不同类中可以有不同的具体实现过程，在操作实现了该接口类的对 象时采用统一的名字进行调用。</p>
+<h4 id="（简答）接口与抽象类的比较"><a href="#（简答）接口与抽象类的比较" class="headerlink" title="（简答）接口与抽象类的比较"></a><strong>（简答）接口与抽象类的比较</strong></h4><ol>
+<li>语法上，抽象类用关键字abstract class定义，并且可以定义自己的成员变量和非抽象及抽象的成员方法；接口 用关键字interface定义，接口内只有公开的静态常量，所有的成员方法都是公开的抽象方法、默认方法和静态 方法。 </li>
+<li>使用上，抽象类是用来被继承的，一个类只能继承一个父类，但可以实现多个接口，这样可以使用接口实现多重 继承，在一定程度上弥补单继承的缺点。 </li>
+<li>设计上，抽象类作为父类，与子类之间存在“is-a”关系，即父子类本质上是一种类型；接口只能表示类支持接口 的行为，具有接口的功能，因此接口和实现类之间表示的是“like-a”关系。所以在设计上，如果父子类型本质上 是一种类型，那父类可设计成抽象类；如果子类型只是想额外具有一些特性，则可以将父类设计成接口，而且这 些接口不宜过大，应该设计成多个专题的小接口。这也是面向对象设计的一个重要原则——接口隔离原则：一个 类对另一个类的依赖性应建立在最小接口上，不应强迫调用者依赖他们不会使用到的行为，过大的接口是对接口 的污染。</li>
+</ol>
+<h4 id="类的修饰符和类的成员的修饰符"><a href="#类的修饰符和类的成员的修饰符" class="headerlink" title="类的修饰符和类的成员的修饰符"></a><strong>类的修饰符和类的成员的修饰符</strong></h4><img lazyload src="/images/loading.svg" data-src="/2023/11/16/Java/Java%E5%A4%8D%E4%B9%A0/2.png" class>
+
+<h4 id="包的相关概念"><a href="#包的相关概念" class="headerlink" title="包的相关概念"></a><strong>包的相关概念</strong></h4><p>根据功能的相近性，我们可以将类组织到不同的目录下，这些目录被称为包（package）。 import语句可以引入所需要的类，它可以加载一个包中的所有类或者某个单独的类。 模块（module）是比包更高一个层次的组织单位。</p>
+<blockquote>
+<p>“单例模式是要考的。”</p>
+</blockquote>
+<h4 id="单例设计模式"><a href="#单例设计模式" class="headerlink" title="单例设计模式"></a><strong>单例设计模式</strong></h4><p>单例模式是指一个类有且仅有一个实例向整个系统提供。 </p>
+<p>单例模式设计方案： </p>
+<ol>
+<li>构造方法设为私有权限，防止外界任意调用。</li>
+<li>需要提供一个公有的静态方法获取创建的对象实例。</li>
+<li>创建的唯一对象是被共享且只能被步骤2中的静态方法直接调用，所以需要将其定义为私有的静态对象。</li>
+<li>静态对象的初始化可在外界首次需要对象时在步骤2的方法中调用构造方法创建对象，之后不再创建对象，也可 在类的加载阶段初始化。</li>
+</ol>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> DemoClass;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ClassName: SingleTon</span></span><br><span class="line"><span class="comment"> * Package: DemoClass</span></span><br><span class="line"><span class="comment"> * Description:</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span> wathplk</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Create</span> 2023/11/17 22:32</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleTon</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleTon sObj; <span class="comment">// 私有且静态</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">SingleTon</span><span class="params">()</span> &#123;&#125;  <span class="comment">// 构造方法必须私有</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingleTon <span class="title function_">getInstance</span><span class="params">()</span> &#123; <span class="comment">// 必须静态</span></span><br><span class="line">        <span class="keyword">if</span>(sObj == <span class="literal">null</span>) sObj = <span class="keyword">new</span> <span class="title class_">SingleTon</span>(); <span class="comment">// 首次需要时创建</span></span><br><span class="line">        <span class="keyword">return</span> sObj;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TestFingleTon</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">SingleTon</span> <span class="variable">t1</span> <span class="operator">=</span> SingleTon.getInstance();</span><br><span class="line">        <span class="type">SingleTon</span> <span class="variable">t2</span> <span class="operator">=</span> SingleTon.getInstance();</span><br><span class="line">        System.out.println(t1 == t2); <span class="comment">// 返回true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p> “接口这块大家也要去看一下。” </p>
+<p>“简答重点是在面向对象、类和接口、异常处理、集合、IO、线程。”</p>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> Java复习</li>
+        <li><strong>作者:</strong> wawn</li>
+        <li><strong>创建于
+                :</strong> 2023-11-16 23:38:10</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2023-12-01 23:00:28
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://wawnwn.github.io/2023/11/16/Java/Java复习/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/11/30/%E5%89%8D%E7%AB%AF/Vue/vue-test/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">vue_test</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/11/16/Java/Java%E5%9F%BA%E6%9C%AC10/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">Java基本10</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">Java复习</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AE%9E%E4%BE%8B%E5%8C%96%E9%A1%BA%E5%BA%8F"><span class="nav-text">1. 实例化顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E9%9A%90%E8%97%8F%E5%8F%98%E9%87%8F"><span class="nav-text">2. 隐藏变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%8A%A8%E6%80%81%E9%93%BE%E7%BC%96"><span class="nav-text">3. 动态链编</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E7%A9%BA%E5%BC%95%E7%94%A8"><span class="nav-text">4. 空引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E5%92%8C%E6%96%B9%E6%B3%95%E7%9A%84%E8%A6%86%E7%9B%96"><span class="nav-text">5. 方法重载和方法的覆盖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-text">6. 内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Swing"><span class="nav-text">7. Swing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E6%A0%B8%E5%BF%83%E7%B1%BB"><span class="nav-text">8. 核心类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E8%AF%AD%E6%B3%95"><span class="nav-text">9. 语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Java%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%A4%84%E7%90%86"><span class="nav-text">10. Java输入输出处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-text">11 多线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-Collections"><span class="nav-text">12 Collections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E5%9B%BE%E5%BD%A2%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2"><span class="nav-text">13 图形用户界面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-text">14  异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-text">15 内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-text">16 面向对象</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">wawn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 54 篇文章
+                    </span>
+                    
+                        <span>
+                            共 331.5k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

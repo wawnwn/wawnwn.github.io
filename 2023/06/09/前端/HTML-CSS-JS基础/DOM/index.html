@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="wawn">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://wawnwn.github.io/2023/06/09/前端/html-css-js基础/dom/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="一、DOM 简介 二、获取元素 三、事件基础 四、操作元素 五、节点操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DOM">
+<meta property="og:url" content="http://wawnwn.github.io/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/index.html">
+<meta property="og:site_name" content="wawn&#39;s blog">
+<meta property="og:description" content="一、DOM 简介 二、获取元素 三、事件基础 四、操作元素 五、节点操作">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/2.png">
+<meta property="og:image" content="http://wawnwn.github.io/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/3.png">
+<meta property="article:published_time" content="2023-06-09T13:02:43.000Z">
+<meta property="article:modified_time" content="2023-09-16T06:04:53.626Z">
+<meta property="article:author" content="wawnwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/1.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/null" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/null">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/null">
+    <!--- Page Info-->
+    
+    <title>
+        
+            DOM -
+        
+        wawn&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        wawn&#39;s blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                wawn&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    PHOTO
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                PHOTO
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">DOM</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/head.webp">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">wawn</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-06-09 21:02:43</span>
+        <span class="mobile">2023-06-09 21:02:43</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-09-16 14:04:53</span>
+            <span class="mobile">2023-09-16 14:04:53</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/Web-APIs/">Web-APIs</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>10 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>一、DOM 简介</p>
+<p>二、获取元素</p>
+<p>三、事件基础</p>
+<p>四、操作元素</p>
+<p>五、节点操作</p>
+<span id="more"></span>
+
+<h3 id="一-DOM-简介"><a href="#一-DOM-简介" class="headerlink" title="一. DOM 简介"></a><strong>一. DOM 简介</strong></h3><p><strong>1.1 什么是 DOM</strong></p>
+<p>文档对象模型（Document Object Model，简称 DOM），是 W3C 组织推荐的处理可扩展标记语言（HTML或者XML）的标准编程接口。</p>
+<p>W3C 已经定义了一系列的 DOM 接口，通过这些 DOM 接口可以改变网页的内容、结构和样式。</p>
+<p><strong>1.2 DOM 树</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/1.png" class>
+
+<ul>
+<li><p>文档：一个页面就是一个文档，DOM 中使用 document 表示</p>
+</li>
+<li><p>元素：页面中的所有标签都是元素，DOM 中使用 element 表示</p>
+</li>
+<li><p>节点：网页中的所有内容都是节点（标签、属性、文本、注释等），DOM 中使用 node 表示</p>
+</li>
+</ul>
+<p><strong>DOM 把以上内容都看做是对象</strong></p>
+<h3 id="二-获取元素"><a href="#二-获取元素" class="headerlink" title="二. 获取元素"></a><strong>二. 获取元素</strong></h3><p><strong>2.1 如何获取页面元素</strong></p>
+<p>DOM在我们实际开发中主要用来操作元素。</p>
+<p>获取页面中的元素可以使用以下几种方式:</p>
+<ul>
+<li><p>根据 ID 获取</p>
+</li>
+<li><p>根据标签名获取</p>
+</li>
+<li><p>通过 HTML5 新增的方法获取</p>
+</li>
+<li><p>特殊元素获取</p>
+</li>
+</ul>
+<p><strong>2.2 根据 ID 获取</strong></p>
+<p>使用 getElementById() 方法可以获取带有 ID 的元素对象。</p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.getElementById(&#x27;id&#x27;);</span><br></pre></td></tr></table></figure></div>
+
+<p>使用 console.dir() 可以打印我们获取的元素对象，更好的查看对象里面的属性和方法。</p>
+<p><strong>2.3 根据标签名获取</strong></p>
+<p>使用 getElementsByTagName() 方法可以返回带有指定标签名的对象的集合。</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.<span class="built_in">getElementsByTagName</span>(<span class="string">&#x27;标签名&#x27;</span>);</span><br></pre></td></tr></table></figure></div>
+
+<p>注意：</p>
+<ol>
+<li>因为得到的是一个对象的集合，所以我们想要操作里面的元素就需要遍历。</li>
+<li>得到元素对象是动态的</li>
+</ol>
+<p><strong>2.4 通过 HTML5 新增的方法获取</strong></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> document.**<span class="built_in">getElementsByClassName</span>(‘****类名****’)**；<span class="comment">// 根据类名返回元素对象集合</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> document.**<span class="built_in">querySelector</span>(<span class="string">&#x27;****选择器****&#x27;</span>)**; <span class="comment">// 根据指定选择器返回第一个元素对象</span></span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> document.**<span class="built_in">querySelectorAll</span>(<span class="string">&#x27;****选择器****&#x27;</span>)**; <span class="comment">// 根据指定选择器返回</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>注意：</strong></p>
+<p>querySelector 和 querySelectorAll里面的选择器需要加符号,比如:document.querySelector(‘#nav’);</p>
+<p><strong>2.5 获取特殊元素（body，html）</strong></p>
+<p><strong>获取body元素</strong></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doucumnet.body <span class="comment">// 返回body元素对象</span></span><br></pre></td></tr></table></figure></div>
+
+<p><strong>获取html元素</strong></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement <span class="comment">// 返回html元素对象</span></span><br></pre></td></tr></table></figure></div>
+
+
+
+<h3 id="三-事件基础"><a href="#三-事件基础" class="headerlink" title="三. 事件基础"></a><strong>三. 事件基础</strong></h3><p><strong>3.1 事件概述</strong></p>
+<p>JavaScript 使我们有能力创建动态页面，而事件是可以被 JavaScript 侦测到的行为。</p>
+<p>简单理解： 触发— 响应机制。</p>
+<p>网页中的每个元素都可以产生某些可以触发 JavaScript 的事件，例如，我们可以在用户点击某按钮时产生一个事件，然后去执行某些操作。</p>
+<p><strong>3.2 事件三要素</strong></p>
+<ol>
+<li>事件源 （谁）</li>
+<li>事件类型 （什么事件）</li>
+<li>事件处理程序 （做啥）</li>
+</ol>
+<p><strong>3.3 执行事件的步骤</strong></p>
+<ol>
+<li>获取事件源</li>
+<li>注册事件（绑定事件）</li>
+<li>添加事件处理程序（采取函数赋值形式）</li>
+</ol>
+<p><strong>3.3 常见的鼠标事件</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/2.png" class>
+
+<p><strong>3.4 分析事件三要素</strong></p>
+<p>下拉菜单三要素</p>
+<p>关闭广告三要素</p>
+<h3 id="四-操作元素"><a href="#四-操作元素" class="headerlink" title="四. 操作元素"></a><strong>四. 操作元素</strong></h3><p>JavaScript 的 DOM 操作可以改变网页内容、结构和样式，我们可以利用 DOM 操作元素来改变元素里面的内容 、属性等。注意以下都是属性</p>
+<p><strong>4.1 改变元素内容</strong></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.innerText</span><br></pre></td></tr></table></figure></div>
+
+<p>从起始位置到终止位置的内容, 但它去除 html 标签， 同时空格和换行也会去掉</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.innerHTML</span><br></pre></td></tr></table></figure></div>
+
+<p>起始位置到终止位置的全部内容，包括 html 标签，同时保留空格和换行</p>
+<p><strong>4.2 常用元素的属性操作</strong></p>
+<ol>
+<li>innerText、innerHTML 改变元素内容</li>
+<li>src、href</li>
+<li>id、alt、title</li>
+</ol>
+<p><strong>4.3 表单元素的属性操作</strong></p>
+<p>利用 DOM 可以操作如下表单元素的属性：</p>
+<p> type、value、checked、selected、disabled</p>
+<p><strong>4.4 样式属性操作</strong></p>
+<p>我们可以通过 JS 修改元素的大小、颜色、位置等样式。</p>
+<ol>
+<li>element.style 行内样式操作</li>
+<li>element.className 类名样式操作</li>
+</ol>
+<p><strong>注意</strong>：</p>
+<ol>
+<li>JS 里面的样式采取驼峰命名法 比如 fontSize、 backgroundColor</li>
+<li>JS 修改 style 样式操作，产生的是行内样式，CSS 权重比较高</li>
+<li>如果样式修改较多，可以采取操作类名方式更改元素样式。</li>
+<li>class因为是个保留字，因此使用className来操作元素类名属性</li>
+<li>className 会直接更改元素的类名，会覆盖原先的类名。</li>
+</ol>
+<img lazyload src="/images/loading.svg" data-src="/2023/06/09/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/DOM/3.png" class>
+
+<p><strong>4.5 排他思想</strong></p>
+<p>如果有同一组元素，我们想要某一个元素实现某种样式， 需要用到循环的排他思想算法：</p>
+<ol>
+<li>所有元素全部清除样式（干掉其他人）</li>
+<li>给当前元素设置样式 （留下我自己）</li>
+<li>注意顺序不能颠倒，首先干掉其他人，再设置自己</li>
+</ol>
+<p><strong>4.6 自定义属性的操作</strong></p>
+<p><strong>1. 获取属性值</strong></p>
+<ul>
+<li><p>element.属性 获取属性值。</p>
+</li>
+<li><p>element.getAttribute(‘属性’);</p>
+</li>
+</ul>
+<p><strong>区别：</strong></p>
+<ul>
+<li><p>element.属性 获取内置属性值（元素本身自带的属性）</p>
+</li>
+<li><p>element.getAttribute(‘属性’); 主要获得自定义的属性 （标准） 我们程序员自定义的属性</p>
+</li>
+</ul>
+<p><strong>2. 设置属性值</strong></p>
+<ul>
+<li><p>element.属性 &#x3D; ‘值’ 设置内置属性值。</p>
+</li>
+<li><p>element.setAttribute(‘属性’, ‘值’)</p>
+</li>
+</ul>
+<p><strong>区别：</strong></p>
+<ul>
+<li><p>element.属性 设置内置属性值</p>
+</li>
+<li><p>element.setAttribute(‘属性’); 主要设置自定义的属性 （标准）</p>
+</li>
+</ul>
+<p><strong>3. 移除属性</strong></p>
+<ul>
+<li>element.removeAttribute(‘属性’);</li>
+</ul>
+<p><strong>4.7 H5自定义属性</strong></p>
+<p><strong>自定义属性目的：是为了保存并使用数据。有些数据可以保存到页面中而不用保存到数据库中。</strong></p>
+<p>自定义属性获取是通过getAttribute(‘属性’) 获取。</p>
+<p>但是有些自定义属性很容易引起歧义，不容易判断是元素的内置属性还是自定义属性。</p>
+<p>H5给我们新增了自定义属性：</p>
+<p><strong>1. 设置H5自定义属性</strong></p>
+<p>H5规定自定义属性data-开头做为属性名并且赋值。</p>
+<p>比如 <div data-index="1"></div></p>
+<p>或者使用 JS 设置 </p>
+<p>element.setAttribute(‘data-index’, 2)</p>
+<p><strong>2. 获取H5自定义属性</strong></p>
+<ol>
+<li>兼容性获取 element.getAttribute(‘data-index’);</li>
+<li>H5新增 element.dataset.index 或者 element.dataset[‘index’] ie 11才开始支持</li>
+</ol>
+<h3 id="五-节点操作"><a href="#五-节点操作" class="headerlink" title="五. 节点操作"></a><strong>五. 节点操作</strong></h3><p><strong>5.1 为什么学节点操作</strong></p>
+<p>获取元素通常使用两种方式：</p>
+<p><strong>1. 利用 DOM 提供的方法获取元素</strong> </p>
+<ul>
+<li><p>document.getElementById() </p>
+</li>
+<li><p>document.getElementsByTagName()</p>
+</li>
+<li><p>document.querySelector 等</p>
+</li>
+<li><p>逻辑性不强、繁琐</p>
+</li>
+</ul>
+<p><strong>2. 利用节点层级关系获取元素</strong></p>
+<ul>
+<li><p>利用父子兄节点关系获取元素</p>
+</li>
+<li><p>逻辑性强， 但是兼容性稍差</p>
+</li>
+</ul>
+<p>这两种方式都可以获取元素节点，我们后面都会使用，但是节点操作更简单</p>
+<p><strong>5.2 节点概述</strong></p>
+<p>网页中的所有内容都是节点（标签、属性、文本、注释等），在DOM 中，节点使用 node 来表示。</p>
+<p>HTML DOM 树中的所有节点均可通过 JavaScript 进行访问，所有 HTML 元素（节点）均可被修改，也可以创建或删除</p>
+<p>一般地，节点至少拥有nodeType（节点类型）、nodeName（节点名称）和nodeValue（节点值）这三个</p>
+<p>基本属性。</p>
+<ul>
+<li><p>元素节点 nodeType 为 1</p>
+</li>
+<li><p>属性节点 nodeType 为 2</p>
+</li>
+<li><p>文本节点 nodeType 为 3 （文本节点包含文字、空格、换行等）</p>
+</li>
+</ul>
+<p>我们在实际开发中，节点操作主要操作的是<strong>元素节点</strong></p>
+<p><strong>5.3 节点层级</strong></p>
+<p>利用 DOM 树可以把节点划分为不同的层级关系，常见的是<strong>父子兄层级关系</strong>。</p>
+<p><strong>1. 父级节点</strong></p>
+<div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node.parentNode </span><br></pre></td></tr></table></figure></div>
+
+<ul>
+<li><p>parentNode 属性可返回某节点的父节点，注意是最近的一个父节点</p>
+</li>
+<li><p>如果指定的节点没有父节点则返回 null</p>
+</li>
+</ul>
+<p><strong>2. 子节点</strong></p>
+<ol>
+<li>parentNode.<strong>childNodes（标准）</strong></li>
+</ol>
+<p>parentNode.childNodes 返回包含指定节点的子节点的集合，该集合为即时更新的集合。</p>
+<p><strong>注意：</strong>返回值里面包含了所有的子节点，包括元素节点，文本节点等。</p>
+<p>如果只想要获得里面的元素节点，则需要专门处理。 所以我们一般不提倡使用childNodes</p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var ul = document. <span class="built_in">querySelector</span>(‘ul’);</span><br><span class="line"><span class="keyword">for</span>(var i = <span class="number">0</span>; i &lt; ul.childNodes.length;i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (ul.childNodes[i].nodeType == <span class="number">1</span>) &#123;</span><br><span class="line">    	<span class="comment">// ul.childNodes[i] 是元素节点</span></span><br><span class="line">     	console.<span class="built_in">log</span>(ul.childNodes[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<ol start="2">
+<li>parentNode.<strong>children（非标准）</strong></li>
+</ol>
+<p>parentNode.children 是一个只读属性，返回所有的子元素节点。它只返回子元素节点，其余节点不返回 （<strong>这个是我们重点掌握的</strong>）。</p>
+<p>虽然children 是一个非标准，但是得到了各个浏览器的支持，因此我们可以放心使用</p>
+<ol start="3">
+<li>parentNode.<strong>firstChild</strong></li>
+</ol>
+<p>firstChild 返回第一个子节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="4">
+<li>parentNode.<strong>lastChild</strong></li>
+</ol>
+<p>lastChild 返回最后一个子节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="5">
+<li>parentNode.<strong>firstElementChild</strong></li>
+</ol>
+<p>firstElementChild 返回第一个子元素节点，找不到则返回null。</p>
+<ol start="6">
+<li>parentNode.<strong>lastElementChild</strong></li>
+</ol>
+<p>lastElementChild 返回最后一个子元素节点，找不到则返回null。 </p>
+<p>注意：这两个方法有兼容性问题，IE9 以上才支持。</p>
+<p>实际开发中，firstChild 和 lastChild 包含其他节点，操作不方便，而 firstElementChild 和</p>
+<p>lastElementChild 又有兼容性问题，那么我们如何获取第一个子元素节点或最后一个子元素节点呢？</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li>如果想要第一个子元素节点，可以使用 parentNode.chilren[0] </li>
+<li>如果想要最后一个子元素节点，可以使用 parentNode.chilren[parentNode.chilren.length - 1]</li>
+</ol>
+<p><strong>3. 兄弟节点</strong></p>
+<ol>
+<li>node.<strong>nextSibling</strong></li>
+</ol>
+<p>nextSibling 返回当前元素的下一个兄弟元素节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="2">
+<li>node.<strong>previousSibling</strong></li>
+</ol>
+<p>previousSibling 返回当前元素上一个兄弟元素节点，找不到则返回null。同样，也是包含所有的节点。</p>
+<ol start="3">
+<li>node.nextElementSibling</li>
+</ol>
+<p>nextElementSibling 返回当前元素下一个兄弟元素节点，找不到则返回null。</p>
+<ol start="4">
+<li>node.previousElementSibling</li>
+</ol>
+<p>previousElementSibling 返回当前元素上一个兄弟节点，找不到则返回null。</p>
+<p>注意：这两个方法有兼容性问题， IE9 以上才支持</p>
+<p><strong>5.4 创建节点</strong></p>
+<div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.<span class="built_in">createElement</span>(<span class="string">&#x27;tagName&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<p>document.createElement() 方法创建由 tagName 指定的 HTML 元素。因为这些元素原先不存在，是根据我们的需求动态生成的，所以我们也称为动态创建元素节点。</p>
+<ol>
+<li>node.appendChild(child)</li>
+</ol>
+<p>node.appendChild() 方法将一个节点添加到指定父节点的子节点列表末尾。类似于 CSS 里面的after 伪元素。</p>
+<ol start="2">
+<li>node.insertBefore(child, 指定元素)</li>
+</ol>
+<p>node.insertBefore() 方法将一个节点添加到父节点的指定子节点前面。类似于 CSS 里面的 before 伪元素。</p>
+<p><strong>5.5 删除节点</strong></p>
+<p>node.removeChild(child) </p>
+<p>node.removeChild() 方法从 DOM 中删除一个子节点，返回删除的节点</p>
+<p><strong>5.6 复制节点</strong></p>
+<p>node.cloneNode() </p>
+<p>node.cloneNode() 方法返回调用该方法的节点的一个副本。</p>
+<p><strong>注意：</strong></p>
+<ol>
+<li>如果括号参数为空或者为 false ，则是浅拷贝，即只克隆复制节点本身，不克隆里面的子节点。</li>
+<li>如果括号参数为 true ，则是深度拷贝，会复制节点本身以及里面所有的子节点。</li>
+</ol>
+<p><strong>5.7 替换节点</strong></p>
+<p>parentNode.replaceChild(newChild, oldChild); </p>
+<p>用指定的节点替换当前节点的一个子节点，并返回被替换掉的节点。</p>
+<p><strong>5.8 创建元素总结</strong></p>
+<ul>
+<li><p>document.write()</p>
+</li>
+<li><p>innerHTML</p>
+</li>
+<li><p>document.createElement()</p>
+</li>
+</ul>
+<p><strong>区别</strong></p>
+<ol>
+<li>document.write 是直接将内容写入页面的内容流，会导致页面全部重绘\</li>
+<li>innerHTML 是将内容写入某个 DOM 节点，不会导致页面全部重绘</li>
+<li>innerHTML 复制节点的时候，不会复制原先节点的事件，会存在内存泄露问题</li>
+<li>如果页面创建元素很多，建议使用 innerHTML 因其效率更高（不要拼接字符串，采取数组形式拼接）</li>
+<li>如果页面创建元素较少，建议使用 createElement()</li>
+</ol>
+<p><strong>总结</strong>：不同浏览器下，innerHTML 效率要比 creatElement 高</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> DOM</li>
+        <li><strong>作者:</strong> wawn</li>
+        <li><strong>创建于
+                :</strong> 2023-06-09 21:02:43</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2023-09-16 14:04:53
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://wawnwn.github.io/2023/06/09/前端/HTML-CSS-JS基础/DOM/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/%E4%BA%8B%E4%BB%B6%E9%AB%98%E7%BA%A7/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">事件高级</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/06/03/%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%EF%BC%88%E4%B8%80%EF%BC%89/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">算法提高（一）</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">DOM</div>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-DOM-%E7%AE%80%E4%BB%8B"><span class="nav-text">一. DOM 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E8%8E%B7%E5%8F%96%E5%85%83%E7%B4%A0"><span class="nav-text">二. 获取元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80"><span class="nav-text">三. 事件基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B-%E6%93%8D%E4%BD%9C%E5%85%83%E7%B4%A0"><span class="nav-text">四. 操作元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94-%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C"><span class="nav-text">五. 节点操作</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">wawn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 54 篇文章
+                    </span>
+                    
+                        <span>
+                            共 331.5k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

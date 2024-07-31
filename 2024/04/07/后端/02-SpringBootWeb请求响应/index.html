@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="wawn">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://wawnwn.github.io/2024/04/07/后端/02-springbootweb请求响应/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="SpringBootWeb请求响应">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBootWeb请求响应">
+<meta property="og:url" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/index.html">
+<meta property="og:site_name" content="wawn&#39;s blog">
+<meta property="og:description" content="SpringBootWeb请求响应">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/2.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/3.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/4.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/5.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/6.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/7.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/8.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/9.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/10.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/11.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/12.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/13.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/14.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/15.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/16.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/17.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/18.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/19.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/20.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/21.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/22.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/23.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/24.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/25.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/26.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/27.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/28.png">
+<meta property="article:published_time" content="2024-04-07T14:39:31.000Z">
+<meta property="article:modified_time" content="2024-04-23T09:55:22.307Z">
+<meta property="article:author" content="wawnwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/1.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/null" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/null">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/null">
+    <!--- Page Info-->
+    
+    <title>
+        
+            SpringBootWeb请求响应 -
+        
+        wawn&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+        <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    
+<script src="/js/libs/anime.min.js"></script>
+
+    <h1 class="ml13">
+        wawn&#39;s blog
+    </h1>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+
+        anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [100,0],
+                translateZ: 0,
+                opacity: [0,1],
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i
+            }).add({
+            targets: '.ml13 .letter',
+            translateY: [0,-100],
+            opacity: [1,0],
+            easing: "easeInExpo",
+            duration: 1200,
+            delay: (el, i) => 100 + 30 * i
+        });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
+        });
+
+        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
+        hidePreloaderAfterTimeout(5000);
+
+        function hidePreloaderAfterTimeout(delay) {
+            setTimeout(function () {
+                var preloader = document.querySelector('.preloader');
+                preloader.style.opacity = '0';
+                setTimeout(function () {
+                    preloader.style.display = 'none';
+                }, 200);
+            }, delay);
+        }
+    </script>
+</div>
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/fonts.css">
+
+    
+<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":true};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                wawn&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    PHOTO
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                PHOTO
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">SpringBootWeb请求响应</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/head.webp">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">wawn</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-04-07 22:39:31</span>
+        <span class="mobile">2024-04-07 22:39:31</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-04-23 17:55:22</span>
+            <span class="mobile">2024-04-23 17:55:22</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E5%90%8E%E7%AB%AF/spring/">spring</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.9k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>18 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h1 id="SpringBootWeb请求响应"><a href="#SpringBootWeb请求响应" class="headerlink" title="SpringBootWeb请求响应"></a>SpringBootWeb请求响应</h1><span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>springbootweb的入门程序：基于SpringBoot的方式开发一个Web应用，浏览器发起请求 &#x2F;hello 后，给浏览器返回字符串 ”Hello World ~“</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/1.png" class>
+
+<p>在浏览器发起请求，请求了后端web服务器（也就是内置的Tomcat）。在开发web程序时，定义了一个控制器类Controller，请求会被部署在Tomcat中的Controller接收，然后Controller再给浏览器一个响应，响应一个字符串”Hello World“。而在请求响应的过程中时遵循HTTP协议的。、</p>
+<p>其实在Tomcat这类Web服务器中，是不识别我们自己定义的Controller的。但是Tomcat是一个Servlet容器，是支持Serlvet规范的，所以，在tomcat中是可以识别Servlet程序的。</p>
+<p>在SpringBoot进行web程序开发时，它内置了一个核心的Servlet程序 DispatcherServlet，称之为核心控制器。DispatcherServlet 负责接收页面发送的请求，然后根据执行的规则，将请求再转发给后面的请求处理器Controller，请求处理器处理完请求之后，最终再由DispatcherServlet给浏览器响应数据。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/2.png" class>
+
+<p>那将来浏览器发送请求，会携带请求数据，包括：请求行、请求头；请求到达tomcat之后，tomcat会负责解析这些请求数据，然后将解析后的请求数据会传递Servlet程序的HttpServletRequest对象，那也就意味着HttpServletRequest 对象就可以获取到请求数据。 而Tomcat，还给Servlet程序传递了一个参数HttpServletResponse，通过这个对象，我们就可以给浏览器设置响应数据 。</p>
+<p>上述所描述的这种浏览器&#x2F;服务器的架构模式称之为：BS架构</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/3.png" class>
+
+<ul>
+<li>BS架构：Browser&#x2F;Server，浏览器&#x2F;服务器架构模式。客户端只需要浏览器，应用程序的逻辑和数据都存储在服务端。</li>
+</ul>
+<blockquote>
+<ul>
+<li>请求</li>
+<li>响应</li>
+<li>分层解耦</li>
+</ul>
+</blockquote>
+<h2 id="1-请求"><a href="#1-请求" class="headerlink" title="1 请求"></a>1 请求</h2><p>如何接收页面传递过来的请求数据</p>
+<h3 id="1-1-Postman"><a href="#1-1-Postman" class="headerlink" title="1.1 Postman"></a>1.1 Postman</h3><p>当前最为主流的开发模式：前后端分离</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/4.png" class>
+
+<p>由于前后端分离，对我们后端技术人员来讲，在开发过程中，是没有前端页面的，那我们怎么测试自己所开发的程序呢？</p>
+<p>方式1：像之前SpringBoot入门案例中一样，直接使用浏览器。在浏览器中输入地址，测试后端程序。</p>
+<ul>
+<li>弊端：在浏览器地址栏中输入地址这种方式都是GET请求，如何我们要用到POST请求怎么办呢？<ul>
+<li>要解决POST请求，需要程序员自己编写前端代码（比较麻烦）</li>
+</ul>
+</li>
+</ul>
+<p>方式2：使用专业的接口测试工具（课程中我们使用Postman工具）</p>
+<p><strong>介绍</strong></p>
+<ul>
+<li><p>Postman是一款功能强大的网页调试与发送网页HTTP请求的Chrome插件</p>
+<blockquote>
+<p>Postman原是Chrome浏览器的插件，可以模拟浏览器向后端服务器发起任何形式（如：get、post）的HTTP请求</p>
+<p>使用Postman还可以在发起请求时，携带一些请求参数、请求头等信息</p>
+</blockquote>
+</li>
+<li><p>作用：常用于进行接口测试</p>
+</li>
+<li><p>特征</p>
+<ul>
+<li>简单</li>
+<li>实用</li>
+<li>美观</li>
+<li>大方</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-2-简单参数"><a href="#1-2-简单参数" class="headerlink" title="1.2 简单参数"></a>1.2 简单参数</h3><p>简单参数：在向服务器发起请求时，向服务器传递的是一些普通的请求数据</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/5.png" class>
+
+<p>后端程序接收传递过来的普通参数数据：</p>
+<ol>
+<li>原始方式</li>
+<li>SpringBoot方式</li>
+</ol>
+<h4 id="1-2-1-原始方式"><a href="#1-2-1-原始方式" class="headerlink" title="1.2.1 原始方式"></a>1.2.1 原始方式</h4><p>在原始的Web程序当中，需要通过Servlet中提供的API: HttpServletRequest（请求对象），获取请求的相关信息。比如获取请求参数：</p>
+<blockquote>
+<p>Tomcat接收到http请求时：把请求的相关信息封装到HttpServletRequest对象中</p>
+</blockquote>
+<p>在Controller中，我们要想获取Request对象，可以直接在方法的形参中声明 HttpServletRequest 对象。然后就可以通过该对象来获取请求信息：</p>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据指定的参数名获取请求参数的数据值</span></span><br><span class="line">String request.getParameter(<span class="string">&quot;参数名&quot;</span>)</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RequestController</span> &#123;</span><br><span class="line">    <span class="comment">// 原始方式</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/simpleParam&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">simpleParam</span><span class="params">(HttpServletRequest request)</span> &#123;</span><br><span class="line">        <span class="comment">// http://localhost:8080/simpleParam?name=Tom&amp;age=10</span></span><br><span class="line">        <span class="comment">// 请求参数：name=Tom&amp;age=10（有2个请求参数）</span></span><br><span class="line">        <span class="comment">// 第1个请求参数：name=Tom 参数名：name，参数值：Tom</span></span><br><span class="line">        <span class="comment">// 第2个请求参数：age=10   参数名：age，参数值：10</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;name&quot;</span>); <span class="comment">// name就是请求参数名</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">ageStr</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;age&quot;</span>); <span class="comment">// age就是请求参数名</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">age</span> <span class="operator">=</span> Integer.parseInt(ageStr); <span class="comment">// 需要手动进行类型转换</span></span><br><span class="line">        System.out.println(name + <span class="string">&quot; : &quot;</span> + age);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="1-2-2-SpringBoot方式"><a href="#1-2-2-SpringBoot方式" class="headerlink" title="1.2.2 SpringBoot方式"></a>1.2.2 SpringBoot方式</h4><p>在Springboot的环境中，对原始的API进行了封装，接收参数的形式更加简单。如果是简单参数，参数名与形参变量名相同，定义同名的形参即可接收参数。</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RequestController</span> &#123;</span><br><span class="line">    <span class="comment">// http://localhost:8080/simpleParam?name=Tom&amp;age=10</span></span><br><span class="line">    <span class="comment">// 第1个请求参数：name=Tom 参数名：name，参数值：Tom</span></span><br><span class="line">    <span class="comment">// 第2个请求参数：age=10   参数名：age，参数值：10</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// springboot方式</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/simpleParam&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">simpleParam</span><span class="params">(String name, Integer age)</span> &#123;</span><br><span class="line">        <span class="comment">// 形参名和请求参数名保持一致</span></span><br><span class="line">        System.out.println(name + <span class="string">&quot; : &quot;</span> + age);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>不论是GET请求还是POST请求，对于简单参数来讲，只要保证&#x3D;&#x3D;请求参数名和Controller方法中的形参名保持一致&#x3D;&#x3D;，就可以获取到请求参数中的数据值。</p>
+</blockquote>
+<h4 id="1-2-3-参数名不一致"><a href="#1-2-3-参数名不一致" class="headerlink" title="1.2.3 参数名不一致"></a>1.2.3 参数名不一致</h4><p>对于简单参数来讲，请求参数名和controller方法中的形参名不一致时，无法接收到请求参数</p>
+<p>解决方案：可以使用Spring提供的@RequestParam注解完成映射</p>
+<p>在方法形参前面加上 @RequestParam 然后通过value属性执行请求参数名，从而完成映射</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RequestController</span> &#123;</span><br><span class="line">    <span class="comment">// http://localhost:8080/simpleParam?name=Tom&amp;age=20</span></span><br><span class="line">    <span class="comment">// 请求参数名：name</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//springboot方式</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/simpleParam&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">simpleParam</span><span class="params">(<span class="meta">@RequestParam(&quot;name&quot;)</span> String username , Integer age )</span>&#123;</span><br><span class="line">        System.out.println(username+<span class="string">&quot;  :  &quot;</span>+age);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p>注意事项：@RequestParam中的required属性默认为true（默认值也是true），代表该请求参数必须传递，如果不传递将报错</p>
+<p>如果该参数是可选的，可以将required属性设置为false</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/simpleParam&quot;)</span></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">simpleParam</span><span class="params">(<span class="meta">@RequestParam(name=&quot;name&quot;,required=false)</span>String username, Integer age)</span> &#123;</span><br><span class="line">    System.out.println(username + <span class="string">&quot;:&quot;</span> + age);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;OK&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</blockquote>
+<h3 id="1-3-实体参数"><a href="#1-3-实体参数" class="headerlink" title="1.3 实体参数"></a>1.3 实体参数</h3><p>请求参数比较多时，可以考虑将请求参数封装到一个实体类对象中。要想完成数据封装，需要遵守如下规则：<strong>请求参数名与实体类的属性名相同</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/6.png" class>
+
+<p><strong>简单实体对象</strong></p>
+<p><strong>复杂实体对象</strong></p>
+<p>复杂实体对象指的是，在实体类中有一个或多个属性，也是实体对象类型的。如下：</p>
+<ul>
+<li>User类中有一个Address类型的属性（Address是一个实体类）</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/7.png" class>
+
+<p>复杂实体对象的封装，需要遵守如下规则：</p>
+<ul>
+<li><strong>请求参数名与形参对象属性名相同，按照对象层次结构关系即可接收嵌套实体类属性参数</strong></li>
+</ul>
+<h3 id="1-4-数组集合参数"><a href="#1-4-数组集合参数" class="headerlink" title="1.4 数组集合参数"></a>1.4 数组集合参数</h3><p>数组集合参数的适用场景：在HTML的表单中，有一个表单项是支持多选的（复选框），可以提交选择的多个值。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/8.png" class>
+
+<p>后端程序接收上述多个值的方式有两种：</p>
+<ol>
+<li>数组</li>
+<li>集合</li>
+</ol>
+<h4 id="1-4-1-数组"><a href="#1-4-1-数组" class="headerlink" title="1.4.1 数组"></a>1.4.1 数组</h4><p>数组参数：<strong>请求参数名与形参数组名称相同且请求参数为多个，定义数组类型形参即可接收参数</strong></p>
+<p>Postman测试：</p>
+<p>在前端请求时，有两种传递形式：</p>
+<p>方式一：xxxxxxxxxx?hobby&#x3D;game&amp;hobby&#x3D;java</p>
+<p>方式二：xxxxxxxxxxxxx?hobby&#x3D;game,java</p>
+<h4 id="1-4-2-集合"><a href="#1-4-2-集合" class="headerlink" title="1.4.2 集合"></a>1.4.2 集合</h4><p>集合参数：<strong>请求参数名与形参集合对象名相同且请求参数为多个，@RequestParam 绑定参数关系</strong></p>
+<blockquote>
+<p>默认情况下，请求中参数名相同的多个值，是封装到数组。如果要封装到集合，要使用@RequestParam绑定参数关系</p>
+</blockquote>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/9.png" class>
+
+<h3 id="1-5-日期参数"><a href="#1-5-日期参数" class="headerlink" title="1.5 日期参数"></a>1.5 日期参数</h3><p>上述演示的都是一些普通的参数，在一些特殊的需求中，可能会涉及到日期类型数据的封装。比如，如下需求：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/10.png" class>
+
+<p>因为日期的格式多种多样（如：2022-12-12 10:05:45 、2022&#x2F;12&#x2F;12 10:05:45），那么对于日期类型的参数在进行封装的时候，需要通过@DateTimeFormat注解，以及其pattern属性来设置日期的格式。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/11.png" class>
+
+<ul>
+<li>@DateTimeFormat注解的pattern属性中指定了哪种日期格式，前端的日期参数就必须按照指定的格式传递。</li>
+<li>后端controller方法中，需要使用Date类型或LocalDateTime类型，来封装传递的参数。</li>
+</ul>
+<h3 id="1-6-JSON参数"><a href="#1-6-JSON参数" class="headerlink" title="1.6 JSON参数"></a>1.6 JSON参数</h3><p>JSON是开发中最常用的前后端数据交互方式</p>
+<ol>
+<li>Postman在发送请求时，如何传递json格式的请求参数</li>
+<li>在服务端的controller方法中，如何接收json格式的请求参数</li>
+</ol>
+<p>Postman发送JSON格式数据：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/12.png" class>
+
+<p>服务端Controller方法接收JSON格式数据：</p>
+<ul>
+<li>传递json格式的参数，在Controller中会使用实体类进行封装</li>
+<li>封装规则：<strong>JSON数据键名与形参对象属性名相同，定义POJO类型形参即可接收参数。需要使用@RequestBody标识。</strong></li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/13.png" class>
+
+<ul>
+<li>@RequestBody注解：将JSON数据映射到形参的实体类对象中（JSON中的key和实体类中的属性名保持一致）</li>
+</ul>
+<h3 id="1-7-路径参数"><a href="#1-7-路径参数" class="headerlink" title="1.7 路径参数"></a>1.7 路径参数</h3><p>传统的开发中请求参数是放在请求体（POST请求）传递或跟在URL后面通过？key&#x3D;value的形式传递（GET请求）。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/14.png" class>
+
+<p>路径参数：</p>
+<ul>
+<li>前端：通过请求URL直接传递参数</li>
+<li>后端：使用{…} 来标识该路径参数，需要使用@PathVariable获取路径参数</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/15.png" class>
+
+<p><strong>传递多个路径参数</strong></p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/16.png" class>
+
+
+
+<h2 id="2-响应"><a href="#2-响应" class="headerlink" title="2 响应"></a>2 响应</h2><h3 id="2-1-ResponseBody"><a href="#2-1-ResponseBody" class="headerlink" title="2.1 @ResponseBody"></a>2.1 @ResponseBody</h3><p>controller方法中的return的结果，可以使用@ResponseBody注解响应给浏览器</p>
+<p><strong>@ResponseBody注解：</strong></p>
+<ul>
+<li>类型：方法注解、类注解</li>
+<li>位置：书写在Controller方法上或类上</li>
+<li>作用：将方法返回值直接响应给浏览器<ul>
+<li>如果返回值类型是实体对象&#x2F;集合，将会转换给JSON格式后再响应给浏览器</li>
+</ul>
+</li>
+</ul>
+<p>在类上添加的@RestController注解，是一个组合注解</p>
+<ul>
+<li>@RestController &#x3D; @Controller + @ResponseBody</li>
+</ul>
+<p>@RestController源码：</p>
+<div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE&#125;)</span> <span class="comment">// 元注解（修饰注解的注解）</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span> <span class="comment">// 元注解</span></span><br><span class="line"><span class="meta">@Documented</span> <span class="comment">// 元注解</span></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> RestController &#123;</span><br><span class="line">    <span class="meta">@AliasFor(</span></span><br><span class="line"><span class="meta">    	annotation = Controller.class</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>因此，在类上添加@RestController就相当于添加了@ResponseBody注解</p>
+<ul>
+<li>类上有@RestController注解或@ResponseBody注解时：表示当前类下所有的方法返回值作为响应数据<ul>
+<li>方法的返回值，如果是一个POJO对象或集合时，会先转换为JSON格式，再响应给浏览器</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2-统一响应结果"><a href="#2-2-统一响应结果" class="headerlink" title="2.2 统一响应结果"></a>2.2 统一响应结果</h3><img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/17.png" class>
+
+<p>在真实的项目开发中，无论是哪种方法，我们都会定义一个统一的返回结果。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/18.png" class>
+
+<blockquote>
+<p>前端：只需要按照统一格式的返回结果进行解析（仅一种解析方案），就可以拿到数据</p>
+</blockquote>
+<p>统一的返回结果使用类来描述，在这个结果中包含：</p>
+<ul>
+<li>响应状态码：当前请求是成功，还是失败</li>
+<li>状态码信息：给页面的提示信息</li>
+<li>返回的数据：给前端响应的数据（字符串、对象、集合）</li>
+</ul>
+<h3 id="2-3-案例"><a href="#2-3-案例" class="headerlink" title="2.3 案例"></a>2.3 案例</h3><blockquote>
+<p>在SpringBoot项目中，静态资源默认可以存放的目录：</p>
+<ul>
+<li>classpath:&#x2F;static&#x2F;</li>
+<li>classpath:&#x2F;public&#x2F;</li>
+<li>classpath:&#x2F;resources&#x2F;</li>
+<li>classpath:&#x2F;META-INF&#x2F;resources&#x2F;</li>
+</ul>
+<p>classpath:</p>
+<ul>
+<li>代表的是类路径，在maven的项目中，其实指的就是 src&#x2F;main&#x2F;resources 或者 src&#x2F;main&#x2F;java,但是java目录是存放java代码的，所以相关的配置文件及静态资源文档，就放在src&#x2F;main&#x2F;resources下。</li>
+</ul>
+</blockquote>
+<h2 id="3-分层解耦"><a href="#3-分层解耦" class="headerlink" title="3 分层解耦"></a>3 分层解耦</h2><h3 id="3-1-三层架构"><a href="#3-1-三层架构" class="headerlink" title="3.1 三层架构"></a>3.1 三层架构</h3><p>在进行程序设计以及程序开发时，尽可能让每一个接口、类、方法的职责更单一一些（单一职责原则）</p>
+<blockquote>
+<p>单一职责原则：一个类或一个方法，就只做一件事情，只管一块功能</p>
+<p>可以让类、接口、方法的复杂度更低，可读性更强，扩展性更好，也更利用后期的维护</p>
+</blockquote>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/19.png" class>
+
+<p>上述案例的处理逻辑从组成上看可以分为三个部分：</p>
+<ul>
+<li>数据访问：负责业务数据的维护操作，包括增、删、改、查等操作</li>
+<li>逻辑处理：负责业务逻辑处理的代码</li>
+<li>请求处理、响应数据：负责、接收页面的请求，给页面响应数据</li>
+</ul>
+<p>按照上述的三个组成部分，在项目开发中可以将代码分为三层：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/20.png" class>
+
+<ul>
+<li>Controller：控制层。接受前端发送的请求，对请求进行处理，并响应数据。</li>
+<li>Service：业务逻辑层。处理具体的业务逻辑</li>
+<li>Dao：数据访问层（Data Access Object），也成为持久层。负责数据访问操作，包括数据的增、删、改、查。</li>
+</ul>
+<p>基于三层架构的程序执行流程：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/21.png" class>
+
+<ul>
+<li>前端发起的请求，由Controller层接收（Controller响应数据给前端）</li>
+<li>Controller层调用Service层来进行逻辑处理（Service层处理完后，把处理结果返回给Controller层）</li>
+<li>Service层调用Dao层（逻辑处理过程中需要用的一些数据要从Dao层获取）</li>
+<li>Dao层操作文件中的数据（Dao拿到的数据会返回给Service层）</li>
+</ul>
+<blockquote>
+<p>思考：按照三层架构的思想，如何要对业务逻辑(Service层)进行变更，会影响到Controller层和Dao层吗？ </p>
+<p>答案：不会影响。 （程序的扩展性、维护性变得更好了）</p>
+</blockquote>
+<h4 id="3-1-2-代码拆分"><a href="#3-1-2-代码拆分" class="headerlink" title="3.1.2 代码拆分"></a>3.1.2 代码拆分</h4><p>使用三层架构思想，改造之前的程序：</p>
+<ul>
+<li>控制层报名：xxxx.controller</li>
+<li>业务逻辑层包名：xxxx.service</li>
+<li>数据访问层包名：xxxx.dao</li>
+</ul>
+<p>三层架构的好处：</p>
+<ol>
+<li>复用性强</li>
+<li>便于维护</li>
+<li>利用扩展</li>
+</ol>
+<h3 id="3-2-分层解耦"><a href="#3-2-分层解耦" class="headerlink" title="3.2 分层解耦"></a>3.2 分层解耦</h3><p>解耦：解除耦合</p>
+<h4 id="3-2-1-耦合问题"><a href="#3-2-1-耦合问题" class="headerlink" title="3.2.1 耦合问题"></a>3.2.1 耦合问题</h4><p>软件开发涉及到的两个概念：内聚和耦合</p>
+<ul>
+<li>内聚：软件中各个功能模块内部的功能联系</li>
+<li>耦合：衡量软件中各个层&#x2F;模块之间的依赖、关联的程度</li>
+</ul>
+<p><strong>软件设计原则：高内聚低耦合</strong></p>
+<blockquote>
+<p>高内聚指的是：一个模块中各个元素之间的联系的紧密程度，如果各个元素（语句、程序段）之间的联系程度越高，则内聚性越高，即”高内聚“。</p>
+<p>低耦合指的是：软件中各个层、模块之间的依赖关联程序越低越好</p>
+</blockquote>
+<p>高内聚、低耦合的目的是使程序模块的可重用性、移植性大大增强。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/22.png" class>
+
+<h4 id="3-2-2-解耦思路"><a href="#3-2-2-解耦思路" class="headerlink" title="3.2.2 解耦思路"></a>3.2.2 解耦思路</h4><p>之前我们在编写代码时，需要什么对象，就直接new一个就可以了。 这种做法呢，层与层之间代码就耦合了，当service层的实现变了之后， 我们还需要修改controller层的代码。</p>
+<p>不能new，就意味这没有业务层对象（程序运行就报错）</p>
+<p>解决思路：</p>
+<ul>
+<li>提供一个容器，容器中存储一些对象（例：EmpService对象)</li>
+<li>controller程序从容器中获取EmpService类型的对象</li>
+</ul>
+<p>实现上述解耦操作，涉及到Spring中的两个核心概念：</p>
+<ul>
+<li><p><strong>控制反转：</strong>Inversion Of Control，简称IOC。对象的创建控制权由程序自身转移到外部（容器），这种思想称为控制反转。</p>
+<blockquote>
+<p>对象的创建权由程序员主动创建转移到容器（由容器创建、管理对象）。这个容器称为：IOC容器或Spring容器</p>
+</blockquote>
+</li>
+<li><p><strong>依赖注入：</strong>Dependency Injection，简称DI。容器为应用程序提供运行时，所依赖的资源，称之为依赖注入。</p>
+<blockquote>
+<p>程序运行时需要某个资源，此时容器就为其提供这个资源</p>
+<p>例：EmpController程序运行时需要EmpService对象，Spring容器就为其提供并注入EmpService对象</p>
+</blockquote>
+</li>
+</ul>
+<p>IOC容器中创建、管理的对象，称之为：bean对象</p>
+<h3 id="3-3-IOC-amp-DI"><a href="#3-3-IOC-amp-DI" class="headerlink" title="3.3 IOC&amp;DI"></a>3.3 IOC&amp;DI</h3><h4 id="3-3-1-IOC-amp-DI入门"><a href="#3-3-1-IOC-amp-DI入门" class="headerlink" title="3.3.1 IOC&amp;DI入门"></a>3.3.1 IOC&amp;DI入门</h4><p>任务：完成Controller层、Service层、Dao层的代码解耦</p>
+<ul>
+<li>思路：<ol>
+<li>删除Controller层、Service层中new对象的代码</li>
+<li>Service层及Dao层的实现类，交给IOC容器管理<ul>
+<li>使用Spring提供的注解：@Component ，就可以实现类交给IOC容器管理</li>
+</ul>
+</li>
+<li>为Controller及Service注入运行时依赖的对象<ul>
+<li>Controller程序中注入依赖的Service层对象</li>
+<li>Service程序中注入依赖的Dao层对象</li>
+<li>使用Spring提供的注解：@Autowired ，就可以实现程序运行时IOC容器自动注入需要的依赖对象</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="3-3-2-IOC详解"><a href="#3-3-2-IOC详解" class="headerlink" title="3.3.2 IOC详解"></a>3.3.2 IOC详解</h4><h5 id="3-3-2-1-bean的声明"><a href="#3-3-2-1-bean的声明" class="headerlink" title="3.3.2.1 bean的声明"></a>3.3.2.1 bean的声明</h5><p>前面我们提到IOC控制反转，就是将对象的控制权交给Spring的IOC容器，由IOC容器创建及管理对象。IOC容器创建的对象称为bean对象。</p>
+<p>要把某个对象交给IOC容器管理，需要在类上添加一个注解：@Component</p>
+<p>而Spring框架为了更好的标识web应用程序开发当中，bean对象到底归属于哪一层，又提供了@Component的衍生注解：</p>
+<ul>
+<li>@Controller 标注在控制层类上</li>
+<li>@Service 标注在业务层上</li>
+<li>@Repository 标注在数据访问层上</li>
+</ul>
+<p>要把某个对象交给IOC容器管理，需要在对应的类上加上如下注解之一：</p>
+<table>
+<thead>
+<tr>
+<th>注解</th>
+<th>说明</th>
+<th>位置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@Controller</td>
+<td>@Component的衍生注解</td>
+<td>标注在控制层类上</td>
+</tr>
+<tr>
+<td>@Service</td>
+<td>@Component的衍生注解</td>
+<td>标注在业务类上</td>
+</tr>
+<tr>
+<td>@Repository</td>
+<td>@Component的衍生注解</td>
+<td>标注在数据访问类上（由于与mybatis整合，用的少）</td>
+</tr>
+<tr>
+<td>@Component</td>
+<td>声明bean的基础注解</td>
+<td>不属于以上三类时，用此注解</td>
+</tr>
+</tbody></table>
+<p>在IOC容器中，每一个Bean都有一个属于自己的名字，可以通过注解的value属性指定bean的名字。如果没有指定，默认为类名首字母小写。</p>
+<blockquote>
+<p>注意事项：</p>
+<ul>
+<li>声明bean的时候，可以通过value属性指定bean的名字，如果没有指定，默认为类名首字母小写。</li>
+<li>使用以上四个注解都可以声明bean，但是在springboot集成web开发中，声明控制器bean只能用@Controller。</li>
+</ul>
+</blockquote>
+<h5 id="3-3-2-2-组件扫描"><a href="#3-3-2-2-组件扫描" class="headerlink" title="3.3.2.2 组件扫描"></a>3.3.2.2 组件扫描</h5><p>问题：使用前面学习的四个注解声明的bean，一定会生效吗？</p>
+<p>答案：不一定。（原因：bean想要生效，还需要被组件扫描）</p>
+<p>推荐做法：</p>
+<ul>
+<li>将我们定义的controller，service，dao这些包呢，都放在引导类所在包com.itheima的子包下，这样我们定义的bean就会被自动的扫描到</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/23.png" class>
+
+
+
+<h4 id="3-3-3-DI详解"><a href="#3-3-3-DI详解" class="headerlink" title="3.3.3 DI详解"></a>3.3.3 DI详解</h4><p>依赖注入，是指IOC容器要为应用程序去提供运行时所依赖的资源，而资源指的就是对象。</p>
+<p>在入门程序案例中，我们使用了@Autowired这个注解，完成了依赖注入的操作，而这个Autowired翻译过来叫做：自动装配。</p>
+<p>@Autowired注解，默认是按照<strong>类型</strong>进行自动装配的（去IOC容器中找某个类型的对象，然后完成注入操作）</p>
+<p>那如果在IOC容器中，存在多个相同类型的bean对象，会出现什么情况呢？</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/24.png" class>
+
+<ul>
+<li>程序运行会报错</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/25.png" class>
+
+<p>如何解决上述问题呢？Spring提供了以下几种解决方案：</p>
+<ul>
+<li>@Primary</li>
+<li>@Qualifier</li>
+<li>@Resource</li>
+</ul>
+<p>使用@Primary注解：当存在多个相同类型的Bean注入时，加上@Primary注解，来确定默认的事项</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/26.png" class>
+
+<p>使用@Qualifier注解：指定当前要注入的bean对象。在@Qualifier的value属性中，指定注入的bean的名称。</p>
+<ul>
+<li>@Qualifier注解不能单独使用，必须配合@Autowired使用</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/27.png" class>
+
+<p>使用@Resource注解：是按照bean的名称进行注入。通过name属性指定要注入的bean的名称。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/04/07/%E5%90%8E%E7%AB%AF/02-SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94/28.png" class>
+
+<blockquote>
+<p>面试题：@Autowired 与 @Resource 的区别</p>
+<ul>
+<li>@Autowired 是spring框架提供的注解，而@Resource是JDK提供的注解</li>
+<li>@Autowired 默认是按照类型注入，而@Resource是按照名称注入</li>
+</ul>
+</blockquote>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> SpringBootWeb请求响应</li>
+        <li><strong>作者:</strong> wawn</li>
+        <li><strong>创建于
+                :</strong> 2024-04-07 22:39:31</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-04-23 17:55:22
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://wawnwn.github.io/2024/04/07/后端/02-SpringBootWeb请求响应/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">03-MySQL</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/04/07/%E5%90%8E%E7%AB%AF/01-SpringBoot%E5%9F%BA%E7%A1%80/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">SpringBoot基础</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">SpringBootWeb请求响应</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBootWeb%E8%AF%B7%E6%B1%82%E5%93%8D%E5%BA%94"><span class="nav-text">SpringBootWeb请求响应</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E8%AF%B7%E6%B1%82"><span class="nav-text">1 请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Postman"><span class="nav-text">1.1 Postman</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E7%AE%80%E5%8D%95%E5%8F%82%E6%95%B0"><span class="nav-text">1.2 简单参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E5%AE%9E%E4%BD%93%E5%8F%82%E6%95%B0"><span class="nav-text">1.3 实体参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E6%95%B0%E7%BB%84%E9%9B%86%E5%90%88%E5%8F%82%E6%95%B0"><span class="nav-text">1.4 数组集合参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E6%97%A5%E6%9C%9F%E5%8F%82%E6%95%B0"><span class="nav-text">1.5 日期参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-JSON%E5%8F%82%E6%95%B0"><span class="nav-text">1.6 JSON参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-%E8%B7%AF%E5%BE%84%E5%8F%82%E6%95%B0"><span class="nav-text">1.7 路径参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%93%8D%E5%BA%94"><span class="nav-text">2 响应</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-ResponseBody"><span class="nav-text">2.1 @ResponseBody</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E7%BB%9F%E4%B8%80%E5%93%8D%E5%BA%94%E7%BB%93%E6%9E%9C"><span class="nav-text">2.2 统一响应结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E6%A1%88%E4%BE%8B"><span class="nav-text">2.3 案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%88%86%E5%B1%82%E8%A7%A3%E8%80%A6"><span class="nav-text">3 分层解耦</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-text">3.1 三层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%88%86%E5%B1%82%E8%A7%A3%E8%80%A6"><span class="nav-text">3.2 分层解耦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-IOC-amp-DI"><span class="nav-text">3.3 IOC&amp;DI</span></a></li></ol></li></ol></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">wawn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 54 篇文章
+                    </span>
+                    
+                        <span>
+                            共 331.5k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/libs/minimasonry.min.js"></script>
+
+    
+<script src="/js/plugins/masonry.js" type="module"></script>
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
