@@ -536,7 +536,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>685 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>688 字</span>
         </span>
     
     
@@ -562,93 +562,88 @@
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
             <p>c++ STL</p>
 <span id="more"></span>
-<h1>1 array</h1>
-<h2 id="1-1-介绍">1.1 介绍</h2>
-<h3 id="1-1-1-头文件">1.1.1 头文件</h3>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;array&gt;</span></span></span><br></pre></td></tr></table></figure></div>
-<h3 id="1-1-2-定义">1.1.2 定义</h3>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">array&lt;<span class="type">int</span>, 5&gt; myarray = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">array&lt;<span class="type">int</span>, 5&gt; otherarray = myarray;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b[<span class="number">5</span>];</span><br><span class="line">array&lt;<span class="type">int</span>, 5&gt; otherarray2 = b;</span><br><span class="line"><span class="comment">//编译报错，error: no viable conversion from &#x27;int [5]&#x27; to &#x27;array&lt;int, 5&gt;</span></span><br><span class="line"></span><br><span class="line">array&lt;<span class="type">int</span>, 5&gt; otherarray3;</span><br><span class="line"><span class="comment">//编译报错，error: non-type template argument is not a constant expression</span></span><br></pre></td></tr></table></figure></div>
-<h3 id="1-1-3-初始化">1.1.3 初始化</h3>
-<div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::array&lt;<span class="type">double</span>, 10&gt; values &#123;&#125;;</span><br><span class="line">std::array&lt;<span class="type">double</span>, 10&gt; values &#123;<span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">1.5</span>, <span class="number">2.0</span>&#125;;</span><br></pre></td></tr></table></figure></div>
-<h3 id="1-1-4-访问">1.1.4 访问</h3>
-<p>可通过下标运算符[]对元素进行操作，还可以通过 at/front/back 进行操作</p>
+
+<h1 id="1-array"><a href="#1-array" class="headerlink" title="1 array"></a>1 array</h1><h2 id="1-1-介绍"><a href="#1-1-介绍" class="headerlink" title="1.1 介绍"></a>1.1 介绍</h2><h3 id="1-1-1-头文件"><a href="#1-1-1-头文件" class="headerlink" title="1.1.1 头文件"></a>1.1.1 头文件</h3><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;array&gt;</span></span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-1-2-定义"><a href="#1-1-2-定义" class="headerlink" title="1.1.2 定义"></a>1.1.2 定义</h3><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">array&lt;<span class="type">int</span>, 5&gt; myarray = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">array&lt;<span class="type">int</span>, 5&gt; otherarray = myarray;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b[<span class="number">5</span>];</span><br><span class="line">array&lt;<span class="type">int</span>, 5&gt; otherarray2 = b;</span><br><span class="line"><span class="comment">//编译报错，error: no viable conversion from &#x27;int [5]&#x27; to &#x27;array&lt;int, 5&gt;</span></span><br><span class="line"></span><br><span class="line">array&lt;<span class="type">int</span>, 5&gt; otherarray3;</span><br><span class="line"><span class="comment">//编译报错，error: non-type template argument is not a constant expression</span></span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-1-3-初始化"><a href="#1-1-3-初始化" class="headerlink" title="1.1.3 初始化"></a>1.1.3 初始化</h3><div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">std::array&lt;<span class="type">double</span>, 10&gt; values &#123;&#125;;</span><br><span class="line">std::array&lt;<span class="type">double</span>, 10&gt; values &#123;<span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">1.5</span>, <span class="number">2.0</span>&#125;;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="1-1-4-访问"><a href="#1-1-4-访问" class="headerlink" title="1.1.4 访问"></a>1.1.4 访问</h3><p>可通过下标运算符[]对元素进行操作，还可以通过 at&#x2F;front&#x2F;back 进行操作</p>
 <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i ++) &#123;</span><br><span class="line">	cout &lt;&lt; <span class="built_in">setw</span>(<span class="number">10</span>) &lt;&lt; myarray.<span class="built_in">at</span>(i) &lt;&lt; endl;   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h3 id="1-1-5-遍历">1.1.5 遍历</h3>
-<p>可以通过正向和反向迭代器对元素进行遍历</p>
+
+<h3 id="1-1-5-遍历"><a href="#1-1-5-遍历" class="headerlink" title="1.1.5 遍历"></a>1.1.5 遍历</h3><p>可以通过正向和反向迭代器对元素进行遍历</p>
 <div class="highlight-container" data-rel="C++"><figure class="iseeu highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = myarray.<span class="built_in">begin</span>(); it != myarray.<span class="built_in">end</span>(); ++it) &#123;</span><br><span class="line">    cout &lt;&lt; *it &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h2 id="1-2-方法函数">1.2 方法函数</h2>
-<table>
+
+<h2 id="1-2-方法函数"><a href="#1-2-方法函数" class="headerlink" title="1.2 方法函数"></a>1.2 方法函数</h2><table>
 <thead>
 <tr>
-<th style="text-align:center">成员函数</th>
-<th style="text-align:left">功能</th>
+<th align="center">成员函数</th>
+<th align="left">功能</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">begin()</td>
-<td style="text-align:left">返回指向容器中第一个元素的随机访问迭代器</td>
+<tbody><tr>
+<td align="center">begin()</td>
+<td align="left">返回指向容器中第一个元素的随机访问迭代器</td>
 </tr>
 <tr>
-<td style="text-align:center">end()</td>
-<td style="text-align:left">返回指向容器最后一个元素之后一个位置的随机访问器，通常和 begin() 结合使用</td>
+<td align="center">end()</td>
+<td align="left">返回指向容器最后一个元素之后一个位置的随机访问器，通常和 begin() 结合使用</td>
 </tr>
 <tr>
-<td style="text-align:center">rbegin()</td>
-<td style="text-align:left">返回指向最后一个元素的随机访问迭代器</td>
+<td align="center">rbegin()</td>
+<td align="left">返回指向最后一个元素的随机访问迭代器</td>
 </tr>
 <tr>
-<td style="text-align:center">rend()</td>
-<td style="text-align:left">返回指向第一个元素之前一个位置的随机访问迭代器</td>
+<td align="center">rend()</td>
+<td align="left">返回指向第一个元素之前一个位置的随机访问迭代器</td>
 </tr>
 <tr>
-<td style="text-align:center">crbegin()</td>
-<td style="text-align:left">和 rbegin() 功能相同，在其基础上，增加了 const 属性，不能用于修改元素</td>
+<td align="center">crbegin()</td>
+<td align="left">和 rbegin() 功能相同，在其基础上，增加了 const 属性，不能用于修改元素</td>
 </tr>
 <tr>
-<td style="text-align:center">crend()</td>
-<td style="text-align:left">和 rend() 功能相同，在其基础上，增加了 const 属性，不能用于修改元素</td>
+<td align="center">crend()</td>
+<td align="left">和 rend() 功能相同，在其基础上，增加了 const 属性，不能用于修改元素</td>
 </tr>
 <tr>
-<td style="text-align:center">size()</td>
-<td style="text-align:left">返回容器中当前元素的数量，其值始终等于初始化 array 类的第二个模板参数 N。</td>
+<td align="center">size()</td>
+<td align="left">返回容器中当前元素的数量，其值始终等于初始化 array 类的第二个模板参数 N。</td>
 </tr>
 <tr>
-<td style="text-align:center">max_size()</td>
-<td style="text-align:left">返回容器可容纳元素的最大数量，其值始终等于初始化 array 类的第二个模板参数 N。</td>
+<td align="center">max_size()</td>
+<td align="left">返回容器可容纳元素的最大数量，其值始终等于初始化 array 类的第二个模板参数 N。</td>
 </tr>
 <tr>
-<td style="text-align:center">empty()</td>
-<td style="text-align:left">判断容器是否为空，和通过 size()==0 的判断条件功能相同，但其效率可能更快。</td>
+<td align="center">empty()</td>
+<td align="left">判断容器是否为空，和通过 size()&#x3D;&#x3D;0 的判断条件功能相同，但其效率可能更快。</td>
 </tr>
 <tr>
-<td style="text-align:center">at(n)</td>
-<td style="text-align:left">返回容器中 n 位置处元素的引用，该函数自动检查 n 是否在有效的范围内，如果不是则抛出 out_of_range 异常。</td>
+<td align="center">at(n)</td>
+<td align="left">返回容器中 n 位置处元素的引用，该函数自动检查 n 是否在有效的范围内，如果不是则抛出 out_of_range 异常。</td>
 </tr>
 <tr>
-<td style="text-align:center">front()</td>
-<td style="text-align:left">返回容器中第一个元素的直接引用，该函数不适用于空的 array 容器。</td>
+<td align="center">front()</td>
+<td align="left">返回容器中第一个元素的直接引用，该函数不适用于空的 array 容器。</td>
 </tr>
 <tr>
-<td style="text-align:center">back()</td>
-<td style="text-align:left">返回容器中最后一个元素的直接应用，该函数同样不适用于空的 array 容器。</td>
+<td align="center">back()</td>
+<td align="left">返回容器中最后一个元素的直接应用，该函数同样不适用于空的 array 容器。</td>
 </tr>
 <tr>
-<td style="text-align:center">data()</td>
-<td style="text-align:left">返回一个指向容器首个元素的指针。利用该指针，可实现复制容器中所有元素等类似功能。</td>
+<td align="center">data()</td>
+<td align="left">返回一个指向容器首个元素的指针。利用该指针，可实现复制容器中所有元素等类似功能。</td>
 </tr>
 <tr>
-<td style="text-align:center">fill(val)</td>
-<td style="text-align:left">将 val 这个值赋值给容器中的每个元素。</td>
+<td align="center">fill(val)</td>
+<td align="left">将 val 这个值赋值给容器中的每个元素。</td>
 </tr>
 <tr>
-<td style="text-align:center">array1.swap(array2)</td>
-<td style="text-align:left">交换 array1 和 array2 容器中的所有元素，但前提是它们具有相同的长度和类型。</td>
+<td align="center">array1.swap(array2)</td>
+<td align="left">交换 array1 和 array2 容器中的所有元素，但前提是它们具有相同的长度和类型。</td>
 </tr>
-</tbody>
-</table>
-<h1>参考连接</h1>
-<p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15041569/article/details/120691789">https://blog.csdn.net/qq_15041569/article/details/120691789 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+</tbody></table>
+<h1 id="参考连接"><a href="#参考连接" class="headerlink" title="参考连接"></a>参考连接</h1><p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/qq_15041569/article/details/120691789">https://blog.csdn.net/qq_15041569/article/details/120691789 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 
         </div>
 
@@ -763,7 +758,7 @@
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">C++_STL</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">1 array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.1 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-text">1.1.1 头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E5%AE%9A%E4%B9%89"><span class="nav-text">1.1.2 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">1.1.3 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-%E8%AE%BF%E9%97%AE"><span class="nav-text">1.1.4 访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5-%E9%81%8D%E5%8E%86"><span class="nav-text">1.1.5 遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0"><span class="nav-text">1.2 方法函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">参考连接</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-array"><span class="nav-text">1 array</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E4%BB%8B%E7%BB%8D"><span class="nav-text">1.1 介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="nav-text">1.1.1 头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E5%AE%9A%E4%B9%89"><span class="nav-text">1.1.2 定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">1.1.3 初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-%E8%AE%BF%E9%97%AE"><span class="nav-text">1.1.4 访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5-%E9%81%8D%E5%8E%86"><span class="nav-text">1.1.5 遍历</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%96%B9%E6%B3%95%E5%87%BD%E6%95%B0"><span class="nav-text">1.2 方法函数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%BF%9E%E6%8E%A5"><span class="nav-text">参考连接</span></a></li></ol>
 
     </div>
 </div>
@@ -800,7 +795,7 @@
                     </span>
                     
                         <span>
-                            共 331.2k 字
+                            共 331.5k 字
                         </span>
                     
                 </p>
