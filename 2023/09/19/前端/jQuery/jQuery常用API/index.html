@@ -473,11 +473,11 @@
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">55</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -603,58 +603,72 @@
 <li>jQuery 尺寸、位置操作</li>
 </ul>
 <span id="more"></span>
-<h3 id="1-jQuery-选择器"><strong>1. jQuery 选择器</strong></h3>
-<p><strong>1.1 jQuery 基础选择器</strong></p>
+
+<h3 id="1-jQuery-选择器"><a href="#1-jQuery-选择器" class="headerlink" title="1. jQuery 选择器"></a><strong>1. jQuery 选择器</strong></h3><p><strong>1.1 jQuery 基础选择器</strong></p>
 <p>原生 JS 获取元素方式很多，很杂，而且兼容性情况不一致，因此 jQuery 给我们做了封装，使获取元素统一标准。</p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(“选择器”) <span class="comment">// 里面选择器直接写 CSS 选择器即可，但是要加引号</span></span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2023/09/19/%E5%89%8D%E7%AB%AF/jQuery/jQuery%E5%B8%B8%E7%94%A8API/1.png" class>
+
 <p><strong>1.2 jQuery 层级选择器</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2023/09/19/%E5%89%8D%E7%AB%AF/jQuery/jQuery%E5%B8%B8%E7%94%A8API/2.png" class>
+
 <p>jQuery 设置样式</p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;div&#x27;).css(&#x27;属性&#x27;, &#x27;值&#x27;)</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>1.3 隐式迭代（重要）</strong></p>
 <p>遍历内部 DOM 元素（伪数组形式存储）的过程就叫做<strong>隐式迭代。</strong></p>
 <p>简单理解：给匹配到的所有元素进行循环遍历，执行相应的方法，而不用我们再进行循环，简化我们的操作，方便我们调用。</p>
 <p><strong>1.4 jQuery 筛选选择器</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2023/09/19/%E5%89%8D%E7%AB%AF/jQuery/jQuery%E5%B8%B8%E7%94%A8API/3.png" class>
+
 <p><strong>1.5 jQuery 筛选方法（重点）</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2023/09/19/%E5%89%8D%E7%AB%AF/jQuery/jQuery%E5%B8%B8%E7%94%A8API/4.png" class>
+
 <p><strong>1.6 jQuery 里面的排他思想</strong></p>
 <p>想要多选一的效果，排他思想：当前元素设置样式，其余的兄弟元素清除式。</p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(this).css(“color”,”red”);</span><br><span class="line">$(this).siblings(). css(“color”,””);</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>1.7 链式编程</strong></p>
 <p>链式编程是为了节省代码量，看起来更优雅。</p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).css(&#x27;color&#x27;, &#x27;red&#x27;).sibling().css(&#x27;color&#x27;, &#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
 <br>
-<h3 id="2-jQuery-样式操作"><strong>2. jQuery 样式操作</strong></h3>
-<p><strong>2.1 操作 css 方法</strong></p>
+
+<h3 id="2-jQuery-样式操作"><a href="#2-jQuery-样式操作" class="headerlink" title="2. jQuery 样式操作"></a><strong>2. jQuery 样式操作</strong></h3><p><strong>2.1 操作 css 方法</strong></p>
 <p>jQuery 可以使用 css 方法来修改简单元素样式； 也可以操作类，修改多个样式。</p>
 <ul>
 <li>参数只写属性名，则是返回属性值</li>
 </ul>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).css(&#x27;&#x27;color&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
 <ul>
 <li>参数是属性名，属性值，逗号分隔，是设置一组样式，属性必须加引号，值如果是数字可以不用跟单位和引号</li>
 </ul>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).css(&#x27;&#x27;color&#x27;&#x27;, &#x27;&#x27;red&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
 <ul>
 <li>参数可以是对象形式，方便设置多组样式。属性名和属性值用冒号隔开， 属性可以不用加引号，</li>
 </ul>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(this).css(&#123; &quot;color&quot;:&quot;white&quot;,&quot;font-size&quot;:&quot;20px&quot;&#125;);</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>2.2 设置类样式方法</strong></p>
 <p>作用等同于以前的 classList，可以操作类样式， 注意操作类里面的参数不要加点。</p>
 <ul>
 <li>添加类</li>
 </ul>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(“div”).addClass(&#x27;&#x27;current&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
 <ul>
 <li>移除类</li>
 </ul>
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(“div”).<span class="built_in">removeClass</span>(<span class="string">&#x27;&#x27;current&#x27;</span><span class="string">&#x27;);</span></span><br></pre></td></tr></table></figure></div>
+
 <ul>
 <li>切换类</li>
 </ul>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(“div”).toggleClass(&#x27;&#x27;current&#x27;&#x27;);</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>案例：tab 栏切换分析</strong></p>
 <p>① 点击上部的li，当前li 添加current类，其余兄弟移除类。</p>
 <p>② 点击的同时，得到当前li 的索引号</p>
@@ -663,12 +677,14 @@
 <p>原生 JS 中 className 会覆盖元素原先里面的类名。</p>
 <p>jQuery 里面类操作只是对指定类进行操作，不影响原先的类名</p>
 <br>
-<h3 id="3-jQuery-效果"><strong>3. jQuery 效果</strong></h3>
-<p>jQuery 给我们封装了很多动画效果，最为常见的如下：</p>
+
+<h3 id="3-jQuery-效果"><a href="#3-jQuery-效果" class="headerlink" title="3. jQuery 效果"></a><strong>3. jQuery 效果</strong></h3><p>jQuery 给我们封装了很多动画效果，最为常见的如下：</p>
 <img lazyload src="/images/loading.svg" data-src="/2023/09/19/%E5%89%8D%E7%AB%AF/jQuery/jQuery%E5%B8%B8%E7%94%A8API/5.png" class>
+
 <p><strong>3.1 显示隐藏效果</strong></p>
 <p><strong>1. 显示语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>2. 显示参数</strong></p>
 <p>（1）参数都可以省略， 无动画直接显示。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -676,6 +692,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
 <p><strong>3. 隐藏语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hide([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>4. 隐藏参数</strong></p>
 <p>（1）参数都可以省略， 无动画直接显示。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -683,6 +700,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
 <p><strong>5. 切换语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">toggle([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>6. 切换参数</strong></p>
 <p>（1）参数都可以省略， 无动画直接显示。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -692,6 +710,7 @@
 <p><strong>3.2 滑动效果</strong></p>
 <p><strong>1. 下滑效果语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slideDown([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>2. 下滑效果参数</strong></p>
 <p>（1）参数都可以省略。</p>
 <p>（2）speed:三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -699,6 +718,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
 <p><strong>3. 上滑效果语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slideUp([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>4. 上滑效果参数</strong></p>
 <p>（1）参数都可以省略。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -706,6 +726,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
 <p><strong>5. 滑动切换效果语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slideToggle([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>6. 滑动切换效果参数</strong></p>
 <p>（1）参数都可以省略。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -713,6 +734,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
 <p><strong>3.3 事件切换</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hover([over,]out)</span><br></pre></td></tr></table></figure></div>
+
 <p>（1）over:鼠标移到元素上要触发的函数（相当于mouseenter）</p>
 <p>（2）out:鼠标移出元素要触发的函数（相当于mouseleave）</p>
 <p>（3）如果只写一个函数，则鼠标经过和离开都会触发它</p>
@@ -725,6 +747,7 @@
 <p><strong>3.5 淡入淡出效果</strong></p>
 <p><strong>1. 淡入效果语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fadeIn([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>2. 淡入效果参数</strong></p>
 <p>（1）参数都可以省略。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -732,6 +755,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次</p>
 <p><strong>3. 淡出效果语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fadeOut([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>4. 淡出效果参数</strong></p>
 <p>（1）参数都可以省略。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -739,6 +763,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
 <p><strong>5. 淡入淡出切换效果语法规范</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fadeToggle([speed,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>6. 淡入淡出切换效果参数</strong></p>
 <p>（1）参数都可以省略。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。</p>
@@ -746,6 +771,7 @@
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次。</p>
 <p><strong>7. 渐进方式调整到指定的不透明度</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fadeTo([[speed],opacity,[easing],[fn]])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>8. 效果参数</strong></p>
 <p>（1）opacity 透明度必须写，取值 0~1 之间。</p>
 <p>（2）speed：三种预定速度之一的字符串(“slow”,“normal”, or “fast”)或表示动画时长的毫秒数值(如：1000)。必须写</p>
@@ -754,6 +780,7 @@
 <p><strong>3.6 自定义动画 animate</strong></p>
 <p><strong>1. 语法</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animate(params,[speed],[easing],[fn])</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>2. 参数</strong></p>
 <p>（1）params: 想要更改的样式属性，以对象形式传递，必须写。 属性名可以不用带引号， 如果是复合属性则需要采</p>
 <p>取驼峰命名法 borderLeft。其余参数都可以省略。</p>
@@ -761,44 +788,52 @@
 <p>（3）easing：(Optional) 用来指定切换效果，默认是“swing”，可用参数“linear”。</p>
 <p>（4）fn: 回调函数，在动画完成时执行的函数，每个元素执行一次</p>
 <br>
-<h3 id="4-jQuery-属性操作"><strong>4. jQuery 属性操作</strong></h3>
-<p><strong>4.1 设置或获取元素固有属性值 prop()</strong></p>
+
+<h3 id="4-jQuery-属性操作"><a href="#4-jQuery-属性操作" class="headerlink" title="4. jQuery 属性操作"></a><strong>4. jQuery 属性操作</strong></h3><p><strong>4.1 设置或获取元素固有属性值 prop()</strong></p>
 <p>所谓元素固有属性就是元素本身自带的属性，比如 <a> 元素里面的 href ，比如 <input> 元素里面的 type。</a></p>
 <p><strong>1. 获取属性语法</strong></p>
-<p>prop(‘‘属性’’)</p>
+<p>prop(‘’属性’’)</p>
 <p><strong>2. 设置属性语法</strong></p>
-<p>prop(‘‘属性’’, ‘‘属性值’’)</p>
+<p>prop(‘’属性’’, ‘’属性值’’)</p>
 <p><strong>4.2 设置或获取元素自定义属性值 attr()</strong></p>
-<p>用户自己给元素添加的属性，我们称为自定义属性。 比如给 div 添加 index =“1”。</p>
+<p>用户自己给元素添加的属性，我们称为自定义属性。 比如给 div 添加 index &#x3D;“1”。</p>
 <p><strong>1. 获取属性语法</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">attr(&#x27;&#x27;属性&#x27;&#x27;) // 类似原生 getAttribute()</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>2. 设置属性语法</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">attr(&#x27;&#x27;属性&#x27;&#x27;, &#x27;&#x27;属性值&#x27;&#x27;) // 类似原生 setAttribute()</span><br></pre></td></tr></table></figure></div>
+
 <p>改方法也可以获取 H5 自定义属性</p>
 <p><strong>4.3 数据缓存 data()</strong></p>
 <p>data() 方法可以在指定的元素上存取数据，并不会修改 DOM 元素结构。一旦页面刷新，之前存放的数据都将被移</p>
 <p><strong>1. 附加数据语法</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data(&#x27;&#x27;name&#x27;&#x27;,&#x27;&#x27;value&#x27;&#x27;) // 向被选元素附加数据</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>2. 获取数据语法</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date(&#x27;&#x27;name&#x27;&#x27;) // 向被选元素获取数据</span><br></pre></td></tr></table></figure></div>
+
 <p>同时，还可以读取 HTML5 自定义属性 data-index ，得到的是数字型</p>
 <br>
-<h3 id="5-jQuery-内容文本值"><strong>5. jQuery 内容文本值</strong></h3>
-<p>主要针对元素的内容还有表单的值操作</p>
+
+<h3 id="5-jQuery-内容文本值"><a href="#5-jQuery-内容文本值" class="headerlink" title="5. jQuery 内容文本值"></a><strong>5. jQuery 内容文本值</strong></h3><p>主要针对元素的内容还有表单的值操作</p>
 <p><strong>1. 普通元素内容 html()（ 相当于原生inner HTML)</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html() // 获取元素的内容</span><br><span class="line"></span><br><span class="line">html(&#x27;&#x27;内容&#x27;&#x27;) // 设置元素的内容</span><br></pre></td></tr></table></figure></div>
-<p><strong>2. 普通元素文本内容 text() (相当与原生 innerText</strong>**)**</p>
+
+<p><strong>2. 普通元素文本内容 text() (相当与原生 innerText</strong><strong>)</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text() // 获取元素的文本内容</span><br><span class="line"></span><br><span class="line">text(&#x27;&#x27;文本内容&#x27;&#x27;) // 设置元素的文本内容</span><br></pre></td></tr></table></figure></div>
+
 <p>主要针对元素的内容还有表单的值操作</p>
 <p><strong>3. 表单的值 val()（ 相当于原生value)</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val() // 获取表单的值</span><br><span class="line"></span><br><span class="line">val(&#x27;&#x27;内容&#x27;&#x27;) // 设置表单的值</span><br></pre></td></tr></table></figure></div>
+
 <br>
-<h3 id="6-jQuery-元素操作"><strong>6. jQuery 元素操作</strong></h3>
-<p>主要是遍历、创建、添加、删除元素操作。</p>
+
+<h3 id="6-jQuery-元素操作"><a href="#6-jQuery-元素操作" class="headerlink" title="6. jQuery 元素操作"></a><strong>6. jQuery 元素操作</strong></h3><p>主要是遍历、创建、添加、删除元素操作。</p>
 <p><strong>6.1 遍历元素</strong></p>
 <p>jQuery 隐式迭代是对同一类元素做了同样的操作。 如果想要给同一类元素做不同操作，就需要用到遍历。</p>
 <p><strong>语法1：</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;div&quot;).each(function (index, domEle) &#123; xxx; &#125;）</span><br></pre></td></tr></table></figure></div>
+
 <ol>
 <li>each() 方法遍历匹配的每一个元素。主要用DOM处理。 each 每一个</li>
 <li>里面的回调函数有2个参数： index 是每个元素的索引号; demEle 是每个DOM元素对象，不是jquery对象</li>
@@ -806,6 +841,7 @@
 </ol>
 <p><strong>语法2：</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$.each(object，function (index, element) &#123; xxx; &#125;）</span><br></pre></td></tr></table></figure></div>
+
 <ol>
 <li>$.each()方法可用于遍历任何对象。主要用于数据处理，比如数组，对象</li>
 <li>里面的函数有2个参数： index 是每个元素的索引号; element 遍历内容</li>
@@ -813,32 +849,38 @@
 <p><strong>6.2 创建元素</strong></p>
 <p><strong>语法：</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(&#x27;&#x27;<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>&#x27;&#x27;); </span><br></pre></td></tr></table></figure></div>
-<p>动态的创建了一个 <li></li></p>
+
+<p>动态的创建了一个 <li> </li></p>
 <p><strong>6.3 添加元素</strong></p>
 <p><strong>1. 内部添加</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.append(&#x27;&#x27;内容&#x27;&#x27;) </span><br></pre></td></tr></table></figure></div>
+
 <p>把内容放入匹配元素内部最后面，类似原生 appendChild。</p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.prepend(&#x27;&#x27;内容&#x27;&#x27;) </span><br></pre></td></tr></table></figure></div>
+
 <p>把内容放入匹配元素内部最前面。</p>
 <p><strong>2. 外部添加</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">element.after(&#x27;&#x27;内容&#x27;&#x27;) // 把内容放入目标元素后面</span><br><span class="line"></span><br><span class="line">element.before(&#x27;&#x27;内容&#x27;&#x27;) // 把内容放入目标元素前面</span><br></pre></td></tr></table></figure></div>
+
 <p>① 内部添加元素，生成之后，它们是父子关系。</p>
 <p>② 外部添加元素，生成之后，他们是兄弟关系</p>
 <p><strong>6.4 删除元素</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">element.remove() // 删除匹配的元素（本身）</span><br><span class="line"></span><br><span class="line">element.empty() // 删除匹配的元素集合中所有的子节点</span><br><span class="line"></span><br><span class="line">element.html(&#x27;&#x27;&#x27;&#x27;) // 清空匹配的元素内容</span><br></pre></td></tr></table></figure></div>
+
 <p>① remove 删除元素本身。</p>
-<p>② empt() 和 html(‘’‘’) 作用等价，都可以删除元素里面的内容，只不过 html 还可以设置内容。</p>
+<p>② empt() 和 html(‘’’’) 作用等价，都可以删除元素里面的内容，只不过 html 还可以设置内容。</p>
 <br>
-<h3 id="7-jQuery-尺寸、位置操作"><strong>7. jQuery 尺寸、位置操作</strong></h3>
-<p><strong>7.1 jQuery 尺寸</strong></p>
+
+<h3 id="7-jQuery-尺寸、位置操作"><a href="#7-jQuery-尺寸、位置操作" class="headerlink" title="7. jQuery 尺寸、位置操作"></a><strong>7. jQuery 尺寸、位置操作</strong></h3><p><strong>7.1 jQuery 尺寸</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2023/09/19/%E5%89%8D%E7%AB%AF/jQuery/jQuery%E5%B8%B8%E7%94%A8API/6.png" class>
+
 <ul>
 <li>以上参数为空，则是获取相应值，返回的是数字型。</li>
 <li>如果参数为数字，则是修改相应值。</li>
 <li>参数可以不必写单位。</li>
 </ul>
 <p><strong>7.2 jQuery 位置</strong></p>
-<p>位置主要有三个： offset()、position()、scrollTop()/scrollLeft()</p>
+<p>位置主要有三个： offset()、position()、scrollTop()&#x2F;scrollLeft()</p>
 <p><strong>1. offset() 设置或获取元素偏移</strong></p>
 <p>① offset() 方法设置或返回被选元素相对于<strong>文档</strong>的偏移坐标，跟父级没有关系。</p>
 <p>② 该方法有2个属性 left、top 。offset().top 用于获取距离文档顶部的距离，offset().left 用于获取距离文档左侧的距离。</p>
@@ -847,7 +889,7 @@
 <p>① position() 方法用于返回被选元素相对于<strong>带有定位的父级</strong>偏移坐标，如果父级都没有定位，则以文档为准。</p>
 <p>② 该方法有2个属性 left、top。position().top 用于获取距离定位父级顶部的距离，position().left 用于获取距离定位父级左侧的距离。</p>
 <p>③ 该方法只能获取。</p>
-<p><strong>3. scrollTop()/scrollLeft() 设置或获取元素被卷去的头部和左侧</strong></p>
+<p><strong>3. scrollTop()&#x2F;scrollLeft() 设置或获取元素被卷去的头部和左侧</strong></p>
 <p>① scrollTop() 方法设置或返回被选元素被卷去的头部。</p>
 <p>② 不跟参数是获取，参数为不带单位的数字则是设置被卷去的头部</p>
 
@@ -1012,11 +1054,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共 54 篇文章
+                        共 55 篇文章
                     </span>
                     
                         <span>
-                            共 339.4k 字
+                            共 342.3k 字
                         </span>
                     
                 </p>

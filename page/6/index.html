@@ -495,11 +495,11 @@
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">55</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -573,11 +573,11 @@
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">55</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -594,6 +594,61 @@
                 
                     <div class="home-content-container">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2022/10/25/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/">
+                            模板
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            <h2 id="1-快速排序"><a href="#1-快速排序" class="headerlink" title="1. 快速排序"></a>1. 快速排序</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">quick_sort</span><span class="params">(<span class="type">int</span> q[], <span class="type">int</span> l, <span class="type">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>, x = q[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">do</span> i ++ ; <span class="keyword">while</span> (q[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j -- ; <span class="keyword">while</span> (q[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) <span class="built_in">swap</span>(q[i], q[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">quick_sort</span>(q, l, j), <span class="built_in">quick_sort</span>(q, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue Oct 25 2022 11:37:00 GMT+0800">
+                
+                    2022-10-25
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E7%AE%97%E6%B3%95/">算法</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+    </div>
+
+    <a href="/2022/10/25/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF/">阅读全文<span class="seo-reader-text">模板</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
         
             <li class="home-article-item">
 
@@ -675,9 +730,9 @@
                             <p>HTML5 的新增特性主要是针对于以前的不足，增加了一些新的标签、表单和新的表单属性等</p>
 <p>这些新特性都有兼容性的问题，基本上是IE9+以上的版本的浏览器才支持，如果不考虑兼容性问题，可以大量使用这些新特性。</p>
 <p>声明：新特性增加了很多，但是我们专注于开发常用的新特性</p>
-<h2 id="1-HTML5新增的语义化标签">1.HTML5新增的语义化标签</h2>
-<p>以前布局，我们基本用 div 来做。div 对搜索引擎来说是没有语义的</p>
+<h2 id="1-HTML5新增的语义化标签"><a href="#1-HTML5新增的语义化标签" class="headerlink" title="1.HTML5新增的语义化标签"></a>1.HTML5新增的语义化标签</h2><p>以前布局，我们基本用 div 来做。div 对搜索引擎来说是没有语义的</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="selector-tag">header</span>&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="selector-tag">nav</span>&quot;&gt;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="attribute">content</span>&quot;&lt;/<span class="selector-tag">div</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">div</span> class=&quot;<span class="selector-tag">footer</span>&quot;&lt;/<span class="selector-tag">div</span>&gt;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li><strong><header></header></strong>   —  头部标签</li>
 <li><strong><nav></nav></strong>        —  导航标签</li>
@@ -740,16 +795,14 @@
 
                     <div class="home-article-content markdown-body">
                         
-                            <h3 id="目标">目标</h3>
-<ul>
+                            <h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
 <li>能够使用精灵图</li>
 <li>能够使用字体图报表</li>
 <li>能够写出 CSS 三角</li>
 <li>能够写出常见的 CSS 用户界面样式</li>
 <li>能够说出常见的布局技巧</li>
 </ul>
-<h2 id="目录">目录</h2>
-<ul>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li>精灵图</li>
 <li>字体图标</li>
 <li>CSS 三角</li>
@@ -812,18 +865,16 @@
 
                     <div class="home-article-content markdown-body">
                         
-                            <h3 id="1-1-为什么需要定位">1.1 为什么需要定位</h3>
-<ol>
-<li>某个元素可以自由地在一个盒子内移动位置，并且压住其他盒子</li>
+                            <h3 id="1-1-为什么需要定位"><a href="#1-1-为什么需要定位" class="headerlink" title="1.1 为什么需要定位"></a>1.1 为什么需要定位</h3><ol>
+<li>某个元素可以自由地在一个盒子内移动位置，并且压住其他盒子 </li>
 <li>当我们滚动窗口的时候，盒子是固定在屏幕某个位置的</li>
 </ol>
 <ul>
 <li>浮动可以让多个块级盒子一行没有缝隙排列显示，经常用于横向排列盒子</li>
 <li>定位则是可以让盒子自由的在某个盒子内移动位置或者固定屏幕某个位置，并且可以压住其他盒子</li>
 </ul>
-<h3 id="1-2-定位组成">1.2 定位组成</h3>
-<p>定位：将盒子定在某一个位置，所以定位也是在拜访盒子，按照定位的方式移动盒子</p>
-<p>定位 = 定位模式 + 边偏移</p>
+<h3 id="1-2-定位组成"><a href="#1-2-定位组成" class="headerlink" title="1.2 定位组成"></a>1.2 定位组成</h3><p>定位：将盒子定在某一个位置，所以定位也是在拜访盒子，按照定位的方式移动盒子</p>
+<p>定位 &#x3D; 定位模式 + 边偏移</p>
 <p>定位模式用于指定一个元素在文档中的定位方式。边偏移则决定了该元素的最终位置</p>
                         
                     </div>
@@ -897,11 +948,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共 54 篇文章
+                        共 55 篇文章
                     </span>
                     
                         <span>
-                            共 339.4k 字
+                            共 342.3k 字
                         </span>
                     
                 </p>
