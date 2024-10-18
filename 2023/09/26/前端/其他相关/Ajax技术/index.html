@@ -18,12 +18,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="一. 初识前后端交互传统网站的问题：  为了获取数据，需要重新加载，浪费资源，增加等待时间，性能不好 验证表单过程中，一项内容不合格，页面需要重新加载，体验不好">
+        <meta name="description" content="一. 初识前后端交互 传统网站的问题：  为了获取数据，需要重新加载，浪费资源，增加等待时间，性能不好 验证表单过程中，一项内容不合格，页面需要重新加载，体验不好">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ajax技术">
 <meta property="og:url" content="http://wawnwn.github.io/2023/09/26/%E5%89%8D%E7%AB%AF/%E5%85%B6%E4%BB%96%E7%9B%B8%E5%85%B3/Ajax%E6%8A%80%E6%9C%AF/index.html">
 <meta property="og:site_name" content="wawn&#39;s blog">
-<meta property="og:description" content="一. 初识前后端交互传统网站的问题：  为了获取数据，需要重新加载，浪费资源，增加等待时间，性能不好 验证表单过程中，一项内容不合格，页面需要重新加载，体验不好">
+<meta property="og:description" content="一. 初识前后端交互 传统网站的问题：  为了获取数据，需要重新加载，浪费资源，增加等待时间，性能不好 验证表单过程中，一项内容不合格，页面需要重新加载，体验不好">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-26T06:58:14.000Z">
 <meta property="article:modified_time" content="2023-09-26T07:06:22.769Z">
@@ -34,7 +34,7 @@
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="/null" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/null">
-    <meta name="theme-color" content="#A31F34">
+    <meta name="theme-color" content="#6c9897">
     <link rel="shortcut icon" href="/null">
     <!--- Page Info-->
     
@@ -53,157 +53,6 @@
     
 
     
-        <style>
-    :root {
-        --preloader-background-color: #fff;
-        --preloader-text-color: #000;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --preloader-background-color: #202124;
-            --preloader-text-color: #fff;
-        }
-    }
-
-    @media (prefers-color-scheme: light) {
-        :root {
-            --preloader-background-color: #fff;
-            --preloader-text-color: #000;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .ml13 {
-            font-size: 2.6rem !important; /* Adjust this value as needed */
-        }
-    }
-
-    .preloader {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        padding: 12px;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh; /* 'h-screen' is 100% of the viewport height */
-        background-color: var(--preloader-background-color);
-        z-index: 1100; /* 'z-[1100]' sets the z-index */
-        transition: opacity 0.2s ease-in-out;
-    }
-
-    .ml13 {
-        font-size: 3.2rem;
-        /* text-transform: uppercase; */
-        color: var(--preloader-text-color);
-        letter-spacing: -1px;
-        font-weight: 500;
-        font-family: 'Chillax-Variable', sans-serif;
-        text-align: center;
-    }
-
-    .ml13 .word {
-        display: inline-flex;
-        flex-wrap: wrap;
-        white-space: nowrap;
-    }
-
-    .ml13 .letter {
-        display: inline-block;
-        line-height: 1em;
-    }
-</style>
-
-<div class="preloader">
-    
-<script src="/js/libs/anime.min.js"></script>
-
-    <h1 class="ml13">
-        wawn&#39;s blog
-    </h1>
-    <script>
-        var textWrapper = document.querySelector('.ml13');
-        // Split text into words
-        var words = textWrapper.textContent.trim().split(' ');
-
-        // Clear the existing content
-        textWrapper.innerHTML = '';
-
-        // Wrap each word and its letters in spans
-        words.forEach(function(word) {
-            var wordSpan = document.createElement('span');
-            wordSpan.classList.add('word');
-            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
-            textWrapper.appendChild(wordSpan);
-            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
-        });
-
-
-        anime.timeline({loop: true})
-            .add({
-                targets: '.ml13 .letter',
-                translateY: [100,0],
-                translateZ: 0,
-                opacity: [0,1],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 300 + 30 * i
-            }).add({
-            targets: '.ml13 .letter',
-            translateY: [0,-100],
-            opacity: [1,0],
-            easing: "easeInExpo",
-            duration: 1200,
-            delay: (el, i) => 100 + 30 * i
-        });
-
-        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
-
-        // If the theme status is not found in local storage, check the preferred color scheme
-        if (themeStatus === undefined || themeStatus === null) {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                themeStatus = 'dark';
-            } else {
-                themeStatus = 'light';
-            }
-        }
-
-        // Now you can use the themeStatus variable in your code
-        if (themeStatus) {
-            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
-            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
-        } else {
-            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
-            document.documentElement.style.setProperty('--preloader-text-color', '#000');
-        }
-
-        window.addEventListener('load', function () {
-            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
-        });
-
-        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
-        hidePreloaderAfterTimeout(5000);
-
-        function hidePreloaderAfterTimeout(delay) {
-            setTimeout(function () {
-                var preloader = document.querySelector('.preloader');
-                preloader.style.opacity = '0';
-                setTimeout(function () {
-                    preloader.style.display = 'none';
-                }, 200);
-            }, delay);
-        }
-    </script>
-</div>
-    
-
-    
 <link rel="stylesheet" href="/css/style.css">
 
 
@@ -214,10 +63,10 @@
     
 
     
-<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
 
     
-<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
 
     <!--- Font Part-->
     
@@ -228,13 +77,14 @@
     
         <link href="" rel="stylesheet">
     
-
+    
+    
 
     <script id="hexo-configurations">
     window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#6c9897","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":false,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
     window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
-    window.data = {"masonry":true};
+    window.data = {"masonry":false};
   </script>
     
     <!--- Fontawesome Part-->
@@ -270,6 +120,7 @@
 <!--        </span>-->
     
 </div>
+
 
 
 <main class="page-container" id="swup">
@@ -466,11 +317,11 @@
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">55</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -496,7 +347,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">Ajax技术</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">Ajax技术</h1>
                 </div>
             
             </div>
@@ -567,7 +418,7 @@
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>11 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>12 分钟</span>
         </span>
     
     
@@ -586,60 +437,67 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h3 id="一-初识前后端交互"><a href="#一-初识前后端交互" class="headerlink" title="一. 初识前后端交互"></a>一. 初识前后端交互</h3><p><strong>传统网站的问题：</strong></p>
+            <h3 id="一-初识前后端交互">一. 初识前后端交互</h3>
+<p><strong>传统网站的问题：</strong></p>
 <ul>
 <li>为了获取数据，需要重新加载，浪费资源，增加等待时间，性能不好</li>
 <li>验证表单过程中，一项内容不合格，页面需要重新加载，体验不好</li>
 </ul>
 <span id="more"></span>
-
-<p><strong>解决问题:</strong>     </p>
+<p><strong>解决问题:</strong></p>
 <ul>
 <li><code>ajax</code> 全名 <code>async javascript and XML</code></li>
 <li>是前后台交互的能力</li>
 <li>也就是我们客户端给服务端发送消息的工具，以及接受响应的工具</li>
 <li>是一个 <strong>默认异步</strong> 执行机制的功能</li>
 </ul>
-<h4 id="AJAX-的优势"><a href="#AJAX-的优势" class="headerlink" title="AJAX 的优势"></a>AJAX 的优势</h4><ol>
+<h4 id="AJAX-的优势">AJAX 的优势</h4>
+<ol>
 <li>不需要插件的支持，原生 js 就可以使用</li>
 <li>用户体验好（不需要刷新页面就可以更新数据）</li>
 <li>减轻服务端和带宽的负担</li>
 <li>缺点： 搜索引擎的支持度不够，因为数据都不在页面上，搜索引擎搜索不到</li>
 </ol>
-<h3 id="二-原生Ajax"><a href="#二-原生Ajax" class="headerlink" title="二. 原生Ajax"></a>二. 原生Ajax</h3><h4 id="1-AJAX-基础"><a href="#1-AJAX-基础" class="headerlink" title="1. AJAX 基础"></a>1. AJAX 基础</h4><ul>
+<h3 id="二-原生Ajax">二. 原生Ajax</h3>
+<h4 id="1-AJAX-基础">1. AJAX 基础</h4>
+<ul>
 <li>在 js 中有内置的构造函数来创建 ajax 对象</li>
 <li>创建 ajax 对象以后，我们就使用 ajax 对象的方法去发送请求和接受响应</li>
 </ul>
-<h5 id="创建一个-ajax-对象"><a href="#创建一个-ajax-对象" class="headerlink" title="创建一个 ajax 对象"></a>创建一个 ajax 对象</h5><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IE9及以上</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// IE9以下</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">ActiveXObject</span>(<span class="string">&#x27;Mricosoft.XMLHTTP&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
+<h5 id="创建一个-ajax-对象">创建一个 ajax 对象</h5>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// IE9及以上</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// IE9以下</span></span><br><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">ActiveXObject</span>(<span class="string">&#x27;Mricosoft.XMLHTTP&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>上面就是有了一个 ajax 对象</li>
 <li>我们就可以使用这个 <code>xhr</code> 对象来发送 ajax 请求了</li>
 </ul>
-<h5 id="配置链接信息"><a href="#配置链接信息" class="headerlink" title="配置链接信息"></a>配置链接信息</h5><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// xhr 对象中的 open 方法是来配置请求信息的</span></span><br><span class="line"><span class="comment">// 第一个参数是本次请求的请求方式 get / post / put / ...</span></span><br><span class="line"><span class="comment">// 第二个参数是本次请求的 url </span></span><br><span class="line"><span class="comment">// 第三个参数是本次请求是否异步，默认 true 表示异步，false 表示同步</span></span><br><span class="line"><span class="comment">// xhr.open(&#x27;请求方式&#x27;, &#x27;请求地址&#x27;, 是否异步)</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
+<h5 id="配置链接信息">配置链接信息</h5>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// xhr 对象中的 open 方法是来配置请求信息的</span></span><br><span class="line"><span class="comment">// 第一个参数是本次请求的请求方式 get / post / put / ...</span></span><br><span class="line"><span class="comment">// 第二个参数是本次请求的 url </span></span><br><span class="line"><span class="comment">// 第三个参数是本次请求是否异步，默认 true 表示异步，false 表示同步</span></span><br><span class="line"><span class="comment">// xhr.open(&#x27;请求方式&#x27;, &#x27;请求地址&#x27;, 是否异步)</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>上面的代码执行完毕以后，本次请求的基本配置信息就写完了</li>
 </ul>
-<h5 id="发送请求"><a href="#发送请求" class="headerlink" title="发送请求"></a>发送请求</h5><div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 xhr 对象中的 send 方法来发送请求</span></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br></pre></td></tr></table></figure></div>
-
+<h5 id="发送请求">发送请求</h5>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 xhr 对象中的 send 方法来发送请求</span></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br></pre></td></tr></table></figure></div>
 <ul>
 <li>上面代码是把配置好信息的 ajax 对象发送到服务端</li>
 </ul>
-<h5 id="一个基本的-ajax-请求"><a href="#一个基本的-ajax-请求" class="headerlink" title="一个基本的 ajax 请求"></a>一个基本的 ajax 请求</h5><ul>
+<h5 id="一个基本的-ajax-请求">一个基本的 ajax 请求</h5>
+<ul>
 <li>一个最基本的 ajax 请求就是上面三步</li>
 <li>但是光有上面的三个步骤，我们确实能把请求发送的到服务端</li>
 <li>如果服务端正常的话，响应也能回到客户端</li>
 <li>但是我们拿不到响应</li>
-<li>如果想拿到响应，我们有两个前提条件<ol>
+<li>如果想拿到响应，我们有两个前提条件
+<ol>
 <li>本次 HTTP 请求是成功的，也就是我们之前说的 http 状态码为 200 ~ 299</li>
 <li>ajax 对象也有自己的状态码，用来表示本次 ajax 请求中各个阶段</li>
 </ol>
 </li>
 </ul>
-<h5 id="ajax-状态码"><a href="#ajax-状态码" class="headerlink" title="ajax 状态码"></a>ajax 状态码</h5><ul>
+<h5 id="ajax-状态码">ajax 状态码</h5>
+<ul>
 <li>ajax 状态码 - <code>xhr.readyState</code></li>
-<li>是用来表示一个 ajax 请求的全部过程中的某一个状态<ul>
+<li>是用来表示一个 ajax 请求的全部过程中的某一个状态
+<ul>
 <li><code>readyState === 0</code>：  表示未初始化完成，也就是 <code>open</code> 方法还没有执行</li>
 <li><code>readyState === 1</code>：  表示配置信息已经完成，也就是执行完 <code>open</code> 之后</li>
 <li><code>readyState === 2</code>：  表示 <code>send</code> 方法已经执行完成</li>
@@ -648,40 +506,54 @@
 </ul>
 </li>
 <li>这个时候我们就会发现，当一个 ajax 请求的全部过程中，只有当 <code>readyState === 4</code> 的时候，我们才可以正常使用服务端给我们的数据</li>
-<li>所以，配合 http 状态码为 200 ~ 299 <ul>
-<li>一个 ajax 对象中有一个成员叫做 <code>xhr.status</code> </li>
+<li>所以，配合 http 状态码为 200 ~ 299
+<ul>
+<li>一个 ajax 对象中有一个成员叫做 <code>xhr.status</code></li>
 <li>这个成员就是记录本次请求的 http 状态码的</li>
 </ul>
 </li>
 <li>两个条件都满足的时候，才是本次请求正常完成</li>
 </ul>
-<h5 id="readyStateChange"><a href="#readyStateChange" class="headerlink" title="readyStateChange"></a>readyStateChange</h5><ul>
-<li><p>在 ajax 对象中有一个事件，叫做 <code>readyStateChange</code> 事件</p>
+<h5 id="readyStateChange">readyStateChange</h5>
+<ul>
+<li>
+<p>在 ajax 对象中有一个事件，叫做 <code>readyStateChange</code> 事件</p>
 </li>
-<li><p>这个事件是专门用来监听 ajax 对象的 <code>readyState</code> 值改变的的行为</p>
+<li>
+<p>这个事件是专门用来监听 ajax 对象的 <code>readyState</code> 值改变的的行为</p>
 </li>
-<li><p>也就是说只要 <code>readyState</code> 的值发生变化了，那么就会触发该事件</p>
+<li>
+<p>也就是说只要 <code>readyState</code> 的值发生变化了，那么就会触发该事件</p>
 </li>
-<li><p>所以我们就在这个事件中来监听 ajax 的 <code>readyState</code> 是不是到 4 了</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br><span class="line"></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br><span class="line"></span><br><span class="line">xhr.<span class="property">onreadyStateChange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 每次 readyState 改变的时候都会触发该事件</span></span><br><span class="line">  <span class="comment">// 我们就在这里判断 readyState 的值是不是到 4</span></span><br><span class="line">  <span class="comment">// 并且 http 的状态码是不是 200 ~ 299</span></span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; <span class="regexp">/^2\d&#123;2&#125;$/</span>.<span class="title function_">test</span>(xhr.<span class="property">status</span>)) &#123;</span><br><span class="line">    <span class="comment">// 这里表示验证通过</span></span><br><span class="line">    <span class="comment">// 我们就可以获取服务端给我们响应的内容了</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+<li>
+<p>所以我们就在这个事件中来监听 ajax 的 <code>readyState</code> 是不是到 4 了</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br><span class="line"></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br><span class="line"></span><br><span class="line">xhr.<span class="property">onreadyStateChange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 每次 readyState 改变的时候都会触发该事件</span></span><br><span class="line">  <span class="comment">// 我们就在这里判断 readyState 的值是不是到 4</span></span><br><span class="line">  <span class="comment">// 并且 http 的状态码是不是 200 ~ 299</span></span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; <span class="regexp">/^2\d&#123;2&#125;$/</span>.<span class="title function_">test</span>(xhr.<span class="property">status</span>)) &#123;</span><br><span class="line">    <span class="comment">// 这里表示验证通过</span></span><br><span class="line">    <span class="comment">// 我们就可以获取服务端给我们响应的内容了</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
 </ul>
-<h5 id="responseText"><a href="#responseText" class="headerlink" title="responseText"></a>responseText</h5><ul>
-<li><p>ajax 对象中的 <code>responseText</code> 成员</p>
+<h5 id="responseText">responseText</h5>
+<ul>
+<li>
+<p>ajax 对象中的 <code>responseText</code> 成员</p>
 </li>
-<li><p>就是用来记录服务端给我们的响应体内容的</p>
+<li>
+<p>就是用来记录服务端给我们的响应体内容的</p>
 </li>
-<li><p>所以我们就用这个成员来获取响应体内容就可以</p>
-<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br><span class="line"></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br><span class="line"></span><br><span class="line">xhr.<span class="property">onreadyStateChange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; <span class="regexp">/^2\d&#123;2&#125;$/</span>.<span class="title function_">test</span>(xhr.<span class="property">status</span>)) &#123;</span><br><span class="line">    <span class="comment">// 我们在这里直接打印 xhr.responseText 来查看服务端给我们返回的内容</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></li>
+<li>
+<p>所以我们就用这个成员来获取响应体内容就可以</p>
+<div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br><span class="line"></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br><span class="line"></span><br><span class="line">xhr.<span class="property">onreadyStateChange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span> &amp;&amp; <span class="regexp">/^2\d&#123;2&#125;$/</span>.<span class="title function_">test</span>(xhr.<span class="property">status</span>)) &#123;</span><br><span class="line">    <span class="comment">// 我们在这里直接打印 xhr.responseText 来查看服务端给我们返回的内容</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(xhr.<span class="property">responseText</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+</li>
 </ul>
-<h4 id="2-使用-ajax-发送请求时携带参数"><a href="#2-使用-ajax-发送请求时携带参数" class="headerlink" title="2. 使用 ajax 发送请求时携带参数"></a>2. 使用 ajax 发送请求时携带参数</h4><ul>
+<h4 id="2-使用-ajax-发送请求时携带参数">2. 使用 ajax 发送请求时携带参数</h4>
+<ul>
 <li>我们使用 ajax 发送请求也是可以携带参数的</li>
 <li>参数就是和后台交互的时候给他的一些信息</li>
 <li>但是携带参数 get 和 post 两个方式还是有区别的</li>
 </ul>
-<h5 id="发送一个带有参数的-get-请求"><a href="#发送一个带有参数的-get-请求" class="headerlink" title="发送一个带有参数的 get 请求"></a>发送一个带有参数的 get 请求</h5><ul>
-<li><p>get 请求的参数就直接在 url 后面进行拼接就可以</p>
+<h5 id="发送一个带有参数的-get-请求">发送一个带有参数的 get 请求</h5>
+<ul>
+<li>
+<p>get 请求的参数就直接在 url 后面进行拼接就可以</p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line"><span class="comment">// 直接在地址后面加一个 ?，然后以 key=value 的形式传递</span></span><br><span class="line"><span class="comment">// 两个数据之间以 &amp; 分割</span></span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php?a=100&amp;b=200&#x27;</span>)</span><br><span class="line"></span><br><span class="line">xhr.<span class="title function_">send</span>()</span><br></pre></td></tr></table></figure></div>
-
 <ul>
 <li>这样服务端就能接受到两个参数</li>
 <li>一个是 a，值是 100</li>
@@ -689,71 +561,76 @@
 </ul>
 </li>
 </ul>
-<h5 id="发送一个带有参数的-post-请求"><a href="#发送一个带有参数的-post-请求" class="headerlink" title="发送一个带有参数的 post 请求"></a>发送一个带有参数的 post 请求</h5><ul>
-<li><p>post 请求的参数是携带在请求体中的，所以不需要再 url 后面拼接</p>
+<h5 id="发送一个带有参数的-post-请求">发送一个带有参数的 post 请求</h5>
+<ul>
+<li>
+<p>post 请求的参数是携带在请求体中的，所以不需要再 url 后面拼接</p>
 <div class="highlight-container" data-rel="Javascript"><figure class="iseeu highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>()</span><br><span class="line">xhr.<span class="title function_">open</span>(<span class="string">&#x27;get&#x27;</span>, <span class="string">&#x27;./data.php&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果是用 ajax 对象发送 post 请求，必须要先设置一下请求头中的 content-type</span></span><br><span class="line"><span class="comment">// 告诉一下服务端我给你的是一个什么样子的数据格式</span></span><br><span class="line">xhr.<span class="title function_">setRequestHeader</span>(<span class="string">&#x27;content-type&#x27;</span>, <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求体直接再 send 的时候写在 () 里面就行</span></span><br><span class="line"><span class="comment">// 不需要问号，直接就是 &#x27;key=value&amp;key=value&#x27; 的形式</span></span><br><span class="line">xhr.<span class="title function_">send</span>(<span class="string">&#x27;a=100&amp;b=200&#x27;</span>)</span><br></pre></td></tr></table></figure></div>
-
 <ul>
 <li><code>application/x-www-form-urlencoded</code> 表示的数据格式就是 <code>key=value&amp;key=value</code></li>
 </ul>
 </li>
 </ul>
-<h5 id="不同的请求方式"><a href="#不同的请求方式" class="headerlink" title="不同的请求方式"></a>不同的请求方式</h5><ul>
-<li><p>get  偏向获取 </p>
+<h5 id="不同的请求方式">不同的请求方式</h5>
+<ul>
+<li>
+<p>get  偏向获取</p>
 </li>
-<li><p>post 偏向提交 </p>
+<li>
+<p>post 偏向提交</p>
 </li>
-<li><p>put  偏向更新</p>
+<li>
+<p>put  偏向更新</p>
 </li>
-<li><p>patch  偏向修改部分</p>
+<li>
+<p>patch  偏向修改部分</p>
 </li>
-<li><p>delete 偏向删除信息</p>
+<li>
+<p>delete 偏向删除信息</p>
 </li>
-<li><p>head 偏向获取服务器头的信息</p>
+<li>
+<p>head 偏向获取服务器头的信息</p>
 </li>
-<li><p>option 偏向获取服务器设备信息</p>
+<li>
+<p>option 偏向获取服务器设备信息</p>
 </li>
-<li><p>connnect 保留请求方式</p>
+<li>
+<p>connnect 保留请求方式</p>
 </li>
 </ul>
-<h3 id="三-Fetch"><a href="#三-Fetch" class="headerlink" title="三. Fetch"></a>三. Fetch</h3><pre><code>*XMLHttpRequest 是一个设计粗糙的 API，配置和调用方式非常混乱， 而且基于事件的异步模型写起来不友好。* 
+<h3 id="三-Fetch">三. Fetch</h3>
+<pre><code>*XMLHttpRequest 是一个设计粗糙的 API，配置和调用方式非常混乱， 而且基于事件的异步模型写起来不友好。* 
 
 **兼容性不好 polyfill: https://github.com/camsong/fetch-ie8**
 </code></pre>
-<h4 id="1-用法"><a href="#1-用法" class="headerlink" title="1. 用法"></a>1. 用法</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">method</span>:<span class="string">&quot;POST&quot;</span>,</span><br><span class="line">            <span class="attr">headers</span>:&#123;</span><br><span class="line">                <span class="string">&quot;content-type&quot;</span>:<span class="string">&quot;application/json&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">body</span>:<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">                <span class="attr">username</span>:<span class="string">&quot;kerwin&quot;</span>,</span><br><span class="line">                <span class="attr">password</span>:<span class="string">&quot;123&quot;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users/5&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">method</span>:<span class="string">&quot;PUT&quot;</span>,</span><br><span class="line">            <span class="attr">headers</span>:&#123;</span><br><span class="line">                <span class="string">&quot;content-type&quot;</span>:<span class="string">&quot;application/json&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">body</span>:<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">                <span class="attr">username</span>:<span class="string">&quot;kerwin&quot;</span>,</span><br><span class="line">                <span class="attr">password</span>:<span class="string">&quot;456&quot;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users/5&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">method</span>:<span class="string">&quot;DELETE&quot;</span></span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure></div>
-<h4 id="2-错误处理"><a href="#2-错误处理" class="headerlink" title="2. 错误处理"></a>2. 错误处理</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users1&quot;</span>)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(res.<span class="property">ok</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> res.<span class="title function_">json</span>()</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(&#123;</span><br><span class="line">                        <span class="attr">status</span>:res.<span class="property">status</span>,</span><br><span class="line">                        <span class="attr">statusText</span>:res.<span class="property">statusText</span></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="四-axios"><a href="#四-axios" class="headerlink" title="四. axios"></a>四. axios</h3><blockquote>
+<h4 id="1-用法">1. 用法</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">method</span>:<span class="string">&quot;POST&quot;</span>,</span><br><span class="line">            <span class="attr">headers</span>:&#123;</span><br><span class="line">                <span class="string">&quot;content-type&quot;</span>:<span class="string">&quot;application/json&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">body</span>:<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">                <span class="attr">username</span>:<span class="string">&quot;kerwin&quot;</span>,</span><br><span class="line">                <span class="attr">password</span>:<span class="string">&quot;123&quot;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users/5&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">method</span>:<span class="string">&quot;PUT&quot;</span>,</span><br><span class="line">            <span class="attr">headers</span>:&#123;</span><br><span class="line">                <span class="string">&quot;content-type&quot;</span>:<span class="string">&quot;application/json&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">body</span>:<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">                <span class="attr">username</span>:<span class="string">&quot;kerwin&quot;</span>,</span><br><span class="line">                <span class="attr">password</span>:<span class="string">&quot;456&quot;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line"></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users/5&quot;</span>,&#123;</span><br><span class="line">            <span class="attr">method</span>:<span class="string">&quot;DELETE&quot;</span></span><br><span class="line">        &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>res.<span class="title function_">json</span>())</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure></div>
+<h4 id="2-错误处理">2. 错误处理</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="title function_">fetch</span>(<span class="string">&quot;http://localhost:3000/users1&quot;</span>)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(res.<span class="property">ok</span>)&#123;</span><br><span class="line">                    <span class="keyword">return</span> res.<span class="title function_">json</span>()</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(&#123;</span><br><span class="line">                        <span class="attr">status</span>:res.<span class="property">status</span>,</span><br><span class="line">                        <span class="attr">statusText</span>:res.<span class="property">statusText</span></span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(res)</span><br><span class="line">            &#125;)</span><br><span class="line">            .<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">            &#125;)</span><br></pre></td></tr></table></figure></div>
+<h3 id="四-axios">四. axios</h3>
+<blockquote>
 <p>Axios是一个基于promise 的 HTTP 库，可以用在浏览器和 node.js中。</p>
 </blockquote>
 <blockquote>
 <p><a class="link" target="_blank" rel="noopener" href="https://www.npmjs.com/package/axios">https://www.npmjs.com/package/axios <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 </blockquote>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
-
-
-
-<h4 id="1-get请求"><a href="#1-get请求" class="headerlink" title="1. get请求"></a>1. get请求</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>,&#123;</span><br><span class="line">    <span class="attr">params</span>:&#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&quot;kerwin&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="2-post请求"><a href="#2-post请求" class="headerlink" title="2.post请求"></a>2.post请求</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">post</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>,&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;kerwin&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">100</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="3-put请求"><a href="#3-put请求" class="headerlink" title="3. put请求"></a>3. put请求</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">put</span>(<span class="string">&quot;http://localhost:3000/users/12&quot;</span>,&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;kerwin111&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">200</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="4-delete请求"><a href="#4-delete请求" class="headerlink" title="4. delete请求"></a>4. delete请求</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">delete</span>(<span class="string">&quot;http://localhost:3000/users/11&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="5-axios-config-配置"><a href="#5-axios-config-配置" class="headerlink" title="5. axios(config)配置"></a>5. axios(config)配置</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://localhost:3000/users&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;kerwin&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>: <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h4 id="6-axios拦截器"><a href="#6-axios拦截器" class="headerlink" title="6. axios拦截器"></a>6. axios拦截器</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">config</span>) &#123;</span><br><span class="line">    <span class="comment">// Do something before request is sent</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;loading-开始&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// Do something with request error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add a response interceptor</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// Any status code that lie within the range of 2xx cause this function to trigger</span></span><br><span class="line">    <span class="comment">// Do something with response data</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;loading-结束&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// Any status codes that falls outside the range of 2xx cause this function to trigger</span></span><br><span class="line">    <span class="comment">// Do something with response error</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;loading---结束&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
-
-<h4 id="7-axios-中断器"><a href="#7-axios-中断器" class="headerlink" title="7. axios 中断器"></a>7. axios 中断器</h4><div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> controller = <span class="keyword">new</span> <span class="title class_">AbortController</span>();</span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;/foo/bar&#x27;</span>, &#123;</span><br><span class="line">   <span class="attr">signal</span>: controller.<span class="property">signal</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">   <span class="comment">//...</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// cancel the request</span></span><br><span class="line">controller.<span class="title function_">abort</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="五-同源策略-Same-origin-policy"><a href="#五-同源策略-Same-origin-policy" class="headerlink" title="五. 同源策略(Same-origin policy)"></a>五. 同源策略(Same-origin policy)</h3><p>一个 URL  有三部分组成：协议、域名(指向主机)、端口，只有这三个完全相同的 URL 才能称之为同源。如下，能和  <code>http://www.example.com/dir1/index.html</code>  同源的是？</p>
+<h4 id="1-get请求">1. get请求</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">get</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>,&#123;</span><br><span class="line">    <span class="attr">params</span>:&#123;</span><br><span class="line">        <span class="attr">name</span>:<span class="string">&quot;kerwin&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h4 id="2-post请求">2.post请求</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">post</span>(<span class="string">&quot;http://localhost:3000/users&quot;</span>,&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;kerwin&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">100</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">	<span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h4 id="3-put请求">3. put请求</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">put</span>(<span class="string">&quot;http://localhost:3000/users/12&quot;</span>,&#123;</span><br><span class="line">    <span class="attr">name</span>:<span class="string">&quot;kerwin111&quot;</span>,</span><br><span class="line">    <span class="attr">age</span>:<span class="number">200</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h4 id="4-delete请求">4. delete请求</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="title function_">delete</span>(<span class="string">&quot;http://localhost:3000/users/11&quot;</span>).<span class="title function_">then</span>(<span class="function"><span class="params">res</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h4 id="5-axios-config-配置">5. axios(config)配置</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="title function_">axios</span>(&#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;http://localhost:3000/users&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;kerwin&#x27;</span>,</span><br><span class="line">        <span class="attr">age</span>: <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(res.<span class="property">data</span>)</span><br><span class="line">&#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span>=&gt;</span>&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<h4 id="6-axios拦截器">6. axios拦截器</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">axios.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">config</span>) &#123;</span><br><span class="line">    <span class="comment">// Do something before request is sent</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;loading-开始&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> config;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// Do something with request error</span></span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Add a response interceptor</span></span><br><span class="line">axios.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">    <span class="comment">// Any status code that lie within the range of 2xx cause this function to trigger</span></span><br><span class="line">    <span class="comment">// Do something with response data</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;loading-结束&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> response;</span><br><span class="line">&#125;, <span class="keyword">function</span> (<span class="params">error</span>) &#123;</span><br><span class="line">    <span class="comment">// Any status codes that falls outside the range of 2xx cause this function to trigger</span></span><br><span class="line">    <span class="comment">// Do something with response error</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;loading---结束&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<h4 id="7-axios-中断器">7. axios 中断器</h4>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> controller = <span class="keyword">new</span> <span class="title class_">AbortController</span>();</span><br><span class="line"></span><br><span class="line">axios.<span class="title function_">get</span>(<span class="string">&#x27;/foo/bar&#x27;</span>, &#123;</span><br><span class="line">   <span class="attr">signal</span>: controller.<span class="property">signal</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">   <span class="comment">//...</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// cancel the request</span></span><br><span class="line">controller.<span class="title function_">abort</span>()</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
+<h3 id="五-同源策略-Same-origin-policy">五. 同源策略(Same-origin policy)</h3>
+<p>一个 URL  有三部分组成：协议、域名(指向主机)、端口，只有这三个完全相同的 URL 才能称之为同源。如下，能和  <code>http://www.example.com/dir1/index.html</code>  同源的是？</p>
 <table>
 <thead>
 <tr>
@@ -762,7 +639,8 @@
 <th>原因</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>http://www.example.com/dir2/api</code></td>
 <td>同源</td>
 <td>只有路径不同</td>
@@ -782,17 +660,20 @@
 <td>不同源</td>
 <td>域名不同</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <hr>
 <blockquote>
-<p>（1） 无法读取非同源网页的 Cookie、LocalStorage 。<br>（2） 无法接触非同源网页的 DOM。<br>（3） 无法向非同源地址发送 AJAX 请求（可以发送，但浏览器会拒绝接受响应）。</p>
+<p>（1） 无法读取非同源网页的 Cookie、LocalStorage 。<br>
+（2） 无法接触非同源网页的 DOM。<br>
+（3） 无法向非同源地址发送 AJAX 请求（可以发送，但浏览器会拒绝接受响应）。</p>
 </blockquote>
 <p><strong>注意：</strong></p>
 <p>同源策略是浏览器的行为，是为了保护本地数据不被JavaScript代码获取回来的数据污染，因此拦截的是客户端发出的请求回来的数据接收，即请求发送了，服务器响应了，但是无法被浏览器接收。</p>
-<h3 id="六-jsonp"><a href="#六-jsonp" class="headerlink" title="六. jsonp"></a>六. jsonp</h3><p>Jsonp(JSON with Padding) 是 json 的一种”使用模式”，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。</p>
+<h3 id="六-jsonp">六. jsonp</h3>
+<p>Jsonp(JSON with Padding) 是 json 的一种&quot;使用模式&quot;，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。</p>
 <p>为什么我们从不同的域（网站）访问数据需要一个特殊的技术( JSONP )呢？这是因为同源策略。</p>
 <div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> script = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;script&#x27;</span>)</span><br><span class="line">script.<span class="property">src</span> = <span class="string">&#x27;./kerwin.txt&#x27;</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(script)</span><br></pre></td></tr></table></figure></div>
-
 <p><strong>实战</strong></p>
 <div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">mysearch.<span class="property">oninput</span> = <span class="keyword">function</span>(<span class="params">evt</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(evt.<span class="property">target</span>.<span class="property">value</span>)</span><br><span class="line">    <span class="keyword">if</span>(!evt.<span class="property">target</span>.<span class="property">value</span>)&#123;</span><br><span class="line">        list.<span class="property">innerHTML</span> = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">return</span> </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> oscript = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;script&quot;</span>)</span><br><span class="line">    oscript.<span class="property">src</span> = <span class="string">`https://www.baidu.com/sugrec?pre=1&amp;p=3&amp;ie=utf-8&amp;json=1&amp;prod=pc&amp;from=pc_web&amp;sugsid=36542,36464,36673,36454,31660,36692,36166,36695,36697,36570,36074,36655,36345,26350,36469,36314&amp;wd=<span class="subst">$&#123;evt.target.value&#125;</span>&amp;req=2&amp;csor=1&amp;cb=test&amp;_=1656294200527`</span></span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(oscript)</span><br><span class="line"></span><br><span class="line">    oscript.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        oscript.<span class="title function_">remove</span>()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">test</span>(<span class="params">obj</span>)&#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(obj.<span class="property">g</span>)</span><br><span class="line"></span><br><span class="line">    list.<span class="property">innerHTML</span> = obj.<span class="property">g</span>.<span class="title function_">map</span>(<span class="function"><span class="params">item</span>=&gt;</span></span><br><span class="line">                               <span class="string">`&lt;li&gt;<span class="subst">$&#123;item.q&#125;</span>&lt;/li&gt;`</span></span><br><span class="line">                              ).<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></div>
 
@@ -894,6 +775,7 @@
           serverURL: 'https://example.example.com',
           lang: 'zh-CN',
           dark: 'body[class~="dark-mode"]',
+          reaction: false,
           requiredMeta: ['nick', 'mail'],
           emoji: [],
           recaptchaV3Key: "wasd",
@@ -922,7 +804,7 @@
         <div class="toc-content-container">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <div class="toc-title">此页目录</div>
+        <div class="toc-title">目录</div>
         <div class="page-title">Ajax技术</div>
         <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-%E5%88%9D%E8%AF%86%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92"><span class="nav-text">一. 初识前后端交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E5%8E%9F%E7%94%9FAjax"><span class="nav-text">二. 原生Ajax</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89-Fetch"><span class="nav-text">三. Fetch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B-axios"><span class="nav-text">四. axios</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94-%E5%90%8C%E6%BA%90%E7%AD%96%E7%95%A5-Same-origin-policy"><span class="nav-text">五. 同源策略(Same-origin policy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD-jsonp"><span class="nav-text">六. jsonp</span></a></li></ol>
 
@@ -957,18 +839,18 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共 55 篇文章
+                        共撰写了 59 篇文章
                     </span>
                     
                         <span>
-                            共 342.3k 字
+                            共 357.3k 字
                         </span>
                     
                 </p>
             
         </div>
         
-            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
             <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
                 
                     <span id="busuanzi_container_site_uv" class="lg:!block">
@@ -986,7 +868,7 @@
         
         <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
             <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
-            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.1</a></span>
         </div>
         
         
@@ -1098,7 +980,7 @@
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜索..."
+                       placeholder="站内搜索您需要的内容..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
@@ -1216,13 +1098,10 @@
 
 
 
+
+
     
-<script src="/js/libs/minimasonry.min.js"></script>
-
-    
-<script src="/js/plugins/masonry.js" type="module"></script>
-
-
+<script src="/js/libs/anime.min.js"></script>
 
 
 

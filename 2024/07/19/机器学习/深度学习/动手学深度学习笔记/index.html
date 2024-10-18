@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="wawn">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://wawnwn.github.io/2024/07/19/机器学习/深度学习/动手学深度学习笔记/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="全书结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="动手学深度学习笔记">
+<meta property="og:url" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="wawn&#39;s blog">
+<meta property="og:description" content="全书结构">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/7.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/9.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/10.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/11.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/12.png">
+<meta property="article:published_time" content="2024-07-19T02:14:19.000Z">
+<meta property="article:modified_time" content="2024-10-17T11:22:26.150Z">
+<meta property="article:author" content="wawnwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/null" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/null">
+    <meta name="theme-color" content="#6c9897">
+    <link rel="shortcut icon" href="/null">
+    <!--- Page Info-->
+    
+    <title>
+        
+            动手学深度学习笔记 -
+        
+        wawn&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#6c9897","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":false,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                wawn&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    PHOTO
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                PHOTO
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">动手学深度学习笔记</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/head.webp">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">wawn</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-07-19 10:14:19</span>
+        <span class="mobile">2024-07-19 10:14:19</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-10-17 19:22:26</span>
+            <span class="mobile">2024-10-17 19:22:26</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.6k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>16 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>全书结构</p>
+<span id="more"></span>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/1.png" class>
+<h1>1 预备知识</h1>
+<h2 id="1-1-数据操作">1.1 数据操作</h2>
+<h3 id="1-1-1-入门">1.1.1 入门</h3>
+<p><strong>n维数组，也称为张量(tensor)。</strong></p>
+<ul>
+<li>张量类和ndarray类的区别：</li>
+</ul>
+<p>深度学习框架的<em>张量类</em>（在MXNet中为<code>ndarray</code>， 在PyTorch和TensorFlow中为<code>Tensor</code>）都与Numpy的<code>ndarray</code>类似。 但深度学习框架又比Numpy的<code>ndarray</code>多一些重要功能： 首先，GPU很好地支持加速计算，而NumPy仅支持CPU计算； 其次，张量类支持自动微分。这些功能使得张量类更适合深度学习。</p>
+<ul>
+<li>张量表示一个由数值组成的数组，这个数组可能有多个维度。 具有一个轴的张量对应数学上的<em>向量</em>（vector）； 具有两个轴的张量对应数学上的<em>矩阵</em>（matrix）； 具有两个轴以上的张量没有特殊的数学名称。</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/2.png" class>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/3.png" class>
+<ul>
+<li>张量中的每个值都称为张量的 <em>元素</em></li>
+</ul>
+<p>除非额外指定，新的张量将存储在内存中，并采用基于CPU的计算。</p>
+<ul>
+<li>
+<p>可以通过张量的<code>shape</code>属性来访问张量（沿每个轴的长度）的<em>形状</em> 。</p>
+</li>
+<li>
+<p>想知道张量中元素的总数，即形状的所有元素乘积，可以检查它的大小（size）。<code>x.numel()</code></p>
+</li>
+<li>
+<p>要想改变一个张量的形状而不改变元素数量和元素值，可以调用<code>reshape</code>函数。注意，通过改变张量的形状，张量的大小不会改变。</p>
+</li>
+</ul>
+<p>我们可以通过<code>-1</code>来调用此自动计算出维度的功能。 即我们可以用<code>x.reshape(-1,4)</code>或<code>x.reshape(3,-1)</code>来取代<code>x.reshape(3,4)</code>。</p>
+<ul>
+<li>希望使用全0、全1、其他常量，或者从特定分布中随机采样的数字来初始化矩阵.</li>
+</ul>
+<p><code>torch.zeros((2, 3, 4))</code></p>
+<p><code>torch.ones((2, 3, 4))</code></p>
+<ul>
+<li>想通过从某个特定的概率分布中随机采样来得到张量中每个元素的值。</li>
+</ul>
+<p>例如创建一个形状为（3,4）的张量。其中的 每个元素都从均值为0、标准差为1的标准高斯分布（正态分布）中随机采样。</p>
+<ul>
+<li>可以通过提供包含数值的Python列表（或嵌套列表），来为所需张量中的每个元素赋予确定值。</li>
+</ul>
+<h3 id="1-1-2-运算符">1.1.2 运算符</h3>
+<ul>
+<li>
+<p>对于任意具有相同形状的张量，常见的标准算术运算符（+、-、*、/和**）都可以被升级为按元素运算。我 们可以在同一形状的任意两个张量上调用按元素操作。</p>
+</li>
+<li>
+<p>“按元素”方式可以应用更多的计算，包括像求幂这样的一元运算符。</p>
+</li>
+</ul>
+<p><code>torch.exp(x)</code></p>
+<ul>
+<li>也可以把多个张量<em>连结</em>（concatenate）在一起， 把它们端对端地叠起来形成一个更大的张量。 我们只需要提供张量列表，并给出沿哪个轴连结。</li>
+</ul>
+<p><code>torch.cat((X, Y), dim=0)</code> (轴0，沿行连结两个矩阵)</p>
+<p><code>torch.cat((X, Y), dim=1)</code> (轴1，沿列连结两个矩阵)</p>
+<ul>
+<li>对张量中的所有元素进行求和，会产生一个单元素张量。</li>
+</ul>
+<p><code>X.sum()</code></p>
+<h3 id="1-1-3-广播机制">1.1.3 广播机制</h3>
+<p>在某些情况下，即使形状不同，我们仍然可以通过调用 <em>广播机制</em>（broadcasting mechanism）来执行按元素操作。这种机制的工作方式如下：</p>
+<ol>
+<li>通过适当复制元素来扩展一个或两个数组，以便在转换之后，两个张量具有相同的形状；</li>
+<li>对生成的数组执行按元素操作。</li>
+</ol>
+<h3 id="1-1-4-索引和切片">1.1.4 索引和切片</h3>
+<p>就像在任何其他Python数组中一样，张量中的元素可以通过索引访问。 与任何Python数组一样：第一个元素的索引是0，最后一个元素索引是-1； 可以指定范围以包含第一个元素和最后一个之前的元素。</p>
+<ul>
+<li>可以用<code>[-1]</code>选择最后一个元素，可以用<code>[1:3]</code>选择第二个和第三个元素：</li>
+</ul>
+<p><code>X[-1], X[1:3]</code></p>
+<ul>
+<li>除读取外，我们还可以通过指定索引来将元素写入矩阵。</li>
+<li>如果我们想为多个元素赋值相同的值，我们只需要索引所有元素，然后为它们赋值。<code>[0:2, :]</code>访问第1行和第2行，其中“:”代表沿轴1（列）的所有元素。</li>
+</ul>
+<h3 id="1-1-5-节省内存">1.1.5 节省内存</h3>
+<p>运行一些操作可能会导致为新结果分配内存。</p>
+<p>如果在后续计算中没有重复使用<code>X</code>， 可以使用<code>X[:] = X + Y</code>或<code>X += Y</code>来减少操作的内存开销。</p>
+<h3 id="1-1-6-转换为其他Python对象">1.1.6 转换为其他Python对象</h3>
+<p>将深度学习框架定义的张量转换为NumPy张量（<code>ndarray</code>）很容易，反之也同样容易。 torch张量和numpy数组将共享它们的底层内存，就地操作更改一个张量也会同时更改另一个张量。</p>
+<p>要将大小为1的张量转换为Python标量，我们可以调用<code>item</code>函数或Python的内置函数。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = torch.tensor([<span class="number">3.5</span>])</span><br><span class="line">a, a.item(), <span class="built_in">float</span>(a), <span class="built_in">int</span>(a)</span><br></pre></td></tr></table></figure></div>
+<h2 id="1-2-数据预处理">1.2 数据预处理</h2>
+<h3 id="1-2-1-读取数据集">1.2.1 读取数据集</h3>
+<p>首先创建一个人工数据集，并存储在CSV（逗号分隔值）文件</p>
+<p>从创建的CSV文件中加载原始数据集，我们导入<code>pandas</code>包并调用<code>read_csv</code>函数。</p>
+<h3 id="1-2-2-处理缺失值">1.2.2 处理缺失值</h3>
+<p>为了处理缺失的数据，典型的方法包括<em>插值法</em>和<em>删除法</em>， 其中插值法用一个替代值弥补缺失值，而删除法则直接忽略缺失值。</p>
+<h3 id="1-2-3-转换为张量格式">1.2.3 转换为张量格式</h3>
+<p>所有条目都是数值类型，它们可以转换为张量格式</p>
+<p><code>X = torch.tensor(inputs.to_numpy(dtype=float))</code></p>
+<h2 id="1-3-线性底数">1.3 线性底数</h2>
+<h3 id="1-3-1-标量">1.3.1 标量</h3>
+<p>严格来说，仅包含一个数值被称为<em>标量</em>（scalar）。</p>
+<p>标量由只有一个元素的张量表示。</p>
+<p>数学表示法，其中标量变量由普通小写字母表示（例如，𝑥、𝑦和𝑧）</p>
+<h3 id="1-3-2-向量">1.3.2 向量</h3>
+<p>向量可以被视为标量值组成的列表。 这些标量值被称为向量的<em>元素</em>（element）或<em>分量</em>（component）。</p>
+<p>在数学表示法中，向量通常记为粗体、小写的符号 （例如，<strong>𝑥</strong>、<strong>𝑦</strong>和<strong>𝑧</strong>)）。</p>
+<p>人们通过一维张量表示向量。一般来说，张量可以具有任意长度，取决于机器的内存限制。</p>
+<p>可以使用下标来引用向量的任一元素。</p>
+<h4 id="1-3-2-1-长度、维度和形状">1.3.2.1 长度、维度和形状</h4>
+<p>向量只是一个数字数组，就像每个数组都有一个长度一样，每个向量也是如此。</p>
+<ul>
+<li>
+<p>在数学表示法中，如果我们想说一个向量<strong>𝑥</strong>由𝑛个实值标量组成，可以将其表示为𝑥∈𝑅<sup>𝑛</sup>。 向量的长度通常称为向量的<em>维度</em>（dimension）。</p>
+</li>
+<li>
+<p>与普通的Python数组一样，我们可以通过调用Python的内置<code>len()</code>函数来访问张量的长度。</p>
+</li>
+<li>
+<p>当用张量表示一个向量（只有一个轴）时，我们也可以通过<code>.shape</code>属性访问向量的长度。 形状（shape）是一个元素组，列出了张量沿每个轴的长度（维数）。 对于只有一个轴的张量，形状只有一个元素。</p>
+</li>
+<li>
+<p><em>向量</em>或<em>轴</em>的维度被用来表示<em>向量</em>或<em>轴</em>的长度，即向量或轴的元素数量。 然而，张量的维度用来表示张量具有的轴数。 在这个意义上，张量的某个轴的维数就是这个轴的长度。</p>
+</li>
+</ul>
+<h3 id="1-3-3-矩阵">1.3.3 矩阵</h3>
+<ul>
+<li>
+<p>正如向量将标量从零阶推广到一阶，矩阵将向量从一阶推广到二阶。 矩阵，我们通常用粗体、大写字母来表示 （例如，<strong>𝑋</strong>、<strong>𝑌</strong>和<strong>𝑍</strong>）， 在代码中表示为具有两个轴的张量。</p>
+</li>
+<li>
+<p>数学表示法使用<strong>𝐴</strong>∈𝑅<sup>𝑚×𝑛</sup> 来表示矩阵<strong>𝐴</strong>，其由𝑚行和𝑛列的实值标量组成。</p>
+</li>
+<li>
+<p>当矩阵具有相同数量的行和列时，其形状将变为正方形；因此，它被称为<em>方阵</em>（square matrix）。</p>
+</li>
+<li>
+<p>当我们交换矩阵的行和列时，结果称为矩阵的<em>转置</em>（transpose）。</p>
+</li>
+</ul>
+<p>通常用<strong>𝑎</strong><sup>⊤</sup>来表示矩阵的转置，如果<strong>𝐵</strong>=<strong>𝐴</strong><sup>⊤</sup>， 则对于任意𝑖和𝑗，都有<strong>𝑏</strong><sub>𝑖𝑗</sub> = <strong>𝑎</strong><sub>𝑗𝑖</sub>。</p>
+<p>访问矩阵的转置<code>A.T</code></p>
+<p>作为方阵的一种特殊类型，<em>对称矩阵</em>（symmetric matrix）𝐴等于其转置：<strong>𝐴</strong>=<strong>𝐴</strong><sup>⊤</sup>。</p>
+<h3 id="1-3-4-张量">1.3.4 张量</h3>
+<p>张量（本小节中的“张量”指代数对象）是描述具有任意数量轴的𝑛维数组的通用方法。 例如，向量是一阶张量，矩阵是二阶张量。 张量用特殊字体的大写字母表示（例如，<strong>𝑋</strong>、<strong>𝑌</strong>和<strong>𝑍</strong>）， 它们的索引机制（例如<strong>𝑥</strong><sub>𝑖𝑗𝑘</sub>和[<strong>𝑋</strong>]<sub>1,2𝑖−1,3</sub>）与矩阵类似。</p>
+<p>当我们开始处理图像时，张量将变得更加重要，图像以𝑛维数组形式出现，其中3个轴对应于高度、宽度，以及一个<em>通道</em>（channel）轴，用于表示颜色通道（红色、绿色和蓝色）。</p>
+<h3 id="1-3-5-张量算法的基本性质">1.3.5 张量算法的基本性质</h3>
+<p>任何按元素的一元运算都不会改变其操作数的形状。 同样，给定具有相同形状的任意两个张量，任何按元素二元运算的结果都将是相同形状的张量。</p>
+<p>两个矩阵的按元素乘法称为<em>Hadamard积</em>（Hadamard product）（数学符号⊙）。 对于矩阵<strong>𝐵</strong>∈𝑅<sup>𝑚×𝑛</sup>， 其中第𝑖行和第𝑗列的元素是<strong>𝑏</strong><sub>𝑖𝑗</sub>。</p>
+<p>将张量乘以或加上一个标量不会改变张量的形状，其中张量的每个元素都将与标量相加或相乘。</p>
+<h3 id="1-3-6-降维">1.3.6 降维</h3>
+<p>可以表示任意形状张量的元素和。<code>A.sum()</code></p>
+<p>默认情况下，调用求和函数会沿所有的轴降低张量的维度，使它变为一个标量。可以指定张量沿哪一个轴来通过求和降低维度。</p>
+<p>以矩阵为例，为了通过求和所有行的元素来降维（轴0），可以在调用函数时指定<code>axis=0</code>。 由于输入矩阵沿0轴降维以生成输出向量，因此输入轴0的维数在输出形状中消失。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/4.png" class>
+<p>指定<code>axis=1</code>将通过汇总所有列的元素降维（轴1）。因此，输入轴1的维数在输出形状中消失。</p>
+<p>沿着行和列对矩阵求和，等价于对矩阵的所有元素进行求和。</p>
+<p>一个与求和相关的量是<em>平均值</em>（mean或average）。 我们通过将总和除以元素总数来计算平均值。 在代码中，我们可以调用函数来计算任意形状张量的平均值。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.mean(), A.sum() / A.numel()</span><br></pre></td></tr></table></figure></div>
+<p>同样，计算平均值的函数也可以沿指定轴降低张量的维度。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.mean(axis=0), A.sum(axis=0) / A.shape[0]</span><br></pre></td></tr></table></figure></div>
+<h4 id="1-3-6-1-非降维求和">1.3.6.1 非降维求和</h4>
+<p>调用函数来计算总和或均值时保持轴数不变。</p>
+<p>由于<code>sum_A</code>在对每行进行求和后仍保持两个轴，我们可以通过广播将<code>A</code>除以<code>sum_A</code></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sum_A = A.sum(axis=1, keepdims=True)</span><br><span class="line">sum_A</span><br><span class="line">A / sum_A</span><br></pre></td></tr></table></figure></div>
+<p>如果我们想沿某个轴计算<code>A</code>元素的累积总和， 比如<code>axis=0</code>（按行计算），可以调用<code>cumsum</code>函数。 此函数不会沿任何轴降低输入张量的维度。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.cumsum(axis=0)</span><br></pre></td></tr></table></figure></div>
+<h3 id="1-3-7-点积（Dot-Product）">1.3.7 点积（Dot Product）</h3>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.dot(x, y)</span><br></pre></td></tr></table></figure></div>
+<p>可以通过执行按元素乘法，然后进行求和来表示两个向量的点积：</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.sum(x * y)</span><br></pre></td></tr></table></figure></div>
+<h3 id="1-3-8-矩阵-向量积">1.3.8 矩阵-向量积</h3>
+<p>当我们为矩阵<code>A</code>和向量<code>x</code>调用<code>torch.mv(A, x)</code>时，会执行矩阵-向量积。 注意，<code>A</code>的列维数（沿轴1的长度）必须与<code>x</code>的维数（其长度）相同。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A.shape, x.shape, torch.mv(A, x)</span><br></pre></td></tr></table></figure></div>
+<h3 id="1-3-9-矩阵-矩阵乘法">1.3.9 矩阵-矩阵乘法</h3>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B = torch.ones(4, 3)</span><br><span class="line">torch.mm(A, B)</span><br></pre></td></tr></table></figure></div>
+<p>矩阵-矩阵乘法可以简单地称为<strong>矩阵乘法</strong>，不应与“Hadamard积”混淆。</p>
+<h3 id="1-3-10-范数">1.3.10 范数</h3>
+<p>线性代数中最有用的一些运算符是<em>范数</em>（norm）。 非正式地说，向量的<em>范数</em>是表示一个向量有多大。 这里考虑的<em>大小</em>（size）概念不涉及维度，而是分量的大小。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/5.png" class>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">u = torch.tensor([3.0, -4.0])</span><br><span class="line">torch.norm(u)</span><br></pre></td></tr></table></figure></div>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/6.png" class>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.abs(u).sum()</span><br></pre></td></tr></table></figure></div>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/7.png" class>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.norm(torch.ones((4, 9)))</span><br></pre></td></tr></table></figure></div>
+<h2 id="1-4-微积分">1.4 微积分</h2>
+<p>可以将拟合模型的任务分解为两个关键问题：</p>
+<ul>
+<li><em>优化</em>（optimization）：用模型拟合观测数据的过程；</li>
+<li><em>泛化</em>（generalization）：数学原理和实践者的智慧，能够指导我们生成出有效性超出用于训练的数据集本身的模型。</li>
+</ul>
+<h3 id="1-4-1-导数和微分">1.4.1 导数和微分</h3>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/8.png" class>
+<h3 id="1-4-2-偏导数">1.4.2 偏导数</h3>
+<p>在深度学习中，函数通常依赖于许多变量。 因此，我们需要将微分的思想推广到<em>多元函数</em>（multivariate function）上。</p>
+<h3 id="1-4-3-梯度">1.4.3 梯度</h3>
+<p>可以连结一个多元函数对其所有变量的偏导数，以得到该函数的<em>梯度</em>（gradient）向量。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/9.png" class>
+<h3 id="1-4-4-链式法则">1.4.4 链式法则</h3>
+<p>链式法则可以被用来微分复合函数。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/10.png" class>
+<h2 id="1-5-自动微分">1.5 自动微分</h2>
+<p>深度学习框架通过自动计算导数，即<em>自动微分</em>（automatic differentiation）来加快求导。</p>
+<p>实际中，根据设计好的模型，系统会构建一个<em>计算图</em>（computational graph）， 来跟踪计算是哪些数据通过哪些操作组合起来产生输出。 自动微分使系统能够随后反向传播梯度。 这里，<em>反向传播</em>（backpropagate）意味着跟踪整个计算图，填充关于每个参数的偏导数。</p>
+<h3 id="1-5-1-例子">1.5.1 例子</h3>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/11.png" class>
+<h3 id="1-5-2-非标量变量的反向传播">1.5.2 非标量变量的反向传播</h3>
+<p>当<code>y</code>不是标量时，向量<code>y</code>关于向量<code>x</code>的导数的最自然解释是一个矩阵。 对于高阶和高维的<code>y</code>和<code>x</code>，求导的结果可以是一个高阶张量。</p>
+<p>当调用向量的反向计算时，我们通常会试图计算一批训练样本中每个组成部分的损失函数的导数。 这里，我们的目的不是计算微分矩阵，而是单独计算批量中每个样本的偏导数之和。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 对非标量调用backward需要传入一个gradient参数，该参数指定微分函数关于self的梯度。</span><br><span class="line"># 本例只想求偏导数的和，所以传递一个1的梯度是合适的</span><br><span class="line">x.grad.zero_()</span><br><span class="line">y = x * x</span><br><span class="line"># 等价于y.backward(torch.ones(len(x)))</span><br><span class="line">y.sum().backward()</span><br><span class="line">x.grad</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor([0., 2., 4., 6.])</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>深度学习框架可以自动计算导数：我们首先将梯度附加到想要对其计算偏导数的变量上，然后记录目标值的计算，执行它的反向传播函数，并访问得到的梯度。</li>
+</ul>
+<h2 id="2-6-概率">2.6 概率</h2>
+<p>简单地说，机器学习就是做出预测。</p>
+<h3 id="2-6-1-基本概率论">2.6.1 基本概率论</h3>
+<p>在统计学中，我们把从概率分布中抽取样本的过程称为<em>抽样</em>（sampling）。 笼统来说，可以把<em>分布</em>（distribution）看作对事件的概率分配。 将概率分配给一些离散选择的分布称为<em>多项分布</em>（multinomial distribution）。</p>
+<p>为了抽取一个样本，即掷骰子，我们只需传入一个概率向量。输出是另一个相同长度的向量：它在索引𝑖处的值是采样结果中𝑖出现的次数。</p>
+<p>在估计一个骰子的公平性时，我们希望从同一分布中生成多个样本。 如果用Python的for循环来完成这个任务，速度会慢得惊人。 因此我们使用深度学习框架的函数同时抽取多个样本，得到我们想要的任意形状的独立样本数组。</p>
+<h4 id="2-6-1-1-概率论公理">2.6.1.1 概率论公理</h4>
+<p>在处理骰子掷出时，我们将集合𝑆={1,2,3,4,5,6} 称为<em>样本空间</em>（sample space）或<em>结果空间</em>（outcome space）， 其中每个元素都是<em>结果</em>（outcome）。 <em>事件</em>（event）是一组给定样本空间的随机结果。</p>
+<p><em>概率</em>（probability）可以被认为是将集合映射到真实值的函数。 在给定的样本空间𝑆中，事件𝐴的概率， 表示为𝑃(𝐴)，满足以下属性：</p>
+<ul>
+<li>对于任意事件𝐴，其概率从不会是负数，即𝑃(𝐴)≥0；</li>
+<li>整个样本空间的概率为1，即𝑃(𝑆)=1；</li>
+<li>对于<em>互斥</em>（mutually exclusive）事件（对于所有𝑖≠𝑗都有𝐴𝑖∩𝐴𝑗=∅）的任意一个可数序列𝐴1,𝐴2,…，序列中任意一个事件发生的概率等于它们各自发生的概率之和，即𝑃(⋃<sub>𝑖=1</sub><sup>∞</sup>𝐴𝑖)=∑<sub>𝑖=1</sub><sup>∞</sup>𝑃(𝐴𝑖)。</li>
+</ul>
+<h4 id="2-6-1-2-随机变量">2.6.1.2 随机变量</h4>
+<p>随机变量几乎可以是任何数量，并且它可以在随机实验的一组可能性中取一个值。</p>
+<p><em>离散</em>（discrete）随机变量（如骰子的每一面） 和<em>连续</em>（continuous）随机变量（如人的体重和身高）之间存在微妙的区别。</p>
+<h3 id="2-6-2-处理多个随机变量">2.6.2 处理多个随机变量</h3>
+<h4 id="2-6-2-1-联合概率">2.6.2.1 联合概率</h4>
+<p>第一个被称为<em>联合概率</em>（joint probability）𝑃(𝐴=𝑎,𝐵=𝑏)。</p>
+<p>给定任意值𝑎和𝑏，联合概率可以回答：𝐴=𝑎和𝐵=𝑏同时满足的概率是多少？</p>
+<p>请注意，对于任何𝑎和𝑏的取值，𝑃(𝐴=𝑎,𝐵=𝑏)≤𝑃(𝐴=𝑎)。 这点是确定的，因为要同时发生𝐴=𝑎和𝐵=𝑏，𝐴=𝑎就必须发生，𝐵=𝑏也必须发生（反之亦然）。因此，𝐴=𝑎和𝐵=𝑏同时发生的可能性不大于𝐴=𝑎或是𝐵=𝑏单独发生的可能性。</p>
+<h4 id="2-6-2-2-条件概率">2.6.2.2 条件概率</h4>
+<p>联合概率的不等式带给我们一个有趣的比率： 0≤𝑃(𝐴=𝑎,𝐵=𝑏)/𝑃(𝐴=𝑎)≤1。 我们称这个比率为<em>条件概率</em>（conditional probability）， 并用𝑃(𝐵=𝑏∣𝐴=𝑎)表示它：它是𝐵=𝑏的概率，前提是𝐴=𝑎已发生。</p>
+<h4 id="2-6-2-3-贝叶斯定理">2.6.2.3 贝叶斯定理</h4>
+<img lazyload src="/images/loading.svg" data-src="/2024/07/19/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E5%8A%A8%E6%89%8B%E5%AD%A6%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/12.png" class>
+<h4 id="2-6-2-4-边际化">2.6.2.4 边际化</h4>
+<p>为了能进行事件概率求和，我们需要<em>求和法则</em>（sum rule）， 即𝐵的概率相当于计算𝐴的所有可能选择，并将所有选择的联合概率聚合在一起：</p>
+<p>这也称为<em>边际化</em>（marginalization）。 边际化结果的概率或分布称为<em>边际概率</em>（marginal probability） 或<em>边际分布</em>（marginal distribution）。</p>
+<h4 id="2-6-2-5-独立性">2.6.2.5 独立性</h4>
+<p>另一个有用属性是<em>依赖</em>（dependence）与<em>独立</em>（independence）。 如果两个随机变量𝐴和𝐵是独立的，意味着事件𝐴的发生跟𝐵事件的发生无关。 在这种情况下，统计学家通常将这一点表述为𝐴⊥𝐵。 根据贝叶斯定理，马上就能同样得到𝑃(𝐴∣𝐵)=𝑃(𝐴)。</p>
+<h3 id="2-6-3-期望和方差">2.6.3 期望和方差</h3>
+<p>方差的平方根被称为<em>标准差</em>（standard deviation）。</p>
+<h3 id></h3>
+<ul>
+<li>我们可以从概率分布中采样。</li>
+<li>我们可以使用联合分布、条件分布、Bayes定理、边缘化和独立性假设来分析多个随机变量。</li>
+<li>期望和方差为概率分布的关键特征的概括提供了实用的度量形式。</li>
+</ul>
+<h1>3 线性神经网络</h1>
+<p>太难了，我看看别的视频再来</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 动手学深度学习笔记</li>
+        <li><strong>作者:</strong> wawn</li>
+        <li><strong>创建于
+                :</strong> 2024-07-19 10:14:19</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-10-17 19:22:26
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://wawnwn.github.io/2024/07/19/机器学习/深度学习/动手学深度学习笔记/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/07/31/%E7%AE%97%E6%B3%95/C++_STL/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">C++_STL</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">10-SpringBootWeb登录认证</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">目录</div>
+        <div class="page-title">动手学深度学习笔记</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">1 预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-%E6%95%B0%E6%8D%AE%E6%93%8D%E4%BD%9C"><span class="nav-text">1.1 数据操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-1-%E5%85%A5%E9%97%A8"><span class="nav-text">1.1.1 入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-2-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">1.1.2 运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-3-%E5%B9%BF%E6%92%AD%E6%9C%BA%E5%88%B6"><span class="nav-text">1.1.3 广播机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-4-%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87"><span class="nav-text">1.1.4 索引和切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-5-%E8%8A%82%E7%9C%81%E5%86%85%E5%AD%98"><span class="nav-text">1.1.5 节省内存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-6-%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%85%B6%E4%BB%96Python%E5%AF%B9%E8%B1%A1"><span class="nav-text">1.1.6 转换为其他Python对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86"><span class="nav-text">1.2 数据预处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-1-%E8%AF%BB%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="nav-text">1.2.1 读取数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-%E5%A4%84%E7%90%86%E7%BC%BA%E5%A4%B1%E5%80%BC"><span class="nav-text">1.2.2 处理缺失值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-3-%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%BC%A0%E9%87%8F%E6%A0%BC%E5%BC%8F"><span class="nav-text">1.2.3 转换为张量格式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-%E7%BA%BF%E6%80%A7%E5%BA%95%E6%95%B0"><span class="nav-text">1.3 线性底数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-1-%E6%A0%87%E9%87%8F"><span class="nav-text">1.3.1 标量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E5%90%91%E9%87%8F"><span class="nav-text">1.3.2 向量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-3-%E7%9F%A9%E9%98%B5"><span class="nav-text">1.3.3 矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-4-%E5%BC%A0%E9%87%8F"><span class="nav-text">1.3.4 张量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-5-%E5%BC%A0%E9%87%8F%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%A7%E8%B4%A8"><span class="nav-text">1.3.5 张量算法的基本性质</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-6-%E9%99%8D%E7%BB%B4"><span class="nav-text">1.3.6 降维</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-7-%E7%82%B9%E7%A7%AF%EF%BC%88Dot-Product%EF%BC%89"><span class="nav-text">1.3.7 点积（Dot Product）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-8-%E7%9F%A9%E9%98%B5-%E5%90%91%E9%87%8F%E7%A7%AF"><span class="nav-text">1.3.8 矩阵-向量积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-9-%E7%9F%A9%E9%98%B5-%E7%9F%A9%E9%98%B5%E4%B9%98%E6%B3%95"><span class="nav-text">1.3.9 矩阵-矩阵乘法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-10-%E8%8C%83%E6%95%B0"><span class="nav-text">1.3.10 范数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-%E5%BE%AE%E7%A7%AF%E5%88%86"><span class="nav-text">1.4 微积分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-1-%E5%AF%BC%E6%95%B0%E5%92%8C%E5%BE%AE%E5%88%86"><span class="nav-text">1.4.1 导数和微分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-2-%E5%81%8F%E5%AF%BC%E6%95%B0"><span class="nav-text">1.4.2 偏导数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-3-%E6%A2%AF%E5%BA%A6"><span class="nav-text">1.4.3 梯度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-4-%E9%93%BE%E5%BC%8F%E6%B3%95%E5%88%99"><span class="nav-text">1.4.4 链式法则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-%E8%87%AA%E5%8A%A8%E5%BE%AE%E5%88%86"><span class="nav-text">1.5 自动微分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-1-%E4%BE%8B%E5%AD%90"><span class="nav-text">1.5.1 例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-2-%E9%9D%9E%E6%A0%87%E9%87%8F%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD"><span class="nav-text">1.5.2 非标量变量的反向传播</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-%E6%A6%82%E7%8E%87"><span class="nav-text">2.6 概率</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E7%8E%87%E8%AE%BA"><span class="nav-text">2.6.1 基本概率论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-2-%E5%A4%84%E7%90%86%E5%A4%9A%E4%B8%AA%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F"><span class="nav-text">2.6.2 处理多个随机变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-3-%E6%9C%9F%E6%9C%9B%E5%92%8C%E6%96%B9%E5%B7%AE"><span class="nav-text">2.6.3 期望和方差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-text"></span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">3 线性神经网络</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">wawn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 59 篇文章
+                    </span>
+                    
+                        <span>
+                            共 357.3k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="站内搜索您需要的内容..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/libs/anime.min.js"></script>
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

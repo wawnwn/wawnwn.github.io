@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="wawn">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://wawnwn.github.io/2024/08/06/前端/webgl/threejs在vue项目中的基本使用/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="官网：https:&#x2F;&#x2F;threejs.org&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="threejs在vue项目中的基本使用">
+<meta property="og:url" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:site_name" content="wawn&#39;s blog">
+<meta property="og:description" content="官网：https:&#x2F;&#x2F;threejs.org&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/1.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/2.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/3.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/4.gif">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/5.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/6.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/7.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/8.png">
+<meta property="og:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/9.png">
+<meta property="article:published_time" content="2024-08-06T10:40:08.000Z">
+<meta property="article:modified_time" content="2024-08-11T12:16:56.986Z">
+<meta property="article:author" content="wawnwn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://wawnwn.github.io/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/1.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/null" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/null">
+    <meta name="theme-color" content="#6c9897">
+    <link rel="shortcut icon" href="/null">
+    <!--- Page Info-->
+    
+    <title>
+        
+            threejs在vue项目中的基本使用 -
+        
+        wawn&#39;s blog
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+    
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    
+        <link href="" rel="stylesheet">
+    
+    
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#6c9897","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":false,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                wawn&#39;s blog
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/masonry/"
+                                        >
+                                    <i class="fa-regular fa-link fa-fw"></i>
+                                    PHOTO
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/masonry/"
+                        >
+                            <span>
+                                PHOTO
+                            </span>
+                            
+                                <i class="fa-regular fa-link fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+                
+                    
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/tags"
+                        >
+                            <span>Tags</span>
+                            <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+                    
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                           href="/categories"
+                        >
+                            <span>Categories</span>
+                            <i class="fa-regular fa-folder fa-sm fa-fw"></i>
+                        </a>
+                    </li>
+                
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">threejs在vue项目中的基本使用</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/images/head.webp">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">wawn</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2024-08-06 18:40:08</span>
+        <span class="mobile">2024-08-06 18:40:08</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-08-11 20:16:56</span>
+            <span class="mobile">2024-08-11 20:16:56</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/WebGL/">WebGL</a>&nbsp;
+                        </li>
+                    
+                    
+                
+                    
+                        
+                            <li>></li>
+                        
+                        <li>
+                            <a href="/categories/WebGL/threejs/">threejs</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>5.2k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>21 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <p>官网：<a class="link" target="_blank" rel="noopener" href="https://threejs.org/">https://threejs.org/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<span id="more"></span>
+<p>Three.js 是一个跨浏览器的脚本，使用 JavaScript 函数库或 API 来在网页浏览器中创建和展示动画的三维计算机图形。</p>
+<h1>1 threejs 介绍</h1>
+<p>threejs 是运行在浏览器中的 3D 引擎，是 Javascript 编写的 WebGL 第三方库。提供了非常多的 3D 显示功能。开发者可以用它创建各种三维场景，包括了摄影机、光影、材质等各种对象。可以在它的主页上看到许多精彩的演示。</p>
+<h1>2 案例</h1>
+<h2 id="2-1-初始化">2.1 初始化</h2>
+<h3 id="2-1-1-安装-threejs">2.1.1 安装 threejs</h3>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save three</span><br></pre></td></tr></table></figure></div>
+<h3 id="2-1-2-初始化项目">2.1.2 初始化项目</h3>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create threejsvue</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;three-canvas&quot; ref=&quot;threeTarget&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &#x27;HelloWorld&#x27;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">  .three-canvas &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">    height: 100%;</span><br><span class="line">    overflow: hidden;</span><br><span class="line">    background-color: #d6eaff;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></div>
+<p>为了稍微保证项目代码的规范性，创建一个<code>TEngine.js</code> 文件，在当前组件引入，所有与 threejs 初始化、操作代码都在此文件中实现。</p>
+<h3 id="2-1-3-创建渲染器-WebGLRenderer">2.1.3 创建渲染器 WebGLRenderer</h3>
+<p>初始化一个 threejs，首先，需要有一个 dom 挂载创建的 threejs。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">ThreeEngine</span> &#123;</span><br><span class="line">  dom = <span class="literal">null</span>; <span class="comment">// 挂载的 DOM</span></span><br><span class="line">  <span class="comment">// 构造器函数</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">dom</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">dom</span> = dom</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在组件中实例化这个类。注意，需要在 mounted 生命周期钩子中实例化，不能在 created 生命周期钩子中，因为 mounted 才是 dom 都渲染完成。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">ThreeEngine</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./js/TEngine.js&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;HelloWorld&#x27;</span>,</span><br><span class="line">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      <span class="title class_">ThreeEngine</span>: <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="title function_">mounted</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">ThreeEngine</span> = <span class="keyword">new</span> <span class="title class_">ThreeEngine</span>(<span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">threeTarget</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+<h2 id="2-2-threejs-相关操作">2.2 threejs 相关操作</h2>
+<h3 id="2-2-1-引入-WebGLRenderer-渲染器">2.2.1 引入 WebGLRenderer 渲染器</h3>
+<p>都在 ThreeEngine 类的构造器函数中实现</p>
+<p>threejs 的渲染器是 WebGLRenderer，WebGLRenderer 是 three 中提供的一个工具类</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">WebGLRenderer</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three&#x27;</span><span class="keyword">import</span> &#123; <span class="title class_">WebGLRenderer</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">ThreeEngine</span> &#123;</span><br><span class="line">  dom = <span class="literal">null</span>; <span class="comment">// 挂载的 DOM</span></span><br><span class="line">  <span class="comment">// 构造器函数</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">dom</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> renderer = <span class="keyword">new</span> <span class="title class_">WebGLRenderer</span>(&#123;</span><br><span class="line">      <span class="attr">antialias</span>: <span class="literal">true</span>, <span class="comment">// 开始抗锯齿</span></span><br><span class="line">    &#125;) <span class="comment">// 创建渲染器</span></span><br><span class="line">    dom.<span class="title function_">appendChild</span>(renderer.<span class="property">domElement</span>) <span class="comment">// 将渲染器挂载到 dom</span></span><br><span class="line">    renderer.<span class="title function_">setSize</span>(dom.<span class="property">offsetWidth</span>, dom.<span class="property">offsetHeight</span>, <span class="literal">true</span>) <span class="comment">// 设置宽高</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">dom</span> = dom</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<h3 id="2-2-2-创建场景-Scene">2.2.2 创建场景 Scene</h3>
+<p>threejs 中的场景是 Scene，同样也是 threejs 提供的工具类</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">WebGLRenderer</span>, <span class="title class_">Scene</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three&#x27;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">let</span> scene = <span class="keyword">new</span> <span class="title class_">Scene</span>()  <span class="comment">// 实例化场景</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">scene</span> = scene</span><br><span class="line">...</span><br></pre></td></tr></table></figure></div>
+<h3 id="2-2-3-创建相机并设置位置-PerspectiveCamera">2.2.3 创建相机并设置位置 PerspectiveCamera</h3>
+<p>引入</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">WebGLRenderer</span>, <span class="title class_">Scene</span>, <span class="title class_">PerspectiveCamera</span>, <span class="title class_">Vector3</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three&#x27;</span></span><br></pre></td></tr></table></figure></div>
+<p>创建相机步骤：</p>
+<ol>
+<li>实例化一个相机</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> camera = <span class="keyword">new</span> <span class="title class_">PerspectiveCamera</span>(<span class="number">45</span>, dom.<span class="property">offsetWidth</span> / dom.<span class="property">offsetHeight</span>, <span class="number">1</span>, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure></div>
+<ul>
+<li>第一个参数 45 是摄像机视锥体垂直视野角度</li>
+<li>第二个参数 dom.offsetWidth / dom.offsetHeight 是摄像机视锥体长宽比，设置成 div 容器的长宽比，如果不这样设置，可能会变形</li>
+<li>第三个参数 1 是摄像机视锥体近端面</li>
+<li>第四个参数 1000 摄像机视锥体远端面</li>
+</ul>
+<ol start="2">
+<li>设置相机位置</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">camera.<span class="property">position</span>.<span class="title function_">set</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>) <span class="comment">// 设置相机位置</span></span><br></pre></td></tr></table></figure></div>
+<ol start="3">
+<li>设置相机拍摄的位置</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">camera.<span class="title function_">lookAt</span>(<span class="keyword">new</span> <span class="title class_">Vector3</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>)) <span class="comment">// 设置相机看向中心点</span></span><br></pre></td></tr></table></figure></div>
+<ol start="4">
+<li>设置相机角度</li>
+</ol>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">camera.<span class="property">up</span> = <span class="keyword">new</span> <span class="title class_">Vector3</span>(<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>) <span class="comment">// 设置相机自身方向</span></span><br></pre></td></tr></table></figure></div>
+<p>补充说明：</p>
+<ul>
+<li>threejs 坐标系是向右为 x 轴正方向，向上为 y 轴正方向，垂直屏幕向外为 z 轴正方向</li>
+<li>渲染器默认加载完成后中心为(0, 0, 0)，分别对应(x, y, z)</li>
+<li>camera.up 是用来设置 y = 1 表示 y 轴的正方向为相机向上的方向</li>
+</ul>
+<p>将相机和场景绑定到渲染器里面：初始化相机之后，把场景和相机绑进渲染器，让渲染器渲染就可以了：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">renderer.<span class="title function_">render</span>(scene, camera) <span class="comment">// 渲染器渲染场景和相机</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="2-2-4-添加模型-Mesh">2.2.4 添加模型 Mesh</h3>
+<p>创建一个立方体放进场景里。</p>
+<p>为了保证项目代码结构，创建一个 TBaseObject.js 文件，用来存放基础的模型，然后这个文件中我们创建一个立方体模型，并返回出来。</p>
+<p>先声明一个数组抛出，然后数组里面是创建的模型，这样外面使用这个文件的时候，导入就可以获取模型的列表了。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> allBaseObject = [] <span class="comment">// 返回所有基础模型</span></span><br></pre></td></tr></table></figure></div>
+<p>然后创建一个立方体模型，当然也可以抛出去，也可以往数组里面添加一下，这样的话我们既可以单独使用这个立方体，也可以获取全部模型。</p>
+<p>创建一个简单的立方体很简单，Mesh 是 three 提供的基于以三角形为多边形网格(polygon mesh)的物体的类。</p>
+<p>引入的类：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BoxGeometry</span>, <span class="title class_">Mesh</span>, <span class="title class_">MeshStandardMaterial</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three&quot;</span></span><br></pre></td></tr></table></figure></div>
+<p>创建立方体：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建立方体</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> box = <span class="keyword">new</span> <span class="title class_">Mesh</span>(</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">BoxGeometry</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>), <span class="comment">// 设置立方体的大小（x 长度，y 高度，z 长度）</span></span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">MeshStandardMaterial</span>(&#123; <span class="comment">// 设置材质</span></span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;rgb(36, 172, 242)&#x27;</span>, <span class="comment">// 设置材质的颜色</span></span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">allBaseObject.<span class="title function_">push</span>(box) <span class="comment">// 添加到模型数组</span></span><br></pre></td></tr></table></figure></div>
+<p>在 TEngine.js 文件中创建一个方法，用来向场景中添加模型</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 向场景中添加模型</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">...any</span>&#125; object 模型列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="title function_">addObject</span>(<span class="params">...object</span>) &#123;</span><br><span class="line">    object.<span class="title function_">forEach</span>(<span class="function"><span class="params">elem</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">scene</span>.<span class="title function_">add</span>(elem) <span class="comment">// 场景添加模型</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>在 HelloWorld 组件中获取模型列表，将模型添加到场景中</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; allBaseObject &#125; <span class="keyword">from</span> <span class="string">&#x27;./TBaseObject&#x27;</span>;</span><br></pre></td></tr></table></figure></div>
+<p>在 three.js 初始化完成后，调用 addObject 方法，把模型列表添加到场景中。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">ThreeEngine</span>.<span class="title function_">addObject</span>(...allBaseObject) <span class="comment">// 添加基础模型</span></span><br></pre></td></tr></table></figure></div>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/1.png" class>
+<h3 id="2-2-5-光线添加">2.2.5 光线添加</h3>
+<p>”自然光“编写</p>
+<p>新建 TLight.js 文件</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AmbientLight</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 光线</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> allLights = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加环境光（自然光），设置自然光的颜色，设置自然光的强度（0 最暗， 1 最强）</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> ambientLight = <span class="keyword">new</span> <span class="title class_">AmbientLight</span>(<span class="string">&#x27;rgb(255,255,255)&#x27;</span>, <span class="number">0.8</span>)</span><br><span class="line"></span><br><span class="line">allLights.<span class="title function_">push</span>(ambientLight)</span><br></pre></td></tr></table></figure></div>
+<p>在组件中引入光线，然后又将光线添加到场景中。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; allLights &#125; <span class="keyword">from</span> <span class="string">&#x27;./js/TLight.js&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">ThreeEngine</span>.<span class="title function_">addObject</span>(...allLights)  <span class="comment">// 添加光线</span></span><br></pre></td></tr></table></figure></div>
+<p>由于页面是有刷新率的，比如 60hz 表示屏幕一秒钟渲染 60 个页面，我们的眼睛有延时，页面切换的太快看到的就是一个视频效果。但是 threejs 的渲染器，在初始化渲染器完成之后就只渲染了一次，所以在后面再修改场景修改模型的时候，并没有给我们渲染。在构造器函数最后加上这段代码，threejs 就会一直帮我们逐帧渲染页面效果。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 逐帧渲染 threejs</span></span><br><span class="line">   <span class="keyword">let</span> <span class="title function_">animate</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">       renderer.<span class="title function_">render</span>(scene, camera)</span><br><span class="line">       <span class="title function_">requestAnimationFrame</span>(animate);</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="title function_">animate</span>()</span><br></pre></td></tr></table></figure></div>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/2.png" class>
+<p>如果我们不设置正方体的位置，默认模型初始化加载在原点位置。</p>
+<p>渲染器背景默认为黑色，在渲染器绑定完相机和场景之后，我们可以给渲染器设置其它的颜色。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/3.png" class>
+<h3 id="2-2-6-轨道控制器-OrbitControls">2.2.6 轨道控制器 OrbitControls</h3>
+<p>上面实现了基本的初始化渲染器、相机、场景、添加模型、设置光线，但是这个页面是静态的。</p>
+<p>接下来我们实现鼠标拖动，放大缩小。</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/4.gif" class>
+<p>这是 轨道控制器 的基本使用：</p>
+<ul>
+<li>鼠标左键按下拖拽：围绕视图中心点旋转</li>
+<li>鼠标中键滚动：缩小放大，实际是相机靠近和远离</li>
+<li>鼠标右键按下拖拽：移动场景</li>
+</ul>
+<p>【拓展】</p>
+<p>可以设置 轨道控制器鼠标按键功能</p>
+<p>为了防止后续鼠标点击事件发生冲突，重新设置一下,记得引入 MOUSE。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置鼠标功能键</span></span><br><span class="line">   objectrbitControls.<span class="property">mouseButtons</span> = &#123;</span><br><span class="line">       <span class="attr">LEFT</span>: <span class="literal">null</span>, <span class="comment">// 左键无功能</span></span><br><span class="line">       <span class="attr">MIDDLE</span>: <span class="variable constant_">MOUSE</span>.<span class="property">DOLLY</span>, <span class="comment">// 中键缩放</span></span><br><span class="line">       <span class="attr">RIGHT</span>: <span class="variable constant_">MOUSE</span>.<span class="property">ROTATE</span> <span class="comment">// 右键旋转</span></span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></div>
+<p>但是立方体现在还没有立体感，因为我们使用的是环境光（环境光在模型的每一个面上光照强度都是一样的，不会衰减），所以我们换一种光线，使用一个点光源（从一个点射术一束光向四周扩展），这样的话，照在模型上，因为距离不一样，光照强度就不一样，就有了立体感。</p>
+<h3 id="2-2-7-添加点光源-PointLight">2.2.7 添加点光源 PointLight</h3>
+<p>创建点光源使用的是 PointLight，从 three 里引入</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AmbientLight</span>, <span class="title class_">PointLight</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three&quot;</span></span><br></pre></td></tr></table></figure></div>
+<p>创建点光源需要有颜色、强度、照射距离、光照衰减值，以及位置</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点光源</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> pointLight = <span class="keyword">new</span> <span class="title class_">PointLight</span>(</span><br><span class="line">    <span class="string">&#x27;rgb(255,255,255)&#x27;</span>,</span><br><span class="line">    <span class="number">0.5</span>,</span><br><span class="line">    <span class="number">600</span>,</span><br><span class="line">    <span class="number">0.2</span></span><br><span class="line">)</span><br><span class="line">pointLight.<span class="property">position</span>.<span class="title function_">set</span>(<span class="number">0</span>, <span class="number">100</span>, <span class="number">200</span>)  <span class="comment">// 设置点光源位置 (x,y,z)</span></span><br><span class="line"></span><br><span class="line">allLights.<span class="title function_">push</span>(pointLight)  <span class="comment">// 将点光源添加到光源列表抛出</span></span><br></pre></td></tr></table></figure></div>
+<p>PointLight 有四个参数：</p>
+<ul>
+<li>color -（可选参数）十六进制光照颜色。默认 0xffffff（白色）</li>
+<li>intensity -（可选参数）光照强度。缺省值 1。</li>
+<li>distance - 这个距离表示从光源到光照强度为 0 的位置。当设置为 0 时，光永远不会消失，默认 0。</li>
+<li>decay - 沿着光照距离的衰退量。默认 1。</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/5.png" class>
+<p>可以在官网查看其它光线使用</p>
+<h3 id="2-2-8-模型部分拓展">2.2.8 模型部分拓展</h3>
+<p>针对以下创建模型使用的代码进行扩展</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建立方体</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> box = <span class="keyword">new</span> <span class="title class_">Mesh</span>(</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">BoxGeometry</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>),  <span class="comment">// 设置立方体的大小</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">MeshStandardMaterial</span>(&#123;   <span class="comment">// 设置材质</span></span><br><span class="line">        <span class="attr">color</span>: <span class="string">&#x27;rgb(36, 172, 242)&#x27;</span>,  <span class="comment">// 设置材质的颜色</span></span><br><span class="line">    &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>可以向这个模型添加数据</p>
+<p>设置name属性</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> box = <span class="keyword">new</span> <span class="title class_">Mesh</span>(</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">BoxGeometry</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>),  <span class="comment">// 设置立方体的大小</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">MeshStandardMaterial</span>(&#123;   <span class="comment">// 设置材质</span></span><br><span class="line">        <span class="attr">color</span>: <span class="string">&#x27;rgb(36, 172, 242)&#x27;</span>,  <span class="comment">// 设置材质的颜色</span></span><br><span class="line">    &#125;)</span><br><span class="line">)</span><br><span class="line">box.<span class="property">name</span> = <span class="string">&#x27;box&#x27;</span></span><br></pre></td></tr></table></figure></div>
+<p>设置位置</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">box.<span class="property">position</span>.<span class="title function_">set</span>(<span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>)  <span class="comment">// 设置模型位置 (x,y,z)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 位置单独设置 单独设置每个坐标轴的位置</span></span><br><span class="line">box.<span class="property">position</span>.<span class="property">x</span> = <span class="number">5</span></span><br><span class="line">box.<span class="property">position</span>.<span class="property">y</span> = <span class="number">5</span></span><br><span class="line">box.<span class="property">position</span>.<span class="property">z</span> = <span class="number">5</span></span><br></pre></td></tr></table></figure></div>
+<p>在实际开发时，需要给模型绑定一些数据，点击弹窗显示或者是鼠标悬浮显示的时候获取数据</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">box.<span class="property">show</span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;box&#x27;</span>,</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&#x27;好饿好饿好饿好饿好饿&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>threejs 提供了一个参数 userData 用来存放用户数据</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">box.<span class="property">userData</span> = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;好饿好饿好饿好饿好饿&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p><strong>模型的材质问题</strong></p>
+<ul>
+<li>粗糙度 roughness ：取值为 0 到 1，为 0 时表示粗糙度最低，就越光滑</li>
+</ul>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> box = <span class="keyword">new</span> <span class="title class_">Mesh</span>(</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">BoxGeometry</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>),  <span class="comment">// 设置立方体的大小</span></span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">MeshStandardMaterial</span>(&#123;   <span class="comment">// 设置材质</span></span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;rgb(36, 172, 242)&#x27;</span>,  <span class="comment">// 设置材质的颜色\</span></span><br><span class="line">    <span class="attr">roughness</span>: <span class="number">0</span>   <span class="comment">// 粗糙度（0 最光滑，1 最粗糙）</span></span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>点光源，一个物体表面光滑到一定程度后会反光</p>
+<ul>
+<li>金属度 metalness ：设置模型金属质感，取值 0 到 1，为 0 时表示金属质感最少，最不像金属</li>
+</ul>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> box = <span class="keyword">new</span> <span class="title class_">Mesh</span>(</span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">BoxGeometry</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>),  <span class="comment">// 设置立方体的大小</span></span><br><span class="line">  <span class="keyword">new</span> <span class="title class_">MeshStandardMaterial</span>(&#123;   <span class="comment">// 设置材质</span></span><br><span class="line">    <span class="attr">color</span>: <span class="string">&#x27;rgb(36, 172, 242)&#x27;</span>,  <span class="comment">// 设置材质的颜色</span></span><br><span class="line">    <span class="attr">metalness</span>: <span class="number">0.5</span>,   <span class="comment">// 金属度 （1 最像金属，0 最不想金属）</span></span><br><span class="line">    <span class="attr">roughness</span>: <span class="number">0</span>   <span class="comment">// 粗糙度（0 最光滑，1 最粗糙）</span></span><br><span class="line">  &#125;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure></div>
+<p>一个金属块，表面越光滑，金属感越强，颜色就越暗</p>
+<h3 id="2-2-9-添加辅助线">2.2.9 添加辅助线</h3>
+<p>实现坐标轴的可视化操作</p>
+<p>创建辅助文件 THelper.js</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AxesHelper</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> allHelper = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 坐标辅助</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> axesHelper = <span class="keyword">new</span> <span class="title class_">AxesHelper</span>(<span class="number">500</span>) <span class="comment">// 创建坐标辅助（500 为辅助线的长度）</span></span><br><span class="line"></span><br><span class="line">allHelper.<span class="title function_">push</span>(axesHelper) <span class="comment">// 添加到辅助列表</span></span><br></pre></td></tr></table></figure></div>
+<p>组件中引入：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; allHelper &#125; <span class="keyword">from</span> <span class="string">&#x27;./js/THelper&#x27;</span></span><br></pre></td></tr></table></figure></div>
+<p>添加到场景：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">ThreeEngine</span>.<span class="title function_">addObject</span>(...allHelper)   <span class="comment">// 添加辅助</span></span><br></pre></td></tr></table></figure></div>
+<p>效果图：</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/6.png" class>
+<p>红色线是 x 轴，绿色线是 y 轴，蓝色线是 z 轴</p>
+<p>除了坐标辅助线，还可以添加地面网格线 GridHelper</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">AxesHelper</span>, <span class="title class_">GridHelper</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> allHelper = []</span><br><span class="line"></span><br><span class="line"><span class="comment">// 坐标辅助</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> axesHelper = <span class="keyword">new</span> <span class="title class_">AxesHelper</span>(<span class="number">500</span>)  <span class="comment">// 创建坐标辅助</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建地面网格辅助</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> gridHelper = <span class="keyword">new</span> <span class="title class_">GridHelper</span>(<span class="number">100</span>, <span class="number">10</span>, <span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;rgb(222, 225, 230)&#x27;</span>)</span><br><span class="line"></span><br><span class="line">allHelper.<span class="title function_">push</span>(axesHelper, gridHelper)</span><br></pre></td></tr></table></figure></div>
+<p>网格辅助线一共需要配置四个参数：</p>
+<ul>
+<li>size - 坐标格尺寸，默认为 10。网格组成的大正方形最大是多少</li>
+<li>divisions - 坐标格细分次数，默认为 10。组成的最大的正方形平均分为多少份</li>
+<li>colorCenterLine - 中线颜色。值可以为 Color 类型，16 进制 和 CSS 颜色名。默认为 0x444444。这个是指网格和坐标的 x 轴 z 轴重合线的颜色。</li>
+<li>colorGrid - 坐标格网格线颜色。值可以为 Color 类型，16 进制 和 CSS 颜色名。默认为 0x888888。</li>
+</ul>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/7.png" class>
+<h3 id="2-2-10-模型编辑逻辑梳理">2.2.10 模型编辑逻辑梳理</h3>
+<p>模型的编辑，threejs 为我们提供了一个工具类叫做 变换控制器 TransformControls。它可以提供一种类似于在数字内容创建工具（例如 Blender）中对模型进行交互的方式，来在 3D 空间中变换物体。</p>
+<p>点击要移动的模型，针对这个被点击的模型绑定一个 变换控制器，变换控制器 有三根轴，分别对应的就是 threejs 坐标系的 x 轴、y 轴、z 轴，拖动 变换控制器的轴，就可以实现对应模型的移动。</p>
+<p>如何实现点击功能？</p>
+<p>threejs 中提供 射线发射器 Raycaster 来实现，射线发射器 会根据鼠标在二维屏幕中点击的位置，结合当前相机的一些状态，比如位置、角度、方向等，从屏幕向鼠标点击的方向发出一条射线，把被射线穿过模型返回成一个列表回来，列表的顺序就是模型穿过的先后顺序。</p>
+<p><strong>初始化射线发射器 Raycaster</strong></p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化射线发射器</span></span><br><span class="line"><span class="keyword">let</span> raycaster = <span class="keyword">new</span> <span class="title class_">Raycaster</span>()</span><br></pre></td></tr></table></figure></div>
+<p>添加鼠标移动事件来获取鼠标实时位置</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 鼠标移动事件</span></span><br><span class="line">renderer.<span class="property">domElement</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;mousemove&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> x = event.<span class="property">offsetX</span></span><br><span class="line">    <span class="keyword">let</span> y = event.<span class="property">offsetY</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(x, y)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>当鼠标在渲染器渲染的时候，可以在控制台看到鼠标的实时位置</p>
+<p>此时我们获取到的鼠标的位置，是相对于屏幕的。但是之后配置射线发生器需要两个参数，分别是相机（获取相机角度、位置、方向）和鼠标点击位置，计算实际射线在 threejs 中射线穿过的模型。所以，第二个参数的鼠标位置，应该是 threejs 视角的鼠标位置。这个位置和我们计算出来的相对于屏幕的鼠标位置是不一样的。</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">对于 threejs 而言，它的原点就是屏幕宽度的一半和屏幕高度的一半。所以：</span><br><span class="line"></span><br><span class="line">横轴：(x - width / 2) / (width / 2)</span><br><span class="line">纵轴：(height / 2 - y) / (height / 2)</span><br><span class="line"></span><br><span class="line">化简以下就是</span><br><span class="line"></span><br><span class="line">x / width * 2 - 1</span><br><span class="line">-y * 2 / height + 1</span><br></pre></td></tr></table></figure></div>
+<p>鼠标是一个二维的对象</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化鼠标位置</span></span><br><span class="line"><span class="keyword">let</span> mouse = <span class="keyword">new</span> <span class="title class_">Vector2</span>()</span><br><span class="line"><span class="comment">// 屏幕鼠标x，屏幕鼠标y  视图宽度，视图高度</span></span><br><span class="line"><span class="keyword">let</span> x = <span class="number">0</span>; <span class="keyword">let</span> y = <span class="number">0</span>; <span class="keyword">let</span> width = <span class="number">0</span>; <span class="keyword">let</span> height = <span class="number">0</span></span><br></pre></td></tr></table></figure></div>
+<p>然后在鼠标移动事件里面给鼠标对象设置它的 x 和 y</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">renderer.<span class="property">domElement</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;mousemove&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    x = event.<span class="property">offsetX</span></span><br><span class="line">    y = event.<span class="property">offsetY</span></span><br><span class="line">    width = renderer.<span class="property">domElement</span>.<span class="property">offsetWidth</span></span><br><span class="line">    height = renderer.<span class="property">domElement</span>.<span class="property">offsetHeight</span></span><br><span class="line">    mouse.<span class="property">x</span> = x / width * <span class="number">2</span> - <span class="number">1</span></span><br><span class="line">    mouse.<span class="property">y</span> = y * <span class="number">2</span> / height + <span class="number">1</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>这样我们就成功的获取到了鼠标在 threejs 中的位置信息</p>
+<p>接下来编写点击事件，点击事件要做的事情就是当我们按下鼠标之后，射出一个射线，被射线穿过的模型列表都返回回来</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 鼠标点击事件</span></span><br><span class="line">   renderer.<span class="property">domElement</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">     raycaster.<span class="title function_">setFromCamera</span>(mouse, camera)  <span class="comment">// 配置射线发射器，传递鼠标和相机对象</span></span><br><span class="line">     <span class="keyword">const</span> intersection = raycaster.<span class="title function_">intersectObjects</span>(scene.<span class="property">children</span>) <span class="comment">// 获取射线发射器捕获的模型列表</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(intersection)</span><br><span class="line">   &#125;)</span><br></pre></td></tr></table></figure></div>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/8.png" class>
+<p><strong>使用变换控制器 TransformControls</strong></p>
+<p>引入</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">TransformControls</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;three/examples/jsm/controls/TransformControls&#x27;</span></span><br></pre></td></tr></table></figure></div>
+<p>初始化</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 初始化变换控制器</span></span><br><span class="line"><span class="keyword">let</span> transformControls = <span class="keyword">new</span> <span class="title class_">TransformControls</span>(camera, renderer.<span class="property">domElement</span>)</span><br><span class="line">scene.<span class="title function_">add</span>(transformControls) <span class="comment">// 将变换控制器添加至场景</span></span><br></pre></td></tr></table></figure></div>
+<p>初始化在点击事件之前添加。此外，在点击事件中，我们需要判断，点击下去有没有射穿模型，如果没有的话就没有必要给第一个模型添加变换控制器，有的话就添加。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">renderer.<span class="property">domElement</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    raycaster.<span class="title function_">setFromCamera</span>(mouse, camera)  <span class="comment">// 配置射线发射器，传递鼠标和相机对象</span></span><br><span class="line">    <span class="keyword">const</span> intersection = raycaster.<span class="title function_">intersectObjects</span>(scene.<span class="property">children</span>) <span class="comment">// 获取射线发射器捕获的模型列表</span></span><br><span class="line">    <span class="keyword">if</span> (intersection.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> object = intersection[<span class="number">0</span>].<span class="property">object</span> <span class="comment">// 获取第一个模型</span></span><br><span class="line">        transformControls.<span class="title function_">attach</span>(object)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>之后，就可以对模型进行编辑操作了</p>
+<p>问题：先拖动正方体模型，然后松开鼠标，再拖动的话，发现变化控制器添加到别的地方去了</p>
+<img lazyload src="/images/loading.svg" data-src="/2024/08/06/%E5%89%8D%E7%AB%AF/WebGL/threejs%E5%9C%A8vue%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/9.png" class>
+<p>因为场景里面添加的所有东西，都是模型，变换控制器本身也是模型</p>
+<p>处理：给变换控制器一个鼠标按下的事件，定义一个变量记录是否是 变换控制器 按下的事件。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> transing = <span class="literal">false</span></span><br><span class="line">transformControls.<span class="title function_">addEventListener</span>(<span class="string">&quot;mouseDown&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  transing = <span class="literal">true</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>然后，在点击事件中判断以下，如果是变换控制器按下的话不进行处理</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击事件</span></span><br><span class="line">renderer.<span class="property">domElement</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (transing) &#123;</span><br><span class="line">    transing = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  raycaster.<span class="title function_">setFromCamera</span>(mouse, camera)  <span class="comment">// 配置射线发射器，传递鼠标和相机对象</span></span><br><span class="line">  <span class="keyword">const</span> intersection = raycaster.<span class="title function_">intersectObjects</span>(scene.<span class="property">children</span>) <span class="comment">// 获取射线发射器捕获的模型列表，传进去场景中所以模型，穿透的会返回我们</span></span><br><span class="line">  <span class="keyword">if</span> (intersection.<span class="property">length</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> object = intersection[<span class="number">0</span>].<span class="property">object</span>  <span class="comment">// 获取第一个模型</span></span><br><span class="line">    transformControls.<span class="title function_">attach</span>(object)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>为了防止鼠标按下获取到的组件是变换控制器本身，可以在按下鼠标获取点击模型之前，先把变换控制器移除，获取到模型之后再添加变换控制器</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 点击事件</span></span><br><span class="line">renderer.<span class="property">domElement</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;click&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (transing) &#123;</span><br><span class="line">    transing = <span class="literal">false</span></span><br><span class="line">    <span class="keyword">return</span></span><br><span class="line">  &#125;</span><br><span class="line">  scene.<span class="title function_">remove</span>(transformControls) <span class="comment">// 移除变换控制器</span></span><br><span class="line">  transformControls.<span class="property">enabled</span> = <span class="literal">false</span> <span class="comment">// 停用变换控制器</span></span><br><span class="line">  raycaster.<span class="title function_">setFromCamera</span>(mouse, camera)  <span class="comment">// 配置射线发射器，传递鼠标和相机对象</span></span><br><span class="line">  <span class="keyword">const</span> intersection = raycaster.<span class="title function_">intersectObjects</span>(scene.<span class="property">children</span>) <span class="comment">// 获取射线发射器捕获的模型列表，传进去场景中所以模型，穿透的会返回我们</span></span><br><span class="line">  <span class="keyword">if</span> (intersection.<span class="property">length</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> object = intersection[<span class="number">0</span>].<span class="property">object</span>  <span class="comment">// 获取第一个模型</span></span><br><span class="line">    scene.<span class="title function_">add</span>(transformControls) <span class="comment">// 添加变换控制器</span></span><br><span class="line">    transformControls.<span class="property">enabled</span> = <span class="literal">true</span> <span class="comment">// 启用变换控制器</span></span><br><span class="line">    transformControls.<span class="title function_">attach</span>(object)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>变换控制器除了移动位置之外，话可以实现形变和旋转。</p>
+<p>例如添加功能如下：</p>
+<ul>
+<li>按下键盘 E 之后，可以对模型进行缩放</li>
+<li>按下键盘 R 之后，可以对模型进行旋转</li>
+<li>按下键盘 T 之后，改为对模型进行移动</li>
+</ul>
+<p>只需要监听以下键盘按下事件，改变变换控制器的类型就可以了。</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 监听变换控制器模型更改</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;keyup&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(transformControls.<span class="property">enabled</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(event.<span class="property">key</span> === <span class="string">&#x27;e&#x27;</span>) &#123;</span><br><span class="line">            transformControls.<span class="property">mode</span> = <span class="string">&#x27;scale&#x27;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(event.<span class="property">key</span> === <span class="string">&#x27;r&#x27;</span>) &#123; <span class="comment">// 鼠标按下 r 键，模式改为旋转</span></span><br><span class="line">            transformControls.<span class="property">mode</span> = <span class="string">&#x27;rotate&#x27;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(event.<span class="property">key</span> === <span class="string">&#x27;t&#x27;</span>) &#123;</span><br><span class="line">            transformControls.<span class="property">mode</span> = <span class="string">&#x27;translate&#x27;</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p><strong>鼠标移动到模型变色</strong></p>
+<p>要实现这个功能，首先需要知道鼠标是否移动到模型上</p>
+<p>创建变量，存储鼠标移入后获取到的模型</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cacheObject = <span class="literal">null</span> <span class="comment">// 鼠标移入缓存效果</span></span><br></pre></td></tr></table></figure></div>
+<p>在鼠标移动的事件里面修改成以下代码：</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">renderer.<span class="property">domElement</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;mousemove&quot;</span>, <span class="function"><span class="params">event</span> =&gt;</span> &#123;</span><br><span class="line">    x = event.<span class="property">offsetX</span></span><br><span class="line">    y = event.<span class="property">offsetY</span></span><br><span class="line">    width = renderer.<span class="property">domElement</span>.<span class="property">offsetWidth</span></span><br><span class="line">    height = renderer.<span class="property">domElement</span>.<span class="property">offsetHeight</span></span><br><span class="line">    mouse.<span class="property">x</span> = x / width * <span class="number">2</span> - <span class="number">1</span></span><br><span class="line">    mouse.<span class="property">y</span> = -y * <span class="number">2</span> / height + <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    raycaster.<span class="title function_">setFromCamera</span>(mouse, camera) <span class="comment">// 配置射线发射器</span></span><br><span class="line">    scene.<span class="title function_">remove</span>(transformControls) <span class="comment">// 移除变换控制器</span></span><br><span class="line">    <span class="keyword">const</span> intersection = raycaster.<span class="title function_">intersectObjects</span>(scene.<span class="property">children</span>)</span><br><span class="line">    <span class="keyword">if</span> (intersection.<span class="property">length</span>) &#123;</span><br><span class="line">        <span class="keyword">const</span> object = intersection[<span class="number">0</span>].<span class="property">object</span></span><br><span class="line">        <span class="keyword">if</span> (object !== <span class="variable language_">this</span>.<span class="property">cacheObject</span>) &#123;  <span class="comment">// 如果当前物体不等于缓存的物体</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">cacheObject</span>) &#123; <span class="comment">// 如果有缓存物体先执行之前物体的离开事件</span></span><br><span class="line">                <span class="variable language_">this</span>.<span class="property">cacheObject</span>.<span class="title function_">dispatchEvent</span>(&#123;</span><br><span class="line">                    <span class="attr">type</span>: <span class="string">&#x27;mouseleave&#x27;</span></span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">            object.<span class="title function_">dispatchEvent</span>(&#123;  <span class="comment">// 添加当前物体进入事件</span></span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;mouseenter&#x27;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (object === <span class="variable language_">this</span>.<span class="property">cacheObject</span>) &#123;  <span class="comment">// 如果当前物体等于缓存的物体</span></span><br><span class="line">            object.<span class="title function_">dispatchEvent</span>(&#123;  <span class="comment">// 执行移动事件</span></span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;mousemove&#x27;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">cacheObject</span> = object</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">cacheObject</span>) &#123;  <span class="comment">// 如果有缓存物体就先执行离开事件</span></span><br><span class="line">            <span class="variable language_">this</span>.<span class="property">cacheObject</span>.<span class="title function_">dispatchEvent</span>(&#123;</span><br><span class="line">                <span class="attr">type</span>: <span class="string">&#x27;mouseleave&#x27;</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">cacheObject</span> = <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></div>
+<p>同时，给 box 模型添加两个事件（鼠标移入和鼠标移出）</p>
+<div class="highlight-container" data-rel="Js"><figure class="iseeu highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BoxGeometry</span>, <span class="title class_">Color</span>, <span class="title class_">Mesh</span>, <span class="title class_">MeshStandardMaterial</span> &#125; <span class="keyword">from</span> <span class="string">&quot;three&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> allBaseObject = [] <span class="comment">// 返回所有基础模型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建地面</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> box = <span class="keyword">new</span> <span class="title class_">Mesh</span>(</span><br><span class="line">	<span class="keyword">new</span> <span class="title class_">BoxGeometry</span>(<span class="number">20</span>, <span class="number">20</span>, <span class="number">20</span>), <span class="comment">// 设置立方体的大小</span></span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">MeshStandardMaterial</span>(&#123; <span class="comment">// 设置材质</span></span><br><span class="line">        <span class="attr">color</span>: <span class="string">&#x27;rgb(36, 172, 242)&#x27;</span>, <span class="comment">// 设置材质的颜色</span></span><br><span class="line">        <span class="attr">metalness</span>: <span class="number">0.5</span>, <span class="comment">// 金属度（1 最像金属，0 最不像金属）</span></span><br><span class="line">        <span class="attr">roughness</span>: <span class="number">0</span> <span class="comment">// 粗糙度（0 最光滑，1 最粗糙）</span></span><br><span class="line">    &#125;)</span><br><span class="line">)</span><br><span class="line">box.<span class="property">name</span> = <span class="string">&#x27;box&#x27;</span> <span class="comment">// 设置模型 name</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 给模型添加鼠标移入事件</span></span><br><span class="line">box.<span class="title function_">addEventListener</span>(<span class="string">&quot;mouseenter&quot;</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    box.<span class="property">material</span>.<span class="property">color</span> = <span class="keyword">new</span> <span class="title class_">Color</span>(<span class="string">&quot;#ff3366&quot;</span>) <span class="comment">// 修改材质颜色为红色</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 给模型添加鼠标移除事件</span></span><br><span class="line">box.<span class="title function_">addEventListener</span>(<span class="string">&quot;mouseleave&quot;</span>, <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    box.<span class="property">material</span>.<span class="property">color</span> = <span class="keyword">new</span> <span class="title class_">Color</span>(<span class="string">&quot;rgb(36, 172, 242)&quot;</span>) <span class="comment">// 恢复模型的材质</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">allBaseObject.<span class="title function_">push</span>(box) <span class="comment">// 添加到模型数组</span></span><br></pre></td></tr></table></figure></div>
+<h1>参考连接</h1>
+<p><a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42776111/article/details/127511552">https://blog.csdn.net/weixin_42776111/article/details/127511552 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> threejs在vue项目中的基本使用</li>
+        <li><strong>作者:</strong> wawn</li>
+        <li><strong>创建于
+                :</strong> 2024-08-06 18:40:08</li>
+        
+            <li>
+                <strong>更新于
+                    :</strong> 2024-08-11 20:16:56
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://wawnwn.github.io/2024/08/06/前端/WebGL/threejs在vue项目中的基本使用/
+        </li>
+        <li>
+            <strong>
+                版权声明:
+            </strong>
+            
+
+            
+                本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a> 进行许可。
+            
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2024/08/11/%E5%89%8D%E7%AB%AF/WebGL/threejs-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%82%B9/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">threejs 基础知识点</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2024/08/04/%E5%89%8D%E7%AB%AF/WebGL/WebGL%E6%A6%82%E5%BF%B5%E5%92%8C%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">WebGL概念和基础入门</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          recaptchaV3Key: "wasd",
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">目录</div>
+        <div class="page-title">threejs在vue项目中的基本使用</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">1 threejs 介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">2 案例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">2.1 初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-%E5%AE%89%E8%A3%85-threejs"><span class="nav-text">2.1.1 安装 threejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%A1%B9%E7%9B%AE"><span class="nav-text">2.1.2 初始化项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-3-%E5%88%9B%E5%BB%BA%E6%B8%B2%E6%9F%93%E5%99%A8-WebGLRenderer"><span class="nav-text">2.1.3 创建渲染器 WebGLRenderer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-threejs-%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="nav-text">2.2 threejs 相关操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E5%BC%95%E5%85%A5-WebGLRenderer-%E6%B8%B2%E6%9F%93%E5%99%A8"><span class="nav-text">2.2.1 引入 WebGLRenderer 渲染器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E5%88%9B%E5%BB%BA%E5%9C%BA%E6%99%AF-Scene"><span class="nav-text">2.2.2 创建场景 Scene</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-%E5%88%9B%E5%BB%BA%E7%9B%B8%E6%9C%BA%E5%B9%B6%E8%AE%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE-PerspectiveCamera"><span class="nav-text">2.2.3 创建相机并设置位置 PerspectiveCamera</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-%E6%B7%BB%E5%8A%A0%E6%A8%A1%E5%9E%8B-Mesh"><span class="nav-text">2.2.4 添加模型 Mesh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-5-%E5%85%89%E7%BA%BF%E6%B7%BB%E5%8A%A0"><span class="nav-text">2.2.5 光线添加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-6-%E8%BD%A8%E9%81%93%E6%8E%A7%E5%88%B6%E5%99%A8-OrbitControls"><span class="nav-text">2.2.6 轨道控制器 OrbitControls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-7-%E6%B7%BB%E5%8A%A0%E7%82%B9%E5%85%89%E6%BA%90-PointLight"><span class="nav-text">2.2.7 添加点光源 PointLight</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-8-%E6%A8%A1%E5%9E%8B%E9%83%A8%E5%88%86%E6%8B%93%E5%B1%95"><span class="nav-text">2.2.8 模型部分拓展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-9-%E6%B7%BB%E5%8A%A0%E8%BE%85%E5%8A%A9%E7%BA%BF"><span class="nav-text">2.2.9 添加辅助线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-10-%E6%A8%A1%E5%9E%8B%E7%BC%96%E8%BE%91%E9%80%BB%E8%BE%91%E6%A2%B3%E7%90%86"><span class="nav-text">2.2.10 模型编辑逻辑梳理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">参考连接</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">wawn</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共撰写了 59 篇文章
+                    </span>
+                    
+                        <span>
+                            共 357.3k 字
+                        </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.1</a></span>
+        </div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="站内搜索您需要的内容..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+
+
+
+
+    
+<script src="/js/libs/anime.min.js"></script>
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

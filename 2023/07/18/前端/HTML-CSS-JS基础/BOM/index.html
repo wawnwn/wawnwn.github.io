@@ -41,7 +41,7 @@
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="/null" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/null">
-    <meta name="theme-color" content="#A31F34">
+    <meta name="theme-color" content="#6c9897">
     <link rel="shortcut icon" href="/null">
     <!--- Page Info-->
     
@@ -60,157 +60,6 @@
     
 
     
-        <style>
-    :root {
-        --preloader-background-color: #fff;
-        --preloader-text-color: #000;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --preloader-background-color: #202124;
-            --preloader-text-color: #fff;
-        }
-    }
-
-    @media (prefers-color-scheme: light) {
-        :root {
-            --preloader-background-color: #fff;
-            --preloader-text-color: #000;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .ml13 {
-            font-size: 2.6rem !important; /* Adjust this value as needed */
-        }
-    }
-
-    .preloader {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        padding: 12px;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh; /* 'h-screen' is 100% of the viewport height */
-        background-color: var(--preloader-background-color);
-        z-index: 1100; /* 'z-[1100]' sets the z-index */
-        transition: opacity 0.2s ease-in-out;
-    }
-
-    .ml13 {
-        font-size: 3.2rem;
-        /* text-transform: uppercase; */
-        color: var(--preloader-text-color);
-        letter-spacing: -1px;
-        font-weight: 500;
-        font-family: 'Chillax-Variable', sans-serif;
-        text-align: center;
-    }
-
-    .ml13 .word {
-        display: inline-flex;
-        flex-wrap: wrap;
-        white-space: nowrap;
-    }
-
-    .ml13 .letter {
-        display: inline-block;
-        line-height: 1em;
-    }
-</style>
-
-<div class="preloader">
-    
-<script src="/js/libs/anime.min.js"></script>
-
-    <h1 class="ml13">
-        wawn&#39;s blog
-    </h1>
-    <script>
-        var textWrapper = document.querySelector('.ml13');
-        // Split text into words
-        var words = textWrapper.textContent.trim().split(' ');
-
-        // Clear the existing content
-        textWrapper.innerHTML = '';
-
-        // Wrap each word and its letters in spans
-        words.forEach(function(word) {
-            var wordSpan = document.createElement('span');
-            wordSpan.classList.add('word');
-            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
-            textWrapper.appendChild(wordSpan);
-            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
-        });
-
-
-        anime.timeline({loop: true})
-            .add({
-                targets: '.ml13 .letter',
-                translateY: [100,0],
-                translateZ: 0,
-                opacity: [0,1],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 300 + 30 * i
-            }).add({
-            targets: '.ml13 .letter',
-            translateY: [0,-100],
-            opacity: [1,0],
-            easing: "easeInExpo",
-            duration: 1200,
-            delay: (el, i) => 100 + 30 * i
-        });
-
-        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
-
-        // If the theme status is not found in local storage, check the preferred color scheme
-        if (themeStatus === undefined || themeStatus === null) {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                themeStatus = 'dark';
-            } else {
-                themeStatus = 'light';
-            }
-        }
-
-        // Now you can use the themeStatus variable in your code
-        if (themeStatus) {
-            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
-            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
-        } else {
-            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
-            document.documentElement.style.setProperty('--preloader-text-color', '#000');
-        }
-
-        window.addEventListener('load', function () {
-            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
-        });
-
-        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
-        hidePreloaderAfterTimeout(5000);
-
-        function hidePreloaderAfterTimeout(delay) {
-            setTimeout(function () {
-                var preloader = document.querySelector('.preloader');
-                preloader.style.opacity = '0';
-                setTimeout(function () {
-                    preloader.style.display = 'none';
-                }, 200);
-            }, delay);
-        }
-    </script>
-</div>
-    
-
-    
 <link rel="stylesheet" href="/css/style.css">
 
 
@@ -221,10 +70,10 @@
     
 
     
-<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
 
     
-<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
 
     <!--- Font Part-->
     
@@ -235,13 +84,14 @@
     
         <link href="" rel="stylesheet">
     
-
+    
+    
 
     <script id="hexo-configurations">
     window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#6c9897","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":false,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
     window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
-    window.data = {"masonry":true};
+    window.data = {"masonry":false};
   </script>
     
     <!--- Fontawesome Part-->
@@ -277,6 +127,7 @@
 <!--        </span>-->
     
 </div>
+
 
 
 <main class="page-container" id="swup">
@@ -473,11 +324,11 @@
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">55</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -503,7 +354,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">BOM</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">BOM</h1>
                 </div>
             
             </div>
@@ -603,12 +454,12 @@
 <li>history 对象</li>
 </ol>
 <span id="more"></span>
-
-<h3 id="一、BOM概述"><a href="#一、BOM概述" class="headerlink" title="一、BOM概述"></a>一、BOM概述</h3><p><strong>1.1 什么是 BOM</strong> </p>
+<h3 id="一、BOM概述">一、BOM概述</h3>
+<p><strong>1.1 什么是 BOM</strong></p>
 <p>BOM（Browser Object Model）即<strong>浏览器对象模型</strong>，它提供了独立于内容而与浏览器窗口进行交互的对象，其核心对象是 window。</p>
 <p>BOM 由一系列相关的对象构成，并且每个对象都提供了很多方法与属性。</p>
 <p>BOM 缺乏标准，JavaScript 语法的标准化组织是 ECMA，DOM 的标准化组织是 W3C，BOM 最初是Netscape 浏览器标准的一部分。</p>
-<p><strong>DOM</strong> </p>
+<p><strong>DOM</strong></p>
 <ul>
 <li>文档对象模型</li>
 <li>DOM 就是把「文档」当做一个「对象」来看待</li>
@@ -626,16 +477,15 @@
 </ul>
 <p><strong>1.2 BOM 的构成</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/BOM/1.png" class>
-
-<p><strong>window 对象是浏览器的顶级对象，</strong>它具有双重角色。</p>
+<p>**window 对象是浏览器的顶级对象，**它具有双重角色。</p>
 <ol>
 <li>它是 JS 访问浏览器窗口的一个接口。</li>
 <li>它是一个全局对象。定义在全局作用域中的变量、函数都会变成 window 对象的属性和方法。在调用的时候可以省略 window，前面学习的对话框都属于 window 对象方法，如 alert()、prompt() 等。</li>
 </ol>
-<p><strong>注意：</strong>window下的一个特殊属性 window.name</p>
-<h3 id="二、window-对象的常见事件"><a href="#二、window-对象的常见事件" class="headerlink" title="二、window 对象的常见事件"></a>二、window 对象的常见事件</h3><p><strong>2.1 窗口加载事件</strong></p>
+<p>**注意：**window下的一个特殊属性 <a class="link" target="_blank" rel="noopener" href="http://window.name">window.name <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="二、window-对象的常见事件">二、window 对象的常见事件</h3>
+<p><strong>2.1 窗口加载事件</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">window.onload = function()&#123;&#125;</span><br><span class="line">或者</span><br><span class="line">window.addEventListener(&quot;load&quot;,function()&#123;&#125;);</span><br></pre></td></tr></table></figure></div>
-
 <p>window.onload 是窗口 (页面）加载事件,当文档内容完全加载完成会触发该事件(包括图像、脚本文件、CSS 文件等), 就调用的处理函数。</p>
 <p><strong>注意：</strong></p>
 <ol>
@@ -644,35 +494,35 @@
 <li>如果使用 addEventListener 则没有限制</li>
 </ol>
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.<span class="built_in">addEventListener</span>(<span class="string">&#x27;DOMContentLoaded&#x27;</span>,<span class="built_in">function</span>()&#123;&#125;)</span><br></pre></td></tr></table></figure></div>
-
 <p>DOMContentLoaded 事件触发时，仅当DOM加载完成，不包括样式表，图片，flash等等。</p>
 <p>Ie9以上才支持</p>
 <p>如果页面的图片很多的话, 从用户访问到onload触发可能需要较长的时间, 交互效果就不能实现，必然影响用户的体验，此时用 DOMContentLoaded 事件比较合适。</p>
 <p><strong>2.2 调整窗口大小事件</strong></p>
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">window.onresize = <span class="built_in">function</span>()&#123;&#125;</span><br><span class="line">window.<span class="built_in">addEventListener</span>(<span class="string">&quot;resize&quot;</span>,<span class="built_in">function</span>()&#123;&#125;);</span><br></pre></td></tr></table></figure></div>
-
 <p>window.onresize 是调整窗口大小加载事件, 当触发时就调用的处理函数。</p>
 <p><strong>注意：</strong></p>
 <ol>
 <li>只要窗口大小发生像素变化，就会触发这个事件。</li>
 <li>我们经常利用这个事件完成响应式布局。 window.innerWidth 当前屏幕的宽度</li>
 </ol>
-<h3 id="四、定时器"><a href="#四、定时器" class="headerlink" title="四、定时器"></a>四、定时器</h3><p><strong>3.1 两种定时器</strong></p>
+<h3 id="四、定时器">四、定时器</h3>
+<p><strong>3.1 两种定时器</strong></p>
 <p>window 对象给我们提供了 2 个非常好用的方法-定时器。</p>
 <ul>
-<li><p>setTimeout() </p>
+<li>
+<p>setTimeout()</p>
 </li>
-<li><p>setInterval()</p>
+<li>
+<p>setInterval()</p>
 </li>
 </ul>
 <p><strong>3.2 setTimeout() 定时器</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.setTimeout(调用函数, [延迟的毫秒数]);</span><br></pre></td></tr></table></figure></div>
-
 <p>setTimeout() 方法用于设置一个定时器，该定时器在定时器到期后执行调用函数。</p>
 <p><strong>注意：</strong></p>
 <ol>
 <li>window 可以省略。</li>
-<li>这个调用函数可以直接写函数，或者写函数名或者采取字符串‘函数名()’三种形式。第三种不推荐</li>
+<li>这个调用函数可以直接写函数，或者写函数名或者采取字符串‘函数名()'三种形式。第三种不推荐</li>
 <li>延迟的毫秒数省略默认是 0，如果写，必须是毫秒。</li>
 <li>因为定时器可能有很多，所以我们经常给定时器赋值一个标识符</li>
 </ol>
@@ -680,10 +530,9 @@
 <p>普通函数是按照代码顺序直接调用。</p>
 <p>而这个函数，需要等待时间，时间到了才去调用这个函数，因此称为回调函数。</p>
 <p>简单理解： 回调，就是回头调用的意思。上一件事干完，再回头再调用这个函数。</p>
-<p>以前我们讲的 element.onclick &#x3D; function(){} 或者 element.addEventListener(“click”, fn); 里面的 函数也是回调函数。</p>
+<p>以前我们讲的 element.onclick = function(){} 或者 element.addEventListener(“click”, fn); 里面的 函数也是回调函数。</p>
 <p><strong>3.3 停止 setTimeout() 定时器</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.clearTimeout(timeoutID)</span><br></pre></td></tr></table></figure></div>
-
 <p>clearTimeout()方法取消了先前通过调用 setTimeout() 建立的定时器。</p>
 <p><strong>注意：</strong></p>
 <ol>
@@ -692,7 +541,6 @@
 </ol>
 <p><strong>3.4 setInterval() 定时器</strong></p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.setInterval(回调函数, [间隔的毫秒数]);</span><br></pre></td></tr></table></figure></div>
-
 <p>setInterval() 方法重复调用一个函数，每隔这个时间，就去调用一次回调函数。</p>
 <p><strong>注意：</strong></p>
 <ol>
@@ -704,7 +552,6 @@
 </ol>
 <p><strong>3.5 停止 setInterval() 定时器</strong></p>
 <div class="highlight-container" data-rel="Cpp"><figure class="iseeu highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">window.<span class="built_in">clearInterval</span>(intervalID);</span><br></pre></td></tr></table></figure></div>
-
 <p>clearInterval()方法取消了先前通过调用 setInterval()建立的定时器。</p>
 <p><strong>注意：</strong></p>
 <ol>
@@ -720,7 +567,8 @@
 <li>方法调用中谁调用this指向谁</li>
 <li>构造函数中this指向构造函数的实例</li>
 </ol>
-<h3 id="四、JS-执行机制"><a href="#四、JS-执行机制" class="headerlink" title="四、JS 执行机制"></a>四、JS 执行机制</h3><p><strong>4.1 JS 是单线程</strong></p>
+<h3 id="四、JS-执行机制">四、JS 执行机制</h3>
+<p><strong>4.1 JS 是单线程</strong></p>
 <p>JavaScript 语言的一大特点就是单线程，也就是说，同一个时间只能做一件事。这是因为 Javascript 这门脚本语言诞生的使命所致——JavaScript 是为处理页面中用户的交互，以及操作 DOM 而诞生的。比如我们对某个 DOM 元素进行添加和删除操作，不能同时进行。 应该先进行添加，之后再删除。</p>
 <p>单线程就意味着，所有任务需要排队，前一个任务结束，才会执行后一个任务。这样所导致的问题是： 如果JS 执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞的感觉</p>
 <p><strong>4.2 同步和异步</strong></p>
@@ -746,37 +594,27 @@
 <li>一旦执行栈中的所有同步任务执行完毕，系统就会按次序读取任务队列中的异步任务，于是被读取的异步任务结束等待状态，进入执行栈，开始执行</li>
 </ol>
 <img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/BOM/2.png" class>
-
 <p>由于主线程不断的重复获得任务、执行任务、再获取任务、再执行，所以这种机制被称为事件循环（ event loop）。</p>
-<h3 id="五、location-对象"><a href="#五、location-对象" class="headerlink" title="五、location 对象"></a>五、location 对象</h3><p><strong>5.1 什么是 location 对象</strong></p>
+<h3 id="五、location-对象">五、location 对象</h3>
+<p><strong>5.1 什么是 location 对象</strong></p>
 <p>window 对象给我们提供了一个 location 属性用于获取或设置窗体的 URL，并且可以用于解析 URL 。 因为这个属性返回的是一个对象，所以我们将这个属性也称为 location 对象。</p>
 <p><strong>5.2 URL</strong></p>
 <p>统一资源定位符 (Uniform Resource Locator, URL) 是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的 URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它。</p>
 <p>URL 的一般语法格式为</p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">protocol://host[:port]/path/[?query]#fragment</span><br><span class="line">http://www.itcast.cn/index.html?name=andy&amp;age=18#link</span><br></pre></td></tr></table></figure></div>
-
 <img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/BOM/3.png" class>
-
-
-
 <p><strong>5.3 location 对象的属性</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/BOM/4.png" class>
-
 <p>重点记住： href 和 search</p>
 <p><strong>5.4 location 对象的方法</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/BOM/5.png" class>
-
-
-
-<h3 id="六、navigator-对象"><a href="#六、navigator-对象" class="headerlink" title="六、navigator 对象"></a>六、navigator 对象</h3><p>navigator 对象包含有关浏览器的信息，它有很多属性，我们最常用的是 userAgent，该属性可以返回由客户机发送服务器的 user-agent 头部的值。</p>
+<h3 id="六、navigator-对象">六、navigator 对象</h3>
+<p>navigator 对象包含有关浏览器的信息，它有很多属性，我们最常用的是 userAgent，该属性可以返回由客户机发送服务器的 user-agent 头部的值。</p>
 <p>下面前端代码可以判断用户那个终端打开页面，实现跳转</p>
 <div class="highlight-container" data-rel="Html"><figure class="iseeu highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|</span><br><span class="line">Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS</span><br><span class="line">|Symbian|Windows Phone)/i))) &#123;</span><br><span class="line"> window.location.href = &quot;&quot;; //手机</span><br><span class="line">&#125; else &#123;</span><br><span class="line"> window.location.href = &quot;&quot;; //电脑</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-
-
-
-<h3 id="七、history-对象"><a href="#七、history-对象" class="headerlink" title="七、history 对象"></a>七、history 对象</h3><p>window 对象给我们提供了一个 history 对象，与浏览器历史记录进行交互。该对象包含用户（在浏览器窗口中）访问过的 URL。</p>
+<h3 id="七、history-对象">七、history 对象</h3>
+<p>window 对象给我们提供了一个 history 对象，与浏览器历史记录进行交互。该对象包含用户（在浏览器窗口中）访问过的 URL。</p>
 <img lazyload src="/images/loading.svg" data-src="/2023/07/18/%E5%89%8D%E7%AB%AF/HTML-CSS-JS%E5%9F%BA%E7%A1%80/BOM/6.png" class>
-
 <p>history 对象一般在实际开发中比较少用，但是会在一些 OA 办公系统中见到。</p>
 
         </div>
@@ -877,6 +715,7 @@
           serverURL: 'https://example.example.com',
           lang: 'zh-CN',
           dark: 'body[class~="dark-mode"]',
+          reaction: false,
           requiredMeta: ['nick', 'mail'],
           emoji: [],
           recaptchaV3Key: "wasd",
@@ -905,7 +744,7 @@
         <div class="toc-content-container">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <div class="toc-title">此页目录</div>
+        <div class="toc-title">目录</div>
         <div class="page-title">BOM</div>
         <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81BOM%E6%A6%82%E8%BF%B0"><span class="nav-text">一、BOM概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81window-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BA%8B%E4%BB%B6"><span class="nav-text">二、window 对象的常见事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%AE%9A%E6%97%B6%E5%99%A8"><span class="nav-text">四、定时器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%9B%E3%80%81JS-%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-text">四、JS 执行机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%94%E3%80%81location-%E5%AF%B9%E8%B1%A1"><span class="nav-text">五、location 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%AD%E3%80%81navigator-%E5%AF%B9%E8%B1%A1"><span class="nav-text">六、navigator 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%83%E3%80%81history-%E5%AF%B9%E8%B1%A1"><span class="nav-text">七、history 对象</span></a></li></ol>
 
@@ -940,18 +779,18 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共 55 篇文章
+                        共撰写了 59 篇文章
                     </span>
                     
                         <span>
-                            共 342.3k 字
+                            共 357.3k 字
                         </span>
                     
                 </p>
             
         </div>
         
-            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
             <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
                 
                     <span id="busuanzi_container_site_uv" class="lg:!block">
@@ -969,7 +808,7 @@
         
         <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
             <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
-            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.1</a></span>
         </div>
         
         
@@ -1081,7 +920,7 @@
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜索..."
+                       placeholder="站内搜索您需要的内容..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
@@ -1199,13 +1038,10 @@
 
 
 
+
+
     
-<script src="/js/libs/minimasonry.min.js"></script>
-
-    
-<script src="/js/plugins/masonry.js" type="module"></script>
-
-
+<script src="/js/libs/anime.min.js"></script>
 
 
 

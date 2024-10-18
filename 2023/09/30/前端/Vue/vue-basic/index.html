@@ -18,12 +18,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="1. 初识Vue： 想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象； root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法； root容器里的代码被称为【Vue模板】； Vue实例和容器是一一对应的； 真实开发中只有一个Vue实例，并且会配合着组件一起使用； 中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性； 一旦data中的数据发生改变，">
+        <meta name="description" content="1. 初识Vue：  想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象； root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法； root容器里的代码被称为【Vue模板】； Vue实例和容器是一一对应的； 真实开发中只有一个Vue实例，并且会配合着组件一起使用；  中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性；  一旦data中的数据发生">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue_basic">
 <meta property="og:url" content="http://wawnwn.github.io/2023/09/30/%E5%89%8D%E7%AB%AF/Vue/vue-basic/index.html">
 <meta property="og:site_name" content="wawn&#39;s blog">
-<meta property="og:description" content="1. 初识Vue： 想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象； root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法； root容器里的代码被称为【Vue模板】； Vue实例和容器是一一对应的； 真实开发中只有一个Vue实例，并且会配合着组件一起使用； 中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性； 一旦data中的数据发生改变，">
+<meta property="og:description" content="1. 初识Vue：  想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象； root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法； root容器里的代码被称为【Vue模板】； Vue实例和容器是一一对应的； 真实开发中只有一个Vue实例，并且会配合着组件一起使用；  中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性；  一旦data中的数据发生">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-09-30T07:48:00.000Z">
 <meta property="article:modified_time" content="2023-11-03T08:10:13.199Z">
@@ -34,7 +34,7 @@
     <!--- Icon Part-->
     <link rel="icon" type="image/png" href="/null" sizes="192x192">
     <link rel="apple-touch-icon" sizes="180x180" href="/null">
-    <meta name="theme-color" content="#A31F34">
+    <meta name="theme-color" content="#6c9897">
     <link rel="shortcut icon" href="/null">
     <!--- Page Info-->
     
@@ -53,157 +53,6 @@
     
 
     
-        <style>
-    :root {
-        --preloader-background-color: #fff;
-        --preloader-text-color: #000;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        :root {
-            --preloader-background-color: #202124;
-            --preloader-text-color: #fff;
-        }
-    }
-
-    @media (prefers-color-scheme: light) {
-        :root {
-            --preloader-background-color: #fff;
-            --preloader-text-color: #000;
-        }
-    }
-
-    @media (max-width: 600px) {
-        .ml13 {
-            font-size: 2.6rem !important; /* Adjust this value as needed */
-        }
-    }
-
-    .preloader {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        padding: 12px;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh; /* 'h-screen' is 100% of the viewport height */
-        background-color: var(--preloader-background-color);
-        z-index: 1100; /* 'z-[1100]' sets the z-index */
-        transition: opacity 0.2s ease-in-out;
-    }
-
-    .ml13 {
-        font-size: 3.2rem;
-        /* text-transform: uppercase; */
-        color: var(--preloader-text-color);
-        letter-spacing: -1px;
-        font-weight: 500;
-        font-family: 'Chillax-Variable', sans-serif;
-        text-align: center;
-    }
-
-    .ml13 .word {
-        display: inline-flex;
-        flex-wrap: wrap;
-        white-space: nowrap;
-    }
-
-    .ml13 .letter {
-        display: inline-block;
-        line-height: 1em;
-    }
-</style>
-
-<div class="preloader">
-    
-<script src="/js/libs/anime.min.js"></script>
-
-    <h1 class="ml13">
-        wawn&#39;s blog
-    </h1>
-    <script>
-        var textWrapper = document.querySelector('.ml13');
-        // Split text into words
-        var words = textWrapper.textContent.trim().split(' ');
-
-        // Clear the existing content
-        textWrapper.innerHTML = '';
-
-        // Wrap each word and its letters in spans
-        words.forEach(function(word) {
-            var wordSpan = document.createElement('span');
-            wordSpan.classList.add('word');
-            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
-            textWrapper.appendChild(wordSpan);
-            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
-        });
-
-
-        anime.timeline({loop: true})
-            .add({
-                targets: '.ml13 .letter',
-                translateY: [100,0],
-                translateZ: 0,
-                opacity: [0,1],
-                easing: "easeOutExpo",
-                duration: 1400,
-                delay: (el, i) => 300 + 30 * i
-            }).add({
-            targets: '.ml13 .letter',
-            translateY: [0,-100],
-            opacity: [1,0],
-            easing: "easeInExpo",
-            duration: 1200,
-            delay: (el, i) => 100 + 30 * i
-        });
-
-        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
-
-        // If the theme status is not found in local storage, check the preferred color scheme
-        if (themeStatus === undefined || themeStatus === null) {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                themeStatus = 'dark';
-            } else {
-                themeStatus = 'light';
-            }
-        }
-
-        // Now you can use the themeStatus variable in your code
-        if (themeStatus) {
-            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
-            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
-        } else {
-            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
-            document.documentElement.style.setProperty('--preloader-text-color', '#000');
-        }
-
-        window.addEventListener('load', function () {
-            hidePreloaderAfterTimeout(1000); // Hide after 1000 milliseconds once the window has loaded
-        });
-
-        // Backup failsafe: Hide preloader after a maximum of 5000 milliseconds, regardless of the window load event
-        hidePreloaderAfterTimeout(5000);
-
-        function hidePreloaderAfterTimeout(delay) {
-            setTimeout(function () {
-                var preloader = document.querySelector('.preloader');
-                preloader.style.opacity = '0';
-                setTimeout(function () {
-                    preloader.style.display = 'none';
-                }, 200);
-            }, delay);
-        }
-    </script>
-</div>
-    
-
-    
 <link rel="stylesheet" href="/css/style.css">
 
 
@@ -214,10 +63,10 @@
     
 
     
-<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
 
     
-<link rel="stylesheet" href="/fonts/Satoshi/satoshi.css">
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
 
     <!--- Font Part-->
     
@@ -228,13 +77,14 @@
     
         <link href="" rel="stylesheet">
     
-
+    
+    
 
     <script id="hexo-configurations">
     window.config = {"hostname":"wawnwn.github.io","root":"/","language":"zh-CN","path":"search.xml"};
-    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.6.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/10/5 11:45:14"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":true,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"5rem","h2":"4rem","h3":"2.8rem","h4":"2.5rem","h5":"2.2rem","h6":"2rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":true,"default":"cc_by_nc_sa"},"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wall.webp","skip_dirs":[]}},"colors":{"primary":"#6c9897","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"english":{"enable":true,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":false,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wall.webp","dark":"/images/dark.jpg"},"title":"wawn's blog","subtitle":{"text":["因为孤独因为你本身而千变万化"],"hitokoto":{"enable":false,"show_author":false,"api":"https://v1.hitokoto.cn"},"typing_speed":null,"backing_speed":null,"starting_delay":null,"backing_delay":null,"loop":false,"smart_backspace":false},"text_color":{"light":"#F0F8FF","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":"Noto Sans SC","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"ye50932510@gmail.com"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.7.1","navbar":{"auto_hide":false,"color":{"left":"#87CEFA","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Photo":{"path":"/masonry/","icon":"fa-regular fa-link"}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"cloud"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":{"Archives":{"path":"/archives","icon":"fa-regular fa-archive"},"Tags":{"path":"/tags","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories","icon":"fa-regular fa-folder"}}},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/8/17 11:45:14"};
     window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
-    window.data = {"masonry":true};
+    window.data = {"masonry":false};
   </script>
     
     <!--- Fontawesome Part-->
@@ -270,6 +120,7 @@
 <!--        </span>-->
     
 </div>
+
 
 
 <main class="page-container" id="swup">
@@ -466,11 +317,11 @@
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">18</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">55</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -496,7 +347,7 @@
         <div class="article-title relative w-full">
             
                 <div class="w-full flex items-center pt-6 justify-start">
-                    <h1 class="article-title-regular text-second-text-color text-4xl md:text-6xl font-bold px-2 sm:px-6 md:px-8 py-3">vue_basic</h1>
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">vue_basic</h1>
                 </div>
             
             </div>
@@ -562,7 +413,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.4k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>4.3k 字</span>
         </span>
     
     
@@ -586,24 +437,33 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h3 id="1-初识Vue："><a href="#1-初识Vue：" class="headerlink" title="1. 初识Vue："></a>1. 初识Vue：</h3><ol>
+            <h3 id="1-初识Vue：">1. 初识Vue：</h3>
+<ol>
 <li>想让Vue工作，就必须创建一个Vue实例，且要传入一个配置对象；</li>
 <li>root容器里的代码依然符合html规范，只不过混入了一些特殊的Vue语法；</li>
 <li>root容器里的代码被称为【Vue模板】；</li>
 <li>Vue实例和容器是一一对应的；</li>
 <li>真实开发中只有一个Vue实例，并且会配合着组件一起使用；</li>
-<li>中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性；</li>
+<li>
+中的xxx要写js表达式，且xxx可以自动读取到data中的所有属性；
+</li>
 <li>一旦data中的数据发生改变，那么页面中用到该数据的地方也会自动更新；</li>
 </ol>
 <p>注意区分：js表达式 和 js代码(语句)</p>
 <ol>
 <li>表达式：一个表达式会产生一个值，可以放在任何一个需要值的地方：</li>
 </ol>
-<p>(1). a<br>(2). a+b<br>(3). demo(1)<br>(4). x &#x3D;&#x3D;&#x3D; y ? ‘a’ : ‘b’</p>
+<p>(1). a<br>
+(2). a+b<br>
+(3). demo(1)<br>
+(4). x === y ? ‘a’ : ‘b’</p>
 <ol start="2">
-<li>js代码(语句)<br>(1). if(){}<br>(2). for(){}</li>
+<li>js代码(语句)<br>
+(1). if(){}<br>
+(2). for(){}</li>
 </ol>
-<h3 id="2-Vue模板语法有2大类："><a href="#2-Vue模板语法有2大类：" class="headerlink" title="2. Vue模板语法有2大类："></a>2. Vue模板语法有2大类：</h3><ol>
+<h3 id="2-Vue模板语法有2大类：">2. Vue模板语法有2大类：</h3>
+<ol>
 <li>插值语法：</li>
 </ol>
 <p>功能：用于解析标签体内容。</p>
@@ -611,10 +471,11 @@
 <ol start="2">
 <li>指令语法：</li>
 </ol>
-<p>功能：用于解析标签（包括：标签属性、标签体内容、绑定事件…..）。</p>
-<p>举例：v-bind:href&#x3D;”xxx” 或  简写为 :href&#x3D;”xxx”，xxx同样要写js表达式，且可以直接读取到data中的所有属性。</p>
-<p>备注：Vue中有很多的指令，且形式都是：v-????，此处我们只是拿v-bind举个例子。</p>
-<h3 id="3-Vue中有2种数据绑定的方式："><a href="#3-Vue中有2种数据绑定的方式：" class="headerlink" title="3. Vue中有2种数据绑定的方式："></a>3. Vue中有2种数据绑定的方式：</h3><ol>
+<p>功能：用于解析标签（包括：标签属性、标签体内容、绑定事件…）。</p>
+<p>举例：v-bind:href=“xxx” 或  简写为 :href=“xxx”，xxx同样要写js表达式，且可以直接读取到data中的所有属性。</p>
+<p>备注：Vue中有很多的指令，且形式都是：v-???，此处我们只是拿v-bind举个例子。</p>
+<h3 id="3-Vue中有2种数据绑定的方式：">3. Vue中有2种数据绑定的方式：</h3>
+<ol>
 <li>单向绑定(v-bind)：数据只能从data流向页面。</li>
 <li>双向绑定(v-model)：数据不仅能从data流向页面，还可以从页面流向data。</li>
 </ol>
@@ -623,20 +484,24 @@
 <li>双向绑定一般都应用在表单类元素上（如：input、select等）</li>
 <li>v-model:value 可以简写为 v-model，因为v-model默认收集的就是value值。</li>
 </ol>
-<h3 id="4-data与el的2种写法"><a href="#4-data与el的2种写法" class="headerlink" title="4. data与el的2种写法"></a>4. data与el的2种写法</h3><ol>
+<h3 id="4-data与el的2种写法">4. data与el的2种写法</h3>
+<ol>
 <li>el有2种写法</li>
 </ol>
-<p>(1).new Vue时候配置el属性。<br>(2).先创建Vue实例，随后再通过vm.$mount(‘#root’)指定el的值。</p>
+<p>(1).new Vue时候配置el属性。<br>
+(2).先创建Vue实例，随后再通过vm.$mount(‘#root’)指定el的值。</p>
 <ol start="2">
 <li>data有2种写法</li>
 </ol>
-<p>(1).对象式<br>(2).函数式</p>
+<p>(1).对象式<br>
+(2).函数式</p>
 <p>如何选择：目前哪种写法都可以，以后学习到组件时，data必须使用函数式，否则会报错。</p>
 <ol start="3">
 <li>一个重要的原则：</li>
 </ol>
 <p>由Vue管理的函数，一定不要写箭头函数，一旦写了箭头函数，this就不再是Vue实例了。</p>
-<h3 id="5-MVVM模型"><a href="#5-MVVM模型" class="headerlink" title="5. MVVM模型"></a>5. MVVM模型</h3><ol>
+<h3 id="5-MVVM模型">5. MVVM模型</h3>
+<ol>
 <li>M：模型(Model) ：data中的数据</li>
 <li>V：视图(View) ：模板代码</li>
 <li>VM：视图模型(ViewModel)：Vue实例</li>
@@ -646,10 +511,11 @@
 <li>data中所有的属性，最后都出现在了vm身上。</li>
 <li>vm身上所有的属性 及 Vue原型上所有属性，在Vue模板中都可以直接使用。</li>
 </ol>
-<h3 id="6-数据代理"><a href="#6-数据代理" class="headerlink" title="6. 数据代理"></a>6. 数据代理</h3><ol>
+<h3 id="6-数据代理">6. 数据代理</h3>
+<ol>
 <li>Vue中的数据代理：</li>
 </ol>
-<p>​	通过vm对象来代理data对象中属性的操作（读&#x2F;写）</p>
+<p>​	通过vm对象来代理data对象中属性的操作（读/写）</p>
 <ol start="2">
 <li>Vue中数据代理的好处：</li>
 </ol>
@@ -657,14 +523,15 @@
 <ol start="3">
 <li>基本原理：</li>
 </ol>
-<p>​	通过Object.defineProperty()把data对象中所有属性添加到vm上。为每一个添加到vm上的属性，都指定一个getter&#x2F;setter。在getter&#x2F;setter内部去操作（读&#x2F;写）data中对应的属性。</p>
-<h3 id="7-事件处理"><a href="#7-事件处理" class="headerlink" title="7. 事件处理"></a>7. 事件处理</h3><p>事件的基本使用：</p>
+<p>​	通过Object.defineProperty()把data对象中所有属性添加到vm上。为每一个添加到vm上的属性，都指定一个getter/setter。在getter/setter内部去操作（读/写）data中对应的属性。</p>
+<h3 id="7-事件处理">7. 事件处理</h3>
+<p>事件的基本使用：</p>
 <ol>
 <li>使用v-on:xxx 或 @xxx 绑定事件，其中xxx是事件名；</li>
 <li>事件的回调需要配置在methods对象中，最终会在vm上；</li>
 <li>methods中配置的函数，不要用箭头函数！否则this就不是vm了；</li>
 <li>methods中配置的函数，都是被Vue所管理的函数，this的指向是vm 或 组件实例对象；</li>
-<li>@click&#x3D;”demo” 和 @click&#x3D;”demo($event)” 效果一致，但后者可以传参；</li>
+<li>@click=“demo” 和 @click=“demo($event)” 效果一致，但后者可以传参；</li>
 </ol>
 <p>Vue中的事件修饰符：</p>
 <ol>
@@ -677,22 +544,24 @@
 </ol>
 <p>1.Vue中常用的按键别名：</p>
 <ul>
-<li>回车 &#x3D;&gt; enter</li>
-<li>删除 &#x3D;&gt; delete (捕获“删除”和“退格”键)</li>
-<li>退出 &#x3D;&gt; esc</li>
-<li>空格 &#x3D;&gt; space</li>
-<li>换行 &#x3D;&gt; tab (特殊，必须配合keydown去使用)</li>
-<li>上 &#x3D;&gt; up</li>
-<li>下 &#x3D;&gt; down</li>
-<li>左 &#x3D;&gt; left</li>
-<li>右 &#x3D;&gt; right</li>
+<li>回车 =&gt; enter</li>
+<li>删除 =&gt; delete (捕获“删除”和“退格”键)</li>
+<li>退出 =&gt; esc</li>
+<li>空格 =&gt; space</li>
+<li>换行 =&gt; tab (特殊，必须配合keydown去使用)</li>
+<li>上 =&gt; up</li>
+<li>下 =&gt; down</li>
+<li>左 =&gt; left</li>
+<li>右 =&gt; right</li>
 </ul>
 <p>2.Vue未提供别名的按键，可以使用按键原始的key值去绑定，但注意要转为kebab-case（短横线命名）</p>
 <p>3.系统修饰键（用法特殊）：ctrl、alt、shift、meta</p>
-<p>(1).配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。<br>(2).配合keydown使用：正常触发事件。</p>
+<p>(1).配合keyup使用：按下修饰键的同时，再按下其他键，随后释放其他键，事件才被触发。<br>
+(2).配合keydown使用：正常触发事件。</p>
 <p>4.也可以使用keyCode去指定具体的按键（不推荐）</p>
-<p>5.Vue.config.keyCodes.自定义键名 &#x3D; 键码，可以去定制按键别名</p>
-<h3 id="8-计算属性"><a href="#8-计算属性" class="headerlink" title="8. 计算属性"></a>8. 计算属性</h3><p>1.定义：要用的属性不存在，要通过已有属性计算得来。</p>
+<p>5.Vue.config.keyCodes.自定义键名 = 键码，可以去定制按键别名</p>
+<h3 id="8-计算属性">8. 计算属性</h3>
+<p>1.定义：要用的属性不存在，要通过已有属性计算得来。</p>
 <p>2.原理：底层借助了Objcet.defineproperty方法提供的getter和setter。</p>
 <p>3.get函数什么时候执行？</p>
 <p>(1).初次读取时会执行一次。</p>
@@ -702,8 +571,9 @@
 <pre><code>1.计算属性最终会出现在vm上，直接读取使用即可。
 2.如果计算属性要被修改，那必须写set函数去响应修改，且set中要引起计算时依赖的数据发生改变。
 </code></pre>
-<p>​    </p>
-<h3 id="9-监视属性"><a href="#9-监视属性" class="headerlink" title="9. 监视属性"></a>9. 监视属性</h3><p>监视属性watch：</p>
+<p>​</p>
+<h3 id="9-监视属性">9. 监视属性</h3>
+<p>监视属性watch：</p>
 <p>1.当被监视的属性变化时, 回调函数自动调用, 进行相关操作</p>
 <p>2.监视的属性必须存在，才能进行监视！！</p>
 <p>3.监视的两种写法：</p>
@@ -714,79 +584,111 @@
 <pre><code>(1).Vue中的watch默认不监测对象内部值的改变（一层）。
 (2).配置deep:true可以监测对象内部值改变（多层）。
 </code></pre>
-<p>备注：<br>(1).Vue自身可以监测对象内部值的改变，但Vue提供的watch默认不可以！<br>(2).使用watch时根据数据的具体结构，决定是否采用深度监视。</p>
-<h3 id="10-绑定样式："><a href="#10-绑定样式：" class="headerlink" title="10. 绑定样式："></a>10. 绑定样式：</h3><ol>
+<p>备注：<br>
+(1).Vue自身可以监测对象内部值的改变，但Vue提供的watch默认不可以！<br>
+(2).使用watch时根据数据的具体结构，决定是否采用深度监视。</p>
+<h3 id="10-绑定样式：">10. 绑定样式：</h3>
+<ol>
 <li>class样式</li>
 </ol>
-<p>写法:class&#x3D;”xxx” xxx可以是字符串、对象、数组。</p>
+<p>写法:class=“xxx” xxx可以是字符串、对象、数组。</p>
 <p>字符串写法适用于：类名不确定，要动态获取。</p>
 <p>对象写法适用于：要绑定多个样式，个数不确定，名字也不确定。</p>
 <p>数组写法适用于：要绑定多个样式，个数确定，名字也确定，但不确定用不用。</p>
 <ol start="2">
 <li>style样式</li>
 </ol>
-<p>:style&#x3D;”{fontSize: xxx}”其中xxx是动态值。</p>
-<p>:style&#x3D;”[a,b]”其中a、b是样式对象。</p>
-<h3 id="11-条件渲染："><a href="#11-条件渲染：" class="headerlink" title="11. 条件渲染："></a>11. 条件渲染：</h3><h4 id="1-v-if"><a href="#1-v-if" class="headerlink" title="1.v-if"></a>1.v-if</h4><p>写法：</p>
-<p>(1).v-if&#x3D;”表达式” </p>
-<p>(2).v-else-if&#x3D;”表达式”</p>
-<p>(3).v-else&#x3D;”表达式”</p>
+<p>:style=&quot;{fontSize: xxx}&quot;其中xxx是动态值。</p>
+<p>:style=&quot;[a,b]&quot;其中a、b是样式对象。</p>
+<h3 id="11-条件渲染：">11. 条件渲染：</h3>
+<h4 id="1-v-if">1.v-if</h4>
+<p>写法：</p>
+<p>(1).v-if=“表达式”</p>
+<p>(2).v-else-if=“表达式”</p>
+<p>(3).v-else=“表达式”</p>
 <p>适用于：切换频率较低的场景。</p>
 <p>特点：不展示的DOM元素直接被移除。</p>
 <p>注意：v-if可以和:v-else-if、v-else一起使用，但要求结构不能被“打断”。</p>
-<h4 id="2-v-show"><a href="#2-v-show" class="headerlink" title="2.v-show"></a>2.v-show</h4><p>写法：v-show&#x3D;”表达式”</p>
+<h4 id="2-v-show">2.v-show</h4>
+<p>写法：v-show=“表达式”</p>
 <p>适用于：切换频率较高的场景。</p>
 <p>特点：不展示的DOM元素未被移除，仅仅是使用样式隐藏掉</p>
 <p>3.备注：使用v-if的时，元素可能无法获取到，而使用v-show一定可以获取到。</p>
-<h3 id="12-列表渲染"><a href="#12-列表渲染" class="headerlink" title="12. 列表渲染"></a>12. 列表渲染</h3><h4 id="1-v-for指令"><a href="#1-v-for指令" class="headerlink" title="1. v-for指令:"></a>1. v-for指令:</h4><p>1.用于展示列表数据</p>
-<p>2.语法：v-for&#x3D;”(item, index) in xxx” :key&#x3D;”yyy”</p>
+<h3 id="12-列表渲染">12. 列表渲染</h3>
+<h4 id="1-v-for指令">1. v-for指令:</h4>
+<p>1.用于展示列表数据</p>
+<p>2.语法：v-for=“(item, index) in xxx” :key=“yyy”</p>
 <p>3.可遍历：数组、对象、字符串（用的很少）、指定次数（用的很少）</p>
-<h4 id="2-key的原理"><a href="#2-key的原理" class="headerlink" title="2. key的原理"></a>2. key的原理</h4><p>面试题：react、vue中的key有什么作用？（key的内部原理）</p>
+<h4 id="2-key的原理">2. key的原理</h4>
+<p>面试题：react、vue中的key有什么作用？（key的内部原理）</p>
 <ol>
-<li><p>虚拟DOM中key的作用：</p>
-<p> key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】, 随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下：</p>
+<li>
+<p>虚拟DOM中key的作用：</p>
+<p>key是虚拟DOM对象的标识，当数据发生变化时，Vue会根据【新数据】生成【新的虚拟DOM】, 随后Vue进行【新虚拟DOM】与【旧虚拟DOM】的差异比较，比较规则如下：</p>
 </li>
-<li><p>对比规则：、</p>
+<li>
+<p>对比规则：、</p>
 </li>
 </ol>
-<p>(1).旧虚拟DOM中找到了与新虚拟DOM相同的key：<br>        ①.若虚拟DOM中内容没变, 直接使用之前的真实DOM！<br>        ②.若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM。</p>
-<p>(2).旧虚拟DOM中未找到与新虚拟DOM相同的key<br>        创建新的真实DOM，随后渲染到到页面。</p>
+<p>(1).旧虚拟DOM中找到了与新虚拟DOM相同的key：<br>
+①.若虚拟DOM中内容没变, 直接使用之前的真实DOM！<br>
+②.若虚拟DOM中内容变了, 则生成新的真实DOM，随后替换掉页面中之前的真实DOM。</p>
+<p>(2).旧虚拟DOM中未找到与新虚拟DOM相同的key<br>
+创建新的真实DOM，随后渲染到到页面。</p>
 <ol start="3">
-<li><p>用index作为key可能会引发的问题：</p>
+<li>
+<p>用index作为key可能会引发的问题：</p>
 <ol>
-<li><p>若对数据进行：逆序添加、逆序删除等破坏顺序操作:<br> 会产生没有必要的真实DOM更新 &#x3D;&#x3D;&gt; 界面效果没问题, 但效率低。</p>
+<li>
+<p>若对数据进行：逆序添加、逆序删除等破坏顺序操作:<br>
+会产生没有必要的真实DOM更新 ==&gt; 界面效果没问题, 但效率低。</p>
 </li>
-<li><p>如果结构中还包含输入类的DOM：<br> 会产生错误DOM更新 &#x3D;&#x3D;&gt; 界面有问题。</p>
+<li>
+<p>如果结构中还包含输入类的DOM：<br>
+会产生错误DOM更新 ==&gt; 界面有问题。</p>
 </li>
 </ol>
 </li>
-<li><p>开发中如何选择key?:</p>
+<li>
+<p>开发中如何选择key?:</p>
 <ol>
-<li><p>最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值。</p>
+<li>
+<p>最好使用每条数据的唯一标识作为key, 比如id、手机号、身份证号、学号等唯一值。</p>
 </li>
-<li><p>如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。</p>
+<li>
+<p>如果不存在对数据的逆序添加、逆序删除等破坏顺序操作，仅用于渲染列表用于展示，使用index作为key是没有问题的。</p>
 </li>
 </ol>
 </li>
 </ol>
-<h4 id="3-Vue监视数据的原理："><a href="#3-Vue监视数据的原理：" class="headerlink" title="3. Vue监视数据的原理："></a>3. Vue监视数据的原理：</h4><ol>
-<li><p>vue会监视data中所有层次的数据。</p>
+<h4 id="3-Vue监视数据的原理：">3. Vue监视数据的原理：</h4>
+<ol>
+<li>
+<p>vue会监视data中所有层次的数据。</p>
 </li>
-<li><p>如何监测对象中的数据？</p>
-<p> 通过setter实现监视，且要在new Vue时就传入要监测的数据。</p>
-<p> (1).对象中后追加的属性，Vue默认不做响应式处理</p>
-<p> (2).如需给后添加的属性做响应式，请使用如下API：<br> Vue.set(target，propertyName&#x2F;index，value) 或<br> vm.$set(target，propertyName&#x2F;index，value)</p>
+<li>
+<p>如何监测对象中的数据？</p>
+<p>通过setter实现监视，且要在new Vue时就传入要监测的数据。</p>
+<p>(1).对象中后追加的属性，Vue默认不做响应式处理</p>
+<p>(2).如需给后添加的属性做响应式，请使用如下API：<br>
+Vue.set(target，propertyName/index，value) 或<br>
+vm.$set(target，propertyName/index，value)</p>
 </li>
-<li><p>如何监测数组中的数据？</p>
-<p> 通过包裹数组更新元素的方法实现，本质就是做了两件事：<br>  (1).调用原生对应的方法对数组进行更新。<br>  (2).重新解析模板，进而更新页面。</p>
+<li>
+<p>如何监测数组中的数据？</p>
+<p>通过包裹数组更新元素的方法实现，本质就是做了两件事：<br>
+(1).调用原生对应的方法对数组进行更新。<br>
+(2).重新解析模板，进而更新页面。</p>
 </li>
-<li><p>在Vue修改数组中的某个元素一定要用如下方法：</p>
-<p> 1.使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()</p>
-<p> 2.Vue.set() 或 vm.$set()</p>
+<li>
+<p>在Vue修改数组中的某个元素一定要用如下方法：</p>
+<p>1.使用这些API:push()、pop()、shift()、unshift()、splice()、sort()、reverse()</p>
+<p>2.Vue.set() 或 vm.$set()</p>
 </li>
 </ol>
 <p>特别注意：Vue.set() 和 vm.$set() 不能给vm 或 vm的根数据对象 添加属性！！！</p>
-<h3 id="13-收集表单数据："><a href="#13-收集表单数据：" class="headerlink" title="13. 收集表单数据："></a>13. 收集表单数据：</h3><p>若：<input type="text">，则v-model收集的是value值，用户输入的就是value值。</p>
+<h3 id="13-收集表单数据：">13. 收集表单数据：</h3>
+<p>若：<input type="text">，则v-model收集的是value值，用户输入的就是value值。</p>
 <p>若：<input type="radio">，则v-model收集的是value值，且要给标签配置value值。</p>
 <p>若：<input type="checkbox"></p>
 <p>1.没有配置input的value属性，那么收集的就是checked（勾选 or 未勾选，是布尔值）</p>
@@ -797,7 +699,8 @@
 <p>lazy：失去焦点再收集数据</p>
 <p>number：输入字符串转为有效的数字</p>
 <p>trim：输入首尾空格过滤</p>
-<h3 id="14-过滤器："><a href="#14-过滤器：" class="headerlink" title="14. 过滤器："></a>14. 过滤器：</h3><p>定义：对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）。</p>
+<h3 id="14-过滤器：">14. 过滤器：</h3>
+<p>定义：对要显示的数据进行特定格式化后再显示（适用于一些简单逻辑的处理）。</p>
 <p>语法：</p>
 <pre><code>1.注册过滤器：Vue.filter(name,callback) 或 new Vue&#123;filters:&#123;&#125;&#125;
 
@@ -807,7 +710,8 @@
 <pre><code>1. 过滤器也可以接收额外参数、多个过滤器也可以串联
 2. 并没有改变原本的数据, 是产生新的对应的数据
 </code></pre>
-<h3 id="15-内置指令"><a href="#15-内置指令" class="headerlink" title="15. 内置指令"></a>15. 内置指令</h3><p>我们学过的指令：</p>
+<h3 id="15-内置指令">15. 内置指令</h3>
+<p>我们学过的指令：</p>
 <pre><code>v-bind  : 单向绑定解析表达式, 可简写为 :xxx
 
 v-model : 双向数据绑定
@@ -832,15 +736,15 @@ v-show  : 条件渲染 (动态控制节点是否展示)
 
 2.与插值语法的区别：
 
-    (1).v-html会替换掉节点中所有的内容，&#123;&#123;xx&#125;&#125;则不会。
+	(1).v-html会替换掉节点中所有的内容，&#123;&#123;xx&#125;&#125;则不会。
 
-    (2).v-html可以识别html结构。
+	(2).v-html可以识别html结构。
 
 3.严重注意：v-html有安全性问题！！！！
 
-    (1).在网站上动态渲染任意HTML是非常危险的，容易导致XSS攻击。
+	(1).在网站上动态渲染任意HTML是非常危险的，容易导致XSS攻击。
 
-    (2).一定要在可信的内容上使用v-html，永不要用在用户提交的内容上！
+	(2).一定要在可信的内容上使用v-html，永不要用在用户提交的内容上！
 </code></pre>
 <p>v-cloak指令（没有值）：</p>
 <pre><code>1.本质是一个特殊属性，Vue实例创建完毕并接管容器后，会删掉v-cloak属性。
@@ -857,49 +761,52 @@ v-show  : 条件渲染 (动态控制节点是否展示)
 
 2.可利用它跳过：没有使用指令语法、没有使用插值语法的节点，会加快编译。
 </code></pre>
-<h3 id="16-自定义属性"><a href="#16-自定义属性" class="headerlink" title="16. 自定义属性"></a>16. 自定义属性</h3><p>需求1：定义一个v-big指令，和v-text功能类似，但会把绑定的数值放大10倍。</p>
+<h3 id="16-自定义属性">16. 自定义属性</h3>
+<p>需求1：定义一个v-big指令，和v-text功能类似，但会把绑定的数值放大10倍。</p>
 <p>需求2：定义一个v-fbind指令，和v-bind功能类似，但可以让其所绑定的input元素默认获取焦点。</p>
 <p>自定义指令总结：</p>
 <p>一、定义语法：</p>
 <p>(1).局部指令：</p>
 <pre><code>new Vue(&#123;                              
-    directives:&#123;指令名:配置对象&#125;        
+	directives:&#123;指令名:配置对象&#125;        
 &#125;)                                    
 或
 new Vue(&#123;
-    directives&#123;指令名:回调函数&#125;
+	directives&#123;指令名:回调函数&#125;
 &#125;)
 </code></pre>
 <p>(2).全局指令：</p>
 <pre><code>Vue.directive(指令名,配置对象) 或  Vue.directive(指令名,回调函数)
 </code></pre>
-<p> 二、配置对象中常用的3个回调：</p>
+<p>二、配置对象中常用的3个回调：</p>
 <p>(1).bind：指令与元素成功绑定时调用。</p>
 <p>(2).inserted：指令所在元素被插入页面时调用。</p>
 <p>(3).update：指令所在模板结构被重新解析时调用。</p>
 <p>三、备注：</p>
 <p>1.指令定义时不加v-，但使用时要加v-；</p>
 <p>2.指令名如果是多个单词，要使用kebab-case命名方式，不要用camelCase命名。</p>
-<h3 id="17-生命周期"><a href="#17-生命周期" class="headerlink" title="17.生命周期"></a>17.生命周期</h3><p>生命周期：</p>
+<h3 id="17-生命周期">17.生命周期</h3>
+<p>生命周期：</p>
 <ol>
 <li>又名：生命周期回调函数、生命周期函数、生命周期钩子。</li>
 <li>是什么：Vue在关键时刻帮我们调用的一些特殊名称的函数。</li>
 <li>生命周期函数的名字不可更改，但函数的具体内容是程序员根据需求编写的。</li>
 <li>生命周期函数中的this指向是 <code>vm</code> 或 组件实例对象。</li>
 </ol>
-<p> 常用的生命周期钩子：</p>
+<p>常用的生命周期钩子：</p>
 <ol>
 <li>mounted: 发送ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】。</li>
 <li>beforeDestroy: 清除定时器、解绑自定义事件、取消订阅消息等【收尾工作】。</li>
 </ol>
-<p> 关于销毁Vue实例</p>
+<p>关于销毁Vue实例</p>
 <ol>
 <li>销毁后借助Vue开发者工具看不到任何信息。</li>
 <li>销毁后自定义事件会失效，但原生DOM事件依然有效。</li>
 <li>一般不会在beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程了。</li>
 </ol>
 <p>Vue完成模板的解析并把初始的真实DOM元素放入页面后（挂载完毕）调用mounted</p>
-<h3 id="18-非单文件组件"><a href="#18-非单文件组件" class="headerlink" title="18.非单文件组件"></a>18.非单文件组件</h3><p>Vue中使用组件的三大步骤：</p>
+<h3 id="18-非单文件组件">18.非单文件组件</h3>
+<p>Vue中使用组件的三大步骤：</p>
 <p>一、定义组件(创建组件)</p>
 <p>二、注册组件</p>
 <p>三、使用组件(写组件标签)</p>
@@ -934,25 +841,34 @@ new Vue(&#123;
 <p>第二种写法：<school></school></p>
 <p>备注：不用使用脚手架时，<school>会导致后续组件不能渲染。</school></p>
 <p><strong>3.一个简写方式：</strong></p>
-<p>const school &#x3D; Vue.extend(options) 可简写为：const school &#x3D; options</p>
+<p>const school = Vue.extend(options) 可简写为：const school = options</p>
 <p>关于VueComponent：</p>
 <ol>
-<li><p>school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。</p>
+<li>
+<p>school组件本质是一个名为VueComponent的构造函数，且不是程序员定义的，是Vue.extend生成的。</p>
 </li>
-<li><p>我们只需要写<school>或<school></school>，Vue解析时会帮我们创建school组件的实例对象，<br>即Vue帮我们执行的：new VueComponent(options)。</school></p>
+<li>
+<p>我们只需要写<school>或<school></school>，Vue解析时会帮我们创建school组件的实例对象，<br>
+即Vue帮我们执行的：new VueComponent(options)。</school></p>
 </li>
-<li><p>特别注意：每次调用Vue.extend，返回的都是一个全新的VueComponent！！！！</p>
+<li>
+<p>特别注意：每次调用Vue.extend，返回的都是一个全新的VueComponent！！！！</p>
 </li>
-<li><p>关于this指向：</p>
-<p> (1).组件配置中：<br> data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【VueComponent实例对象】。</p>
-<p> (2).new Vue(options)配置中：<br> data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【Vue实例对象】。</p>
+<li>
+<p>关于this指向：</p>
+<p>(1).组件配置中：<br>
+data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【VueComponent实例对象】。</p>
+<p>(2).new Vue(options)配置中：<br>
+data函数、methods中的函数、watch中的函数、computed中的函数 它们的this均是【Vue实例对象】。</p>
 </li>
-<li><p>VueComponent的实例对象，以后简称vc（也可称之为：组件实例对象）。<br> Vue的实例对象，以后简称vm。</p>
+<li>
+<p>VueComponent的实例对象，以后简称vc（也可称之为：组件实例对象）。<br>
+Vue的实例对象，以后简称vm。</p>
 </li>
 </ol>
-<p>1.一个重要的内置关系：VueComponent.prototype.<strong>proto</strong> &#x3D;&#x3D;&#x3D; Vue.prototype</p>
+<p>1.一个重要的内置关系：VueComponent.prototype.<strong>proto</strong> === Vue.prototype</p>
 <p>2.为什么要有这个关系：让组件实例对象（vc）可以访问到 Vue原型上的属性、方法。</p>
-<p>​    </p>
+<p>​</p>
 
         </div>
 
@@ -1052,6 +968,7 @@ new Vue(&#123;
           serverURL: 'https://example.example.com',
           lang: 'zh-CN',
           dark: 'body[class~="dark-mode"]',
+          reaction: false,
           requiredMeta: ['nick', 'mail'],
           emoji: [],
           recaptchaV3Key: "wasd",
@@ -1080,7 +997,7 @@ new Vue(&#123;
         <div class="toc-content-container">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <div class="toc-title">此页目录</div>
+        <div class="toc-title">目录</div>
         <div class="page-title">vue_basic</div>
         <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%9D%E8%AF%86Vue%EF%BC%9A"><span class="nav-text">1. 初识Vue：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Vue%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E6%9C%892%E5%A4%A7%E7%B1%BB%EF%BC%9A"><span class="nav-text">2. Vue模板语法有2大类：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Vue%E4%B8%AD%E6%9C%892%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A%E7%9A%84%E6%96%B9%E5%BC%8F%EF%BC%9A"><span class="nav-text">3. Vue中有2种数据绑定的方式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-data%E4%B8%8Eel%E7%9A%842%E7%A7%8D%E5%86%99%E6%B3%95"><span class="nav-text">4. data与el的2种写法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-MVVM%E6%A8%A1%E5%9E%8B"><span class="nav-text">5. MVVM模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E6%95%B0%E6%8D%AE%E4%BB%A3%E7%90%86"><span class="nav-text">6. 数据代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86"><span class="nav-text">7. 事件处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7"><span class="nav-text">8. 计算属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E7%9B%91%E8%A7%86%E5%B1%9E%E6%80%A7"><span class="nav-text">9. 监视属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E7%BB%91%E5%AE%9A%E6%A0%B7%E5%BC%8F%EF%BC%9A"><span class="nav-text">10. 绑定样式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E6%9D%A1%E4%BB%B6%E6%B8%B2%E6%9F%93%EF%BC%9A"><span class="nav-text">11. 条件渲染：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E5%88%97%E8%A1%A8%E6%B8%B2%E6%9F%93"><span class="nav-text">12. 列表渲染</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E6%94%B6%E9%9B%86%E8%A1%A8%E5%8D%95%E6%95%B0%E6%8D%AE%EF%BC%9A"><span class="nav-text">13. 收集表单数据：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%9A"><span class="nav-text">14. 过滤器：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E5%86%85%E7%BD%AE%E6%8C%87%E4%BB%A4"><span class="nav-text">15. 内置指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7"><span class="nav-text">16. 自定义属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-text">17.生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-%E9%9D%9E%E5%8D%95%E6%96%87%E4%BB%B6%E7%BB%84%E4%BB%B6"><span class="nav-text">18.非单文件组件</span></a></li></ol>
 
@@ -1115,18 +1032,18 @@ new Vue(&#123;
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共 55 篇文章
+                        共撰写了 59 篇文章
                     </span>
                     
                         <span>
-                            共 342.3k 字
+                            共 357.3k 字
                         </span>
                     
                 </p>
             
         </div>
         
-            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
             <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
                 
                     <span id="busuanzi_container_site_uv" class="lg:!block">
@@ -1144,7 +1061,7 @@ new Vue(&#123;
         
         <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
             <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
-            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.1</a></span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.7.1</a></span>
         </div>
         
         
@@ -1256,7 +1173,7 @@ new Vue(&#123;
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜索..."
+                       placeholder="站内搜索您需要的内容..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
@@ -1374,13 +1291,10 @@ new Vue(&#123;
 
 
 
+
+
     
-<script src="/js/libs/minimasonry.min.js"></script>
-
-    
-<script src="/js/plugins/masonry.js" type="module"></script>
-
-
+<script src="/js/libs/anime.min.js"></script>
 
 
 
