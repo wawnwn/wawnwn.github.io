@@ -18,12 +18,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="1. Topic话题和Message消息  话题Topic是节点间进行持续通讯的一种形式 话题通讯的两个节点通过话题的名称建立起话题通讯连接 话题中通讯的数据，叫做消息Message 消息Message通常会按照一定的频率持续不断的发送，以保证消息数据的实时性 消息的发送方叫做话题的发布者Publisher 消息的接收方叫做话题的订阅者Subscriber">
+        <meta name="description" content="1. Topic话题和Message消息 话题Topic是节点间进行持续通讯的一种形式 话题通讯的两个节点通过话题的名称建立起话题通讯连接 话题中通讯的数据，叫做消息Message 消息Message通常会按照一定的频率持续不断的发送，以保证消息数据的实时性 消息的发送方叫做话题的发布者Publisher 消息的接收方叫做话题的订阅者Subscriber">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ROS基础">
 <meta property="og:url" content="http://wawnwn.github.io/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="wawn&#39;s blog">
-<meta property="og:description" content="1. Topic话题和Message消息  话题Topic是节点间进行持续通讯的一种形式 话题通讯的两个节点通过话题的名称建立起话题通讯连接 话题中通讯的数据，叫做消息Message 消息Message通常会按照一定的频率持续不断的发送，以保证消息数据的实时性 消息的发送方叫做话题的发布者Publisher 消息的接收方叫做话题的订阅者Subscriber">
+<meta property="og:description" content="1. Topic话题和Message消息 话题Topic是节点间进行持续通讯的一种形式 话题通讯的两个节点通过话题的名称建立起话题通讯连接 话题中通讯的数据，叫做消息Message 消息Message通常会按照一定的频率持续不断的发送，以保证消息数据的实时性 消息的发送方叫做话题的发布者Publisher 消息的接收方叫做话题的订阅者Subscriber">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://wawnwn.github.io/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/1.png">
 <meta property="og:image" content="http://wawnwn.github.io/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/2.png">
@@ -366,7 +366,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">60</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -472,8 +472,7 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h3 id="1-Topic话题和Message消息">1. Topic话题和Message消息</h3>
-<ol>
+            <h3 id="1-Topic话题和Message消息"><a href="#1-Topic话题和Message消息" class="headerlink" title="1. Topic话题和Message消息"></a>1. Topic话题和Message消息</h3><ol>
 <li>话题Topic是节点间进行持续通讯的一种形式</li>
 <li>话题通讯的两个节点通过话题的名称建立起话题通讯连接</li>
 <li>话题中通讯的数据，叫做消息Message</li>
@@ -482,6 +481,7 @@
 <li>消息的接收方叫做话题的订阅者Subscriber</li>
 </ol>
 <span id="more"></span>
+
 <p><strong>外延补充</strong></p>
 <ol>
 <li>一个ROS节点网络中，可以同时存在多个话题</li>
@@ -491,6 +491,9 @@
 <li>机器人速度指令话题通常会有多个发布者，但是同一时间只能有一个发言人</li>
 </ol>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/1.png" class>
+
+
+
 <p><strong>发布者节点</strong></p>
 <ol>
 <li>确定话题名称和消息类型</li>
@@ -507,6 +510,9 @@
 <p>创建在<code>~/catkin_ws/src</code>文件夹中</p>
 <p><code>catkin_create_pkg </code> &lt;包名&gt; &lt;依赖项列表&gt;</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/2.png" class>
+
+
+
 <p><strong>订阅者节点</strong></p>
 <ol>
 <li>确定话题名称和消息类型</li>
@@ -520,66 +526,85 @@
 <p><strong>launch</strong></p>
 <ol>
 <li>使用launch文件，可以通过roslaunch指令一次启动多个节点</li>
-<li>在launch文件中，为节点添加 output=“screen” 属性，可以让节点信息输出在终端中。（ROS_WARN不受该属性控制)</li>
-<li>在launch文件中，为节点添加 launch-prefix=“gnome-terminal-e” 属性，可以让系欸但单独运行在一个独立终端中。</li>
+<li>在launch文件中，为节点添加 output&#x3D;”screen” 属性，可以让节点信息输出在终端中。（ROS_WARN不受该属性控制)</li>
+<li>在launch文件中，为节点添加 launch-prefix&#x3D;”gnome-terminal-e” 属性，可以让系欸但单独运行在一个独立终端中。</li>
 </ol>
-<h3 id="2-机器人运动控制">2. 机器人运动控制</h3>
-<img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/3.png" class>
+<h3 id="2-机器人运动控制"><a href="#2-机器人运动控制" class="headerlink" title="2. 机器人运动控制"></a>2. 机器人运动控制</h3><img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/3.png" class>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/4.png" class>
+
 <p><strong>C++实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/5.png" class>
+
 <p><strong>Python实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/6.png" class>
-<h3 id="3-激光雷达">3. 激光雷达</h3>
-<p><strong>Gazebo</strong> 是模拟真实机器人发出传感器数据的工具</p>
+
+
+
+<h3 id="3-激光雷达"><a href="#3-激光雷达" class="headerlink" title="3. 激光雷达"></a>3. 激光雷达</h3><p><strong>Gazebo</strong> 是模拟真实机器人发出传感器数据的工具</p>
 <p><strong>RViz</strong> 是接收传感器数据并进行显示的工具，RViz并不参与机器人算法的运行</p>
 <p><strong>激光雷达消息包格式</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/7.png" class>
-<h4 id="3-1-获取激光雷达数据">3.1 获取激光雷达数据</h4>
-<p><strong>图示</strong></p>
+
+<h4 id="3-1-获取激光雷达数据"><a href="#3-1-获取激光雷达数据" class="headerlink" title="3.1 获取激光雷达数据"></a>3.1 获取激光雷达数据</h4><p><strong>图示</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/8.png" class>
+
 <p><strong>C++实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/9.png" class>
+
 <p><strong>Python实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/10.png" class>
-<h4 id="3-2-激光雷达避障">3.2 激光雷达避障</h4>
-<p><strong>图示</strong></p>
+
+<h4 id="3-2-激光雷达避障"><a href="#3-2-激光雷达避障" class="headerlink" title="3.2 激光雷达避障"></a>3.2 激光雷达避障</h4><p><strong>图示</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/11.png" class>
+
 <p><strong>C++实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/12.png" class>
+
 <p><strong>Python实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/13.png" class>
-<h3 id="4-IMU-惯性测量单元">4. IMU 惯性测量单元</h3>
-<p><strong>消息包格式</strong></p>
+
+
+
+<h3 id="4-IMU-惯性测量单元"><a href="#4-IMU-惯性测量单元" class="headerlink" title="4. IMU 惯性测量单元"></a>4. IMU 惯性测量单元</h3><p><strong>消息包格式</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/14.png" class>
+
 <p><strong>IMU 设备话题</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/15.png" class>
-<h4 id="4-1-IMU-数据获取">4.1 IMU 数据获取</h4>
-<p><strong>图示</strong></p>
+
+<h4 id="4-1-IMU-数据获取"><a href="#4-1-IMU-数据获取" class="headerlink" title="4.1 IMU 数据获取"></a>4.1 IMU 数据获取</h4><p><strong>图示</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/16.png" class>
+
 <p><strong>C++实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/17.png" class>
+
 <p><strong>Python实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/18.png" class>
-<h4 id="4-2-IMU-航向锁定">4.2 IMU 航向锁定</h4>
-<p><strong>图示</strong></p>
+
+<h4 id="4-2-IMU-航向锁定"><a href="#4-2-IMU-航向锁定" class="headerlink" title="4.2 IMU 航向锁定"></a>4.2 IMU 航向锁定</h4><p><strong>图示</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/19.png" class>
+
 <p><strong>C++实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/20.png" class>
+
 <p><strong>Python实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/21.png" class>
-<h3 id="5-ROS消息包">5. ROS消息包</h3>
-<h4 id="5-1-ROS的标准消息包-std-msgs">5.1 ROS的标准消息包 std_msgs</h4>
-<img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/22.png" class>
-<h4 id="5-2-ROS中的几何包-geometry-msgs-和-传感器包-sensor-msgs">5.2 ROS中的几何包 geometry_msgs 和 传感器包 sensor_msgs</h4>
-<p><strong>常用消息包</strong></p>
+
+
+
+<h3 id="5-ROS消息包"><a href="#5-ROS消息包" class="headerlink" title="5. ROS消息包"></a>5. ROS消息包</h3><h4 id="5-1-ROS的标准消息包-std-msgs"><a href="#5-1-ROS的标准消息包-std-msgs" class="headerlink" title="5.1 ROS的标准消息包 std_msgs"></a>5.1 ROS的标准消息包 std_msgs</h4><img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/22.png" class>
+
+<h4 id="5-2-ROS中的几何包-geometry-msgs-和-传感器包-sensor-msgs"><a href="#5-2-ROS中的几何包-geometry-msgs-和-传感器包-sensor-msgs" class="headerlink" title="5.2 ROS中的几何包 geometry_msgs 和 传感器包 sensor_msgs"></a>5.2 ROS中的几何包 geometry_msgs 和 传感器包 sensor_msgs</h4><p><strong>常用消息包</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/23.png" class>
+
 <p><strong>geometry_msgs</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/24.png" class>
+
 <p><strong>sensor_msgs</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/25.png" class>
-<h4 id="5-3-ROS中生成自定义消息类型">5.3 ROS中生成自定义消息类型</h4>
-<img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/26.png" class>
+
+<h4 id="5-3-ROS中生成自定义消息类型"><a href="#5-3-ROS中生成自定义消息类型" class="headerlink" title="5.3 ROS中生成自定义消息类型"></a>5.3 ROS中生成自定义消息类型</h4><img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/26.png" class>
+
 <p><strong>生成自定义消息的步骤</strong></p>
 <ol>
 <li>创建新软件包，依赖项 message_generation、message_runtime</li>
@@ -587,48 +612,62 @@
 <li>在CMakeLists.txt中，将新建的.msg文件加入add_message_files()</li>
 <li>在CMakeLists.txt中，去掉generate_messages()注释符号，将依赖的其他消息包名称添加进去</li>
 <li>在CMakeLists.txt中，将message_runtime加入catkin_package()的CATKIN_EDPENDS</li>
-<li>在package.xml中，将message_generation、message_runtime加入&lt;build_depend&gt;和&lt;exec_depend&gt;</li>
+<li>在package.xml中，将message_generation、message_runtime加入<build_depend>和<exec_depend></exec_depend></build_depend></li>
 <li>编译软件包，生成新的自定义消息类型</li>
 </ol>
 <p><strong>C++实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/27.png" class>
+
 <p><strong>Python实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/28.png" class>
-<h3 id="6-ROS中的地图数据格式">6.ROS中的地图数据格式</h3>
-<img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/29.png" class>
+
+
+
+<h3 id="6-ROS中的地图数据格式"><a href="#6-ROS中的地图数据格式" class="headerlink" title="6.ROS中的地图数据格式"></a>6.ROS中的地图数据格式</h3><img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/29.png" class>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/30.png" class>
+
 <p><strong>图示</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/31.png" class>
+
 <p><strong>C++实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/32.png" class>
+
 <p><strong>Python实现</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/33.png" class>
-<h3 id="7-SLAM">7. SLAM</h3>
-<p>Simultaneous Localization And Mapping</p>
+
+
+
+<h3 id="7-SLAM"><a href="#7-SLAM" class="headerlink" title="7. SLAM"></a>7. SLAM</h3><p>Simultaneous Localization And Mapping</p>
 <p>同时定位与地图构建</p>
 <p><strong>图示</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/34.png" class>
-<h4 id="7-1-Hector-Mapping">7.1 Hector_Mapping</h4>
-<p><strong>通过launch文件启动Hector_Mapping的建图功能</strong></p>
+
+<h4 id="7-1-Hector-Mapping"><a href="#7-1-Hector-Mapping" class="headerlink" title="7.1 Hector_Mapping"></a>7.1 Hector_Mapping</h4><p><strong>通过launch文件启动Hector_Mapping的建图功能</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/35.png" class>
+
 <p><strong>Hector_Mapping建图的参数设置</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/36.png" class>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/37.png" class>
+
 <p><strong>里程计的思想</strong></p>
 <p>利用不同形式的定位方法去克服某种单一<code>SLAM</code>算法的缺陷，减少误差或者增加稳定性</p>
-<h4 id="7-2-Gmapping">7.2 Gmapping</h4>
-<p><strong>使用Gmapping进行SLAM建图</strong></p>
+<h4 id="7-2-Gmapping"><a href="#7-2-Gmapping" class="headerlink" title="7.2 Gmapping"></a>7.2 Gmapping</h4><p><strong>使用Gmapping进行SLAM建图</strong></p>
 <p>需求列表：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/38.png" class>
+
 <p><strong>通过launch文件启动Gmapping的建图功能</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/39.png" class>
+
 <p><strong>Gmapping建图的参数设置</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/40.png" class>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/41.png" class>
-<h4 id="7-3-ROS中保存和加载地图">7.3 ROS中保存和加载地图</h4>
-<p><code>map_server</code></p>
-<h3 id="8-Navagation-导航系统">8. Navagation 导航系统</h3>
-<img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/42.png" class>
+
+<h4 id="7-3-ROS中保存和加载地图"><a href="#7-3-ROS中保存和加载地图" class="headerlink" title="7.3 ROS中保存和加载地图"></a>7.3 ROS中保存和加载地图</h4><p><code>map_server</code></p>
+<h3 id="8-Navagation-导航系统"><a href="#8-Navagation-导航系统" class="headerlink" title="8. Navagation 导航系统"></a>8. Navagation 导航系统</h3><img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/42.png" class>
+
 <p><strong>move_base</strong></p>
 <ol>
 <li>move_base 导航节点</li>
@@ -636,8 +675,10 @@
 <li>amcl 定位节点</li>
 </ol>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/43.png" class>
+
 <p><strong>全局路径规划器</strong></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/03/10/%E6%9C%BA%E5%99%A8%E4%BA%BA/ROS%E5%9F%BA%E7%A1%80/44.png" class>
+
 <p><strong>AMCL（自适应蒙特卡洛）定位算法</strong></p>
 <p>同时使用了里程计和激光雷达数据，具有较强的自我纠错功能</p>
 <p>主要用到amcl包</p>
@@ -807,11 +848,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 59 篇文章
+                        共撰写了 60 篇文章
                     </span>
                     
                         <span>
-                            共 357.3k 字
+                            共 363.4k 字
                         </span>
                     
                 </p>

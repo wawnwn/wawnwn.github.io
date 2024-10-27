@@ -362,7 +362,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">60</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -478,20 +478,15 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1>案例-登录认证</h1>
-<span id="more"></span>
-<h2 id="1-登录功能">1 登录功能</h2>
-<h3 id="1-1-需求">1.1 需求</h3>
-<p>在登录界面中，可以输入用户的用户名以及密码，然后点击&quot;登录&quot;按钮就要请求服务器，服务器判断用户输入的用户名或者密码是否正确。如果正确，则返回成功结果，前端跳转至系统首页面。</p>
-<h3 id="1-2-接口文档">1.2 接口文档</h3>
-<ul>
-<li>
-<p>基本信息</p>
+            <h1 id="案例-登录认证"><a href="#案例-登录认证" class="headerlink" title="案例-登录认证"></a>案例-登录认证</h1><span id="more"></span>
+
+<h2 id="1-登录功能"><a href="#1-登录功能" class="headerlink" title="1 登录功能"></a>1 登录功能</h2><h3 id="1-1-需求"><a href="#1-1-需求" class="headerlink" title="1.1 需求"></a>1.1 需求</h3><p>在登录界面中，可以输入用户的用户名以及密码，然后点击”登录”按钮就要请求服务器，服务器判断用户输入的用户名或者密码是否正确。如果正确，则返回成功结果，前端跳转至系统首页面。</p>
+<h3 id="1-2-接口文档"><a href="#1-2-接口文档" class="headerlink" title="1.2 接口文档"></a>1.2 接口文档</h3><ul>
+<li><p>基本信息</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">请求路径：/login</span><br><span class="line"></span><br><span class="line">请求方式：POST</span><br><span class="line"></span><br><span class="line">接口描述：该接口用于员工登录Tlias智能学习辅助系统，登录完毕后，系统下发JWT令牌。</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>请求参数</p>
-<p>参数格式：application/json</p>
+<li><p>请求参数</p>
+<p>参数格式：application&#x2F;json</p>
 <p>参数说明：</p>
 <table>
 <thead>
@@ -502,8 +497,7 @@
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>username</td>
 <td>string</td>
 <td>必须</td>
@@ -515,14 +509,12 @@
 <td>必须</td>
 <td>密码</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>请求数据样例：</p>
 <div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jinyong&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span> <span class="string">&quot;123456&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>响应数据</p>
-<p>参数格式：application/json</p>
+<li><p>响应数据</p>
+<p>参数格式：application&#x2F;json</p>
 <p>参数说明：</p>
 <table>
 <thead>
@@ -535,8 +527,7 @@
 <th>其他信息</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>code</td>
 <td>number</td>
 <td>必须</td>
@@ -560,40 +551,42 @@
 <td>返回的数据 , jwt令牌</td>
 <td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>响应数据样例：</p>
-<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;success&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoi6YeR5bq4IiwiaWQiOjEsInVzZXJuYW1lIjoiamlueW9uZyIsImV4cCI6MTY2MjIwNzA0OH0.KkUc_CXJZJ8Dd063eImx4H9Ojfrr6XMJ-yVzaWCVZCo&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
-</li>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;success&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoi6YeR5bq4IiwiaWQiOjEsInVzZXJuYW1lIjoiamlueW9uZyIsImV4cCI6MTY2MjIwNzA0OH0.KkUc_CXJZJ8Dd063eImx4H9Ojfrr6XMJ-yVzaWCVZCo&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div></li>
 </ul>
-<h3 id="1-3-思路分析">1.3 思路分析</h3>
-<img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/1.png" class>
+<h3 id="1-3-思路分析"><a href="#1-3-思路分析" class="headerlink" title="1.3 思路分析"></a>1.3 思路分析</h3><img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/1.png" class>
+
 <p>登录服务器的核心逻辑就是：接收前端请求传递的用户名和密码，然后再根据用户名和密码查询用户信息，如果用户信息存在，则说明用户输入的用户名和密码正确。如果查询到的用户不存在，则说明用户输入的用户名和密码错误。</p>
-<h3 id="1-4-功能开发">1.4 功能开发</h3>
-<p><strong>LoginController</strong></p>
+<h3 id="1-4-功能开发"><a href="#1-4-功能开发" class="headerlink" title="1.4 功能开发"></a>1.4 功能开发</h3><p><strong>LoginController</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/login&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">login</span><span class="params">(<span class="meta">@RequestBody</span> Emp emp)</span>&#123;</span><br><span class="line">        <span class="type">Emp</span> <span class="variable">e</span> <span class="operator">=</span> empService.login(emp);</span><br><span class="line">	    <span class="keyword">return</span>  e != <span class="literal">null</span> ? Result.success():Result.error(<span class="string">&quot;用户名或密码错误&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>EmpService</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">EmpService</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 用户登录</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> emp</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> Emp <span class="title function_">login</span><span class="params">(Emp emp)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//省略其他代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>EmpServiceImpl</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">EmpServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">EmpService</span> &#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmpMapper empMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Emp <span class="title function_">login</span><span class="params">(Emp emp)</span> &#123;</span><br><span class="line">        <span class="comment">//调用dao层功能：登录</span></span><br><span class="line">        <span class="type">Emp</span> <span class="variable">loginEmp</span> <span class="operator">=</span> empMapper.getByUsernameAndPassword(emp);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回查询结果给Controller</span></span><br><span class="line">        <span class="keyword">return</span> loginEmp;</span><br><span class="line">    &#125;   </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//省略其他代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>EmpMapper</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">EmpMapper</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select(&quot;select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time &quot; +</span></span><br><span class="line"><span class="meta">            &quot;from emp &quot; +</span></span><br><span class="line"><span class="meta">            &quot;where username=#&#123;username&#125; and password =#&#123;password&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Emp <span class="title function_">getByUsernameAndPassword</span><span class="params">(Emp emp)</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//省略其他代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h3 id="1-5-测试">1.5 测试</h3>
-<p>功能开发完毕后，就可以启动服务了，打开apifox测试</p>
+
+<h3 id="1-5-测试"><a href="#1-5-测试" class="headerlink" title="1.5 测试"></a>1.5 测试</h3><p>功能开发完毕后，就可以启动服务了，打开apifox测试</p>
 <p>发起POST请求，访问：<a class="link" target="_blank" rel="noopener" href="http://localhost:8080/login">http://localhost:8080/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/2.png" class>
+
 <p>结合前端工程进行联调测试</p>
 <p>先退出系统，进入到登录页面，在登录页面输入账户密码：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/3.png" class>
+
 <p>登录成功之后进入到后台管理系统页面</p>
-<h2 id="2-登录校验">2 登录校验</h2>
-<h3 id="2-1-问题分析">2.1 问题分析</h3>
-<p>完成了基础登录功能的开发与测试，在我们登录成功后就可以进入到后台管理系统中进行数据的操作。</p>
+<h2 id="2-登录校验"><a href="#2-登录校验" class="headerlink" title="2 登录校验"></a>2 登录校验</h2><h3 id="2-1-问题分析"><a href="#2-1-问题分析" class="headerlink" title="2.1 问题分析"></a>2.1 问题分析</h3><p>完成了基础登录功能的开发与测试，在我们登录成功后就可以进入到后台管理系统中进行数据的操作。</p>
 <p>但是当我们在浏览器中新的页面上输入地址：<code>http://localhost:9528/#/system/dept</code>，发现没有登录仍然可以进入到后端管理系统页面。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/4.png" class>
+
 <p>而真正的登录功能应该是：登陆后才能访问后端系统页面，不登陆则跳转登录页面进行登录。</p>
 <p>为什么会出现这个问题？原因在于针对于我们当前所开发的部门管理、员工管理以及文件上传等相关接口来说，我们在服务器端并没有做任何的判断，没有去判断用户是否登录了。所以无论用户是否登录，都可以访问部门管理以及员工管理的相关数据。所以我们目前所开发的登录功能，它只是徒有其表。而我们想解决这个问题，需要完成一步非常重要的操作：登录校验。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/5.png" class>
+
 <p>什么是登录校验？</p>
 <ul>
 <li>所谓登录校验，指的是我们在服务器端接收到浏览器发送过来的请求之后，首先我们要对请求进行校验。先要校验一下用户登录没有，如果用户已经登录了，就直接执行对应的业务操作就可以了；如果用户没有登录，此时就不允许他执行相关的业务操作，直接给前端响应一个错误的结果，最终跳转到登录页面，要求他登录成功之后，再来访问对应的数据。</li>
@@ -603,6 +596,7 @@
 <p>前面在讲解HTTP协议的时候，我们提到HTTP协议是无状态协议。什么又是无状态的协议？</p>
 <p>所谓无状态，指的是每一次请求都是独立的，下一次请求并不会携带上一次请求的数据。而浏览器与服务器之间进行交互，基于HTTP协议也就意味着现在我们通过浏览器来访问了登录这个接口，实现了登录的操作，接下来我们在执行其他业务操作时，服务器也并不知道这个员工到底登录了没有。因为HTTP协议是无状态的，两次请求之间是独立的，所以是无法判断这个员工到底登录了没有。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/6.png" class>
+
 <p>那应该怎么来实现登录校验的操作呢？具体的实现思路可以分为两部分：</p>
 <ol>
 <li>在员工登录成功后，需要将用户登录成功的信息存起来，记录用户已经登录成功的标记。</li>
@@ -625,12 +619,9 @@
 <li>Spring提供的interceptor拦截器</li>
 </ol>
 <p>下面我们先学习会话技术，然后再学习统一拦截技术。</p>
-<h3 id="2-2-会话技术">2.2 会话技术</h3>
-<h4 id="2-2-1-会话技术介绍">2.2.1 会话技术介绍</h4>
-<p>什么是会话？</p>
+<h3 id="2-2-会话技术"><a href="#2-2-会话技术" class="headerlink" title="2.2 会话技术"></a>2.2 会话技术</h3><h4 id="2-2-1-会话技术介绍"><a href="#2-2-1-会话技术介绍" class="headerlink" title="2.2.1 会话技术介绍"></a>2.2.1 会话技术介绍</h4><p>什么是会话？</p>
 <ul>
-<li>
-<p>在web开发当中，会话指的是浏览器与服务器之间的一次连接，我们就称为一次会话。</p>
+<li><p>在web开发当中，会话指的是浏览器与服务器之间的一次连接，我们就称为一次会话。</p>
 <blockquote>
 <p>在用户打开浏览器第一次访问服务器的时候，这个会话就建立了，直到有任何一方断开连接，此时会话就结束了。在一次会话当中，是可以包含多次请求和响应的。</p>
 <p>比如：打开了浏览器来访问web服务器上的资源（浏览器不能关闭、服务器不能断开）</p>
@@ -644,6 +635,7 @@
 </li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/7.png" class>
+
 <p>需要注意的是：会话是和浏览器关联的，当有三个浏览器客户端和服务器建立了连接时，就会有三个会话。同一个浏览器在未关闭之前请求了多次服务器，这多次请求是属于同一个会话。比如：1、2、3这三个请求都是属于同一个会话。当我们关闭浏览器之后，这次会话就结束了。而如果我们是直接把web服务器关了，那么所有的会话就都结束了。</p>
 <p>知道了会话的概念了，接下来我们再来了解下会话跟踪。</p>
 <p>会话跟踪：一种维护浏览器状态的方法，服务器需要识别多次请求是否来自统一浏览器，以便在同一次会话的多次请求间共享数据。</p>
@@ -657,25 +649,22 @@
 </blockquote>
 <p>会话跟踪技术有两种：</p>
 <ol>
-<li>Cookie（客户端会话跟踪技术）
-<ul>
+<li>Cookie（客户端会话跟踪技术）<ul>
 <li>数据存储在客户端浏览器当中</li>
 </ul>
 </li>
-<li>Session（服务端会话跟踪技术）
-<ul>
+<li>Session（服务端会话跟踪技术）<ul>
 <li>数据存储在服务端</li>
 </ul>
 </li>
 <li>令牌技术</li>
 </ol>
-<h4 id="2-2-2-会话跟踪方案">2.2.2 会话跟踪方案</h4>
-<p>比较3种会话跟踪的技术方案，来看一下具体的实现思路，以及它们之间的优缺点。</p>
-<h5 id="2-2-2-1-方案一-Cookie">2.2.2.1 方案一 - Cookie</h5>
-<p>cookie 是客户端会话跟踪技术，它是存储在客户端浏览器的，我们使用 cookie 来跟踪会话，我们就可以在浏览器第一次发起请求来请求服务器的时候，我们在服务器端来设置一个cookie。</p>
+<h4 id="2-2-2-会话跟踪方案"><a href="#2-2-2-会话跟踪方案" class="headerlink" title="2.2.2 会话跟踪方案"></a>2.2.2 会话跟踪方案</h4><p>比较3种会话跟踪的技术方案，来看一下具体的实现思路，以及它们之间的优缺点。</p>
+<h5 id="2-2-2-1-方案一-Cookie"><a href="#2-2-2-1-方案一-Cookie" class="headerlink" title="2.2.2.1 方案一 - Cookie"></a>2.2.2.1 方案一 - Cookie</h5><p>cookie 是客户端会话跟踪技术，它是存储在客户端浏览器的，我们使用 cookie 来跟踪会话，我们就可以在浏览器第一次发起请求来请求服务器的时候，我们在服务器端来设置一个cookie。</p>
 <p>比如第一次请求了登录接口，登录接口执行完成之后，我们就可以设置一个cookie，在 cookie 当中我们就可以来存储用户相关的一些数据信息。比如我可以在 cookie 当中来存储当前登录用户的用户名，用户的ID。</p>
 <p>服务器端在给客户端在响应数据的时候，会<strong>自动</strong>的将 cookie 响应给浏览器，浏览器接收到响应回来的 cookie 之后，会<strong>自动</strong>的将 cookie 的值存储在浏览器本地。接下来在后续的每一次请求当中，都会将浏览器本地所存储的 cookie <strong>自动</strong>地携带到服务器。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/8.png" class>
+
 <p>接下来在服务端我们就可以获取到 cookie 地值。我们可以去判断一下这个 cookie 的值是否存在，如果不存在这个cookie，就说明客户端之前是没有访问登录接口的；如果存在 cookie 的值，就说明客户端之前已经登录完成了。这样就可以基于 cookie 在同一次会话的不同请求之间来共享数据。</p>
 <p><strong>为什么这一切都是自动化进行的？</strong></p>
 <p>是因为 cookie 它是 HTTP 协议当中所支持的技术，而各大浏览器厂商都支持了这一标准。在 HTTP 协议官方给我们提供了一个响应头和请求头：</p>
@@ -684,19 +673,23 @@
 <li>请求头 Cookie : 携带Cookie数据的</li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/9.png" class>
+
 <p><strong>代码测试</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SessionController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//设置Cookie</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/c1&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">cookie1</span><span class="params">(HttpServletResponse response)</span>&#123;</span><br><span class="line">        response.addCookie(<span class="keyword">new</span> <span class="title class_">Cookie</span>(<span class="string">&quot;login_username&quot;</span>,<span class="string">&quot;itheima&quot;</span>)); <span class="comment">//设置Cookie/响应Cookie</span></span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">//获取Cookie</span></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/c2&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">cookie2</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">        Cookie[] cookies = request.getCookies();</span><br><span class="line">        <span class="keyword">for</span> (Cookie cookie : cookies) &#123;</span><br><span class="line">            <span class="keyword">if</span>(cookie.getName().equals(<span class="string">&quot;login_username&quot;</span>))&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;login_username: &quot;</span>+cookie.getValue()); <span class="comment">//输出name为login_username的cookie</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;    </span><br></pre></td></tr></table></figure></div>
+
 <p>A. 访问c1接口，设置Cookie，<a class="link" target="_blank" rel="noopener" href="http://loaclhost:8080/c1">http://loaclhost:8080/c1 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/10.png" class>
+
 <p>我们可以看到，设置的cookie，通过<strong>响应头Set-Cookie</strong>响应给浏览器，并且浏览器会将Cookie，存储在浏览器端</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/11.png" class>
+
 <p>B. 访问c2接口 <a class="link" target="_blank" rel="noopener" href="http://localhost:8080/c2%EF%BC%8C%E6%AD%A4%E6%97%B6%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BC%9A%E8%87%AA%E5%8A%A8%E5%9C%B0%E5%B0%86Cookie%E6%90%BA%E5%B8%A6%E5%88%B0%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%8C%E6%98%AF%E9%80%9A%E8%BF%87**%E8%AF%B7%E6%B1%82%E5%A4%B4Cookie**%EF%BC%8C%E6%90%BA%E5%B8%A6%E7%9A%84%E3%80%82">http://localhost:8080/c2，此时浏览器会自动地将Cookie携带到服务端，是通过**请求头Cookie**，携带的。 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/12.png" class>
+
 <p><strong>优缺点</strong></p>
 <ul>
 <li>优点：HTTP协议中支持的技术（像 Set-Cookie 响应头的解析以及 Cookie 请求头数据的携带，都是浏览器自动进行的，是无需我们手动操作的）</li>
-<li>缺点：
-<ul>
+<li>缺点：<ul>
 <li>移动端APP(Android、IOS)中无法使用Cookie</li>
 <li>不安全，用户可以自动禁用Cookie</li>
 <li>Cookie不能跨域</li>
@@ -706,6 +699,7 @@
 <blockquote>
 <p>跨域介绍：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/13.png" class>
+
 <ul>
 <li>现在的项目，大部分都是前后端分离的，前后端最终也会分开部署，前端部署在服务端192.168.150.200上，端口 80，后端部署在192.168.150.100上，端口 8080</li>
 <li>我们打开浏览器直接访问前端工程，访问url：<a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login/html">http://192.168.150.200/login/html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></li>
@@ -716,57 +710,59 @@
 <p>区分跨域的维度：</p>
 <ul>
 <li>协议</li>
-<li>IP/协议</li>
+<li>IP&#x2F;协议</li>
 <li>端口</li>
 </ul>
 <p>只要上述的三个维度有任何一个维度不同，那就是跨域操作</p>
 <p>举例：</p>
-<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ----------&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login">http://192.168.150.200/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ———-&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login">http://192.168.150.200/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> </p>
 <p>​	[协议不同，跨域]</p>
-<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ----------&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.100/login">http://192.168.150.100/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ———-&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.100/login">http://192.168.150.100/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>​	[IP不同，跨域]</p>
-<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ----------&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.200:8080/login">http://192.168.150.200:8080/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ———-&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.200:8080/login">http://192.168.150.200:8080/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>​	[端口不同，跨域]</p>
-<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ----------&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login">http://192.168.150.200/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p><a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login.html">http://192.168.150.200/login.html <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a> ———-&gt; <a class="link" target="_blank" rel="noopener" href="http://192.168.150.200/login">http://192.168.150.200/login <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>​	[不跨域]</p>
 </blockquote>
-<h5 id="2-2-2-2-方案二-Session">2.2.2.2 方案二 - Session</h5>
-<p>前面介绍的时候，我们提到Session，它是服务器端会话跟踪技术，所以它是存储在服务器端的。而 Session 的底层其实就是基于我们刚才所介绍的 Cookie 来实现的。</p>
+<h5 id="2-2-2-2-方案二-Session"><a href="#2-2-2-2-方案二-Session" class="headerlink" title="2.2.2.2 方案二 - Session"></a>2.2.2.2 方案二 - Session</h5><p>前面介绍的时候，我们提到Session，它是服务器端会话跟踪技术，所以它是存储在服务器端的。而 Session 的底层其实就是基于我们刚才所介绍的 Cookie 来实现的。</p>
 <ul>
-<li>
-<p>获取Session</p>
+<li><p>获取Session</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/14.png" class>
+
 <p>如果我们现在要基于 Session 来进行会话跟踪，浏览器在第一次请求服务器的时候，我们就可以直接在服务器当中来获取到会话对象Session。如果是第一次请求Session，会话对象是不存在的，这个时候服务器会自动地创建一个会话对象Session。而每一个会话对象Session，它都有一个ID（示意图中Session后面括号中的1，就表示ID），我们称之为 Session 的ID。</p>
 </li>
-<li>
-<p>响应Cookie(JSESSIONID)</p>
+<li><p>响应Cookie(JSESSIONID)</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/15.png" class>
+
 <p>接下来，服务器端在给浏览器响应数据的时候，它会将 Session 的 ID 通过 Cookie 响应给浏览器。其实在响应头当中增加一个 Set-Cookie 响应头。这个 Set-Cookie 响应头对应的值是不是 cookie ？</p>
 <p>cookie 的名字是固定的 JSESSIONID 代表的服务器端会话对象 Session 的 ID。浏览器会自动识别这个响应头，然后自动将 Cookie 存储在浏览器本地。</p>
 </li>
-<li>
-<p>查找Session</p>
+<li><p>查找Session</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/16.png" class>
+
 <p>接下来，在后续的每一次请求当中，都会将 Cookie 的数据获取出来，并且携带到服务端。接下服务器拿到JSESSIONID这个Cookie的值，也就是 Session 的ID。拿到 ID 之后，就会从众多的 Session 当中来找到当前请求对应的会话对象 Session。</p>
 <p>这样我们是不是就可以通过 Session 会话对象在同一次会话的多次请求之间来共享数据了？好，这就是基于Session进行会话跟踪的流程。</p>
 </li>
 </ul>
 <p><strong>代码测试</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SessionController</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/s1&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">session1</span><span class="params">(HttpSession session)</span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;HttpSession-s1: &#123;&#125;&quot;</span>, session.hashCode());</span><br><span class="line"></span><br><span class="line">        session.setAttribute(<span class="string">&quot;loginUser&quot;</span>, <span class="string">&quot;tom&quot;</span>); <span class="comment">//往session中存储数据</span></span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/s2&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">session2</span><span class="params">(HttpServletRequest request)</span>&#123;</span><br><span class="line">        <span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> request.getSession();</span><br><span class="line">        log.info(<span class="string">&quot;HttpSession-s2: &#123;&#125;&quot;</span>, session.hashCode());</span><br><span class="line"></span><br><span class="line">        <span class="type">Object</span> <span class="variable">loginUser</span> <span class="operator">=</span> session.getAttribute(<span class="string">&quot;loginUser&quot;</span>); <span class="comment">//从session中获取数据</span></span><br><span class="line">        log.info(<span class="string">&quot;loginUser: &#123;&#125;&quot;</span>, loginUser);</span><br><span class="line">        <span class="keyword">return</span> Result.success(loginUser);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>A. 访问 s1 接口，<a class="link" target="_blank" rel="noopener" href="http://localhost:8080/s1">http://localhost:8080/s1 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/17.png" class>
+
 <p>请求完成之后，在响应头中，就会看到有一个Set-Cookie的响应头，里面响应回来了一个Cookie，就是JSESSIONID，这个就是服务端会话对象 Session 的ID。</p>
 <p>B. 访问 s2 接口，<a class="link" target="_blank" rel="noopener" href="http://localhost:8080/s2">http://localhost:8080/s2 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/18.png" class>
+
 <p>接下来，在后续的每次请求时，都会将Cookie的值，携带到服务端，那服务端呢，接收到Cookie之后，会自动地根据JSESSIONID的值，找到对应的会话对象Session。</p>
 <p>那经过这两步测试，大家也会看到，在控制台中输出如下日志：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/19.png" class>
+
 <p>两次请求，获取到的Session会话对象的hashcode是一样的，就说明是同一个会话对象。而且，第一次请求时，往Session会话对象中存储的值，第二次请求时，也获取到了。那这样，我们就可以通过Session会话对象，在同一个会话的多次请求之间来进行数据共享了。</p>
 <p><strong>优缺点</strong></p>
 <ul>
 <li>优点：Session是存储在服务端的，安全</li>
-<li>缺点：
-<ul>
+<li>缺点：<ul>
 <li>服务端集群环境下无法直接使用Session</li>
 <li>移动端APP(Android、IOS)中无法使用Cookie</li>
 <li>用户可以自己禁用Cookie</li>
@@ -780,38 +776,38 @@
 <blockquote>
 <p>服务器集群环境为何无法使用Session?</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/20.png" class>
+
 <ul>
 <li>首先第一点，我们现在所开发的项目，一般都不会只部署在一台服务器上，因为一台服务器会存在一个很大的问题，就是单点故障。所谓单点故障，指的就是一旦这台服务器挂了，整个应用都没法访问了。</li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/21.png" class>
+
 <ul>
-<li>
-<p>所以在现在的企业项目开发当中，最终部署的时候都是以集群的形式来进行部署，也就是同一个项目它会部署多份。比如这个项目我们现在就部署了3份。</p>
+<li><p>所以在现在的企业项目开发当中，最终部署的时候都是以集群的形式来进行部署，也就是同一个项目它会部署多份。比如这个项目我们现在就部署了3份。</p>
 </li>
-<li>
-<p>而用户在访问的时候，到底访问这三台其中的哪一台？其实用户在访问的时候，他会访问一台前置的服务器，我们叫负载均衡服务器，我们在后面项目当中会详细讲解。它的作用就是将前端发起的请求均匀的分发给后面的这三台服务器。</p>
+<li><p>而用户在访问的时候，到底访问这三台其中的哪一台？其实用户在访问的时候，他会访问一台前置的服务器，我们叫负载均衡服务器，我们在后面项目当中会详细讲解。它的作用就是将前端发起的请求均匀的分发给后面的这三台服务器。</p>
 </li>
 </ul>
  <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/22.png" class>
+
 <ul>
 <li>此时假如我们通过 session 来进行会话跟踪，可能就会存在这样一个问题。用户打开浏览器要进行登录操作，此时会发起登录请求。登录请求到达负载均衡服务器，将这个请求转给了第一台 Tomcat 服务器。</li>
 </ul>
-<p>Tomcat 服务器接收到请求之后，要获取到会话对象session。获取到会话对象 session 之后，要给浏览器响应数据，最终在给浏览器响应数据的时候，就会携带这么一个 cookie 的名字，就是JSESSIONID，下一次再请求的时候，是不是又会将 Cookie 携带到服务器？</p>
-<p>好。此时假如又执行了一次查询操作，要查询部门的数据。这次请求到达负载均衡服务器之后，负载均衡服务器将这个请求转给了第二台 Tomcat 服务器，此时他就要到第二台 Tomcat 服务器当中。根据JSESSIONID也就是对应的 session 的 ID 值，要找对应的 session 会话对象。</p>
-<p>我想请问在第二台服务器当中有没有这个ID的会话对象 Session，是没有的。此时是不是就出现问题了？我同一个浏览器发起了2次请求，结果获取到的不是同一个会话对象，这就是Session这种会话跟踪方案它的缺点，在服务器集群环境下无法直接使用Session。</p>
+<p> Tomcat 服务器接收到请求之后，要获取到会话对象session。获取到会话对象 session 之后，要给浏览器响应数据，最终在给浏览器响应数据的时候，就会携带这么一个 cookie 的名字，就是JSESSIONID，下一次再请求的时候，是不是又会将 Cookie 携带到服务器？</p>
+<p> 好。此时假如又执行了一次查询操作，要查询部门的数据。这次请求到达负载均衡服务器之后，负载均衡服务器将这个请求转给了第二台 Tomcat 服务器，此时他就要到第二台 Tomcat 服务器当中。根据JSESSIONID也就是对应的 session 的 ID 值，要找对应的 session 会话对象。</p>
+<p> 我想请问在第二台服务器当中有没有这个ID的会话对象 Session，是没有的。此时是不是就出现问题了？我同一个浏览器发起了2次请求，结果获取到的不是同一个会话对象，这就是Session这种会话跟踪方案它的缺点，在服务器集群环境下无法直接使用Session。</p>
 </blockquote>
 <p>大家会看到上面这两种传统的会话技术，在现在的企业开发当中是不是会存在很多的问题。为了解决这些问题，在现在的企业开发当中，基本上都会采用第三种方案，通过令牌技术来进行会话跟踪。接下来我们来介绍一下令牌技术，来看一下令牌技术又是如何跟踪会话的。</p>
-<h5 id="2-2-2-3-方案三-令牌技术">2.2.2.3 方案三 - 令牌技术</h5>
-<p>这里我们所提到的令牌，其实它就是一个用户身份的标识，看似很高大上，很神秘，其实本质就是一个字符串。</p>
+<h5 id="2-2-2-3-方案三-令牌技术"><a href="#2-2-2-3-方案三-令牌技术" class="headerlink" title="2.2.2.3 方案三 - 令牌技术"></a>2.2.2.3 方案三 - 令牌技术</h5><p>这里我们所提到的令牌，其实它就是一个用户身份的标识，看似很高大上，很神秘，其实本质就是一个字符串。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/23.png" class>
+
 <p>如果通过令牌技术来跟踪会话，我们就可以在浏览器发起请求。在请求登录接口的时候，如果登录成功，就可以生成一个令牌，令牌就是用户的合法身份凭证。接下来在响应数据的时候，就可以直接将令牌响应给前端。</p>
 <p>接下来我们在前端程序当中接收到令牌之后，就需要将这个令牌存储起来。这个存储可以存储在 cookie 当中，也可以存储在其他的存储空间(比如：localStorage)当中。</p>
 <p>接下来，在后续的每一次请求当中，都需要将令牌携带到服务端。携带到服务端之后，接下来我们就需要来校验令牌的有效性。如果令牌是有效的，就说明用户已经执行了登录操作，如果令牌是无效的，就说明用户之前并未执行登录操作。</p>
 <p>此时，如果是在同一次会话的多次请求之间，我们想共享数据，我们就可以将共享的数据存储在令牌当中就可以了。</p>
 <p><strong>优缺点</strong></p>
 <ul>
-<li>优点：
-<ul>
+<li>优点：<ul>
 <li>支持PC端、移动端</li>
 <li>解决集群环境下的认证问题</li>
 <li>减轻服务器的存储压力（无需再服务器端存储）</li>
@@ -820,13 +816,10 @@
 <li>缺点：需要自己实现（包括令牌的生成、令牌的传递、令牌的校验）</li>
 </ul>
 <p><strong>针对于这三种方案，现在企业开发当中使用的最多的就是第三种令牌技术进行会话跟踪。而前面的这两种传统的方案，现在企业项目开发当中已经很少使用了。所以在我们的课程当中，我们也将会采用令牌技术来解决案例项目当中的会话跟踪问题。</strong></p>
-<h3 id="2-3-JWT令牌">2.3 JWT令牌</h3>
-<p>前面我们介绍了基于令牌技术来实现会话追踪。这里所提到的令牌就是用户身份的标识，其本质就是一个字符串。令牌的形式有很多，我们使用的是功能强大的 JWT 令牌。</p>
-<h4 id="2-3-1-介绍">2.3.1 介绍</h4>
-<p>JWT全称：JSON Web Token (官网：<a class="link" target="_blank" rel="noopener" href="https://jwt.io/">https://jwt.io/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)</p>
+<h3 id="2-3-JWT令牌"><a href="#2-3-JWT令牌" class="headerlink" title="2.3 JWT令牌"></a>2.3 JWT令牌</h3><p>前面我们介绍了基于令牌技术来实现会话追踪。这里所提到的令牌就是用户身份的标识，其本质就是一个字符串。令牌的形式有很多，我们使用的是功能强大的 JWT 令牌。</p>
+<h4 id="2-3-1-介绍"><a href="#2-3-1-介绍" class="headerlink" title="2.3.1 介绍"></a>2.3.1 介绍</h4><p>JWT全称：JSON Web Token (官网：<a class="link" target="_blank" rel="noopener" href="https://jwt.io/">https://jwt.io/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>)</p>
 <ul>
-<li>
-<p>定义了一种简介的、自包含的格式，用于在通信双方以 JSON 数据格式安全的传输信息。由于数字签名的存在，这些信息是可靠的。</p>
+<li><p>定义了一种简介的、自包含的格式，用于在通信双方以 JSON 数据格式安全的传输信息。由于数字签名的存在，这些信息是可靠的。</p>
 <blockquote>
 <p>简介：是指JWT就是一个简单的字符串。可以在请求参数或者是请求头当中直接传递。</p>
 <p>自包含：指的是jwt令牌，看似是一个随机的字符串，但是我们是可以根据自身的需求的jwt令牌中存储自定义的数据内容。如：可以直接在jwt令牌中存储用户的相关信息。</p>
@@ -836,20 +829,18 @@
 </ul>
 <p>JWT的组成：（JWT令牌由三个部分组成，三个部分之间使用英文的点来分割）</p>
 <ul>
-<li>
-<p>第一部分：Header(头)，记录令牌类型、签名算法等。例如：{“alg”:“HS256”,“type”:“JWT”}</p>
+<li><p>第一部分：Header(头)，记录令牌类型、签名算法等。例如：{“alg”:”HS256”,”type”:”JWT”}</p>
 </li>
-<li>
-<p>第二部分：Payload(有效载荷)，携带一些自定义信息、默认信息等。例如：{“id”:“1”,“username”:“Tom”}</p>
+<li><p>第二部分：Payload(有效载荷)，携带一些自定义信息、默认信息等。例如：{“id”:”1”,”username”:”Tom”}</p>
 </li>
-<li>
-<p>第三部分：Signature(签名)，防止Token被篡改、确保安全性。将header、payload，并加入指定密钥，通过指定签名算法计算而来。</p>
+<li><p>第三部分：Signature(签名)，防止Token被篡改、确保安全性。将header、payload，并加入指定密钥，通过指定签名算法计算而来。</p>
 <blockquote>
 <p>签名的目的就是为了防jwt令牌被篡改，而正是因为jwt令牌最后一个部分数字签名的存在，所以整个jwt令牌是非常安全可靠的。一旦jwt令牌当中任何一个部分、任何一个字符被篡改了，整个令牌在校验的时候都会失败，所以它是非常安全可靠的。</p>
 </blockquote>
 </li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/24.png" class>
+
 <blockquote>
 <p>JWT是如何将原始的JSON格式数据，转变为字符串的呢？</p>
 <p>其实在生成JWT令牌时，会对JSON格式的数据进行一次编码：进行base64编码</p>
@@ -857,6 +848,7 @@
 <p>需要注意的是Base64是编码方式，而不是加密方式。</p>
 </blockquote>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/25.png" class>
+
 <p>JWT令牌最典型的应用场景就是登录认证：</p>
 <ol>
 <li>在浏览器发起请求来执行登录操作，此时会访问登录的接口，如果登录成功之后，我们需要生成一个jwt令牌，将生成的jwt令牌返回给前端。</li>
@@ -868,20 +860,23 @@
 <li>在登录成功之后，要生成令牌。</li>
 <li>每一次请求当中，要接收令牌并对令牌进行校验。</li>
 </ol>
-<h4 id="2-3-2-生成和校验">2.3.2 生成和校验</h4>
-<p>简单介绍了JWT令牌以及JWT令牌的组成之后，接下来我们就来学习基于Java代码如何生成和校验JWT令牌。</p>
+<h4 id="2-3-2-生成和校验"><a href="#2-3-2-生成和校验" class="headerlink" title="2.3.2 生成和校验"></a>2.3.2 生成和校验</h4><p>简单介绍了JWT令牌以及JWT令牌的组成之后，接下来我们就来学习基于Java代码如何生成和校验JWT令牌。</p>
 <p>首先我们先来实现JWT令牌的生成。要想使用JWT令牌，需要先引入JWT的依赖：</p>
 <div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- JWT依赖--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.jsonwebtoken<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jjwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.9.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>在引入完JWT依赖后，就可以调用工具包中提供的API来完成JWT令牌的生成和校验</p>
 <p>工具类：JWTS</p>
 </blockquote>
 <p>生成JWT代码实现：</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">genJwt</span><span class="params">()</span>&#123;</span><br><span class="line">    Map&lt;String,Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    claims.put(<span class="string">&quot;id&quot;</span>,<span class="number">1</span>);</span><br><span class="line">    claims.put(<span class="string">&quot;username&quot;</span>,<span class="string">&quot;Tom&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="type">String</span> <span class="variable">jwt</span> <span class="operator">=</span> Jwts.builder()</span><br><span class="line">        .setClaims(claims) <span class="comment">//自定义内容(载荷)          </span></span><br><span class="line">        .signWith(SignatureAlgorithm.HS256, <span class="string">&quot;itheima&quot;</span>) <span class="comment">//签名算法        </span></span><br><span class="line">        .setExpiration(<span class="keyword">new</span> <span class="title class_">Date</span>(System.currentTimeMillis() + <span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>)) <span class="comment">//有效期   </span></span><br><span class="line">        .compact();</span><br><span class="line">    </span><br><span class="line">    System.out.println(jwt);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>运行测试方法：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjcyNzI5NzMwfQ.fHi0Ub8npbyt71UqLXDdLyipptLgxBUg_mSuGJtXtBk</span><br></pre></td></tr></table></figure></div>
+
 <p>输出的结果就是生成JWT令牌，通过英文的点分割对三个部分进行分割，我们可以将生成的令牌复制一下，然后打开JWT的官网，将生成的令牌直接放在Encode位置，此时就会自动的将令牌解析出来。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/26.png" class>
+
 <blockquote>
 <p>第一部分解析出来，看到JSON格式的原始数据，所使用的签名算法为HS256。</p>
 <p>第二个部分是我们自定义的数据，之前我们自定义的数据就是id，还有一个exp代表的是我们所设置的过期时间。</p>
@@ -889,31 +884,32 @@
 </blockquote>
 <p>实现了JWT令牌的生成，下面我们接着使用Java代码来校验JWT令牌（解析生成的令牌）：</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">parseJwt</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">Claims</span> <span class="variable">claims</span> <span class="operator">=</span> Jwts.parser()</span><br><span class="line">        .setSigningKey(<span class="string">&quot;itheima&quot;</span>)<span class="comment">//指定签名密钥（必须保证和生成令牌时使用相同的签名密钥）  </span></span><br><span class="line">	    .parseClaimsJws(<span class="string">&quot;eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjcyNzI5NzMwfQ.fHi0Ub8npbyt71UqLXDdLyipptLgxBUg_mSuGJtXtBk&quot;</span>)</span><br><span class="line">        .getBody();</span><br><span class="line"></span><br><span class="line">    System.out.println(claims);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>运行测试方法：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;id=1, exp=1672729730&#125;</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>令牌解析后，我们可以看到id和过期时间，如果在解析的过程当中没有报错，就说明解析成功了。</p>
 </blockquote>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/27.png" class>
+
 <p>结论：篡改令牌中的任何一个字符，在对令牌进行解析时都会报错，所以JWT令牌是非常安全可靠的。</p>
 <p>我们继续测试：修改生成令牌的时指定的过期时间，修改为1分钟</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">genJwt</span><span class="params">()</span>&#123;</span><br><span class="line">    Map&lt;String,Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    claims.put(“id”,<span class="number">1</span>);</span><br><span class="line">    claims.put(“username”,“Tom”);</span><br><span class="line">    <span class="type">String</span> <span class="variable">jwt</span> <span class="operator">=</span> Jwts.builder()</span><br><span class="line">        .setClaims(claims) <span class="comment">//自定义内容(载荷)          </span></span><br><span class="line">        .signWith(SignatureAlgorithm.HS256, “itheima”) <span class="comment">//签名算法        </span></span><br><span class="line">        .setExpiration(<span class="keyword">new</span> <span class="title class_">Date</span>(System.currentTimeMillis() + <span class="number">60</span>*<span class="number">1000</span>)) <span class="comment">//有效期60秒   </span></span><br><span class="line">        .compact();</span><br><span class="line">    </span><br><span class="line">    System.out.println(jwt);</span><br><span class="line">    <span class="comment">//输出结果：eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczMDA5NzU0fQ.RcVIR65AkGiax-ID6FjW60eLFH3tPTKdoK7UtE4A1ro</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">parseJwt</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="type">Claims</span> <span class="variable">claims</span> <span class="operator">=</span> Jwts.parser()</span><br><span class="line">        .setSigningKey(<span class="string">&quot;itheima&quot;</span>)<span class="comment">//指定签名密钥</span></span><br><span class="line">.parseClaimsJws(<span class="string">&quot;eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNjczMDA5NzU0fQ.RcVIR65AkGiax-ID6FjW60eLFH3tPTKdoK7UtE4A1ro&quot;</span>)</span><br><span class="line">        .getBody();</span><br><span class="line"></span><br><span class="line">    System.out.println(claims);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>等待1分钟之后运行测试方法发现也报错了，说明：JWT令牌过期后，令牌就失效了，解析的为非法令牌。</p>
 <p>通过以上测试，我们在使用JWT令牌时需要注意：</p>
 <ul>
 <li>JWT校验时使用的签名密钥，必须和生成JWT令牌时使用的密钥时配套的。</li>
 <li>如果JWT令牌解析校验时报错，则说明JWT令牌被篡改或失效了，令牌非法。</li>
 </ul>
-<h4 id="2-3-3-登录下发令牌">2.3.3 登录下发令牌</h4>
-<p>JWT令牌的生成和校验的基本操作我们已经学习完了，接下来我们就需要在案例当中通过JWT令牌技术来跟踪会话。具体的思路我们前面已经分析过了，主要就是两步操作：</p>
+<h4 id="2-3-3-登录下发令牌"><a href="#2-3-3-登录下发令牌" class="headerlink" title="2.3.3 登录下发令牌"></a>2.3.3 登录下发令牌</h4><p>JWT令牌的生成和校验的基本操作我们已经学习完了，接下来我们就需要在案例当中通过JWT令牌技术来跟踪会话。具体的思路我们前面已经分析过了，主要就是两步操作：</p>
 <ol>
-<li>生成令牌
-<ul>
+<li>生成令牌<ul>
 <li>在登录成功之后来生成一个JWT令牌，并且把这个令牌直接返回给前端</li>
 </ul>
 </li>
-<li>校验令牌
-<ul>
+<li>校验令牌<ul>
 <li>拦截前端请求，从请求中获取到令牌，对令牌进行解析校验</li>
 </ul>
 </li>
@@ -921,9 +917,8 @@
 <p>那我们首先来完成：登录成功之后生成JWT令牌，并且把令牌返回给前端。</p>
 <p>JWT令牌怎么返回给前端呢？此时我们就需要再来看一下接口文档当中关于登录接口的描述（主要看响应数据）：</p>
 <ul>
-<li>
-<p>响应数据</p>
-<p>参数格式：appication/json</p>
+<li><p>响应数据</p>
+<p>参数格式：appication&#x2F;json</p>
 <p>参数说明：</p>
 <table>
 <thead>
@@ -936,8 +931,7 @@
 <th>其他信息</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>code</td>
 <td>number</td>
 <td>必须</td>
@@ -961,23 +955,19 @@
 <td>返回的数据 , jwt令牌</td>
 <td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>响应数据样例：</p>
 <div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;success&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoi6YeR5bq4IiwiaWQiOjEsInVzZXJuYW1lIjoiamlueW9uZyIsImV4cCI6MTY2MjIwNzA0OH0.KkUc_CXJZJ8Dd063eImx4H9Ojfrr6XMJ-yVzaWCVZCo&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>备注说明</p>
+<li><p>备注说明</p>
 <p>用户登录成功后，系统会自动下发JWT令牌，然后在后续的每次请求中，都需要在请求头header中携带到服务端，请求头的名称为token，值为登陆时下发的JWT令牌。</p>
 <p>如果检测到用户未登录，则会返回如下固定错误信息：</p>
-<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NOT_LOGIN&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
-</li>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NOT_LOGIN&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <p>生成一个令牌返回给前端就可以了。</p>
 <p><strong>实现步骤：</strong></p>
 <ol>
-<li>引入JWT工具类
-<ul>
+<li>引入JWT工具类<ul>
 <li>在项目工程下创建com.itheima.utils包，并把提供JWT工具类复制到该包下</li>
 </ul>
 </li>
@@ -985,10 +975,13 @@
 </ol>
 <p><strong>JWT工具类</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JwtUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">signKey</span> <span class="operator">=</span> <span class="string">&quot;itheima&quot;</span>;<span class="comment">//签名密钥</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">Long</span> <span class="variable">expire</span> <span class="operator">=</span> <span class="number">43200000L</span>; <span class="comment">//有效时间</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成JWT令牌</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> claims JWT第二部分负载 payload 中存储的内容</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">generateJwt</span><span class="params">(Map&lt;String, Object&gt; claims)</span>&#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">jwt</span> <span class="operator">=</span> Jwts.builder()</span><br><span class="line">                .addClaims(claims)<span class="comment">//自定义信息（有效载荷）</span></span><br><span class="line">                .signWith(SignatureAlgorithm.HS256, signKey)<span class="comment">//签名算法（头部）</span></span><br><span class="line">                .setExpiration(<span class="keyword">new</span> <span class="title class_">Date</span>(System.currentTimeMillis() + expire))<span class="comment">//过期时间</span></span><br><span class="line">                .compact();</span><br><span class="line">        <span class="keyword">return</span> jwt;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解析JWT令牌</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> jwt JWT令牌</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> JWT第二部分负载 payload 中存储的内容</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Claims <span class="title function_">parseJWT</span><span class="params">(String jwt)</span>&#123;</span><br><span class="line">        <span class="type">Claims</span> <span class="variable">claims</span> <span class="operator">=</span> Jwts.parser()</span><br><span class="line">                .setSigningKey(signKey)<span class="comment">//指定签名密钥</span></span><br><span class="line">                .parseClaimsJws(jwt)<span class="comment">//指定令牌Token</span></span><br><span class="line">                .getBody();</span><br><span class="line">        <span class="keyword">return</span> claims;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>登录成功，生成JWT令牌并返回</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginController</span> &#123;</span><br><span class="line">    <span class="comment">//依赖业务层对象</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> EmpService empService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/login&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">login</span><span class="params">(<span class="meta">@RequestBody</span> Emp emp)</span> &#123;</span><br><span class="line">        <span class="comment">//调用业务层：登录功能</span></span><br><span class="line">        <span class="type">Emp</span> <span class="variable">loginEmp</span> <span class="operator">=</span> empService.login(emp);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//判断：登录用户是否存在</span></span><br><span class="line">        <span class="keyword">if</span>(loginEmp !=<span class="literal">null</span> )&#123;</span><br><span class="line">            <span class="comment">//自定义信息</span></span><br><span class="line">            Map&lt;String , Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">            claims.put(<span class="string">&quot;id&quot;</span>, loginEmp.getId());</span><br><span class="line">            claims.put(<span class="string">&quot;username&quot;</span>,loginEmp.getUsername());</span><br><span class="line">            claims.put(<span class="string">&quot;name&quot;</span>,loginEmp.getName());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//使用JWT工具类，生成身份令牌</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> JwtUtils.generateJwt(claims);</span><br><span class="line">            <span class="keyword">return</span> Result.success(token);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">&quot;用户名或密码错误&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>重启服务，打开apifox测试登录接口：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/28.png" class>
+
 <p>打开浏览器完成前后端联调操作：利用开发者工具，抓取一下网络请求</p>
 <blockquote>
 <p>登录请求完成后，可以看到JWT令牌已经响应给了前端，此时前端就会将JWT令牌存储在浏览器本地。</p>
@@ -998,26 +991,25 @@
 <li>在当前案例中，JWT令牌存储在浏览器的本地存储空间local storage中了。local storage是浏览器的本地存储，在移动端也是支持的。</li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/29.png" class>
+
 <p>我们在发起一个查询部门数据的请求，此时我们可以看到在请求头中包含一个token(JWT令牌)，后续的每一次请求当中，都会将这个令牌携带的服务端。</p>
-<h3 id="2-4-过滤器Filter">2.4 过滤器Filter</h3>
-<p>刚才通过浏览器的开发者工具，我们可以看到在后续的请求当中，都会在请求头中携带JWT令牌到服务端，而服务端需要统一拦截所有的请求，从而判断是否携带的有合法的JWT令牌。</p>
+<h3 id="2-4-过滤器Filter"><a href="#2-4-过滤器Filter" class="headerlink" title="2.4 过滤器Filter"></a>2.4 过滤器Filter</h3><p>刚才通过浏览器的开发者工具，我们可以看到在后续的请求当中，都会在请求头中携带JWT令牌到服务端，而服务端需要统一拦截所有的请求，从而判断是否携带的有合法的JWT令牌。</p>
 <p>那怎么样来统一拦截到所有的请求校验令牌的有效性呢？这里会学习两种解决方案：</p>
 <ol>
 <li>Filter过滤器</li>
 <li>Interceptor拦截器</li>
 </ol>
-<h4 id="2-4-1-快速入门">2.4.1 快速入门</h4>
-<p>什么是Filter？</p>
+<h4 id="2-4-1-快速入门"><a href="#2-4-1-快速入门" class="headerlink" title="2.4.1 快速入门"></a>2.4.1 快速入门</h4><p>什么是Filter？</p>
 <ul>
 <li>Filter表示过滤器，是 JavaWeb 三大组件(Servlet、Filter、Listener)之一。</li>
-<li>过滤器可以把对资源的请求拦截下来，从而是实现一些特殊的功能
-<ul>
+<li>过滤器可以把对资源的请求拦截下来，从而是实现一些特殊的功能<ul>
 <li>使用了过滤器之后，要想访问web服务器上的资源，必须先经过滤器，过滤器处理完毕之后，才可以访问对应的资源。</li>
 </ul>
 </li>
 <li>过滤器一般完成一些通用的操作，比如：登录校验、统一编码处理、敏感字符处理等。</li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/30.png" class>
+
 <p>下面我们通过Filter快速入门程序掌握过滤器的基本使用操作：</p>
 <ul>
 <li>第1步，定义过滤器：定义一个类，实现 Filter 接口，并重写其所有方法。</li>
@@ -1025,6 +1017,7 @@
 </ul>
 <p><strong>定义过滤器</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个类，实现一个标准的Filter过滤器的接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//初始化方法, 只调用一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;init 初始化方法执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//拦截到请求之后调用, 调用多次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Demo 拦截到了请求...放行前逻辑&quot;</span>);</span><br><span class="line">        <span class="comment">//放行</span></span><br><span class="line">        chain.doFilter(request,response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//销毁方法, 只调用一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;destroy 销毁方法执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <ul>
 <li>init方法：过滤器的初始化方法。在web服务器启动的时候会自动地创建Filter过滤器对象，在创建过滤器对象的时候会自动调用init初始化方法，这个方法只会被调用一次。</li>
@@ -1034,29 +1027,30 @@
 </blockquote>
 <p>在定义完Filter之后，Filter其实并不会生效，还需要完成Filter的配置，Filter的配置非常简单，只需要在Filter类上添加一个注解：@WebFilter，并指定属性urlPatterns，通过这个属性指定过滤器要拦截哪些请求</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter(urlPatterns=&quot;/*&quot;)</span> <span class="comment">//配置过滤器要拦截的请求路径(/* 表示拦截浏览器的所有请求)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//初始化方法, 只调用一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;init 初始化方法执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//拦截到请求之后调用, 调用多次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Demo 拦截到了请求...放行前逻辑&quot;</span>);</span><br><span class="line">        <span class="comment">//放行</span></span><br><span class="line">        chain.doFilter(request,response);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//销毁方法, 只调用一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;destroy 销毁方法执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>当我们在Filter类上面加了@WebFilter注解之后，接下来我们还需要在启动类上面加上一个注解@ServletComponentScan，通过这个@ServletComponentScan注解来开启SpringBoot项目对Servlet组件的支持。</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ServletComponentScan</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TliasWebManagementApplication</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(TliasWebManagementApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>重新启动服务，打开浏览器，执行部门管理的请求，可以看到控制台输出了过滤器中的内容</p>
 <blockquote>
 <p>注意事项：在过滤器Filter中，如果不执行放行操作，将无法访问后面的资源。</p>
 <p>放行操作：chain.doFilter(request, response);</p>
 </blockquote>
 <p>现在我们已经完成了Filter过滤器的基本使用，下面我们将学习Filter过滤器在使用过程中的一些细节。</p>
-<h4 id="2-4-2-Filter详解">2.4.2 Filter详解</h4>
-<p>Filter过滤器的快速入门程序我们已经完成了，接下来我们就要详细的介绍一下过滤器Filter在使用中的一些细节。主要介绍一下3个方面的细节：</p>
+<h4 id="2-4-2-Filter详解"><a href="#2-4-2-Filter详解" class="headerlink" title="2.4.2 Filter详解"></a>2.4.2 Filter详解</h4><p>Filter过滤器的快速入门程序我们已经完成了，接下来我们就要详细的介绍一下过滤器Filter在使用中的一些细节。主要介绍一下3个方面的细节：</p>
 <ol>
 <li>过滤器的执行流程</li>
 <li>过滤器的拦截路径配置</li>
 <li>过滤器链</li>
 </ol>
-<h5 id="2-4-2-1-执行流程">2.4.2.1 执行流程</h5>
-<p>首先我们先来看下过滤器的执行流程：</p>
+<h5 id="2-4-2-1-执行流程"><a href="#2-4-2-1-执行流程" class="headerlink" title="2.4.2.1 执行流程"></a>2.4.2.1 执行流程</h5><p>首先我们先来看下过滤器的执行流程：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/31.png" class>
+
 <p>过滤器当中我们拦截到了请求之后，如果希望继续访问后面的web资源，就要执行放行操作，放行就是调用FilterChain对象当中的doFilter()方法，在调用doFilter()这个方法之前所编写的代码属于放行之前的逻辑</p>
 <p>在放行后访问完 web 资源之后还会回到过滤器当中，回到过滤器之后如有需求还可以执行放行之后的逻辑，放行之后的逻辑我们写在doFilter()这行代码之后。</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/*&quot;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//初始化方法, 只调用一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;init 初始化方法执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行前逻辑.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//放行请求</span></span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行后逻辑.....&quot;</span>);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span> <span class="comment">//销毁方法, 只调用一次</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;destroy 销毁方法执行了&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
-<h5 id="2-4-2-2-拦截路径">2.4.2.2 拦截路径</h5>
-<p>执行流程我们搞清楚之后，接下来再来介绍一下过滤器的拦截路径，Filter可以根据需求，配置不同的拦截资源路径：</p>
+
+<h5 id="2-4-2-2-拦截路径"><a href="#2-4-2-2-拦截路径" class="headerlink" title="2.4.2.2 拦截路径"></a>2.4.2.2 拦截路径</h5><p>执行流程我们搞清楚之后，接下来再来介绍一下过滤器的拦截路径，Filter可以根据需求，配置不同的拦截资源路径：</p>
 <table>
 <thead>
 <tr>
@@ -1065,40 +1059,44 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>拦截具体路径</td>
-<td>/login</td>
-<td>只会访问 /login 路径时，才会被拦截</td>
+<td>&#x2F;login</td>
+<td>只会访问 &#x2F;login 路径时，才会被拦截</td>
 </tr>
 <tr>
 <td>目录拦截</td>
-<td>/emps/*</td>
+<td>&#x2F;emps&#x2F;*</td>
 <td>访问emps下的所有资源，都会被拦截</td>
 </tr>
 <tr>
 <td>拦截所有</td>
-<td>/*</td>
+<td>&#x2F;*</td>
 <td>访问所有资源，都会被拦截</td>
 </tr>
-</tbody>
-</table>
-<p>下面我们来测试&quot;拦截具体路径&quot;：</p>
+</tbody></table>
+<p>下面我们来测试”拦截具体路径”：</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/login&quot;)</span>  <span class="comment">//拦截/login具体路径</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行前逻辑.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//放行请求</span></span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行后逻辑.....&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        Filter.<span class="built_in">super</span>.init(filterConfig);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        Filter.<span class="built_in">super</span>.destroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>测试1：访问部门管理请求，发现过滤器没有拦截请求</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/32.png" class>
-<p>测试2：访问登录请求/login，发现过滤器拦截请求</p>
+
+<p>测试2：访问登录请求&#x2F;login，发现过滤器拦截请求</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/33.png" class>
-<p>下面我们来测试&quot;目录拦截&quot;：</p>
+
+<p>下面我们来测试”目录拦截”：</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/depts/*&quot;)</span> <span class="comment">//拦截所有以/depts开头，后面是什么无所谓</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行前逻辑.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//放行请求</span></span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行后逻辑.....&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">        Filter.<span class="built_in">super</span>.init(filterConfig);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line">        Filter.<span class="built_in">super</span>.destroy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>测试1：访问部门管理请求，发现过滤器拦截了请求</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/34.png" class>
-<p>测试2：访问登录请求/login，发现过滤器没有拦截请求</p>
+
+<p>测试2：访问登录请求&#x2F;login，发现过滤器没有拦截请求</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/35.png" class>
-<h5 id="2-4-2-3-过滤器链">2.4.2.3 过滤器链</h5>
-<p>什么是过滤器链？</p>
+
+<h5 id="2-4-2-3-过滤器链"><a href="#2-4-2-3-过滤器链" class="headerlink" title="2.4.2.3 过滤器链"></a>2.4.2.3 过滤器链</h5><p>什么是过滤器链？</p>
 <p>过滤器链指的是在一个web应用程序当中，可以配置多个过滤器，多个过滤器就形成了一个过滤器链。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/36.png" class>
+
 <p>比如：在我们web服务器当中，定义了两个过滤器，这两个多滤器就形成了一个过滤器链。</p>
 <p>而这个链上的过滤器在执行的时候会一个一个的执行，会先执行第一个Filter，放行之后再来执行第二个Filter，如果执行到了最后一个过滤器放行之后，才会访问对应的web资源。</p>
 <p>访问玩web资源之后，按照我们刚才所介绍的过滤器的执行流程，还会回到过滤器当中来执行过滤器放行后的逻辑，而在执行放行后的逻辑的时候，顺序是反着的。</p>
@@ -1108,25 +1106,31 @@
 <ol>
 <li>在filter包下再来新建一个Filter过滤器类：AbcFilter</li>
 <li>在AbcFilter过滤器中编写放行前和放行后的逻辑</li>
-<li>配置AbcFilter过滤器拦截请求路径为：/*</li>
+<li>配置AbcFilter过滤器拦截请求路径为：&#x2F;*</li>
 <li>重启SpringBoot服务，查看DemoFilter、AbcFilter的执行日志</li>
 </ol>
 <p><strong>AbcFilter过滤器</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/*&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AbcFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Abc 拦截到了请求... 放行前逻辑&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//放行</span></span><br><span class="line">        chain.doFilter(request,response);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Abc 拦截到了请求... 放行后逻辑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>DemoFilter过滤器</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/*&quot;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">DemoFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行前逻辑.....&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//放行请求</span></span><br><span class="line">        filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;DemoFilter   放行后逻辑.....&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>打开浏览器访问登录接口：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/37.png" class>
+
 <p>通过控制台日志的输出，大家发现AbcFilter限制性DemoFilter后执行，这是为什么呢？</p>
 <p>其实是和过滤器的类名有关系。以注解方式配置的Filter过滤器，它的执行优先级是按过滤器类名的自动排序确定的，类名排名越靠前，优先级越高。</p>
 <p>假如我们想让DemoFilter先执行，可以修改类名。</p>
 <p>修改AbcFilter类名为XbcFilter，运行程序查看控制台日志</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/*&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">XbcFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest request, ServletResponse response, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Xbc 拦截到了请求...放行前逻辑&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//放行</span></span><br><span class="line">        chain.doFilter(request,response);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;Xbc 拦截到了请求...放行后逻辑&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/38.png" class>
-<h4 id="2-4-3-登录校验-Filter">2.4.3 登录校验-Filter</h4>
-<h5 id="2-4-3-1-分析">2.4.3.1 分析</h5>
-<p>过滤器Filter的快速入门以及使用细节已经介绍完了，需要使用过滤器Filter来完成案例当中的登录校验功能。</p>
+
+
+
+<h4 id="2-4-3-登录校验-Filter"><a href="#2-4-3-登录校验-Filter" class="headerlink" title="2.4.3 登录校验-Filter"></a>2.4.3 登录校验-Filter</h4><h5 id="2-4-3-1-分析"><a href="#2-4-3-1-分析" class="headerlink" title="2.4.3.1 分析"></a>2.4.3.1 分析</h5><p>过滤器Filter的快速入门以及使用细节已经介绍完了，需要使用过滤器Filter来完成案例当中的登录校验功能。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/39.png" class>
+
 <p>我们先来回顾下前面分析过的登录校验的基本流程：</p>
 <ul>
 <li>要进入到后台管理系统，我们必须先完成登录操作，此时就需要访问登录接口login</li>
@@ -1136,20 +1140,18 @@
 </ul>
 <p>大概清楚了在Filter过滤器的实现步骤，在正式开发登录校验过滤器之前，思考两个问题：</p>
 <ol>
-<li>所有的请求，拦截到了之后，都需要校验令牌吗？
-<ul>
+<li>所有的请求，拦截到了之后，都需要校验令牌吗？<ul>
 <li>答案：<strong>登录请求例外</strong></li>
 </ul>
 </li>
-<li>拦截到请求后，什么情况下才可以放行，执行业务操作？
-<ul>
+<li>拦截到请求后，什么情况下才可以放行，执行业务操作？<ul>
 <li>答案：<strong>有令牌，且令牌校验通过(合法)；否则都返回未登录错误结果</strong></li>
 </ul>
 </li>
 </ol>
-<h5 id="2-4-3-2-具体流程">2.4.3.2 具体流程</h5>
-<p>我们要完成登录校验，主要利用Filter过滤器实现。Filter过滤器的流程步骤：</p>
+<h5 id="2-4-3-2-具体流程"><a href="#2-4-3-2-具体流程" class="headerlink" title="2.4.3.2 具体流程"></a>2.4.3.2 具体流程</h5><p>我们要完成登录校验，主要利用Filter过滤器实现。Filter过滤器的流程步骤：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/25/%E5%90%8E%E7%AB%AF/10-SpringBootWeb%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81/40.png" class>
+
 <p>基于上面的业务流程，我们分析出具体的操作步骤：</p>
 <ol>
 <li>获取请求url</li>
@@ -1159,16 +1161,13 @@
 <li>解析token，如果解析失败，返回错误结果（未登录）</li>
 <li>放行</li>
 </ol>
-<h5 id="2-4-3-3-代码实现">2.4.3.3 代码实现</h5>
-<p>分析清楚了以上的问题后，按照接口文档来开发登录功能了，登录接口描述如下：</p>
+<h5 id="2-4-3-3-代码实现"><a href="#2-4-3-3-代码实现" class="headerlink" title="2.4.3.3 代码实现"></a>2.4.3.3 代码实现</h5><p>分析清楚了以上的问题后，按照接口文档来开发登录功能了，登录接口描述如下：</p>
 <ul>
-<li>
-<p>基本信息</p>
+<li><p>基本信息</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">请求路径：/login</span><br><span class="line"></span><br><span class="line">请求方式：POST</span><br><span class="line"></span><br><span class="line">接口描述：该接口用于员工登录Tlias智能学习辅助系统，登录完毕后，系统下发JWT令牌。</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>请求参数</p>
-<p>参数格式：application/json</p>
+<li><p>请求参数</p>
+<p>参数格式：application&#x2F;json</p>
 <p>参数说明：</p>
 <table>
 <thead>
@@ -1179,8 +1178,7 @@
 <th>备注</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>username</td>
 <td>string</td>
 <td>必须</td>
@@ -1192,14 +1190,12 @@
 <td>必须</td>
 <td>密码</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>请求数据样例：</p>
 <div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;username&quot;</span><span class="punctuation">:</span><span class="string">&quot;jinyong&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;password&quot;</span><span class="punctuation">:</span><span class="string">&quot;123456&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>响应数据</p>
-<p>参数格式：application/json</p>
+<li><p>响应数据</p>
+<p>参数格式：application&#x2F;json</p>
 <p>参数说明：</p>
 <table>
 <thead>
@@ -1212,8 +1208,7 @@
 <th>其他信息</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>code</td>
 <td>number</td>
 <td>必须</td>
@@ -1237,46 +1232,41 @@
 <td>返回的数据 , jwt令牌</td>
 <td></td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>响应数据样例：</p>
 <div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;success&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eyJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoi6YeR5bq4IiwiaWQiOjEsInVzZXJuYW1lIjoiamlueW9uZyIsImV4cCI6MTY2MjIwNzA0OH0.KkUc_CXJZJ8Dd063eImx4H9Ojfrr6XMJ-yVzaWCVZCo&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>备注说明</p>
+<li><p>备注说明</p>
 <p>用户登录成功后，系统会自动下发JWT令牌，然后在后续的每次请求中，都需要在请求头header中携带到服务端，请求头的名称为 token，值为 登录时下发的JWT令牌。</p>
 <p>如果检测到用户未登录，则会返回如下固定错误信息：</p>
-<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NOT_LOGIN&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div>
-</li>
+<div class="highlight-container" data-rel="Json"><figure class="iseeu highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">	<span class="attr">&quot;code&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;msg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;NOT_LOGIN&quot;</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">null</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <p><strong>登录校验过滤器：LoginCheckFilter</strong></p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@WebFilter(urlPatterns = &quot;/*&quot;)</span> <span class="comment">//拦截所有请求</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginCheckFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        <span class="comment">//前置：强制转换为http协议的请求对象、响应对象 （转换原因：要使用子类中特有方法）</span></span><br><span class="line">        <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> (HttpServletRequest) servletRequest;</span><br><span class="line">        <span class="type">HttpServletResponse</span> <span class="variable">response</span> <span class="operator">=</span> (HttpServletResponse) servletResponse;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//1.获取请求url</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> request.getRequestURL().toString();</span><br><span class="line">        log.info(<span class="string">&quot;请求路径：&#123;&#125;&quot;</span>, url); <span class="comment">//请求路径：http://localhost:8080/login</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//2.判断请求url中是否包含login，如果包含，说明是登录操作，放行</span></span><br><span class="line">        <span class="keyword">if</span>(url.contains(<span class="string">&quot;/login&quot;</span>))&#123;</span><br><span class="line">            chain.doFilter(request, response);<span class="comment">//放行请求</span></span><br><span class="line">            <span class="keyword">return</span>;<span class="comment">//结束当前方法的执行</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//3.获取请求头中的令牌（token）</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> request.getHeader(<span class="string">&quot;token&quot;</span>);</span><br><span class="line">        log.info(<span class="string">&quot;从请求头中获取的令牌：&#123;&#125;&quot;</span>,token);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.判断令牌是否存在，如果不存在，返回错误结果（未登录）</span></span><br><span class="line">        <span class="keyword">if</span>(!StringUtils.hasLength(token))&#123;</span><br><span class="line">            log.info(<span class="string">&quot;Token不存在&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">Result</span> <span class="variable">responseResult</span> <span class="operator">=</span> Result.error(<span class="string">&quot;NOT_LOGIN&quot;</span>);</span><br><span class="line">            <span class="comment">//把Result对象转换为JSON格式字符串 (fastjson是阿里巴巴提供的用于实现对象和json的转换工具类)</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">json</span> <span class="operator">=</span> JSONObject.toJSONString(responseResult);</span><br><span class="line">            response.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">            <span class="comment">//响应</span></span><br><span class="line">            response.getWriter().write(json);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//5.解析token，如果解析失败，返回错误结果（未登录）</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            JwtUtils.parseJWT(token);</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            log.info(<span class="string">&quot;令牌解析失败!&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="type">Result</span> <span class="variable">responseResult</span> <span class="operator">=</span> Result.error(<span class="string">&quot;NOT_LOGIN&quot;</span>);</span><br><span class="line">            <span class="comment">//把Result对象转换为JSON格式字符串 (fastjson是阿里巴巴提供的用于实现对象和json的转换工具类)</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">json</span> <span class="operator">=</span> JSONObject.toJSONString(responseResult);</span><br><span class="line">            response.setContentType(<span class="string">&quot;application/json;charset=utf-8&quot;</span>);</span><br><span class="line">            <span class="comment">//响应</span></span><br><span class="line">            response.getWriter().write(json);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">//6.放行</span></span><br><span class="line">        chain.doFilter(request, response);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <p>在上述过滤器的功能实现中，我们使用到了一个第三方json处理的工具包fastjson。我们要想使用，需要引入如下依赖：</p>
 <div class="highlight-container" data-rel="Xml"><figure class="iseeu highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.76<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+
 <p>登录校验的过滤器我们编写完成了，接下来我们就可以重新启动服务来做一个测试：</p>
 <blockquote>
 <p>测试前先把之前所编写的测试使用的过滤器，暂时注释掉。直接将@WebFilter注释给注释掉即可。</p>
 </blockquote>
 <ul>
-<li>
-<p>测试1：未登录是否可以访问部门管理页面</p>
+<li><p>测试1：未登录是否可以访问部门管理页面</p>
 <p>首先关闭浏览器，重新打开浏览器，在地址栏中输入：<a class="link" target="_blank" rel="noopener" href="http://localhost:9528/#/system/dept">http://localhost:9528/#/system/dept <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>由于用户没有登录，登录校验过滤器返回错误信息，前端页面根据返回的错误信息结果，自动跳转到登录页面了</p>
 </li>
-<li>
-<p>测试2：先进行登录操作，再访问部门管理页面</p>
+<li><p>测试2：先进行登录操作，再访问部门管理页面</p>
 <p>登录校验成功之后，可以正常访问相关业务操作页面</p>
 </li>
 </ul>
-<h3 id="2-5-拦截器Interceptor">2.5 拦截器Interceptor</h3>
-<p>拦截器我们主要分为三个方面进行讲解：</p>
+<h3 id="2-5-拦截器Interceptor"><a href="#2-5-拦截器Interceptor" class="headerlink" title="2.5 拦截器Interceptor"></a>2.5 拦截器Interceptor</h3><p>拦截器我们主要分为三个方面进行讲解：</p>
 <ol>
 <li>介绍下什么是拦截器，并通过快速入门程序上手拦截器</li>
 <li>拦截器的使用细节</li>
 <li>通过拦截器Interceptor完成登录校验功能</li>
 </ol>
-<h4 id="2-5-1-快速入门">2.5.1 快速入门</h4>
-<p>什么是拦截器？</p>
+<h4 id="2-5-1-快速入门"><a href="#2-5-1-快速入门" class="headerlink" title="2.5.1 快速入门"></a>2.5.1 快速入门</h4><p>什么是拦截器？</p>
 <ul>
 <li>是一种动态拦截方法调用的机制，类似于过滤器</li>
 <li>拦截器是Spring框架中提供的，用来动态拦截控制器方法的执行。</li>
@@ -1291,8 +1281,9 @@
 <li>定义拦截器</li>
 <li>注册配置拦截器</li>
 </ol>
-<p>**自定义拦截器：**实现HandlerInterceptor接口，并重写其所有方法</p>
+<p><strong>自定义拦截器：</strong>实现HandlerInterceptor接口，并重写其所有方法</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自定义拦截器</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginCheckInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span> &#123;</span><br><span class="line">    <span class="comment">//目标资源方法执行前执行。 返回true：放行    返回false：不放行</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;preHandle .... &quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">//true表示放行</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//目标资源方法执行后执行</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;postHandle ... &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//视图渲染完毕后执行，最后执行</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;afterCompletion .... &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>注意：</p>
 <p>preHandle方法：目标资源方法执行前执行。返回true：放行 返回false：不放行</p>
@@ -1301,6 +1292,7 @@
 </blockquote>
 <p><strong>注册配置拦截器</strong>：实现WebMvcConfigurer接口，并重写addInterceptors方法</p>
 <div class="highlight-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//自定义的拦截器对象</span></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> LoginCheckInterceptor loginCheckInterceptor;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> &#123;</span><br><span class="line">       <span class="comment">//注册自定义拦截器对象</span></span><br><span class="line">        registry.addInterceptor(loginCheckInterceptor).addPathPatterns(<span class="string">&quot;/**&quot;</span>);<span class="comment">//设置拦截器拦截的请求路径（ /** 表示拦截所有请求）</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
 
         </div>
 
@@ -1431,7 +1423,7 @@
     <div class="post-toc">
         <div class="toc-title">目录</div>
         <div class="page-title">10-SpringBootWeb登录认证</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">案例-登录认证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="nav-text">1 登录功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%9C%80%E6%B1%82"><span class="nav-text">1.1 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="nav-text">1.2 接口文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90"><span class="nav-text">1.3 思路分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91"><span class="nav-text">1.4 功能开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E6%B5%8B%E8%AF%95"><span class="nav-text">1.5 测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C"><span class="nav-text">2 登录校验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">2.1 问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF"><span class="nav-text">2.2 会话技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-JWT%E4%BB%A4%E7%89%8C"><span class="nav-text">2.3 JWT令牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%BF%87%E6%BB%A4%E5%99%A8Filter"><span class="nav-text">2.4 过滤器Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%8B%A6%E6%88%AA%E5%99%A8Interceptor"><span class="nav-text">2.5 拦截器Interceptor</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A1%88%E4%BE%8B-%E7%99%BB%E5%BD%95%E8%AE%A4%E8%AF%81"><span class="nav-text">案例-登录认证</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD"><span class="nav-text">1 登录功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E9%9C%80%E6%B1%82"><span class="nav-text">1.1 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3"><span class="nav-text">1.2 接口文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%80%9D%E8%B7%AF%E5%88%86%E6%9E%90"><span class="nav-text">1.3 思路分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%8A%9F%E8%83%BD%E5%BC%80%E5%8F%91"><span class="nav-text">1.4 功能开发</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-%E6%B5%8B%E8%AF%95"><span class="nav-text">1.5 测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%99%BB%E5%BD%95%E6%A0%A1%E9%AA%8C"><span class="nav-text">2 登录校验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%97%AE%E9%A2%98%E5%88%86%E6%9E%90"><span class="nav-text">2.1 问题分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AF"><span class="nav-text">2.2 会话技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-JWT%E4%BB%A4%E7%89%8C"><span class="nav-text">2.3 JWT令牌</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%BF%87%E6%BB%A4%E5%99%A8Filter"><span class="nav-text">2.4 过滤器Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-%E6%8B%A6%E6%88%AA%E5%99%A8Interceptor"><span class="nav-text">2.5 拦截器Interceptor</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
@@ -1464,11 +1456,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 59 篇文章
+                        共撰写了 60 篇文章
                     </span>
                     
                         <span>
-                            共 357.3k 字
+                            共 363.4k 字
                         </span>
                     
                 </p>

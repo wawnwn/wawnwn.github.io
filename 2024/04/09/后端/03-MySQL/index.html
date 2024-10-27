@@ -349,7 +349,7 @@
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">59</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">60</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -465,14 +465,15 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h1>数据库开发-MySQL</h1>
-<span id="more"></span>
-<h2 id="前言">前言</h2>
-<p>在web开发中，为了应用程序职责单一，方便维护，我们一般将web应用程序分为三层，即：Controller、Service、Dao。</p>
+            <h1 id="数据库开发-MySQL"><a href="#数据库开发-MySQL" class="headerlink" title="数据库开发-MySQL"></a>数据库开发-MySQL</h1><span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在web开发中，为了应用程序职责单一，方便维护，我们一般将web应用程序分为三层，即：Controller、Service、Dao。</p>
 <p>请求流程：浏览器发起请求，先请求Controller；Controller接收到请求之后，调用Service进行业务逻辑处理理；Service再调用Dao，Dao再解析user.xml中所存储的数据。</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/1.png" class>
+
 <p>xml文件中可以存储数据，但是在企业项目开发中不会使用xml文件存储数据，因为不便管理维护，操作难度大。在真实的企业开发中，都会采用数据库来存储和管理数据，此时，web开发调用流程图如下所示：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/2.png" class>
+
 <ul>
 <li>数据库：DataBase，简称DB，是存储和管理数据的仓库</li>
 </ul>
@@ -484,67 +485,62 @@
 <p>SQL（Structured Query Language，简称SQL）：结构化查询语言，它是操作关系型数据库的编程语言，定义了一套操作关系型数据库的统一标准。</p>
 <p>目前主流的数据库，截取了排名前十的数据库：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/3.png" class>
+
 <ul>
-<li>
-<p>Oracle：大型的收费数据库，Oracle公司产品，价格昂贵。（通常是不差钱的公司会选择使用这个数据库）</p>
+<li><p>Oracle：大型的收费数据库，Oracle公司产品，价格昂贵。（通常是不差钱的公司会选择使用这个数据库）</p>
 </li>
-<li>
-<p>MySQL：开源免费的中小型数据库，后来Sun公司收购了MySQL，而Oracle又收购了Sun公司。目前Oracle推出两个版本的MySQL：社区版（开源免费）、商业版（收费）。</p>
+<li><p>MySQL：开源免费的中小型数据库，后来Sun公司收购了MySQL，而Oracle又收购了Sun公司。目前Oracle推出两个版本的MySQL：社区版（开源免费）、商业版（收费）。</p>
 </li>
-<li>
-<p>SQL Server：Microsoft 公司推出的收费的中型数据库，C#、.net等语言常用。</p>
+<li><p>SQL Server：Microsoft 公司推出的收费的中型数据库，C#、.net等语言常用。</p>
 </li>
-<li>
-<p>PostgreSQL：开源免费的中小型数据库。</p>
+<li><p>PostgreSQL：开源免费的中小型数据库。</p>
 </li>
-<li>
-<p>DB2：IBM公司的大型收费数据库产品。</p>
+<li><p>DB2：IBM公司的大型收费数据库产品。</p>
 </li>
-<li>
-<p>SQLLite：嵌入式的微型数据库。Android内置的数据库采用的就是该数据库。</p>
+<li><p>SQLLite：嵌入式的微型数据库。Android内置的数据库采用的就是该数据库。</p>
 </li>
-<li>
-<p>MariaDB：开源免费的中小型数据库。是MySQL数据库的另外一个分支、另外一个衍生产品，与MySQL数据库有很好的兼容性。</p>
+<li><p>MariaDB：开源免费的中小型数据库。是MySQL数据库的另外一个分支、另外一个衍生产品，与MySQL数据库有很好的兼容性。</p>
 </li>
 </ul>
 <p>课程内容安排：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/4.png" class>
+
 <p>以上课程内容拆解为3部分的知识点：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/5.png" class>
-<h2 id="1-MySQL概述">1 MySQL概述</h2>
-<p>官网：<a class="link" target="_blank" rel="noopener" href="https://dev.mysql.com/">https://dev.mysql.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h3 id="1-1-安装">1.1 安装</h3>
-<h4 id="1-1-1-版本">1.1.1 版本</h4>
-<p>MySQL官方提供了两个版本：</p>
+
+
+
+<h2 id="1-MySQL概述"><a href="#1-MySQL概述" class="headerlink" title="1 MySQL概述"></a>1 MySQL概述</h2><p>官网：<a class="link" target="_blank" rel="noopener" href="https://dev.mysql.com/">https://dev.mysql.com/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><h4 id="1-1-1-版本"><a href="#1-1-1-版本" class="headerlink" title="1.1.1 版本"></a>1.1.1 版本</h4><p>MySQL官方提供了两个版本：</p>
 <ul>
-<li>
-<p>商业版本（MySQL Enterprise Edition）</p>
+<li><p>商业版本（MySQL Enterprise Edition）</p>
 <ul>
 <li>该版本是收费的，我们可以使用30天。 官方会提供对应的技术支持。</li>
 </ul>
 </li>
-<li>
-<p>社区版本（MySQL Community Server）</p>
+<li><p>社区版本（MySQL Community Server）</p>
 <ul>
 <li>该版本是免费的，但是MySQL不会提供任何的技术支持。</li>
 </ul>
 </li>
 </ul>
-<h4 id="1-1-2-安装">1.1.2 安装</h4>
-<p>启动MySQL服务</p>
+<h4 id="1-1-2-安装"><a href="#1-1-2-安装" class="headerlink" title="1.1.2 安装"></a>1.1.2 安装</h4><p>启动MySQL服务</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net start mysql  // 启动mysql服务</span><br><span class="line">    </span><br><span class="line">net stop mysql  // 停止mysql服务</span><br></pre></td></tr></table></figure></div>
+
 <p>修改默认账户密码</p>
 <p>在黑框里敲入<code>mysqladmin -u root password 1234</code>，这里的<code>1234</code>就是指默认管理员(即root账户)的密码，可以自行修改成你喜欢的。</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqladmin -u root password 1234</span><br></pre></td></tr></table></figure></div>
+
 <p>登录MySQL</p>
-<p>右键开始菜单，选择<code>命令提示符</code>，打开黑框。<br>
-在黑框中输入，<code>mysql -uroot -p1234</code>，回车，出现下图且左下角为<code>mysql&gt;</code>，则登录成功。</p>
+<p>右键开始菜单，选择<code>命令提示符</code>，打开黑框。<br>在黑框中输入，<code>mysql -uroot -p1234</code>，回车，出现下图且左下角为<code>mysql&gt;</code>，则登录成功。</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p1234</span><br></pre></td></tr></table></figure></div>
+
 <p>退出mysql</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br><span class="line">quit</span><br></pre></td></tr></table></figure></div>
-<h4 id="1-1-3-连接">1.1.3 连接</h4>
-<p>MySQL服务器启动完毕后，然后再使用如下指令，来连接MySQL服务器：</p>
+
+<h4 id="1-1-3-连接"><a href="#1-1-3-连接" class="headerlink" title="1.1.3 连接"></a>1.1.3 连接</h4><p>MySQL服务器启动完毕后，然后再使用如下指令，来连接MySQL服务器：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u用户名 -p密码 [-h数据库服务器的IP地址 -P端口号]</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>-h 参数不加，默认连接的是本地 127.0.0.1 的MySQL服务器</p>
 <p>-P 参数不加，默认连接的端口号是 3306</p>
@@ -554,11 +550,11 @@
 <li>密码直接在-p参数之后直接指定 （这种方式不安全，密码直接以明文形式出现在命令行）</li>
 <li>密码在-p回车之后，在命令行中输入密码，然后回车</li>
 </ul>
-<h3 id="1-2-数据模型">1.2 数据模型</h3>
-<p><strong>关系型数据库（RDBMS）</strong></p>
+<h3 id="1-2-数据模型"><a href="#1-2-数据模型" class="headerlink" title="1.2 数据模型"></a>1.2 数据模型</h3><p><strong>关系型数据库（RDBMS）</strong></p>
 <p>概念：建立在关系模型基础上，由多张相互连接的 <strong>二维表</strong> 组成的数据库。</p>
 <p>所谓二维表，指的是由行和列组成的标，如下图：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/6.png" class>
+
 <p>二维表的优点：</p>
 <ul>
 <li>使用表存储数据，格式统一，便于维护</li>
@@ -571,6 +567,7 @@
 <p><strong>数据模型</strong></p>
 <p>MySQL是关系型数据库，是基于二维表进行数据存储的，具体的结构图下:</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/7.png" class>
+
 <ul>
 <li>通过MySQL客户端连接数据库管理系统DBMS，然后通过DBMS操作数据库</li>
 <li>使用MySQL客户端，向数据库管理系统发送一条SQL语句，由数据库管理系统根据SQL语句指令去操作数据库中的表结构及数据</li>
@@ -584,22 +581,22 @@
 <li>将数据存放在数据表中(一张表可以存储多行数据)</li>
 </ol>
 </blockquote>
-<h3 id="1-3-SQL简介">1.3 SQL简介</h3>
-<p>SQL:结构化查询语言.一门操作关系型数据库的编程语言,定义操作所有关系型数据库的统一标准</p>
-<h4 id="1-3-1-SQL通用语法">1.3.1 SQL通用语法</h4>
-<p>1 SQL语句可以单行或多行书写,以分号结尾</p>
+<h3 id="1-3-SQL简介"><a href="#1-3-SQL简介" class="headerlink" title="1.3 SQL简介"></a>1.3 SQL简介</h3><p>SQL:结构化查询语言.一门操作关系型数据库的编程语言,定义操作所有关系型数据库的统一标准</p>
+<h4 id="1-3-1-SQL通用语法"><a href="#1-3-1-SQL通用语法" class="headerlink" title="1.3.1 SQL通用语法"></a>1.3.1 SQL通用语法</h4><p>1 SQL语句可以单行或多行书写,以分号结尾</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/8.png" class>
-<p>2 SQL语句可以使用空格/缩进来增强语句的可读性</p>
+
+<p>2 SQL语句可以使用空格&#x2F;缩进来增强语句的可读性</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/9.png" class>
+
 <p>3 MySQL数据库的SQL语句不区分大小写</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/10.png" class>
+
 <p>4 注释</p>
 <ul>
 <li>单行注释: – 注释内容 或 # 注释内容(MySQL特有)</li>
-<li>多行注释: /* 注释内容 */</li>
+<li>多行注释: &#x2F;* 注释内容 *&#x2F;</li>
 </ul>
-<h3 id="1-3-2-分类">1.3.2 分类</h3>
-<p>SQL语句根据其功能被分为四大类: DDL DML DQL DCL</p>
+<h3 id="1-3-2-分类"><a href="#1-3-2-分类" class="headerlink" title="1.3.2 分类"></a>1.3.2 分类</h3><p>SQL语句根据其功能被分为四大类: DDL DML DQL DCL</p>
 <table>
 <thead>
 <tr>
@@ -608,8 +605,7 @@
 <th>说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>DDL</td>
 <td>Data Definition Language</td>
 <td>数据定义语言,用来定义数据库对象(数据库,表,字段)</td>
@@ -629,23 +625,25 @@
 <td>Data Control Language</td>
 <td>数据控制语言,用来创建数据库用户 控制数据库的访问权限</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/11.png" class>
-<h2 id="2-数据库设计-DDL">2 数据库设计-DDL</h2>
-<h3 id="2-1-项目开发流程">2.1 项目开发流程</h3>
-<img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/12.png" class>
+
+
+
+<h2 id="2-数据库设计-DDL"><a href="#2-数据库设计-DDL" class="headerlink" title="2 数据库设计-DDL"></a>2 数据库设计-DDL</h2><h3 id="2-1-项目开发流程"><a href="#2-1-项目开发流程" class="headerlink" title="2.1 项目开发流程"></a>2.1 项目开发流程</h3><img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/12.png" class>
+
 <p>需求文档：</p>
 <ul>
 <li>在我们开发一个项目或者项目当中的某个模块之前，会先会拿到产品经理给我们提供的页面原型及需求文档。</li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/13.png" class>
+
 <p>设计：</p>
 <ul>
 <li>拿到产品原型和需求文档之后，我们首先要做的不是编码，而是要先进行项目的设计，其中就包括概要设计、详细设计、接口设计、数据库设计等等。</li>
 <li>数据库设计根据产品原型以及需求文档，要分析各个模块涉及到的表结构以及表结构之间的关系，以及表结构的详细信息。最终我们需要将数据库以及数据库当中的表结构设计创建出来。</li>
 </ul>
-<p>开发/测试：</p>
+<p>开发&#x2F;测试：</p>
 <ul>
 <li>参照页面原型和需求进行编码，实现业务功能。在这个过程当中，我们就需要来操作设计出来的数据库表结构，来完成业务的增删改查操作等。</li>
 </ul>
@@ -655,52 +653,50 @@
 </ul>
 <p>在上述的流程当中，针对数据库来说，主要包括三个阶段：</p>
 <ol>
-<li>数据库设计阶段
-<ul>
+<li>数据库设计阶段<ul>
 <li>参照页面原型以及需求文档设计数据库表结构</li>
 </ul>
 </li>
-<li>数据库操作阶段
-<ul>
+<li>数据库操作阶段<ul>
 <li>根据业务功能的实现，编写SQL语句对数据表中的数据进行增删改查操作</li>
 </ul>
 </li>
-<li>数据库优化阶段
-<ul>
+<li>数据库优化阶段<ul>
 <li>通过数据库的优化来提高数据库的访问性能。优化手段：索引、SQL优化、分库分表等</li>
 </ul>
 </li>
 </ol>
-<h3 id="2-2-数据库操作">2.2 数据库操作</h3>
-<p>我们在进行数据库设计，需要使用到刚才所介绍SQL分类中的DDL语句。</p>
+<h3 id="2-2-数据库操作"><a href="#2-2-数据库操作" class="headerlink" title="2.2 数据库操作"></a>2.2 数据库操作</h3><p>我们在进行数据库设计，需要使用到刚才所介绍SQL分类中的DDL语句。</p>
 <p>DDL英文全称是Data Definition Language(数据定义语言)，用来定义数据库对象(数据库、表)。</p>
 <p>DDL中数据库的常见操作：查询、创建、使用、删除。</p>
-<h4 id="2-2-1-查询数据库">2.2.1 查询数据库</h4>
-<p><strong>查询所有数据库</strong></p>
+<h4 id="2-2-1-查询数据库"><a href="#2-2-1-查询数据库" class="headerlink" title="2.2.1 查询数据库"></a>2.2.1 查询数据库</h4><p><strong>查询所有数据库</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show databases;</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>查询当前数据库</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select database();</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>我们要操作某一个数据库，必须要切换到对应的数据库中。</p>
 <p>通过指令：select database()，就可以查询到当前所处的数据库</p>
 </blockquote>
-<h4 id="2-2-2-创建数据库">2.2.2 创建数据库</h4>
-<p><strong>语法</strong></p>
+<h4 id="2-2-2-创建数据库"><a href="#2-2-2-创建数据库" class="headerlink" title="2.2.2 创建数据库"></a>2.2.2 创建数据库</h4><p><strong>语法</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database [ if not exists ] 数据库名;</span><br></pre></td></tr></table></figure></div>
-<p>==注意：在同一个数据库服务器中，不能创建两个名称相同的数据库，否则将会报错。==</p>
+
+<p>&#x3D;&#x3D;注意：在同一个数据库服务器中，不能创建两个名称相同的数据库，否则将会报错。&#x3D;&#x3D;</p>
 <ul>
 <li>可以使用if not exists来避免这个问题</li>
 </ul>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-- 数据库不存在,则创建该数据库；如果存在则不创建</span><br><span class="line">create database if not extists itcast; </span><br></pre></td></tr></table></figure></div>
-<h4 id="2-2-3-使用数据库">2.2.3 使用数据库</h4>
-<p><strong>语法</strong></p>
+
+<h4 id="2-2-3-使用数据库"><a href="#2-2-3-使用数据库" class="headerlink" title="2.2.3 使用数据库"></a>2.2.3 使用数据库</h4><p><strong>语法</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use 数据库名;</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>我们要操作某一个数据库下的表时，就需要通过该指令，切换到对应的数据库下，否则不能操作。</p>
 </blockquote>
-<h4 id="2-2-4-删除数据库">2.2.4 删除数据库</h4>
-<p><strong>语法</strong></p>
+<h4 id="2-2-4-删除数据库"><a href="#2-2-4-删除数据库" class="headerlink" title="2.2.4 删除数据库"></a>2.2.4 删除数据库</h4><p><strong>语法</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop database [ if exists ] 数据库名;</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>如果删除一个不存在的数据库，将会报错。</p>
 <p>可以加上参数 if exists ，如果数据库存在，再执行删除，否则不执行删除。</p>
@@ -712,9 +708,7 @@
 <li>如：show schemas;</li>
 </ul>
 </blockquote>
-<h3 id="2-3-图形化工具">2.3 图形化工具</h3>
-<h4 id="2-3-1-介绍">2.3.1 介绍</h4>
-<p>在命令行当中来敲这些SQL语句很不方便，主要的原因有以下 3 点：</p>
+<h3 id="2-3-图形化工具"><a href="#2-3-图形化工具" class="headerlink" title="2.3 图形化工具"></a>2.3 图形化工具</h3><h4 id="2-3-1-介绍"><a href="#2-3-1-介绍" class="headerlink" title="2.3.1 介绍"></a>2.3.1 介绍</h4><p>在命令行当中来敲这些SQL语句很不方便，主要的原因有以下 3 点：</p>
 <ol>
 <li>没有任何代码提示。（全靠记忆，容易敲错字母造成执行报错）</li>
 <li>操作繁琐，影响开发效率。（所有的功能操作都是通过SQL语句来完成的）</li>
@@ -723,18 +717,15 @@
 <p>在项目开发当中，通常为了提高开发效率，都会借助于现成的图形化管理工具来操作数据库。</p>
 <p>目前MySQL主流的图形化界面工具有以下几种：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/14.png" class>
+
 <p>DataGrip是JetBrains旗下的一款数据库管理工具，是管理和开发MySQL、Oracle、PostgreSQL的理想解决方案。</p>
 <p>官网： <a class="link" target="_blank" rel="noopener" href="https://www.jetbrains.com/zh-cn/datagrip/">https://www.jetbrains.com/zh-cn/datagrip/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
-<h4 id="2-3-2-安装">2.3.2 安装</h4>
-<blockquote>
+<h4 id="2-3-2-安装"><a href="#2-3-2-安装" class="headerlink" title="2.3.2 安装"></a>2.3.2 安装</h4><blockquote>
 <p>说明：DataGrip这款工具可以不用安装，因为Jetbrains公司已经将DataGrip这款工具的功能已经集成到了 IDEA当中，所以我们就可以使用IDEA来作为一款图形化界面工具来操作Mysql数据库。</p>
 </blockquote>
-<h4 id="2-3-3-使用">2.3.3 使用</h4>
-<h3 id="2-4-表操作">2.4 表操作</h3>
-<p>关于表结构的操作包含四个部分：创建表、查询表、修改表、删除表</p>
-<h4 id="2-4-1-创建">2.4.1 创建</h4>
-<h5 id="2-4-1-1-语法">2.4.1.1 语法</h5>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	字段1 字段1类型 [约束] [comment 字段1注释],</span><br><span class="line">    字段2 字段2类型 [约束] [comment 字段2注释],</span><br><span class="line">    ......</span><br><span class="line">    字段n 字段n类型 [约束] [comment 字段n注释]</span><br><span class="line">) [comment 表注释];</span><br></pre></td></tr></table></figure></div>
+<h4 id="2-3-3-使用"><a href="#2-3-3-使用" class="headerlink" title="2.3.3 使用"></a>2.3.3 使用</h4><h3 id="2-4-表操作"><a href="#2-4-表操作" class="headerlink" title="2.4 表操作"></a>2.4 表操作</h3><p>关于表结构的操作包含四个部分：创建表、查询表、修改表、删除表</p>
+<h4 id="2-4-1-创建"><a href="#2-4-1-创建" class="headerlink" title="2.4.1 创建"></a>2.4.1 创建</h4><h5 id="2-4-1-1-语法"><a href="#2-4-1-1-语法" class="headerlink" title="2.4.1.1 语法"></a>2.4.1.1 语法</h5><div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">	字段1 字段1类型 [约束] [comment 字段1注释],</span><br><span class="line">    字段2 字段2类型 [约束] [comment 字段2注释],</span><br><span class="line">    ......</span><br><span class="line">    字段n 字段n类型 [约束] [comment 字段n注释]</span><br><span class="line">) [comment 表注释];</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>注意：[]中的内容为可选参数；最后一个字段后面没有逗号</p>
 </blockquote>
@@ -743,20 +734,22 @@
 <li>对应的结构如下：</li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/15.png" class>
+
 <ul>
 <li>建表语句</li>
 </ul>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table tb_user (</span><br><span class="line">	id int comment &#x27;ID,唯一标识&#x27;, # id是一行数据的唯一标识（不能重复）</span><br><span class="line">    username varchar(20) comment &#x27;用户名&#x27;,</span><br><span class="line">    name varchar(10) comment &#x27;姓名&#x27;,</span><br><span class="line">    age int comment &#x27;年龄&#x27;,</span><br><span class="line">    gender char(1) comment &#x27;性别&#x27;</span><br><span class="line">) comment &#x27;用户表&#x27;;</span><br></pre></td></tr></table></figure></div>
+
 <p>双击打开tb_user表结构，大家会发现里面没有数据：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/16.png" class>
+
 <ul>
 <li>其实我们现在创建表结构的时候，id这个字段我们只加了一个备注信息说明它是一个唯一标识，但是在数据库层面，并没有去限制字段存储的数据。所以id这个字段没有起到唯一标识的作用。</li>
 </ul>
 <blockquote>
 <p>想要限制字段所存储的数据，就需要用到数据库中的约束。</p>
 </blockquote>
-<h5 id="2-4-1-2-约束">2.4.1.2 约束</h5>
-<p>概念：所谓约束就是作用子表中字段上的规则，用于限制存储在表中的数据。</p>
+<h5 id="2-4-1-2-约束"><a href="#2-4-1-2-约束" class="headerlink" title="2.4.1.2 约束"></a>2.4.1.2 约束</h5><p>概念：所谓约束就是作用子表中字段上的规则，用于限制存储在表中的数据。</p>
 <p>作用：就是来保证数据库当中数据的正确性、有效性和完整性。</p>
 <p>在MySQL数据库当中，提供了一下5种约束：</p>
 <table>
@@ -767,8 +760,7 @@
 <th>关键字</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>非空约束</td>
 <td>限制该字段值不能为null</td>
 <td>not null</td>
@@ -793,30 +785,26 @@
 <td>让两张表的数据建立连接，保证数据的一致性和完整性</td>
 <td>foreign key</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <blockquote>
-<p>注意：约束是作用于表中字段上的，可以创建表/修改表的时候添加约束</p>
+<p>注意：约束是作用于表中字段上的，可以创建表&#x2F;修改表的时候添加约束</p>
 </blockquote>
 <p>案例：创建tb_user表</p>
 <ul>
 <li>对应结构如下</li>
 </ul>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/17.png" class>
+
 <blockquote>
 <p>在上述的表结构中:</p>
 <ul>
-<li>
-<p>id 是一行数据的唯一标识</p>
+<li><p>id 是一行数据的唯一标识</p>
 </li>
-<li>
-<p>username 用户名字段是非空且唯一的</p>
+<li><p>username 用户名字段是非空且唯一的</p>
 </li>
-<li>
-<p>name 姓名字段是不允许存储空值的</p>
+<li><p>name 姓名字段是不允许存储空值的</p>
 </li>
-<li>
-<p>gender 性别字段是有默认值，默认为男</p>
+<li><p>gender 性别字段是有默认值，默认为男</p>
 </li>
 </ul>
 </blockquote>
@@ -824,7 +812,9 @@
 <li>建表语句：</li>
 </ul>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table tb_user (</span><br><span class="line">	id int primary key comment &#x27;ID,唯一标识&#x27;,</span><br><span class="line">    username varchar(20) not null unique comment &#x27;用户名&#x27;,</span><br><span class="line">    name varchar(10) not null comment &#x27;姓名&#x27;,</span><br><span class="line">    age int comment &#x27;年龄&#x27;,</span><br><span class="line">    gender char(1) default &#x27;男&#x27; comment &#x27;性别&#x27;</span><br><span class="line">) comment &#x27;用户表&#x27;;</span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/18.png" class>
+
 <p>id字段下存储的值，如果由我们自己来维护会比较麻烦（必须保证值得唯一性）。MySQL数据库提供了一个关键字：auto_increment（自动增长）</p>
 <blockquote>
 <p>主键自增：auto_increment</p>
@@ -834,8 +824,8 @@
 </ul>
 </blockquote>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table tb_user (</span><br><span class="line">    id int primary key auto_increment comment &#x27;ID,唯一标识&#x27;, #主键自动增长</span><br><span class="line">    username varchar(20) not null unique comment &#x27;用户名&#x27;,</span><br><span class="line">    name varchar(10) not null comment &#x27;姓名&#x27;,</span><br><span class="line">    age int comment &#x27;年龄&#x27;,</span><br><span class="line">    gender char(1) default &#x27;男&#x27; comment &#x27;性别&#x27;</span><br><span class="line">) comment &#x27;用户表&#x27;;</span><br></pre></td></tr></table></figure></div>
-<h5 id="2-4-1-3-数据类型">2.4.1.3 数据类型</h5>
-<p>MySQL中的数据类型有很多：主要分为三类：数值类型、字符串类型、日期时间类型</p>
+
+<h5 id="2-4-1-3-数据类型"><a href="#2-4-1-3-数据类型" class="headerlink" title="2.4.1.3 数据类型"></a>2.4.1.3 数据类型</h5><p>MySQL中的数据类型有很多：主要分为三类：数值类型、字符串类型、日期时间类型</p>
 <p><strong>数值类型</strong></p>
 <table>
 <thead>
@@ -847,8 +837,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>TINYINT</td>
 <td>1byte</td>
 <td>(-128，127)</td>
@@ -870,7 +859,7 @@
 <td>大整数值</td>
 </tr>
 <tr>
-<td>INT/INTEGER</td>
+<td>INT&#x2F;INTEGER</td>
 <td>4bytes</td>
 <td>(-2147483648，2147483647)</td>
 <td>(0，4294967295)</td>
@@ -904,9 +893,9 @@
 <td>依赖于M(精度)和D(标度)的值</td>
 <td>小数值(精确定点数)</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">	年龄字段 --- 不会出现负数，而且人的年龄不会太大</span><br><span class="line">	age tinyint unsighed</span><br><span class="line">	</span><br><span class="line">	分数 --- 总分100分，最多出现一位小数</span><br><span class="line">	score double(4,1)</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>字符串类型</strong></p>
 <table>
 <thead>
@@ -916,8 +905,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>CHAR</td>
 <td>0-255 bytes</td>
 <td>定长字符串(需要指定长度)</td>
@@ -967,10 +955,10 @@
 <td>0-4 294 967 295 bytes</td>
 <td>极大文本数据</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>char 与 varchar 都可以描述字符串，char是定长字符串，指定长度多长，就占用多少个字符，和字符值的长度无关。而varchar是变长字符串，指定的长度为最大占用长度。相对来说，char的性能会更高些。</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">示例：</span><br><span class="line">	用户名 username ---长度不定, 最长不会超过50</span><br><span class="line">	username varchar(50)</span><br><span class="line">	</span><br><span class="line">	手机号 phone ---固定长度为11</span><br><span class="line">	phone char(11)</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>日期时间类型</strong></p>
 <table>
 <thead>
@@ -982,8 +970,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>DATE</td>
 <td>3</td>
 <td>1000-01-01 至  9999-12-31</td>
@@ -1018,15 +1005,17 @@
 <td>YYYY-MM-DD HH:MM:SS</td>
 <td>混合日期和时间值，时间戳</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">示例: </span><br><span class="line">	生日字段  birthday ---生日只需要年月日  </span><br><span class="line">	birthday date</span><br><span class="line">	</span><br><span class="line">	创建时间 createtime --- 需要精确到时分秒</span><br><span class="line">	createtime  datetime</span><br></pre></td></tr></table></figure></div>
-<h5 id="2-4-1-4-案例">2.4.1.4 案例</h5>
-<p>需求：根据产品原型/需求创建表（设计合理的数据类型、长度、约束）</p>
+
+<h5 id="2-4-1-4-案例"><a href="#2-4-1-4-案例" class="headerlink" title="2.4.1.4 案例"></a>2.4.1.4 案例</h5><p>需求：根据产品原型&#x2F;需求创建表（设计合理的数据类型、长度、约束）</p>
 <p>产品原型及需求如下：</p>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/19.png" class>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/20.png" class>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/21.png" class>
+
 <p><strong>步骤：</strong></p>
 <ol>
 <li>阅读产品原型及需求文档，看看里面涉及到哪些字段</li>
@@ -1035,20 +1024,21 @@
 </ol>
 <p>使用SQL创建表：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">create table emp (</span><br><span class="line">	id int unsigned primary key auto_incremen comment &#x27;ID&#x27;,</span><br><span class="line">    username varchar(20) not null unique comment &#x27;用户名&#x27;,</span><br><span class="line">    password varchar(32) default &#x27;123456&#x27; comment &#x27;密码&#x27;,</span><br><span class="line">    name varchar(10) not null comment &#x27;姓名&#x27;,</span><br><span class="line">    gender tinyint unsigned not null comment &#x27;性别，说明：1 男，2 女&#x27;,</span><br><span class="line">    image varchar(300) comment &#x27;图像&#x27;,</span><br><span class="line">    job tinyint unsigned comment &#x27;职位，说明：1 班主任，2 讲师，3 学工主管，4 教研主管&#x27;,</span><br><span class="line">    entrydate date comment &#x27;入职时间&#x27;,</span><br><span class="line">    create_time datetime not null comment &#x27;创建时间&#x27;,</span><br><span class="line">    update_time datetime not null comment &#x27;修改时间&#x27;</span><br><span class="line">) comment &#x27;员工表&#x27;;</span><br></pre></td></tr></table></figure></div>
+
 <p>除了使用SQL语句创建表以外，还可以借助于图形化界面来创建表结构，这种创建方式会更加直观、更加方便</p>
 <p>操作步骤如下：</p>
 <ol>
-<li>在指定操作的数据库上，右键New ==&gt; Table</li>
+<li>在指定操作的数据库上，右键New &#x3D;&#x3D;&gt; Table</li>
 <li>编辑表结构的相关信息</li>
 </ol>
-<h5 id="设计表流程">设计表流程</h5>
-<p>设计一张表，基本的流程如下：</p>
+<h5 id="设计表流程"><a href="#设计表流程" class="headerlink" title="设计表流程"></a>设计表流程</h5><p>设计一张表，基本的流程如下：</p>
 <ol>
 <li>阅读页面原型及需求文档</li>
 <li>基于页面原则和需求文档，确定原型字段（类型、长度限制、约束）</li>
 <li>再增加表设计所需要的业务基础字段（id主键、插入时间、修改时间）</li>
 </ol>
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/22.png" class>
+
 <blockquote>
 <p>说明：</p>
 <ul>
@@ -1056,104 +1046,107 @@
 <li>update_time：记录的是这条数据最后更新的时间</li>
 </ul>
 </blockquote>
-<h4 id="2-4-2-查询">2.4.2 查询</h4>
-<blockquote>
-<p>关于表结构的查询操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。</p>
+<h4 id="2-4-2-查询"><a href="#2-4-2-查询" class="headerlink" title="2.4.2 查询"></a>2.4.2 查询</h4><blockquote>
+<p>关于表结构的查询操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。 </p>
 </blockquote>
 <p><strong>查询当前数据库所有表</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show tables;</span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/23.png" class>
+
 <p><strong>查看指定表结构</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">desc 表名 ;#可以查看指定表的字段、字段的类型、是否可以为NULL、是否存在默认值等信息</span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/24.png" class>
+
 <p><strong>查看指定表的建表语句</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show create table 表名;</span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/25.png" class>
-<h4 id="2-4-3-修改">2.4.3 修改</h4>
-<blockquote>
-<p>关于表结构的查询操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。</p>
+
+
+
+<h4 id="2-4-3-修改"><a href="#2-4-3-修改" class="headerlink" title="2.4.3 修改"></a>2.4.3 修改</h4><blockquote>
+<p>关于表结构的查询操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。 </p>
 </blockquote>
 <p><strong>添加字段</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 add 字段名 类型(长度) [comment 注释] [约束];</span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/26.png" class>
+
 <p><strong>修改数据类型</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 modify 字段名 新数据类型(长度);</span><br></pre></td></tr></table></figure></div>
+
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 change 旧字段名 新字段名 类型(长度) [comment 注释] [约束];</span><br></pre></td></tr></table></figure></div>
+
 <img lazyload src="/images/loading.svg" data-src="/2024/04/09/%E5%90%8E%E7%AB%AF/03-MySQL/27.png" class>
+
 <p><strong>删除字段</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 drop 字段名;</span><br></pre></td></tr></table></figure></div>
+
 <p><strong>修改表名</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename table 表名 to 新表名;</span><br></pre></td></tr></table></figure></div>
-<h4 id="2-4-4-删除">2.4.4 删除</h4>
-<blockquote>
-<p>关于表结构的删除操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。</p>
+
+
+
+<h4 id="2-4-4-删除"><a href="#2-4-4-删除" class="headerlink" title="2.4.4 删除"></a>2.4.4 删除</h4><blockquote>
+<p>关于表结构的删除操作，工作中一般都是直接基于<strong>图形化界面操作</strong>。 </p>
 </blockquote>
 <p><strong>删除表</strong></p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop table [if exists] 表名;</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>if exists ：只有表名存在时才会删除该表，表名不存在，则不执行删除操作(如果不加该参数项，删除一张不存在的表，执行将会报错)。</p>
 </blockquote>
-<h2 id="3-数据库操作-DML">3 数据库操作-DML</h2>
-<p>DML英文全称是Data Manipulation Language(数据操作语言)，用来对数据库中表的数据记录进行增、删、改操作。</p>
+<h2 id="3-数据库操作-DML"><a href="#3-数据库操作-DML" class="headerlink" title="3 数据库操作-DML"></a>3 数据库操作-DML</h2><p>DML英文全称是Data Manipulation Language(数据操作语言)，用来对数据库中表的数据记录进行增、删、改操作。</p>
 <ul>
 <li>添加数据（INSERT）</li>
 <li>修改数据（UPDATE）</li>
 <li>删除数据（DELETE）</li>
 </ul>
-<h3 id="3-1-增加-insert">3.1 增加(insert)</h3>
-<p>insert语法</p>
+<h3 id="3-1-增加-insert"><a href="#3-1-增加-insert" class="headerlink" title="3.1 增加(insert)"></a>3.1 增加(insert)</h3><p>insert语法</p>
 <ul>
-<li>
-<p>向指定字段添加数据</p>
+<li><p>向指定字段添加数据</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (字段名1, 字段名2) values (值1, 值2);</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>全部字段添加数据</p>
+<li><p>全部字段添加数据</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 values (值1, 值2, ...);</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>批量添加数据（指定字段）</p>
+<li><p>批量添加数据（指定字段）</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 (字段名1, 字段名2) values (值1, 值2), (值1, 值2);</span><br></pre></td></tr></table></figure></div>
 </li>
-<li>
-<p>批量添加数据（全部字段）</p>
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 values (值1, 值2, ...), (值1, 值2, ...);</span><br></pre></td></tr></table></figure></div>
-</li>
+<li><p>批量添加数据（全部字段）</p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into 表名 values (值1, 值2, ...), (值1, 值2, ...);</span><br></pre></td></tr></table></figure></div></li>
 </ul>
 <p>Insert操作的注意事项：</p>
 <ol>
-<li>
-<p>插入数据时，指定的字段顺序需要与值的顺序是一一对应的。</p>
+<li><p>插入数据时，指定的字段顺序需要与值的顺序是一一对应的。</p>
 </li>
-<li>
-<p>字符串和日期型数据应该包含在引号中。</p>
+<li><p>字符串和日期型数据应该包含在引号中。</p>
 </li>
-<li>
-<p>插入的数据大小，应该在字段的规定范围内。</p>
+<li><p>插入的数据大小，应该在字段的规定范围内。</p>
 </li>
 </ol>
-<h3 id="3-2-修改（update">3.2 修改（update)</h3>
-<p>update语法：</p>
+<h3 id="3-2-修改（update"><a href="#3-2-修改（update" class="headerlink" title="3.2 修改（update)"></a>3.2 修改（update)</h3><p>update语法：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 set 字段名1 = 值1, 字段名2 = 值2, ... [where 条件];</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>注意事项:</p>
 <ol>
-<li>
-<p>修改语句的条件可以有，也可以没有，如果没有条件，则会修改整张表的所有数据。</p>
+<li><p>修改语句的条件可以有，也可以没有，如果没有条件，则会修改整张表的所有数据。</p>
 </li>
-<li>
-<p>在修改数据时，一般需要同时修改公共字段update_time，将其修改为当前操作时间。</p>
+<li><p>在修改数据时，一般需要同时修改公共字段update_time，将其修改为当前操作时间。</p>
 </li>
 </ol>
 </blockquote>
-<h3 id="3-3-删除（delete">3.3 删除（delete)</h3>
-<p>delete语法：</p>
+<h3 id="3-3-删除（delete"><a href="#3-3-删除（delete" class="headerlink" title="3.3 删除（delete)"></a>3.3 删除（delete)</h3><p>delete语法：</p>
 <div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 表名 [where 条件];</span><br></pre></td></tr></table></figure></div>
+
 <blockquote>
 <p>注意事项:</p>
 <p>​	• DELETE 语句的条件可以有，也可以没有，如果没有条件，则会删除整张表的所有数据。</p>
 <p>​	• DELETE 语句不能删除某一个字段的值(可以使用UPDATE，将该字段值置为NULL即可)。</p>
-<p>​	• 当进行删除全部数据操作时，会提示询问是否确认删除所有数据，直接点击Execute即可。</p>
+<p>​	• 当进行删除全部数据操作时，会提示询问是否确认删除所有数据，直接点击Execute即可。 </p>
 </blockquote>
 
         </div>
@@ -1285,7 +1278,7 @@
     <div class="post-toc">
         <div class="toc-title">目录</div>
         <div class="page-title">03-MySQL</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-text">数据库开发-MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MySQL%E6%A6%82%E8%BF%B0"><span class="nav-text">1 MySQL概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85"><span class="nav-text">1.1 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-text">1.2 数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-SQL%E7%AE%80%E4%BB%8B"><span class="nav-text">1.3 SQL简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E5%88%86%E7%B1%BB"><span class="nav-text">1.3.2 分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1-DDL"><span class="nav-text">2 数据库设计-DDL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-text">2.1 项目开发流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">2.2 数据库操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="nav-text">2.3 图形化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-text">2.4 表操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C-DML"><span class="nav-text">3 数据库操作-DML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%A2%9E%E5%8A%A0-insert"><span class="nav-text">3.1 增加(insert)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BF%AE%E6%94%B9%EF%BC%88update"><span class="nav-text">3.2 修改（update)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%88%A0%E9%99%A4%EF%BC%88delete"><span class="nav-text">3.3 删除（delete)</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%BC%80%E5%8F%91-MySQL"><span class="nav-text">数据库开发-MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-MySQL%E6%A6%82%E8%BF%B0"><span class="nav-text">1 MySQL概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E5%AE%89%E8%A3%85"><span class="nav-text">1.1 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="nav-text">1.2 数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-SQL%E7%AE%80%E4%BB%8B"><span class="nav-text">1.3 SQL简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-2-%E5%88%86%E7%B1%BB"><span class="nav-text">1.3.2 分类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1-DDL"><span class="nav-text">2 数据库设计-DDL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-text">2.1 项目开发流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">2.2 数据库操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%9B%BE%E5%BD%A2%E5%8C%96%E5%B7%A5%E5%85%B7"><span class="nav-text">2.3 图形化工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-text">2.4 表操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C-DML"><span class="nav-text">3 数据库操作-DML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%A2%9E%E5%8A%A0-insert"><span class="nav-text">3.1 增加(insert)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E4%BF%AE%E6%94%B9%EF%BC%88update"><span class="nav-text">3.2 修改（update)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-%E5%88%A0%E9%99%A4%EF%BC%88delete"><span class="nav-text">3.3 删除（delete)</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
@@ -1318,11 +1311,11 @@
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 59 篇文章
+                        共撰写了 60 篇文章
                     </span>
                     
                         <span>
-                            共 357.3k 字
+                            共 363.4k 字
                         </span>
                     
                 </p>
